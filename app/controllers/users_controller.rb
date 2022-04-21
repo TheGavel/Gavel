@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  skip_before_action  :require_login ,  only: [:index ,  :new ,  :create , :activate]  # 僅當您允許用戶自己註冊時才應使用。
   # GET /users or /users.json
   def index
     @users = User.all
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to :user, notice: "User was successfully updated." } #user_url(@user)
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,6 +56,18 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def activate
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      flash[:success] = 'User was successfully activated.'
+      redirect_to login_path
+    else
+      flash[:warning] = 'Cannot activate this user.'
+      redirect_to root_path
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
