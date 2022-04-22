@@ -1,10 +1,10 @@
 class CreateRecords < ActiveRecord::Migration[6.1]
   def change
     create_table :records do |t|
-      t.references :buyer, null: false, foreign_key: true
+      t.references :buyer
       t.integer :bid
-      t.references :product, null: false, foreign_key: true
-      t.references :room, null: false, foreign_key: true
+      t.references :product
+      t.references :room
       t.string :time
       t.string :seller_id
 
