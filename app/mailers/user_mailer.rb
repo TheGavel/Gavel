@@ -1,7 +1,6 @@
 class UserMailer < ApplicationMailer
   def activation_needed_email(user)
     @user = user
-    p "我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user我是user"
     p user
     mail(to: user.email, subject: "Account activation")
   end
@@ -9,5 +8,5 @@ class UserMailer < ApplicationMailer
   def activation_success_email(user)
     @user = user
     mail(to: user.email, subject: "Your account is now activated")
-  end   
+  end
 end
