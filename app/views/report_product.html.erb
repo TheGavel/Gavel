@@ -1,0 +1,87 @@
+<%= stylesheet_link_tag "filename" %>
+<style>
+  h1 {
+    display: flex;
+    justify-content: center;
+  }
+  label {
+    display: flex;
+  }
+  .reason {
+    font-size: 20px;
+  }
+</style>
+
+<h1>檢舉此商品</h1>
+
+<form>
+  <label>選擇違規類型：</label>
+
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="drug"
+      required
+    />藥品、醫療器材</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="wine_tobacco"
+    />酒類/菸類商品</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="weapon"
+    />武器/彈藥/軍事用品</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="animal"
+    />活體動物、保育動物及其製品</label
+  >
+  <label
+    ><input type="radio" name="report_type" value="others" />其他違法商品</label
+  >
+  <label
+    ><input type="radio" name="report_type" value="wrong_type" />類別錯誤</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="link_to_outside"
+    />導向外部資訊或交易</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="uncomfortable"
+    />此商品可能令人感到不適或違反善良風俗</label
+  >
+  <label><input type="radio" name="report_type" value="fake" />仿冒品</label>
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="repost"
+    />重複刊登/複製他人商品圖文</label
+  >
+  <label
+    ><input
+      type="radio"
+      name="report_type"
+      value="misunderstanding"
+    />濫用文字誤導搜尋</label
+  >
+  <label class="reason">檢舉原因：</label>
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <input type="submit" />
+</form>
