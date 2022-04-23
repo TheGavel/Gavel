@@ -1,14 +1,15 @@
  <%= stylesheet_link_tag "filename" %>
  
- <style>
- .footer {
+<style>
+  
+.footer {
   background-color: rgb(86, 142, 255);
   color: white;
+  padding: 20px;
 }
 
 .footer .container_top {
   margin: auto;
-  display: flex;
   width: 90%;
   margin-bottom: 20px;
   border-bottom: 2px solid gray;
@@ -40,12 +41,13 @@
 .footer .footer_list {
   display: flex;
   width: 100%;
-  margin-right: 0;
-  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .footer .footer_link {
-  width: 30%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin-left: 100px;
 }
 
 .footer .footer_list a {
@@ -60,7 +62,7 @@
 }
 
 .footer .footer_list a:hover {
-  font-weight: 600;
+  color: blue;
 }
 
 .container_bottom {
@@ -73,21 +75,22 @@
 }
 
  </style>
- 
- <footer class="footer">
-      <div class="container_top">
-        <div class="footer_logo">
-          <a href="#"
-            ><img src="https://picsum.photos/150/150?random=1" alt="#"
-          /></a>
-          <h2>Gavel</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            omnis nostrum, ut tempora numquam aut quos earum exercitationem
-          </p>
-        </div>
 
+
+    <footer class="footer">
+      <div class="container_top">
         <div class="footer_list">
+          <div class="footer_logo">
+            <a href="#"
+              ><img src="https://picsum.photos/150/150?random=1" alt="#"
+            /></a>
+            <h2>Gavel</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Doloremque omnis nostrum, ut tempora numquam aut quos earum
+              exercitationem
+            </p>
+          </div>
           <div class="footer_link">
             <h3>社群</h3>
             <a href="#">Youtube</a>
