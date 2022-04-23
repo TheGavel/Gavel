@@ -1,0 +1,114 @@
+ <%= stylesheet_link_tag "filename" %>
+ 
+ <style>
+ .footer {
+  background-color: rgb(86, 142, 255);
+  color: white;
+}
+
+.footer .container_top {
+  margin: auto;
+  display: flex;
+  width: 90%;
+  margin-bottom: 20px;
+  border-bottom: 2px solid gray;
+}
+
+.footer .footer_logo {
+  margin-top: 10px;
+  width: 20%;
+}
+
+.footer .footer_logo a {
+  display: block;
+}
+
+.footer .footer_logo h2 {
+  padding: 0;
+  margin: 0;
+}
+.footer .footer_logo p {
+  margin: 0;
+  padding-bottom: 30px;
+}
+.footer .footer_logo img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.footer .footer_list {
+  display: flex;
+  width: 100%;
+  margin-right: 0;
+  justify-content: flex-end;
+}
+
+footer .footer_link {
+  width: 30%;
+}
+
+.footer .footer_list a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer .footer_list a:active {
+  color: white;
+}
+
+.footer .footer_list a:hover {
+  font-weight: 600;
+}
+
+.container_bottom {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 20px;
+}
+.company_span {
+  font-size: 12px;
+}
+
+ </style>
+ 
+ <footer class="footer">
+      <div class="container_top">
+        <div class="footer_logo">
+          <a href="#"
+            ><img src="https://picsum.photos/150/150?random=1" alt="#"
+          /></a>
+          <h2>Gavel</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+            omnis nostrum, ut tempora numquam aut quos earum exercitationem
+          </p>
+        </div>
+
+        <div class="footer_list">
+          <div class="footer_link">
+            <h3>社群</h3>
+            <a href="#">Youtube</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+          </div>
+
+          <div class="footer_link">
+            <h3>關於我們</h3>
+            <a href="#">關於Gavel</a>
+          </div>
+
+          <div class="footer_link">
+            <h3>客服中心</h3>
+            <a href="#">問題回報</a>
+            <a href="#">聯繫我們</a>
+          </div>
+        </div>
+      </div>
+      <div class="container_bottom">
+        <span class="company_span">© 2022 Gavel Networks</span>
+      </div>
+    </footer>
