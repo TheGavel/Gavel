@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "filename" %>
+<style>
+  textarea {
+    width: 650px;
+    height: 200px;
+  }
+</style>
+<div class="report">
+  <h2>客服線上回報單</h2>
+
+  <div class="briefly">
+    <p>嗨親愛的使用者您好，感謝您使用Gavel~</p>
+    <p>如果有面臨到什麼問題歡迎填寫下方表單，我們會在第一時間與您做聯繫</p>
+  </div>
+
+  <form>
+    <div class="report_name">
+      <label for="name">姓名：</label>
+      <input type="text" />
+    </div>
+    <div class="report_email">
+      <label for="email">Email：</label>
+      <input type="email" id="email" autocomplete="off" />
+    </div>
+    <div class="report_date">
+      <label for="date">日期：</label>
+      <input type="datetime-local" id="date" />
+    </div>
+    <div class="report_theme">
+      <label for="theme">回報主題：</label>
+      <select id="theme" name="theme">
+        <option>註冊/登入相關問題</option>
+        <option>儲值相關問題</option>
+        <option>其他</option>
+      </select>
+    </div>
+    <div class="report_content">
+      <label for="content" name="content">回報內容：</label>
+      <textarea name="content" placeholder="請在此輸入內容"></textarea>
+    </div>
+    <div class="report_upload">
+      <label for="upload_file">上傳檔案：</label>
+      <input type="file" id="upload_file" />
+    </div>
+    <div>
+      <button type="submit">送出表單</button>
+    </div>
+  </form>
+</div>
