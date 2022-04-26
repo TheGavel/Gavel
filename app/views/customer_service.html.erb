@@ -1,0 +1,42 @@
+<form>
+  <div class="min-h-screen bg-indigo-50 pt-6 md:px-20">
+    <div class="mx-auto max-w-2xl rounded-md bg-white px-6 py-10">
+      <h1 class="mb-6 text-center text-2xl font-bold text-black pb-4  border-b-2  border-blue-400">客服線上回報單</h1>
+      <div class="space-y-4">
+        <div class="briefly mb-8">
+          <p class="text-center">嗨親愛的使用者您好，感謝您使用Gavel~</p>
+          <p class="text-center">如果有面臨到什麼問題歡迎填寫下方表單，我們會在第一時間與您做聯繫</p>
+        </div>
+        <div>
+          <label for="name" class="text-lx ">姓名:</label>
+          <input type="text" id="name" class="text-md ml-2 rounded-md border-2 py-1 px-2 outline-none" />
+        </div>
+        <div>
+          <label for="email" class="text-lx">Email:</label>
+          <input type="email" id="email" class="text-md ml-2 rounded-md border-2 py-1 px-2 outline-none" />
+        </div>
+        <div>
+          <label for="title" class="text-lx">日期:</label>
+          <input type="datetime-local" id="title" class="text-md ml-2 rounded-md border-2 py-1 px-2 outline-none" />
+        </div>
+        <div class="report_theme">
+          <label for="theme">回報主題：</label>
+          <select id="theme" name="theme" class="text-md ml-2 rounded-md border-2 py-1 px-2 outline-none">
+            <option>註冊/登入相關問題</option>
+            <option>儲值相關問題</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div>
+          <label for="description" class="mb-2 block  text-md">回報內容:</label>
+          <textarea id="description" cols="30" rows="10" placeholder="請在此輸入內容" class="w-full rounded-md bg-indigo-50 p-4  text-gray-600 outline-none"></textarea>
+        </div>
+        <div class="report_upload">
+          <label for="upload_file">上傳檔案：</label>
+          <input type="file" id="upload_file" />
+        </div>
+        <button class="mx-auto block rounded-md bg-indigo-600 px-6 py-2 text-lg font-semibold text-indigo-100">送出</button>
+      </div>
+    </div>
+  </div>
+</form>
