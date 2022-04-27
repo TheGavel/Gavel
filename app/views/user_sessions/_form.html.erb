@@ -1,13 +1,46 @@
-<%= form_with url: login_path, method: :post do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+<div class="login_page">
+  <div class="container">
+    <%= form_with url: login_path, method: :post do |f| %>
+    <h1>登入  Login</h1>
+
+    <div class="field">
+      <%= f.text_field :email,placeholder:"電子郵件" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password ,placeholder:"密碼" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Login" %>
+    </div>
+
+     <div class="forget_password">
+      <%=link_to "忘記密碼？","#"%>
+    </div>
+
+    <div class="or">
+      <div class="line"></div>
+      <div class="text">或</div>
+    </div>
+
+    <div class="Google_login">
+      <button>
+        <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
+        <p>使用Google登入</p>
+      </button>
+    </div>
+
+      <div class="Facebook_login">
+      <button>
+        <i class="fa-brands fa-facebook-square" ></i>
+        <p>使用Facebook登入</p>
+      </button>
+    </div>
+      <div class="register">
+        <p>第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path%></p>
+      </div>
+
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
+ </div>

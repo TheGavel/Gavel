@@ -1,3 +1,398 @@
-// Place all the styles related to the UserSessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// 註冊頁面
+body{
+    background-color: rgb(242, 237, 237);
+   .register{
+    background-color: #fff;
+    width: 400px;
+    margin: auto;
+
+
+    .container{
+     margin: auto;
+     
+     .sign_in{
+        text-align: center;
+        padding: 10px 0 0px 0;
+        background-color: rgba(247, 247, 246, 0.946);
+        font-size: 14px;
+         p{
+             color:#585757;
+         }
+        a{
+            text-decoration: none;
+            }
+        }
+    hr{
+        background-color:#edecec;
+        height:1px;
+        border:none;
+    }
+
+    .field{
+        margin-bottom:5px ;
+        padding: 5px 25px 10px 25px;
+        input{
+            width: 335px;
+            height: 30px;
+           
+        }
+        ::-webkit-input-placeholder {
+            color: rgb(116, 114, 114);
+            padding-left: 10px;
+            font-weight: normal;
+            }
+
+        select{
+           margin: 5px 5px 5px 0;
+           width: 60px;
+           height: 30px;
+        }
+        #user_address{
+            margin: 5px 0;
+        }
+        #user_is_seller{
+            width: 15px;
+            height: 15px;
+            margin: 5px 0 0 0 ;
+            
+        }
+    }
+     h1{
+        display: block;
+        padding: 0px 20px ;
+        font-weight: 900;
+     }
+     .actions {
+         margin: 20px 10px 0px  27px;
+         
+        input{
+            margin: 0px 0 30px 0; 
+            color: white;  
+            background: #14804a;
+            width: 345px;
+            height: 40px;
+            border: 0px;
+          
+            &:hover{
+                background-color: rgb(13, 77, 48);
+              }
+        }
+     }
+    
+    .or{
+        position: relative;
+        text-align: center;
+        margin: 10px 0 0 0;
+    
+        .line {
+            height: 1px;
+            background-color: #F1EEEA;
+            width: 100%;
+        }
+        .text {
+            display: inline-block;
+            background-color: #FFFFFF;
+            padding: 7px 0px;
+            font-size: 14px;
+            top: -16px;
+            position: relative;
+            color: #282828;
+        }
+    }
+   
+     .forget_password{
+        text-align:right;
+        padding: 8px 30px 17px 0;
+         a{
+             font-size: 14px;
+            color: rgb(99, 96, 96);
+            text-decoration: none;
+
+            &:hover{
+            color: rgb(39, 40, 40);
+          }
+        
+         }
+     }
+     .Google_login{
+         button{
+            width: 345px;
+            height: 40px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin: auto;
+             
+               
+             button:hover{
+                 background-color: #282828;
+             }
+
+             img{
+                 width: 20px;
+                 margin: 0 5px;
+             }
+             p{
+             }
+         }
+     }
+     .Facebook_login{
+          margin:13px 0 10px 0;
+          padding: 0px 0px 20px 0px;
+
+          
+        button{
+            background-color: #3b5998;
+            width: 345px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            border: 0.5px solid #a7a6a6;
+            
+            
+
+            i{
+                font-size:20px;
+                color:#F1EEEA;
+                margin: 0 5px;
+            }
+            p{
+                color:#fff;
+                
+            }
+        }
+    }
+
+    .register{
+        display: inline-block;
+        margin: 0px 0px 20px 0px;
+        display: flex;
+        justify-content: center;
+        p{
+            color: #535353;
+        }
+        a{
+            text-decoration: none;
+        }
+    }
+    
+    }
+    } 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <div class="sign_in">
+//     <p>已有帳戶？ <%=link_to "登入",login_path%></p>
+//    </div>
+//     <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 登入頁面
+body{
+    background-color: rgb(242, 237, 237);
+   .login_page{
+    background-color: #fff;
+    width: 400px;
+    margin: auto;
+
+
+    .container{
+    margin: auto;
+
+    .field{
+        margin: 20px 27px;
+        input{
+            width: 335px;
+            height: 30px;
+           
+        }
+        ::-webkit-input-placeholder {
+            color: rgb(116, 114, 114);
+            padding-left: 10px;
+            font-weight: normal;
+            }
+
+    }
+     h1{
+        display: block;
+        padding: 40px 20px 5px 20px;
+        font-weight: 900;
+     }
+     .actions {
+         margin: 20px 10px 0px  27px;
+         
+        input{
+           
+            color: white;  
+            background: #14804a;
+            width: 345px;
+            height: 40px;
+            border: 0px;
+          
+            &:hover{
+                background-color: rgb(13, 77, 48);
+              }
+        }
+     }
+    
+    .or{
+        position: relative;
+        text-align: center;
+        margin: 10px 0 0 0;
+    
+        .line {
+            height: 1px;
+            background-color: #F1EEEA;
+            width: 100%;
+        }
+        .text {
+            display: inline-block;
+            background-color: #FFFFFF;
+            padding: 7px 0px;
+            font-size: 14px;
+            top: -16px;
+            position: relative;
+            color: #282828;
+        }
+    }
+   
+     .forget_password{
+        text-align:right;
+        padding: 8px 30px 17px 0;
+         a{
+             font-size: 14px;
+            color: rgb(99, 96, 96);
+            text-decoration: none;
+
+            &:hover{
+            color: rgb(39, 40, 40);
+          }
+        
+         }
+     }
+     .Google_login{
+         button{
+            width: 345px;
+            height: 40px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin: auto;
+             
+               
+             button:hover{
+                 background-color: #282828;
+             }
+
+             img{
+                 width: 20px;
+                 margin: 0 5px;
+             }
+             p{
+             }
+         }
+     }
+     .Facebook_login{
+          margin:13px 0 10px 0;
+          padding: 0px 0px 20px 0px;
+
+          
+        button{
+            background-color: #3b5998;
+            width: 345px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            border: 0.5px solid #a7a6a6;
+            
+            
+
+            i{
+                font-size:20px;
+                color:#F1EEEA;
+                margin: 0 5px;
+            }
+            p{
+                color:#fff;
+                
+            }
+        }
+    }
+
+    .register{
+        display: inline-block;
+        margin: 0px 0px 20px 0px;
+        display: flex;
+        justify-content: center;
+        p{
+            color: #535353;
+        }
+        a{
+            text-decoration: none;
+        }
+    }
+    
+    }
+    } 
+}
+
+ 
+// <div class="sign_up">
+// <p>第一次使用Gavel嗎？ <%=link_to "註冊","#"%></p>
+// </div>
