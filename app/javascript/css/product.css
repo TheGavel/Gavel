@@ -1,0 +1,33 @@
+*{
+  font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+}
+.category{
+  position: relative;
+  margin: 0 1rem;
+}
+.category::before{
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  border-bottom: 3px red solid;
+  width: 100%;
+  opacity: 0;
+}
+.category:hover::before{
+  opacity: 1;
+}
+
+.navbar::before{
+  content: "";
+  position: absolute;
+  border-bottom: 1px #AAA solid;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1rem;
+}
+
+.navbar::-webkit-scrollbar{
+  display: none;
+}
