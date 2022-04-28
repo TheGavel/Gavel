@@ -1,46 +1,44 @@
-<div class="login_page">
-  <div class="container">
-    <%= form_with url: login_path, method: :post do |f| %>
-    <h1>登入  Login</h1>
+<%# 登入頁面  %>
+<div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto ">
+  <div class="mt-10">
+    <%= form_with url: login_path,scope:"user",method: :post do |f| %>
+    <h1 class="text-4xl font-bold py-8 px-5 mt-2">登入</h1>
 
-    <div class="field">
-      <%= f.text_field :email,placeholder:"電子郵件" %>
+    <div class="mx-4">
+      <%=f.text_field :email,placeholder:"電子郵件",class:"w-full h-11 mb-4 pl-2 border-gray-600 focus:border-green-600 rounded-none border outline-none"%>
+      <%=f.password_field :email,placeholder:"密碼",class:"w-full h-11 pl-2  py-1 px-2 focus:border-green-600 border-gray-600 rounded-none border outline-none"%>
     </div>
 
-    <div class="field">
-      <%= f.password_field :password ,placeholder:"密碼" %>
+    <div class="mt-5  ">
+      <%= f.submit "登入",class:"w-11/12 h-11 m-auto text-white bg-blue-600 hover:bg-blue-700  block "%>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Login" %>
+     <div class="text-right">
+      <%=link_to "忘記密碼？","#",class: "text-right mr-4 text-sm  text-gray-500   hover:text-gray-900"%>
     </div>
 
-     <div class="forget_password">
-      <%=link_to "忘記密碼？","#"%>
+    <div class="text-center mt-6">
+      <div class="w-full h-px bg-gray-100"></div>
+      <div class=" text-sm  pt-2.5 text-gray-600 bg-whiteinline-block relative -top-5 ">快速登入</div>
     </div>
 
-    <div class="or">
-      <div class="line"></div>
-      <div class="text">或</div>
-    </div>
-
-    <div class="Google_login">
-      <button>
-        <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
+    <div class="mb-4">
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-gray-200 hover:bg-gray-300 ">
+        <img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2"/>
         <p>使用Google登入</p>
       </button>
     </div>
 
-      <div class="Facebook_login">
-      <button>
-        <i class="fa-brands fa-facebook-square" ></i>
+      <div>
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-900 text-white  hover:bg-blue-800">
+      <img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2"/>
         <p>使用Facebook登入</p>
       </button>
     </div>
-      <div class="register">
-        <p>第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path%></p>
-      </div>
 
+      <div class="flex justify-center">
+        <p class=" my-5">第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path,class:"text-blue-600 hover:text-gray-900"%></p>
+      </div>
     <% end %>
   </div>
  </div>
