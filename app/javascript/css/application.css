@@ -2,6 +2,29 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-
 .zipcode{ width: 4rem; }
+@layer components {
+  .hover{
+    position: relative;
+  }
+  .hover::before{
+    content: "";
+    position: absolute;
+    bottom: -1rem;
+    border-bottom: 3px red solid;
+    width: 100%;
+    opacity: 0;
+  }
+  .hover:hover::before{
+    opacity: 1;
+  }
+
+  .navbar::before{
+    content: "";
+    position: absolute;
+    border-bottom: 1px #AAA solid;
+    width: 100%;
+    position: absolute;
+    bottom: -1rem;
+  }
+}

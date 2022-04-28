@@ -6,7 +6,7 @@ return (
   <div className="transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-110 hover:z-50 group duration-300">
     <img className="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains"/>
     <div className="flex items-center justify-center overflow-hidden">
-      <img className="w-10 h-10 rounded-full group-hover:rotate-[360deg] transition duration-300 " src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains"/>
+      <img className="w-10 h-10 rounded-full group-hover:rotate-[360deg] transition duration-[600ms]" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains"/>
     </div>
     <div className="px-6 py-4 bg-gray-300">
       <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
