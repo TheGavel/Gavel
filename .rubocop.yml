@@ -1,0 +1,22 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "tmp/**/*"
+    - ".git/**/*"
+    - "bin/*"
+    - "db/**/*"
+    - "config/routes.rb"
+  TargetRubyVersion: 2.7.5
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/LineLength:
+  AllowedPatterns: ['\#']
