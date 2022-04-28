@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
-  skip_before_action  :require_login ,  only: [:index ,  :new ,  :create , :activate]  # 僅當您允許用戶自己註冊時才應使用。
+  before_action :set_user, only: %i[show edit update destroy]
+  skip_before_action :require_login, only: %i[index new create activate] # 僅當您允許用戶自己註冊時才應使用。
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
   # GET /users/1 or /users/1.json
-  def show
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -16,8 +17,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users or /users.json
   def create
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to :user, notice: "User was successfully updated." } #user_url(@user)
+        # user_url(@user)
+        format.html do
+          redirect_to :user, notice: 'User was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,13 +55,13 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def activate
-    if @user = User.load_from_activation_token(params[:id])
+    if @user == User.load_from_activation_token(params[:id])
       @user.activate!
       flash[:success] = 'User was successfully activated.'
       redirect_to login_path
@@ -68,15 +71,16 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :username, :nickname, :phone, :address, :is_seller, :level)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :username, :nickname, :phone, :address,
+                                 :is_seller, :level)
+  end
 end
