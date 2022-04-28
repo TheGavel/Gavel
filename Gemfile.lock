@@ -86,6 +86,7 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.2)
     ffi (1.15.5)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -197,12 +198,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    tailwindcss-rails (2.0.8)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.8-x86_64-darwin)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.8-x86_64-linux)
-      railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -234,12 +229,14 @@ GEM
 PLATFORMS
   ruby
   x86_64-darwin
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  foreman (~> 0.87.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)
@@ -249,7 +246,6 @@ DEPENDENCIES
   sorcery (~> 0.16.1)
   spring
   sqlite3 (~> 1.4)
-  tailwindcss-rails (~> 2.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
