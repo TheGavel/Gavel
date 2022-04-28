@@ -11,72 +11,105 @@
     </div>
   <% end %>
   
-<div class="register">
-   <div class="container">
-   <div class="sign_in">
-    <p>已有帳戶？ <%=link_to "登入",login_path%></p><hr>
-   </div>
+  <div class="w-11/12 md:w-6/12 lg:w-4/12 bg-white m-auto ">
+    <div class="mt-10 py-5 text-center bg-gray-50">
+      <p class="text-gray-600">已經有帳戶？ <%=link_to "登入",login_path,class:"font-medium text-blue-600 hover:text-gray-800 "%></p>
+    </div>
+    <hr class="bg-gray-200">
+
+  <div class="flex justify-between">
+    <h1 class="text-4xl font-bold m-5">註冊</h1>
+    <span class="text-xs font-medium mt-14 mr-5 text-red-600 ">* 為必填</span>
+  </div>
+
+  <div class="px-3">  
+    <div class="field mx-2 p-2 ">
+      <div class="bg-gray-100 flex">
+        <span class="m-2 text-red-600 ">* </span> <%= form.label :email,"電子信箱",class:"w-4/12 text-sm font-medium pt-2.5 text-gray-700 " %><br>
+        <%= form.text_field :email,placeholder:"請輸入電子郵件",class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal" %>
+      </div>
+    </div>
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <span class="text-red-600 m-2">* </span> <%= form.label :password,"密碼",class:"w-4/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+        <%= form.text_field :password ,placeholder:"請設定3個字元以上的密碼",class:"w-9/12  border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+      </div>
+    </div>
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <span class="text-red-600 m-2">* </span> <%= form.label :password_confirmation,"確認密碼",class:"w-4/12  pt-2.5 text-gray-700 text-sm font-medium"%><br>
+        <%= form.text_field :password_confirmation ,placeholder:"請再輸入一次密碼",class:"w-9/12  border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+      </div>
+    </div>
+
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <span class="text-red-600 m-2">* </span> <%= form.label :username,"使用者名稱",class:"w-4/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+        <%= form.text_field :username ,placeholder:"請設定使用者名稱",class:"w-9/12  border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+      </div>
+    </div>
+
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <%= form.label :nickname,"暱稱",class:"w-5/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
+        <%= form.text_field :nickname ,placeholder:"請輸入您的暱稱",class:"w-10/12   border py-1 px-2 outline-none focus:border-green-800 border-gray-300 text-sm font-normal"%>
+      </div>
+    </div>
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <%= form.label :phone,"手機號碼",class:"w-5/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
+        <%= form.text_field :phone ,placeholder:"請輸入您的手機號碼",class:"w-9/12   border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+      </div>
+    </div>
+
+
+    <div class="field m-2 p-2">
+      <div class="bg-gray-100 flex">
+        <%= form.label :address,"地址",class:"w-5/12 pt-5 pl-6 text-gray-700 text-sm font-medium"%><br>
+        <span class="mt-1">
+          <select class="w-4/12">
+            <option value="">請選擇縣市</option><option value="0">基隆市</option><option value="1">臺北市</option><option value="2" selected="">新北市</option> <option value="3">桃園市</option><option value="4">新竹市</option><option value="5">新竹縣</option><option value="6">苗栗縣</option><option value="7">臺中市</option><option value="8">彰化縣</option><option value="9">南投縣</option><option value="10">雲林縣</option><option value="11">嘉義市</option><option value="12">嘉義縣</option><option value="13">臺南市</option><option value="14">高雄市</option><option value="15">屏東縣</option><option value="16">臺東縣</option><option value="17">花蓮縣</option><option value="18">宜蘭縣</option><option value="19">澎湖縣</option><option value="20">金門縣</option><option value="21">連江縣</option>
+          </select>
+
+          <select class="w-4/12">
+            <option value="" data-region="">請選擇鄉鎮市區</option><option value="207" data-region="萬里區">萬里區</option><option value="208" data-region="金山區">金山區</option><option value="220" data-region="板橋區">板橋區</option><option value="221" data-region="汐止區">汐止區</option><option value="222" data-region="深坑區">深坑區</option><option value="223" data-region="石碇區">石碇區</option><option value="224" data-region="瑞芳區">瑞芳區</option><option value="226" data-region="平溪區">平溪區</option><option value="227" data-region="雙溪區">雙溪區</option><option value="228" data-region="貢寮區">貢寮區</option><option value="231" data-region="新店區">新店區</option><option value="232" data-region="坪林區">坪林區</option><option value="233" data-region="烏來區">烏來區</option><option value="234" data-region="永和區">永和區</option><option value="235" data-region="中和區">中和區</option><option value="236" data-region="土城區">土城區</option><option value="237" data-region="三峽區">三峽區</option><option value="238" data-region="樹林區">樹林區</option><option value="239" data-region="鶯歌區">鶯歌區</option><option value="241" data-region="三重區">三重區</option><option value="242" data-region="新莊區" selected="">新莊區</option><option value="243" data-region="泰山區">泰山區</option><option value="244" data-region="林口區">林口區</option><option value="247" data-region="蘆洲區">蘆洲區</option><option value="248" data-region="五股區">五股區</option><option value="249" data-region="八里區">八里區</option><option value="251" data-region="淡水區">淡水區</option><option value="252" data-region="三芝區">三芝區</option><option value="253" data-region="石門區">石門區</option>
+          </select>
+          <%= form.text_field :adress ,placeholder:"請輸入您的地址",class:"w-11/12 border my-1 py-0.5 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+        </span>
+      </div>
+    </div>
+  
+    
+
+    <div class="field m-2 p-2 ">
+      <div class="bg-gray-100 flex items-center">
+        <span class="text-red-600 m-2">* </span> <%= form.label :is_seller,"註冊為賣家？",class:" text-gray-700 text-sm font-medium mr-5"%><br>
+        <%= form.check_box :is_seller,class:"";%>
+      </div>
+    </div>
+  
+                              
+  <div class="field">
+    <div class="flex m-2 p-2 ">
+      <div class="bg-gray-100 p-2 ">
+        <span class="text-red-600 ">* </span> <%= form.label :level,class:"w-1/6  pl-1 mr-5 text-gray-700 text-sm font-medium "%><br>
+      </div>
+      <%= form.number_field :level ,placeholder:"請選擇您的 Level",class:"w-6/12  border py-2 px-2 outline-none focus:border-green-500 text-sm font-normal"%>
+    </div>
+  </div>
   
 
-    <h1>註冊</h1>
-
-  <div class="field">
-    <%= form.label :email,"電子信箱*" %><br>
-    <%= form.text_field :email,placeholder:"請輸入電子郵件" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password,"密碼*"%><br>
-    <%= form.text_field :password ,placeholder:"請設定3個字元以上的密碼"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation,"確認密碼*"%><br>
-    <%= form.text_field :password_confirmation ,placeholder:"請再輸入一次密碼"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :username,"使用者名稱" %><br>
-    <%= form.text_field :username ,placeholder:"請設定使用者名稱"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :nickname,"暱稱" %><br>
-    <%= form.text_field :nickname ,placeholder:"請輸入您的暱稱"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone,"手機號碼" %><br>
-    <%= form.text_field :phone,placeholder:"請輸入您的手機號碼" %>
-  </div>
-
-  <div class="field"> 
-    <%= form.label :address,"地址" %><br>
-    <div id="twzipcode"></div>
-    <script>
-      $("#twzipcode").twzipcode();
-    </script>
-      <%= form.text_field :address ,placeholder:"請輸入您的地址" %>
-  </div>
-
-   
-
-
-                                          
-
-  <div class="field">
-    <%= form.label :is_seller %>
-    <%= form.check_box :is_seller ,placeholder:" "%>
-  </div>
-
-  <div class="field">
-    <%= form.label :level %><br>
-    <%= form.number_field :level %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "註冊"%>
-  </div>
+    <div class="actions pt-5 pb-10 ">
+      <%= form.submit "註冊",class:"w-11/12 h-11 flex justify-center items-center m-auto  bg-blue-600  text-white hover:bg-blue-700"%>
+    </div>
+  <div>
+</div>
+</div>
 <% end %>
-</div>
-</div>
+
+
