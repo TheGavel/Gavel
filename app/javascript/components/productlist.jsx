@@ -1,28 +1,45 @@
 import React from "react";
 import Card from "./product";
 import Bar from "./productClassificationBar";
-const Hello = () => (
 
+const Hello = () => {
 
+  const data = {
+    sellerImg: "https://tailwindcss.com/img/card-top.jpg",
+    productImg: "https://tailwindcss.com/img/card-top.jpg",
+    productTitle: "我是商品我是商品",
+    productContent: "我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文",
+    labelList: ["標籤1","標籤2","標籤3","標籤4","標籤5"]
+  }
 
-<div className="bg-white relative">
-  <h2 className="text-center text-3xl py-6">Explore Collections </h2>
-  <Bar/>
-  <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] ">
-    <div className="relative mt-6 grid gridfit-[22rem]  gap-y-12 gap-x-8">
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+  return(
+    <div className="bg-white relative">
+      <h2 className="text-center text-3xl py-6">Explore Collections </h2>
+      <Bar/>
+      <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] ">
+        <div className="relative mt-6 grid gridfit-[22rem]  gap-y-12 gap-x-8">
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        <Card {...data}/>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-)
-export default() => Hello()
+  )}
+export default Hello;
 
 
 // json
