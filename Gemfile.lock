@@ -115,6 +115,8 @@ GEM
     nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.4-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.4-x86_64-linux)
       racc (~> 1.4)
     oauth (0.5.8)
@@ -197,6 +199,8 @@ GEM
     sqlite3 (1.4.2)
     tailwindcss-rails (2.0.8)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-x86_64-darwin)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.8-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -229,6 +233,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES

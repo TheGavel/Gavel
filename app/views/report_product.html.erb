@@ -1,87 +1,70 @@
-<%= stylesheet_link_tag "filename" %>
-<style>
-  h1 {
-    display: flex;
-    justify-content: center;
-  }
-  label {
-    display: flex;
-  }
-  .reason {
-    font-size: 20px;
-  }
-</style>
+<div class="mx-10 mt-10">
+    <div class="md:col-span-1">
+      <div class="px-4">
+        <h3 class="text-lg font-medium leading-6 text-red-500">檢舉此商品</h3>
+        <p class="mt-1 text-sm text-gray-600">選擇違規的商品類型：</p>
+      </div>
+ 
+            <fieldset>
+      
+              <div class="mt-4 space-y-4">
+                <div class="flex items-center">
+                  <input id="push-drug" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-drug" class="block ml-3 text-sm font-medium text-gray-700"> 藥品、醫療器材 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-wine_tobacco" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-wine_tobacco" class="block ml-3 text-sm font-medium text-gray-700"> 酒類/菸類商品 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-weapon" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-weapon" class="block ml-3 text-sm font-medium text-gray-700"> 武器/彈藥/軍事用品 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-animal" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-animal" class="block ml-3 text-sm font-medium text-gray-700"> 活體動物、保育動物及其製品 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-others" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-others" class="block ml-3 text-sm font-medium text-gray-700"> 其他違法商品 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-wrong_type" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-wrong_type" class="block ml-3 text-sm font-medium text-gray-700"> 類別錯誤 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-link_to_outside" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-link_to_outside" class="block ml-3 text-sm font-medium text-gray-700"> 導向外部資訊或交易 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-uncomfortable" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-uncomfortable" class="block ml-3 text-sm font-medium text-gray-700"> 此商品可能令人感到不適或違反善良風俗 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-fake" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-fake" class="block ml-3 text-sm font-medium text-gray-700"> 仿冒品 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-repost" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-repost" class="block ml-3 text-sm font-medium text-gray-700"> 重複刊登/複製他人商品圖文 </label>
+                </div>
+                <div class="flex items-center">
+                  <input id="push-misunderstanding" name="push-notifications" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                  <label for="push-misunderstanding" class="block ml-3 text-sm font-medium text-gray-700"> 濫用文字誤導搜尋 </label>
+                </div>
 
-<h1>檢舉此商品</h1>
+                <div class="py-3 ">
+                  <label for="about" class="block text-sm font-medium text-gray-700"> 請敘述檢舉原因： </label>
+                  <div class="mt-1">
+                    <textarea id="about" name="about" rows="3" class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="eg : 槍砲彈藥"></textarea>
 
-<form>
-  <label>選擇違規類型：</label>
-
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="drug"
-      required
-    />藥品、醫療器材</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="wine_tobacco"
-    />酒類/菸類商品</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="weapon"
-    />武器/彈藥/軍事用品</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="animal"
-    />活體動物、保育動物及其製品</label
-  >
-  <label
-    ><input type="radio" name="report_type" value="others" />其他違法商品</label
-  >
-  <label
-    ><input type="radio" name="report_type" value="wrong_type" />類別錯誤</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="link_to_outside"
-    />導向外部資訊或交易</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="uncomfortable"
-    />此商品可能令人感到不適或違反善良風俗</label
-  >
-  <label><input type="radio" name="report_type" value="fake" />仿冒品</label>
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="repost"
-    />重複刊登/複製他人商品圖文</label
-  >
-  <label
-    ><input
-      type="radio"
-      name="report_type"
-      value="misunderstanding"
-    />濫用文字誤導搜尋</label
-  >
-  <label class="reason">檢舉原因：</label>
-  <textarea name="" id="" cols="30" rows="10"></textarea>
-  <input type="submit" />
-</form>
+              </div>
+            </fieldset>
+          </div>
+          <div class="py-3 text-left ">
+            <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">送出</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
