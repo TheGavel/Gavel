@@ -1,3 +1,4 @@
+<%# 註冊頁面  %>
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -44,14 +45,12 @@
       </div>
     </div>
 
-
     <div class="field m-2 p-2">
       <div class="bg-gray-100 flex">
         <span class="text-red-600 m-2">* </span> <%= form.label :username,"使用者名稱",class:"w-4/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
         <%= form.text_field :username ,placeholder:"請設定使用者名稱",class:"w-9/12  border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
-
 
     <div class="field m-2 p-2">
       <div class="bg-gray-100 flex">
@@ -67,7 +66,6 @@
       </div>
     </div>
 
-
     <div class="field m-2 p-2">
       <div class="bg-gray-100 flex">
         <%= form.label :address,"地址",class:"w-5/12 pt-5 pl-6 text-gray-700 text-sm font-medium"%><br>
@@ -82,9 +80,7 @@
           <%= form.text_field :adress ,placeholder:"請輸入您的地址",class:"w-11/12 border my-1 py-0.5 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
         </span>
       </div>
-    </div>
-  
-    
+    </div>  
 
     <div class="field m-2 p-2 ">
       <div class="bg-gray-100 flex items-center">
@@ -92,8 +88,7 @@
         <%= form.check_box :is_seller,class:"";%>
       </div>
     </div>
-  
-                              
+                         
   <div class="field">
     <div class="flex m-2 p-2 ">
       <div class="bg-gray-100 p-2 ">
@@ -102,7 +97,6 @@
       <%= form.number_field :level ,placeholder:"請選擇您的 Level",class:"w-6/12  border py-2 px-2 outline-none focus:border-green-500 text-sm font-normal"%>
     </div>
   </div>
-  
 
     <div class="actions pt-5 pb-10 ">
       <%= form.submit "註冊",class:"w-11/12 h-11 flex justify-center items-center m-auto  bg-blue-600  text-white hover:bg-blue-700"%>
