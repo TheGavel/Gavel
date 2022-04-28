@@ -1,5 +1,4 @@
 <h1 class="text-4xl m-5">Products List</h1>
-
 <% if @products%>
   <ul>
     <% @products.each do |product|%>
@@ -11,5 +10,7 @@
     <% end%>
   </ul>
 <% end %>
-
 <%= link_to "Create product" , new_product_path ,class: "hover:text-indigo-600"%>
+
+<%= javascript_pack_tag 'product', 'data-turbolinks-track': 'reload' %>
+<div id="app"></div>
