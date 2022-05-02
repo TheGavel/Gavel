@@ -48,5 +48,8 @@ yarn-debug.log*
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
 /app/assets/stylesheets/products.scss
 /app/assets/stylesheets/user_sessions.scss
+.vscode/settings.json
+.env

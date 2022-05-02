@@ -8,14 +8,14 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    user_name: 'm95162027@gmail.com',
-    password: 'twkkvbslphskmobh',
+    user_name: ENV['USER_GMAIL_ADDRESS'],
+    password: ENV['USER_GMAIL_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true,
     open_timeout: 5,
     read_timeout: 5
   }
-  # config.hosts << "b08b-119-14-151-252.ngrok.io"
+  # config.hosts << ENV['NGROK_HOST_NAME'] || 127.0.0.1
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

@@ -35,6 +35,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'rubocop', '~> 1.28', require: false
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 end
 
 group :development do
