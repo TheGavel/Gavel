@@ -1,0 +1,13 @@
+<h1>Create Product</h1>
+
+<% if @product.errors.any? %>
+  <ul>
+    <% @product.errors.full_messages.each do |message|%>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Back', products_path %>
