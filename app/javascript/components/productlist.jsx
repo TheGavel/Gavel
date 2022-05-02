@@ -17,7 +17,7 @@ const Hello = () => {
       <h2 className="text-center text-3xl py-6">Explore Collections </h2>
       <Bar/>
       <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] ">
-        <div className="relative mt-6 grid gridfit-[22rem]  gap-y-12 gap-x-8">
+        <div className="relative mt-6 grid gridfit-[18rem]  gap-y-12 gap-x-8">
         <Card {...data}/>
         <Card {...data}/>
         <Card {...data}/>
