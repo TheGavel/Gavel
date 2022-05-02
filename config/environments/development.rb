@@ -15,6 +15,7 @@ Rails.application.configure do
     open_timeout: 5,
     read_timeout: 5
   }
+  # config.hosts << "b08b-119-14-151-252.ngrok.io"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
