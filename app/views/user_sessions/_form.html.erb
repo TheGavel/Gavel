@@ -3,12 +3,13 @@
   <div class="mt-10">
     <%= form_with url: login_path,method: :post do |f| %>
     <h1 class="text-4xl font-bold py-8 px-5 mt-2">登入</h1>
-
+    
     <div class="mx-4">
-      <%=f.text_field :email,placeholder:"電子郵件",class:"w-full h-11 mb-4 pl-2 border-gray-600 focus:border-green-600 rounded-none border outline-none"%>
+      <%=f.text_field :email,placeholder:"電子郵件",class:"w-full h-11 mb-4 pl-2  border-gray-600 focus:border-green-600 rounded-none border outline-none"%>
       <%=f.password_field :password,placeholder:"密碼",class:"w-full h-11 pl-2  py-1 px-2 focus:border-green-600 border-gray-600 rounded-none border outline-none"%>
+    </div>
 
-    <div class="mt-5  ">
+    <div class="mt-5 ">
       <%= f.submit "登入",class:"w-11/12 h-11 m-auto text-white bg-blue-600 hover:bg-blue-700  block "%>
     </div>
 
