@@ -5,10 +5,8 @@ class ProductsController < ApplicationController
         @products = Product.all
     end
 
-    def show
-        
+    def show    
     end
-    
     
     def new
         @product = Product.new
@@ -23,11 +21,9 @@ class ProductsController < ApplicationController
           end
     end
 
-    def edit
-        
+    def edit 
     end
     
-
     def update
         if @product.update(product_params)
             redirect_to products_path, notice: "Update Sussess!!"
@@ -45,7 +41,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:name,:description,:direct_price,:upload_time,:status,:picture)
+        params.require(:product).permit(:name,:description,:start_price,:direct_price,:upload_time,:status,:picture)
         
     end
     

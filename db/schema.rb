@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_21_155520) do
+ActiveRecord::Schema.define(version: 2022_05_03_141016) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_04_21_155520) do
     t.integer "direct_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "start_price"
   end
 
   create_table "records", force: :cascade do |t|
