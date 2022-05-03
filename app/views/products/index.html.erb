@@ -7,10 +7,7 @@
       <%= link_to product.name , product_path(product.id)%>
       <%= link_to "edit" , edit_product_path(product.id)%>
       <%= link_to "delete" , product_path(product.id) , method:"DELETE"%>
-      
-
       </li>
-
     <% end%>
   </ul>
 <% end %>
