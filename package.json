@@ -10,7 +10,6 @@
     "@rails/webpacker": "5.4.3",
     "autoprefixer": "^9",
     "postcss": "^7",
-    "stimulus": "^3.0.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0",
     "tw-city-selector": "^2.1.1",
@@ -19,7 +18,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3",
-    "license": "ISC"
+    "license": "ISC",
+    "webpack-dev-server": "^3"
   }
 }

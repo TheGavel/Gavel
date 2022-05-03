@@ -1,20 +1,20 @@
 <%# 登入頁面  %>
-<div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto ">
+<div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto">
   <div class="mt-10">
-    <%= form_with url: login_path,method: :post do |f| %>
+    <%= form_with url: login_path, method: :post do |f| %>
     <h1 class="text-4xl font-bold py-8 px-5 mt-2">登入</h1>
-    
+
     <div class="mx-4">
-      <%=f.text_field :email,placeholder:"電子郵件",class:"w-full h-11 mb-4 pl-2  border-gray-600 focus:border-green-600 rounded-none border outline-none"%>
-      <%=f.password_field :password,placeholder:"密碼",class:"w-full h-11 pl-2  py-1 px-2 focus:border-green-600 border-gray-600 rounded-none border outline-none"%>
+      <%=f.text_field :email, placeholder:"電子郵件", class:"w-full h-11 mb-4 pl-2  border-gray-600 focus:border-green-600 rounded-none border outline-none"%>
+      <%=f.password_field :password, placeholder:"密碼", class:"w-full h-11 pl-2  py-1 px-2 focus:border-green-600 border-gray-600 rounded-none border outline-none"%>
     </div>
 
     <div class="mt-5 ">
-      <%= f.submit "登入",class:"w-11/12 h-11 m-auto text-white bg-blue-600 hover:bg-blue-700  block "%>
+      <%= f.submit "登入", class:"w-11/12 h-11 m-auto text-white bg-blue-600 hover:bg-blue-700  block "%>
     </div>
 
-     <div class="text-right">
-      <%=link_to "忘記密碼？","#",class: "text-right mr-4 text-sm  text-gray-500   hover:text-gray-900"%>
+    <div class="text-right">
+      <%=link_to "忘記密碼？", "#", class: "text-right mr-4 text-sm  text-gray-500   hover:text-gray-900"%>
     </div>
 
     <div class="text-center mt-6">
@@ -29,16 +29,16 @@
       </button>
     </div>
 
-      <div>
-      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-900 text-white  hover:bg-blue-800">
-      <img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2"/>
+    <div>
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-900 text-white hover:bg-blue-800">
+        <img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2"/>
         <p>使用Facebook登入</p>
       </button>
     </div>
 
-      <div class="flex justify-center">
-        <p class=" my-5">第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path,class:"text-blue-600 hover:text-gray-900"%></p>
-      </div>
+    <div class="flex justify-center">
+      <p class="my-5">第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path,class:"text-blue-600 hover:text-gray-900"%></p>
+    </div>
     <% end %>
   </div>
  </div>
