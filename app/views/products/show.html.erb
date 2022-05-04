@@ -1,18 +1,12 @@
-<% if @product %>
-    <h1 class="text-4xl ">Product <%= @product.name%></h1>
+<h1 class="text-4xl ">Product <%= @product.name%></h1>
 
-    <ul>
-        <li>商品名稱:<%= @product.name%></li>
-        <li>商品描述:<%= @product.description %></li>
-        <li>直購價格:<%= @product.start_price%></li>
-        <li>直購價格:<%= @product.direct_price%></li>
-        <li>上傳時間:<%= @product.upload_time%></li>
-        <li>商品圖片:<%= @product.picture%> </li>
-    </ul>
-<% else %>
-
-    <h1> No Product Record!!</h1>
-
-<% end %>
+<ul>
+  <li>商品名稱:<%= @product.name%></li>
+  <li>商品描述:<%= @product.description %></li>
+  <li>直購價格:<%= @product.start_price%></li>
+  <li>直購價格:<%= @product.direct_price%></li>
+  <li>上傳時間:<%= @product.upload_time%></li>
+  <li>商品圖片:<%= @product.picture%> </li>
+</ul>
 
 <%= link_to 'Back', products_path %>
