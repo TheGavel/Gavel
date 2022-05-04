@@ -6,7 +6,7 @@
       <li>
       <%= link_to product.name , product_path(product.id)%>
       <%= link_to "edit" , edit_product_path(product.id)%>
-      <%= link_to "delete" , product_path(product.id) , method:"DELETE"%>
+      <%= link_to "delete" , product_path(product.id) , method:"DELETE" , data: {confirm: "Are you sure?"}%>
       </li>
     <% end%>
   </ul>
