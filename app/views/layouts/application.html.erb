@@ -12,11 +12,14 @@
   <body class ="bg-gray-100">
     <div id="nav">
       <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
+        <%= link_to "編輯個人資訊", edit_user_path(current_user.id) %>
+        |
+        <%= link_to "登出", :logout, method: :post %>
+        |
+        <%= link_to "我的賣場", own_products_path %>
       <% else %>
-        <%= link_to "Register", new_user_path %> |
-        <%= link_to "Login", :login %>
+        <%= link_to "註冊", new_user_path %> |
+        <%= link_to "登入", :login %>
       <% end %>
     </div>
     <div>
