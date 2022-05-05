@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" 
+  get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   get 'user_sessions/new'
   get 'user_sessions/create'
@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     member do
       get :activate
     end
-
   end
+
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   post 'logout' => 'user_sessions#destroy', :as => :logout
@@ -24,4 +24,11 @@ Rails.application.routes.draw do
       get :own
     end
   end
+
+
+  # do
+  #   collection do
+  #     get :own
+  #   end
+  # end
 end
