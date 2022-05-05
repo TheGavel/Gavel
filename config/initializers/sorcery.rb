@@ -138,10 +138,10 @@ Rails.application.config.sorcery.configure do |config|
   # config.instagram.user_info_mapping = {:email => "username"}
   # config.instagram.access_permissions = ["basic", "public_content", "follower_list", "comments", "relationships", "likes"]
   #
-  config.github.key = "085f93de9256104988df"
-  config.github.secret = "1db1cf64baf18d2aadd630902c7ccaf2668c27ad"
-  config.github.callback_url = "http://127.0.0.1:3000/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "name"}
+  config.github.key = ENV["GITHUB_CLIENT_ID"]
+  config.github.secret = ENV["GITHUB_CLIENT_SECRECTS"]
+  config.github.callback_url = ENV["GITHUB_AUTHORIZATION_CALLBACK_URL"]
+  config.github.user_info_mapping = {:email => "kevin19960328@gmail.com"}
   config.github.scope = ""
   #
   # config.paypal.key = ""
@@ -160,11 +160,11 @@ Rails.application.config.sorcery.configure do |config|
   # config.auth0.callback_url = "https://0.0.0.0:3000/oauth/callback?provider=auth0"
   # config.auth0.site = "https://example.auth0.com"
   #
-  # config.google.key = ""
-  # config.google.secret = ""
-  # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
-  # config.google.user_info_mapping = {:email => "email", :username => "name"}
-  # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+  config.google.key = "380368074940-t2n1lteefd036foqhad82abm5o317lq1"
+  config.google.secret = "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"
+  config.google.callback_url = "http://127.0.0.1:3000/oauth/callback?provider=google"
+  config.google.user_info_mapping = {:email => "email", :username => "name"}
+  config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
   # The callback URL "can't contain a query string or invalid special characters"
