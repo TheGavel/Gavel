@@ -52,4 +52,4 @@ yarn-debug.log*
 /app/assets/stylesheets/products.scss
 /app/assets/stylesheets/user_sessions.scss
 .vscode/settings.json
-.env
+.env  
