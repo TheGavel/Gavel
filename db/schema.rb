@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_05_064447) do
+ActiveRecord::Schema.define(version: 2022_05_06_031439) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 2022_05_05_064447) do
     t.string "nickname"
     t.string "phone"
     t.string "address"
-    t.boolean "is_seller"
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
+    t.string "role"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
