@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :find_own_product, only: %i[own]
   before_action :find_product, only: %i[show edit update destroy]
-
+  before_action :pundit
+  # rescue_from Pundit::NotAuthorizedError, with: :no_permission
   def index
     @products = Product.all
   end
@@ -53,5 +54,13 @@ class ProductsController < ApplicationController
 
   def find_own_product
     @products = current_user.products
+  end
+
+  def pundit
+    authorize :product
+  end
+
+  def no_permission
+     render html: "123"
   end
 end
