@@ -22,9 +22,27 @@
       <div class=" text-sm  pt-2.5 text-gray-600 bg-whiteinline-block relative -top-5 ">快速登入</div>
     </div>
 
-    <%= link_to '使用github登入', auth_at_provider_path(:provider => :github) %> 
-    <%= link_to '使用google登入', auth_at_provider_path(:provider => :google) %> 
-    <%= link_to '使用facebook登入', auth_at_provider_path(:provider => :facebook) %> 
+    <div class="mb-4">
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-gray-200 hover:bg-gray-300 ">
+        <img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2"/>
+        <%= link_to '使用Google登入', auth_at_provider_path(:provider => :google) %> 
+      </button>
+    </div>
+
+    <div class="mb-4">
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-green-600">
+        <img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2"/>
+        <%= link_to '使用Github登入', auth_at_provider_path(:provider => :github) %> 
+      </button>
+    </div>
+    
+    <%#臉書功能還沒做所以點了會失敗  %>
+    <div class="mb-4">
+      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-800">
+        <img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2"/>
+        <%= link_to '使用Facebook登入', auth_at_provider_path(:provider => :facebook) %> 
+      </button>
+    </div>
 
 
     <div class="flex justify-center">
