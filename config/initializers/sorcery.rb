@@ -100,7 +100,6 @@ Rails.application.config.sorcery.configure do |config|
   config.github.user_info_mapping = {:email => "email"}
   config.github.scope = ""
 
-
   config.google.key = ENV["GOOGLE_CLIENT_ID"]
   config.google.secret = ENV["GOOGLE_CLIENT_SECRECTS"]
   config.google.callback_url = ENV["GOOGLE_AUTHORIZATION_CALLBACK_URL"]
