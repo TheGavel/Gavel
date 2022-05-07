@@ -1,0 +1,4 @@
+<%= simple_form_for @verification, url: sms_auth_verification_path do |f| %>
+  <%= f.input :code %>
+  <%= f.submit '送出' %>
+<% end %>

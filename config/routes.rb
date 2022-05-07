@@ -25,10 +25,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :sms_auth do
+    resource :registration,
+             controller: :registration,
+             only: %i[new create]
+    resource :verification,
+    controller: :verification,
+    only: %i[new create]
+  end
 
-  # do
-  #   collection do
-  #     get :own
-  #   end
-  # end
 end
