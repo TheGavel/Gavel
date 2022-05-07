@@ -53,6 +53,7 @@ class ProductsController < ApplicationController
   end
 
   def find_own_product
+
     @products = current_user.products
   end
 
