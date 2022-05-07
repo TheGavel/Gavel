@@ -8,7 +8,6 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class ="bg-gray-100">
     <div id="nav">
       <% if current_user %>
@@ -17,6 +16,10 @@
         <%= link_to "登出", :logout, method: :post %>
         |
         <%= link_to "我的賣場", own_products_path %>
+        |
+        <%= link_to "驗證sms", :new_sms_auth_registration %>
+        |
+        <%= link_to "使用者資訊", :users %>
       <% else %>
         <%= link_to "註冊", new_user_path %> |
         <%= link_to "登入", :login %>

@@ -1,0 +1,4 @@
+<%= simple_form_for @registration, url: sms_auth_registration_url do |f| %>
+  <%= f.input :cellphone %>
+  <%= f.submit '送出' %>
+<% end %>

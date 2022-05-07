@@ -1,4 +1,4 @@
-<%# <% 註冊頁面  %> 
+<%# <% 註冊頁面  %>
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="w-11/12 md:w-6/12 lg:w-4/12 bg-white m-auto">
     <div class="mt-10 py-5 text-center bg-gray-50">
       <p class="text-gray-600">已經有帳戶？<%=link_to "登入", login_path, class:"font-medium text-blue-600 hover:text-gray-800"%></p>
@@ -28,7 +28,7 @@
         <%= form.text_field :email, placeholder:"請輸入電子郵件", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
-  
+
     <div class="m-2 p-2">
       <div class="bg-gray-100 flex">
         <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
@@ -71,16 +71,9 @@
           <div data-controller="twcity" role="tw-city-selector" data-has-zipcode class="w-full m-1 flex grow shrink-0 rounded-lg text-gray-700 font-medium"></div>
           <%= form.text_field :adress, placeholder:"請輸入您的地址", class:"w-full border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
         </div>
-      </div>  
-    </div>
-    
-    <div class="field m-2 p-2 ">
-      <div class="bg-gray-100 flex items-center">
-        <span class="text-red-600 m-2">*</span><%= form.label :is_seller, "註冊為賣家？", class:"text-gray-700 text-sm font-medium mr-5"%><br>
-        <%= form.check_box :is_seller%>
       </div>
     </div>
-                         
+
     <div class="field">
       <div class="flex m-2 p-2">
         <div class="bg-gray-100 p-2">
