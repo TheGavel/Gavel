@@ -23,25 +23,22 @@
     </div>
 
     <div class="mb-4">
-      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-gray-200 hover:bg-gray-300 ">
-        <img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2"/>
-        <%= link_to '使用Google登入', auth_at_provider_path(:provider => :google) %> 
-      </button>
+      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-gray-200 hover:bg-gray-300 ">
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2 inline"/> 使用Google登入'.html_safe, auth_at_provider_path(:provider => :google), class: "w-full text-center" %>
+      </div>
     </div>
 
     <div class="mb-4">
-      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-green-600">
-        <img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2"/>
-        <%= link_to '使用Github登入', auth_at_provider_path(:provider => :github) %> 
-      </button>
+      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-green-600">
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2 inline"/> 使用Github登入'.html_safe, auth_at_provider_path(:provider => :github), class: "w-full text-center"%> 
+      </div>
     </div>
     
     <%#臉書功能還沒做所以點了會失敗  %>
     <div class="mb-4">
-      <button class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-800">
-        <img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2"/>
-        <%= link_to '使用Facebook登入', auth_at_provider_path(:provider => :facebook) %> 
-      </button>
+      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-800">
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2 inline"/> 使用Facebook登入'.html_safe, auth_at_provider_path(:provider => :facebook), class: "w-full text-center"%> 
+      </div>
     </div>
 
 
