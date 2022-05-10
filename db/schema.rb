@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_05_06_031439) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
@@ -29,22 +32,22 @@ ActiveRecord::Schema.define(version: 2022_05_06_031439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "start_price"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "buyer_id", null: false
+    t.bigint "user_id", null: false
     t.integer "bid"
-    t.integer "product_id", null: false
-    t.integer "room_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "room_id", null: false
     t.string "time"
     t.string "seller_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buyer_id"], name: "index_records_on_buyer_id"
     t.index ["product_id"], name: "index_records_on_product_id"
     t.index ["room_id"], name: "index_records_on_room_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_031439) do
   end
 
   add_foreign_key "products", "users"
-  add_foreign_key "records", "buyers"
   add_foreign_key "records", "products"
   add_foreign_key "records", "rooms"
+  add_foreign_key "records", "users"
 end
