@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :start_price, :direct_price , presence:true,numericality: { greater_than_or_equal_to: 0,  only_integer: true }
 
   belongs_to :user
-
+  has_one :room
   def self.all_status
     [
       %w[待拍賣 for_sale],

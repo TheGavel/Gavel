@@ -1,0 +1,13 @@
+<h1>Create room</h1>
+
+<% if @room.errors.any? %>
+  <ul>
+    <% @room.errors.full_messages.each do |message|%>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form', room: @room %>
+
+<%= link_to 'Back', products_path %>
