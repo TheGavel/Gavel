@@ -25,6 +25,14 @@
      <%= form.select :status, Product.all_status %>
   </div>
 
+  <div>
+    <%= form.label :images%>
+    <%= form.file_field :images , accept: 'image/png,image/gif,image/jpeg', multiple: true%>
+  </div>
+
+  <%= fields_for :permission, User.all do |u| %>
+    <%= u.text_field :email   %>
+  <% end %>
   <%= form.submit%>
 
 <% end %>

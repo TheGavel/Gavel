@@ -7,6 +7,8 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one :room
+  has_many_attached :images
+
   def self.all_status
     [
       %w[待拍賣 for_sale],
