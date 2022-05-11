@@ -1,4 +1,4 @@
 <h1 class="text-4xl m-5">Editing Product</h1>
-
+<%= link_to 'edit room', edit_room_path(@product.id) %>
 <%= render 'form', product: @product %>
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', own_products_path %>

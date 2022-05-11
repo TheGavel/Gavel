@@ -19,6 +19,11 @@ Rails.application.routes.draw do
       get :own
     end
   end
+  resources :rooms do
+    collection do
+      get :own
+    end
+  end
 
   namespace :sms_auth do
     resource :registration,
