@@ -16,12 +16,17 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     # @tags = Tag.new
-    @tags = Tag.all.map { |tag| tag.name } || []
+    @tags = Tag.all#.map { |tag| tag.name } || []
   end
 
   def create
     @product = current_user.products.new(product_params)
       if @product.save
+        params[:product][:tag_items].each { |item| 
+          # debugger
+          ProductsTag.create(product_id: @product.id, tag_id: Tag.find_by(name: item).id)
+          # @product.tags << item 
+        }
         session[:product_id] = @product.id
         redirect_to new_room_path, notice: 'then create rooms!!'
       else

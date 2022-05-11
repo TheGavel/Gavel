@@ -26,12 +26,17 @@
 
   <div class="custom-file-container w-[600px]" data-upload-id="myFirstImage" data-controller="multipleImg" >
   </div>
-  <div class="field">
-    <%= form.label :tag_name, "標籤分類:" %>
-    <%= form.text_field :tag_name %>
-    <%= form.text_field :tag_name %>
-    <%= form.text_field :tag_name %>
-    <%= form.select :tag_name, @tags %>
+  <%# <div class="field"> %>
+    <%#= form.label :tag_name, "標籤分類:" %>
+    <%#= form.text_field :tag_name %>
+    <%#= form.text_field :tag_name %>
+    <%#= form.text_field :tag_name %>
+    <%#= form.select :tag_name, @tags %>
+
+  <div class="field">標籤分類:
+    <select name="product[tag_items][]" multiple= "multiple" class= "tag_list">
+      <%= options_for_select(@tags.map { |tag| tag.name } || []) %>
+    </select>
   </div>
 
   <%= form.submit%>
@@ -44,3 +49,5 @@
     console.log("fileList",event,fileList);
   }
 </script>
+<% end %>
+<%#= @tags.map { |tag| tag.name } || [] %>

@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   end
 
   create_table "products_tags", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_products_tags_on_product_id"
@@ -88,14 +88,13 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "life_time"
-    t.datetime "start_time"
+    t.string "countdown"
+    t.string "start_time"
     t.string "status"
+    t.string "level"
     t.integer "maxpeople"
-    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_rooms_on_product_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -128,7 +127,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   add_foreign_key "products", "users"
   add_foreign_key "products_tags", "products"
   add_foreign_key "products_tags", "tags"
-  add_foreign_key "records", "buyers"
   add_foreign_key "records", "products"
   add_foreign_key "records", "rooms"
   add_foreign_key "records", "users"
