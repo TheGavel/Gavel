@@ -1,24 +1,13 @@
-<h1>Create Product</h1>
-
-<% if @product.errors.any? %>
-  <ul>
-    <% @product.errors.full_messages.each do |message|%>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Back', products_path %>
-
-<div data-controller="hello">
-  <select class="selectChildren" data-action="change->hello#aaa" >
-    <option value="val1">Choose option</option>
-  </select>
-</div>
-
-
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
     <script>
       const json = {
         //從後端傳來的結構表
@@ -65,4 +54,25 @@
         document.querySelector("body").appendChild(select);
       };
       newselect(index, json);
+      //------------------以下程式讓再次編輯產品時，分類可以自動填好原本的類別
+      //------------------Classification array 是後端要丟過來的資訊
+      let Classification = ["3c", "android", "oppo"];
+      let selectChange = (tag, i) => {
+        Array.from(
+          document.querySelector("#selectChildren" + i.toString()).children
+        ).forEach((child) => {
+          if (child.value == tag) child.selected = true;
+          let changeEvent = new Event("change");
+          document
+            .querySelector("#selectChildren" + i.toString())
+            .dispatchEvent(changeEvent);
+        });
+      };
+      Classification.forEach((item, i) => {
+        console.log(item, i);
+        // selectChange(item,i+1)
+      });
     </script>
+  </body>
+</html>
+```
