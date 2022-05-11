@@ -15,6 +15,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    # @tags = Tag.new
+    @tags = Tag.all.map { |tag| tag.name } || []
   end
 
   def create
@@ -57,7 +59,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [])
+    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], tag_names: [])
   end
 
   def find_product

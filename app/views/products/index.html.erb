@@ -1,21 +1,21 @@
 <h1 class="text-4xl m-5">Products List</h1>
 <% if @products %>
-    <div id="search">
-        <ul data-search-target="product">
-            <% @products.each do |product| %>
-                <%= product.name %>
-                <%= product.description %>
-                <%= product.status %>
-                <%= product.direct_price %>
-            <li>
-                <%= link_to "edit", edit_product_path(product.id) %>
-                <%= link_to "delete", product_path(product.id), method:"DELETE", data: {confirm: "Are you sure?"} %>
-            </li>
-            <% end %>
-        </ul>
+  <div id="search">
+    <ul data-search-target="product">
+      <% @products.each do |product| %>
+        <%= product.name %>
+        <%= product.description %>
+        <%= product.status %>
+        <%= product.direct_price %>
+        <li>
+          <%= link_to "edit", edit_product_path(product.id) %>
+          <%= link_to "delete", product_path(product.id), method:"DELETE", data: {confirm: "Are you sure?"} %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-        <%= link_to "Create product", new_product_path, class: "hover:text-indigo-600" %>
-    </div>
+<%= link_to "Create product", new_product_path, class: "hover:text-indigo-600" %>
 
 <%= javascript_pack_tag 'product', 'data-turbolinks-track': 'reload' %>
 <div id="app"></div>
