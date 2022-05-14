@@ -1,5 +1,4 @@
-<%= form_with(model: product) do |form|%>
-
+<%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
   <div class="field">
     <%= form.label "商品名稱:" %>
     <%= form.text_field :name %>
@@ -25,14 +24,14 @@
      <%= form.select :status, Product.all_status %>
   </div>
 
-  <div>
-    <%= form.label :images%>
-    <%= form.file_field :images , accept: 'image/png,image/gif,image/jpeg', multiple: true%>
+  <div class="custom-file-container w-[600px]" data-upload-id="myFirstImage" data-controller="multipleImg" >
   </div>
 
-  <%= fields_for :permission, User.all do |u| %>
-    <%= u.text_field :email   %>
-  <% end %>
   <%= form.submit%>
-
 <% end %>
+<script> //DEBUG用
+  function onChangeFunction(event) {
+    let fileList = event.target.files;
+    console.log("fileList",event,fileList);
+  }
+</script>

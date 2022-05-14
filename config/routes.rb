@@ -33,5 +33,4 @@ Rails.application.routes.draw do
     controller: :verification,
     only: %i[new create]
   end
-
 end
