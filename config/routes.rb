@@ -18,11 +18,13 @@ Rails.application.routes.draw do
     collection do
       get :own
       get :autocomplete
+      get "search/*path" , to: 'products#index'
+      get "category/*path" , to: 'products#index'
     end
   end
   resources :rooms do
     collection do
-      get :own 
+      get :own
     end
   end
 
