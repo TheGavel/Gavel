@@ -5,7 +5,11 @@
   <li>商品描述:<%= @product.description %></li>
   <li>直購價格:<%= @product.start_price%></li>
   <li>直購價格:<%= @product.direct_price%></li>
-  <!-- <li>商品圖片:    @product.picture </li> -->
+  <li>商品圖片:
+    <% @product.images.each do |image| %>
+      <%= image_tag(image, width:50) %>
+    <% end %>
+  </li>
 </ul>
 
 <%= link_to 'Back', own_products_path %>
