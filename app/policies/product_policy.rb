@@ -45,6 +45,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def buy?
+    seller || admin
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
