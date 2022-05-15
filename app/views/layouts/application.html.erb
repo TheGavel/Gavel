@@ -9,7 +9,19 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class ="bg-gray-100">
-    <div id="nav">
+    <div id="nav" class ="bg-gray-900 h-24 flex items-center">
+    <a href="/products"><img src="/Users/livia/Desktop/New_Project.png" alt="Gavel logo" class="w-12 mx-5"></a>
+
+
+
+
+
+
+
+
+
+
+
       <% if current_user %>
         <%= link_to "編輯個人資訊", edit_user_path(current_user.id) %>
         |
