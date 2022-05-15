@@ -14,6 +14,7 @@ class Product < ApplicationRecord
   has_many_attached :images do |attachable|
     attachable.variant :thumb, resize_to_limit: [600, 300]
   end
+  has_one :order
 
   has_one :boughtlist
   has_one :owner, through: :boughtlist, source: :user

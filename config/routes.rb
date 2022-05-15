@@ -31,6 +31,15 @@ Rails.application.routes.draw do
       get "search/*path" , to: 'products#index'
       get "categories/*path" , to: 'products#index'
     end
+    member do
+      post :buy
+    end
+  end
+
+  resources :orders do
+    member do
+      get :payment
+    end
   end
 
   resources :rooms do
