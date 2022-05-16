@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :money
+
   namespace :sms_auth do
     resource :registration,
               controller: :registration,
@@ -81,5 +83,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end
