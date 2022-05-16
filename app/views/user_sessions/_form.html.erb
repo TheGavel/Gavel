@@ -29,21 +29,21 @@
     </div>
 
     <div class="mb-4">
-      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-green-600">
+      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-gray-700">
         <%= link_to '<img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2 inline"/> 使用Github登入'.html_safe, auth_at_provider_path(:provider => :github), class: "w-full text-center"%> 
       </div>
     </div>
     
     <%#臉書功能還沒做所以點了會失敗  %>
     <div class="mb-4">
-      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-800">
+      <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-800 text-white hover:bg-blue-700">
         <%= link_to '<img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2 inline"/> 使用Facebook登入'.html_safe, auth_at_provider_path(:provider => :facebook), class: "w-full text-center"%> 
       </div>
     </div>
 
 
     <div class="flex justify-center">
-      <p class="my-5">第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path,class:"text-blue-600 hover:text-gray-900"%></p>
+      <p class="my-6">第一次使用 Gavel 嗎？ <%=link_to "註冊",new_user_path,class:"text-blue-600 hover:text-gray-900"%></p>
     </div>
     <% end %>
   </div>
