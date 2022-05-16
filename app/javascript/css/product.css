@@ -1,31 +1,33 @@
-*{
-  font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+* {
+  font-family: "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體",
+    sans-serif;
 }
 
-.category{
+.category {
   position: relative;
   margin: 0 1.2rem;
 }
-.category::before{
+.category::before {
   content: "";
   position: absolute;
-  bottom: -.3rem;
+  bottom: -0.3rem;
   left: 0;
   border-bottom: 3px red solid;
   width: 100%;
   opacity: 0;
 }
-.activeStyle::before,.category:hover::before{
+.activeStyle::before,
+.category:hover::before {
   opacity: 1;
 }
 
-.category:first-child{
+.category:first-child {
   margin-left: auto;
 }
-.category:last-child{
+.category:last-child {
   margin-right: auto;
 }
-.scroll{
+.scroll {
   border-bottom: 1px rgb(188, 188, 188) solid;
   padding-bottom: 10px;
 }
@@ -56,161 +58,157 @@
   background: #555;
 } */
 
-
 /* 導覽列 */
-.menu_btn{
+.menu_btn {
   width: 40px;
   height: 40px;
   display: block;
   position: absolute;
-  top:5px;
+  top: 5px;
   right: 10px;
 }
-#nav{
+#nav {
   position: relative;
-  height:60px;
-  width:100%;
-
+  height: 60px;
+  width: 100%;
 }
-#menu_control{
+#menu_control {
   position: absolute;
 }
-.menu_btn::before{
-  content: '';
+.menu_btn::before {
+  content: "";
   position: absolute;
   height: 2px;
   width: 30px;
-  left:2px;
+  left: 2px;
   background-color: rgb(245, 245, 245);
   top: 10px;
   bottom: 0;
   margin: auto;
-  box-shadow: 0px 8px 0px rgb(244, 244, 244),
-              0px -8px 0px rgb(237, 237, 238);
+  box-shadow: 0px 8px 0px rgb(244, 244, 244), 0px -8px 0px rgb(237, 237, 238);
 }
-.text{
+.text {
   width: 100%;
   height: calc(100vh-60px);
   background-color: rgb(229, 232, 232);
-  position:absolute;
-  top:60px;
+  position: absolute;
+  top: 60px;
   left: 0%;
-  left:-100%;
-  transition: .3s;
+  left: -100%;
+  transition: 0.3s;
 }
-.text a{
+.text a {
   display: block;
   padding: 20px;
-  color:rgb(10, 7, 45);
-  border-bottom:1px solid rgb(168, 168, 169);
-
+  color: rgb(10, 7, 45);
+  border-bottom: 1px solid rgb(168, 168, 169);
 }
-.text a:hover{
+.text a:hover {
   background-color: rgb(206, 204, 204);
-  color:rgb(37, 114, 238);
+  color: rgb(37, 114, 238);
 }
-.text span{
+.text span {
   display: none;
 }
-#menu_control:checked~ #nav .text{
-  left :0;
+#menu_control:checked ~ #nav .text {
+  left: 0;
 }
-.search{
-  top:30px;
-  left:0;
+.search {
+  top: 30px;
+  left: 0;
   margin: auto;
 }
 .search ul {
   width: 110px;
 }
-.search ul li{
-  padding:10px 0 10px 10px;
+.search ul li {
+  padding: 10px 0 10px 10px;
   background: white;
   border-radius: 3px;
 }
-.search ul li:hover{
+.search ul li:hover {
   background-color: rgb(218, 218, 219);
 }
-.search input{
+.search input {
   width: 110px;
   height: 40px;
 }
-.search button{
+.search button {
   width: 40px;
   height: 40px;
 }
-@media screen and (min-width:768px){
-  .search{
+@media screen and (min-width: 768px) {
+  .search {
     width: 400px;
-    left:0px;
+    left: 0px;
     margin: auto;
   }
-  .search input{
+  .search input {
     width: 300px;
   }
-  .search button{
+  .search button {
     width: 80px;
   }
   .search ul {
     width: 300px;
   }
 
-  .search ul li{
-    padding:10px 0 10px 10px;
+  .search ul li {
+    padding: 10px 0 10px 10px;
     background: white;
   }
 }
 
-@media screen and (min-width:1200px){
-  .menu_btn{
+@media screen and (min-width: 1200px) {
+  .menu_btn {
     display: none;
   }
-  #nav{
+  #nav {
     align-items: center;
   }
   #nav .Gavel {
     margin-right: 10px;
   }
-  .text{
-    left :0px;
-    right:0;
+  .text {
+    left: 0px;
+    right: 0;
     position: relative;
-    height:60px;
+    height: 60px;
     display: flex;
-    align-items: center;  
+    align-items: center;
     justify-content: flex-end;
     top: 0;
     background-color: rgb(17 24 39);
   }
-  .text a{
+  .text a {
     color: rgb(246, 244, 244);
-    border-bottom:none;
-    margin:0px 5px;
+    border-bottom: none;
+    margin: 0px 5px;
   }
-  .text a:hover{
+  .text a:hover {
     background-color: transparent;
-    color:rgb(37, 114, 238);
+    color: rgb(37, 114, 238);
   }
-  .text span{
+  .text span {
     display: inline;
   }
-  .search{
-    margin-left:100px ;
+  .search {
+    margin-left: 100px;
   }
   .search ul {
     width: 400px;
   }
-  .search ul li{
-    padding:10px 0 10px 10px;
+  .search ul li {
+    padding: 10px 0 10px 10px;
     background: white;
   }
-  .search ul li:hover{
+  .search ul li:hover {
     background-color: rgb(218, 218, 219);
   }
-  .search input{
+  .search input {
     width: 400px;
   }
-  .search button{
+  .search button {
     width: 80px;
   }
 }
