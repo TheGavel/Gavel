@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2022_05_28_151945) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,9 +64,10 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
     t.string "slug"
     t.bigint "product_id", null: false
     t.integer "price"
-    t.string "status", default: "pedding"
+    t.string "status"
     t.string "email"
     t.bigint "user_id", null: false
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_orders_on_product_id"
