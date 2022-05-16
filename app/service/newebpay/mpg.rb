@@ -1,11 +1,12 @@
 module Newebpay
   class Mpg
+    include Rails.application.routes.url_helpers
     attr_accessor :info
 
     def initialize(params)
-      @key = "7o8zwtdxUZTAILkHgw7GI7hJnfBlRS4Q"
-      @iv = "CKGNkuxiFVzGAQaP"
-      @merchant_id ="MS136075861"
+      @key = ENV['NEWEBPAY_KEY']
+      @iv = ENV['NEWEBPAY_IV']
+      @merchant_id = ENV['NEWEBPAY_MERCHANT_ID']
       @info = {}  # 使用 attr_accessor 讓 info 方便存取
       set_info(params)
     end
@@ -32,9 +33,9 @@ module Newebpay
     def set_info(order)
       info[:MerchantID] = @merchant_id
       info[:MerchantOrderNo] = order.id
-      info[:Amt] = "123"
-      info[:ItemDesc] = "bbbb"
-      info[:Email] = "albert3787@gmail.com"
+      info[:Amt] = order.price
+      info[:ItemDesc] = order.description
+      info[:Email] = order.email
       info[:TimeStamp] = Time.now.to_i
       info[:RespondType] = "JSON"
       info[:Version] = "2.0"
@@ -43,6 +44,7 @@ module Newebpay
       info[:LoginType] = 0
       info[:CREDIT] =  1
       info[:VACC] = 1
+      info[:TradeLimit] = "300"
     end
 
     def url_encoded_query_string
