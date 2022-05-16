@@ -1,5 +1,5 @@
 class MoneyController < ApplicationController
-  def method_name
-    
+  def index
+    ActionCable.server.broadcast("room_channel", {message: "hello"})    
   end
 end
