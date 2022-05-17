@@ -15,7 +15,7 @@
   width: 100%;
   opacity: 0;
 }
-.category:hover::before{
+.activeStyle::before,.category:hover::before{
   opacity: 1;
 }
 
