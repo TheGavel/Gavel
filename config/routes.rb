@@ -37,9 +37,11 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
+    collection do
+      post :notify_response
+    end
     member do
       get :payment
-      get :notify_response
     end
   end
 
