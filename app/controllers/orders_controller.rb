@@ -22,10 +22,4 @@ class OrdersController < ApplicationController
       redirect_to own_products_path , alert: "付款失敗"
     end
   end
-
-  def notify_response
-    response = Newebpay::Mpgresponse.new(params[:TradeInfo])
-    render html: response.result
-  end
-
 end
