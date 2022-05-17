@@ -148,7 +148,10 @@
   }
 
   #nav .logo {
-    margin-right: 30px;
+    margin-right: 40px;
+  }
+  #nav .Gavel {
+    margin-right: 40px;
   }
   .text{
     left :0px;
@@ -164,7 +167,7 @@
   .text a{
     color: rgb(246, 244, 244);
     border-bottom:none;
-    margin-left: 10px;
+    margin-left: 20px;
   }
   .text a:hover{
     background-color:transparent;
