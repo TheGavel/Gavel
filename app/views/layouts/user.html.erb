@@ -14,11 +14,11 @@
     <input type="checkbox" id="menu_control">
       <div id="nav" class="bg-gray-900 h-16 flex items-center">
         <div class="flex items-center">
-          <a href="/"><%=image_tag("New_Project.png", alt: "Gavel logo",:class => "logo w-12 ml-4 mr-2")%></a><br>
+          <a href="/"><%=image_tag("New_Project.png", alt: "Gavel logo",:class => "logo w-12 ml-4")%></a><br>
           <a href="/"><p class="Gavel text-gray-200 text-2xl font-mono font-bold">Gavel</p></a>
         </div>
 
-        <div class="text text-white xl:ml-28">  
+        <div class="text text-white flex-end">  
             <% if current_user %>
                 <%= link_to "編輯個人資訊", edit_user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %> 
                 <%= link_to "登出", :logout, method: :post, class:"xl:mx-1 hover:text-blue-500" %> 

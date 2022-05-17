@@ -148,15 +148,16 @@
   }
 
   #nav .logo {
-    margin-right: 50px;
+    margin-right: 30px;
   }
   .text{
     left :0px;
+    right:0;
     position: relative;
     height:60px;
-    right:0;
     display: flex;
     align-items: center;  
+    justify-content: flex-end;
     top: 0;
     background-color: rgb(17 24 39);
   }
