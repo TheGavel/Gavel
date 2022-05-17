@@ -37,9 +37,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :tags do
+      resources :categories, only: [] do
+        member do
+          get :show
+        end
       end
     end
   end
+
 
 end
