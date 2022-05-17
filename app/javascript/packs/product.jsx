@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { createRoot } from 'react-dom/client';
-import App from "../components/productlist";
+import App from "../components/productpage";
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('app');

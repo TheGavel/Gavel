@@ -1,7 +1,26 @@
 import React from "react";
 
-const Hello = (props) =>{
-  const {sellerImg,productImg,productTitle,productContent,labelList} = props;
+const ProductList = () => {
+  const data = {
+    sellerImg: "https://tailwindcss.com/img/card-top.jpg",
+    productImg: "https://tailwindcss.com/img/card-top.jpg",
+    productTitle: "我是商品我是商品",
+    productContent: "我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文",
+    labelList: ["標籤1","標籤2","標籤3","標籤4","標籤5"]
+  }
+  const dataArray = []
+  for (let i = 0; i < 100; i++) {
+    dataArray.push(data)
+  }
+  return (
+    dataArray.map( (item) => {
+      return <Product {...item}/>
+    })
+  )
+}
+
+const Product = (data) => {
+  const {sellerImg,productImg,productTitle,productContent,labelList} = data;
   return (
     <div className="transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-110 hover:z-50 group duration-300">
       <img className="w-full" src={productImg} alt="productImg"/>
@@ -24,4 +43,4 @@ const Hello = (props) =>{
     </div>
   )
 }
-export default Hello;
+export default ProductList;
