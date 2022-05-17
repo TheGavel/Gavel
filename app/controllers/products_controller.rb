@@ -15,18 +15,19 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    # @tags = Tag.new
-    @tags = Tag.all#.map { |tag| tag.name } || []
+    @tags = Tag.all
   end
 
   def create
+    # debugger
     @product = current_user.products.new(product_params)
       if @product.save
-        params[:product][:tag_items].each { |item| 
-          # debugger
-          ProductsTag.create(product_id: @product.id, tag_id: Tag.find_by(name: item).id)
-          # @product.tags << item 
+        params[:selectChildren].each { |item|
+          tag_id = Tag.find_by(name: item).id
+          product_id = @product.id
+          ProductsTag.create(product_id: product_id, tag_id: tag_id)
         }
+
         session[:product_id] = @product.id
         redirect_to new_room_path, notice: 'then create rooms!!'
       else
@@ -64,7 +65,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], tag_names: [])
+    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], selectChildren: [])
   end
 
   def find_product
