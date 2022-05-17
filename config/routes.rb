@@ -48,9 +48,11 @@ Rails.application.routes.draw do
       get :own
       
     end
+    member do
+      get  :auction
+      post  :auction
+    end
   end
-
-  resources :money
 
   namespace :sms_auth do
     resource :registration,

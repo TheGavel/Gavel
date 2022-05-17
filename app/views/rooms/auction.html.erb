@@ -1,0 +1,6 @@
+<%= form_with(model: [@room, @record],  data: { controller: "money" }, url: auction_room_path, method: "post") do |form| %>
+  <span>目前價格:$</span>
+  <div data-money-target="output" id="output" class=" inline"></div>
+  <%= form.text_field :money, data: { money_target: "price" }, placeholder:"請輸入競價價格" %>
+  <%= form.submit "加價", data: { action: "click->money#plus" } %>
+<% end %>
