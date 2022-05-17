@@ -55,7 +55,12 @@
 .scroll::-webkit-scrollbar-thumb:hover {
   background: #555;
 } */
-/* 漢堡選單 */
+
+
+
+
+
+/* 導覽列 */
 .menu_btn{
   width: 40px;
   height: 40px;
@@ -63,12 +68,12 @@
   position: absolute;
   top:5px;
   right: 10px;
-
 }
 #nav{
   position: relative;
   height:60px;
-  width:100%
+  width:100%;
+
 }
 #menu_control{
   position: absolute;
@@ -86,7 +91,6 @@
   box-shadow: 0px 8px 0px rgb(244, 244, 244),
               0px -8px 0px rgb(237, 237, 238);
 }
-
 .text{
   width: 100%;
   height: calc(100vh-60px);
@@ -97,10 +101,9 @@
   left:-100%;
   transition: .3s;
 }
-
 .text a{
   display: block;
-  padding: 30px;
+  padding: 20px;
   color:rgb(10, 7, 45);
   border-bottom:1px solid rgb(168, 168, 169);
 
@@ -112,7 +115,6 @@
 #menu_control:checked~ #nav .text{
   left :0;
 }
-
 .search{
   left:0;
   margin: auto;
@@ -123,7 +125,6 @@
 .search button{
   width: 120px;
 }
-
 @media screen and (min-width:768px){
   .search{
     width: 400px;
@@ -137,8 +138,6 @@
     width: 80px;
   }
 }
-
-
 
 @media screen and (min-width:1200px){
   .menu_btn{
@@ -161,21 +160,17 @@
     top: 0;
     background-color: rgb(17 24 39);
   }
-
   .text a{
     color: rgb(246, 244, 244);
     border-bottom:none;
     margin-left: 10px;
   }
-
   .text a:hover{
     background-color:transparent;
     color:rgb(37, 114, 238);
   }
-
   .search{
     margin-left:20px ;
-  
   }
   .search input{
     width: 400px;
@@ -184,7 +179,3 @@
     width: 80px;
   }
 }
-
-
-
-

@@ -10,23 +10,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 <body class ="bg-gray-100">
-
-<input type="checkbox" id="menu_control">
+    <input type="checkbox" id="menu_control">
     <div id="nav" class="bg-gray-900 h-16 flex items-center">
         <div class="flex items-center">
             <a href="/"><%=image_tag("New_Project.png", alt: "Gavel logo",:class => "logo w-12 ml-4 mr-2")%></a><br>
             <a href="/"><p class="Gavel text-gray-200 text-2xl font-mono font-bold">Gavel</p></a>
-        </div>
-
-        <div data-controller="search" class="search md:flex w-4/12 ">
-            <form method="get"  data-action="submit->search#serch" class="flex justify-center">
-                <div class="input-group relative flex items-stretch m-2 w-full">
-                    <input type="text" data-search-target="query" autocomplete="off" data-behavior="autocomplete"  class="w-11/12 md:w-8/12 lg:w-6/12 pl-2 form-control relative min-w-0 block  py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                    <button class="w-4/12 md:w-2/12 lg:w-1/12 h-11 bg-blue-600 text-white hover:bg-blue-800 rounded">
-                        <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.pngg" class="w-6 m-auto">
-                    </button>
-                </div>
-            </form>
         </div>
 
         <div class="text text-white xl:ml-28">  
@@ -42,9 +30,8 @@
             <% end %>
         </div>
 
-
         <label for="menu_control" class="menu_btn">
-            <div  class="btn"></div>
+          <div class="btn"></div>
         </labal>
     </div>
       <p id="notice"><%= flash[:notice] %></p>
