@@ -7,7 +7,6 @@ one:
   status: MyString
   email: MyString
   user: one
-  description: MyText
 
 two:
   slug: MyString
@@ -16,4 +15,3 @@ two:
   status: MyString
   email: MyString
   user: two
-  description: MyText
