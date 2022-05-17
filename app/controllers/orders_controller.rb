@@ -2,11 +2,9 @@ class OrdersController < ApplicationController
   protect_from_forgery
   skip_before_action :require_login, only: %i[return_response]
 
-
   def record
     @records = current_user.orders.all
   end
-
 
   def check
     @order = Order.find(params[:id])
@@ -26,8 +24,8 @@ class OrdersController < ApplicationController
   end
 
   def notify_response
-    response = Newebpay::MpgResponse.new(params[:TradeInfo])
-    render html: response
+    response = Newebpay::Mpgresponse.new(params[:TradeInfo])
+    render html: response.result
   end
 
 end
