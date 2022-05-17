@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     end
     member do
       get  :auction
-      post  :auction
+      post :auction
     end
   end
 
@@ -81,6 +81,9 @@ Rails.application.routes.draw do
       namespace :products, only: [] do
         resources :search, only: [:show] do
           get ':page', to: 'search#page'
+      resources :auction, only: [] do
+        member do
+          post :bid
         end
       end
     end

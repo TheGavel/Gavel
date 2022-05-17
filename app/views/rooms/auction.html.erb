@@ -1,6 +1,13 @@
-<%= form_with(model: [@room, @record],  data: { controller: "money" }, url: auction_room_path, method: "post") do |form| %>
-  <span>目前價格:$</span>
+<%= form_with(model: [@room, @record],  data: { controller: "money"}, url: auction_room_path, method: "post") do |form| %>
+  <span>目前價格:$ </span>
   <div data-money-target="output" id="output" class=" inline"></div>
+  <div data-roomid=<%= @room.id %> data-money-target="roomid"></div>
+  <div data-productid=<%= @product.id %> data-money-target="productid"></div>
+  <div data-userid=<%= @user.id %> data-money-target="userid"></div>
   <%= form.text_field :money, data: { money_target: "price" }, placeholder:"請輸入競價價格" %>
   <%= form.submit "加價", data: { action: "click->money#plus" } %>
 <% end %>
+
+
+
+  
