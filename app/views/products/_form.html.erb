@@ -1,12 +1,21 @@
+
+<div class="w-11/12 bg-slate-100 p-10 md:w-10/12 lg:w-9/12 m-auto">
+
 <%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
+  <div class="bg-white">
+    <div class="custom-file-container w-[600px] " data-upload-id="myFirstImage" data-controller="multipleImg" >
+    </div>
+  </div>
+  
   <div class="field">
-    <%= form.label "商品名稱:" %>
-    <%= form.text_field :name %>
+  
+  <span class="m-2 text-red-600 ">*</span><%= form.label "商品名稱:" %>
+    <%= form.text_field :name ,placeholder:"商品名稱", class:"w-9/12 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal"%>
   </div>
 
   <div class="field flex items-start">
-    <%= form.label :description ,"商品描述:"%>
-    <%= form.text_area :description ,size: "24x6"%>
+  <span class="m-2 text-red-600 ">*</span><%= form.label :description ,"商品描述:"%>
+    <%= form.text_area :description ,size: "24x6", class:"w-9/12 border py-1 px-2 border-gray-300 text-sm font-normal"%>
   </div>
 
   <div class="field">
@@ -24,11 +33,12 @@
      <%= form.select :status, Product.all_status %>
   </div>
 
-  <div class="custom-file-container w-[600px]" data-upload-id="myFirstImage" data-controller="multipleImg" >
-  </div>
+ 
 
   <%= form.submit%>
 <% end %>
+
+</div>
 <script> //DEBUG用
   function onChangeFunction(event) {
     let fileList = event.target.files;
