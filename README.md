@@ -16,8 +16,8 @@ Gavel 主要功能為以下三項：
 - 版本控制 ： Git
 - 部屬環境 : Heroku
 - 第三方登入 : Google / GitHub
-- 第三方金流 : NewebPay
-- 其他技術 : AWS S3 (圖片) / ActionCable / Elasticsearch / AASM / Sorcery
+- 第三方金流 : 藍新
+- 其他技術 : AWS S3 (圖片) / ActionCable / Elaeticsearch
 
 ## 開發團隊
 
