@@ -1,49 +1,41 @@
-<p id="notice"><%= notice %></p>
+<section class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto mt-10 py-10">
+  <div class="flex flex-wrap items-center justify-center">
+    <img class="rounded-full shadow-lg mx-2" src="https://fakeimg.pl/100x100/200" />
+    <h1 class="text-4xl font-boldpx-5 mt-4 mb-4"><%= @user.username %>的個人資訊</h1>
+  </div>
+  <div class="justify-center flex">
+    <h2 class="text-s font-bold text-gray-700"><%= @user.role %></h2>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="mt-6">
+    <div class="mb-8 px-6">
+      <div class="bg-gray-100 flex h-10">
+        <label class="text-sm font-medium m-auto text-gray-700">使用者名稱</label>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.username%></p>
+      </div>
+    </div>
+    
+    <div class="mb-8 px-6">
+      <div class="bg-gray-100 flex h-10">
+        <label class="text-sm font-medium m-auto text-gray-700">電子信箱</label>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.email%></p>
+      </div>
+    </div>
+    
+    <div class="mb-8 px-6">
+      <div class="bg-gray-100 flex h-10">
+        <label class="text-sm font-medium m-auto text-gray-700">手機號碼</label>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.phone%></p>
+      </div>
+    </div>
+    <div class="mb-8 px-6">
+      <div class="bg-gray-100 flex h-10">
+        <label class="text-sm font-medium m-auto text-gray-700">聯絡地址</label>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.address%></p>
+      </div>
+    </div>
+    <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700"><%= link_to '編輯個人資訊', edit_user_path(@user), class: "w-full text-center" %></div>
+  </div>
+</section>
 
-<p>
-  <strong>Crypted password:</strong>
-  <%= @user.crypted_password %>
-</p>
-
-<p>
-  <strong>Salt:</strong>
-  <%= @user.salt %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Nickname:</strong>
-  <%= @user.nickname %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Is role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @user.level %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
