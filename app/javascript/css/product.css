@@ -110,11 +110,7 @@
 .text span {
   display: none;
 }
-#menu_control:checked ~ #nav .text {
-  left: 0;
-}
 .search {
-  top: 30px;
   left: 0;
   margin: auto;
 }
@@ -188,9 +184,6 @@
   .text a:hover {
     background-color: transparent;
     color: rgb(37, 114, 238);
-  }
-  .text span {
-    display: inline;
   }
   .search {
     margin-left: 100px;
