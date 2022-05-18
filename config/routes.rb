@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :rooms do
+    collection do
+      get :own
+    end
+  end
 
   namespace :sms_auth do
     resource :registration,
@@ -29,5 +34,4 @@ Rails.application.routes.draw do
     controller: :verification,
     only: %i[new create]
   end
-
 end

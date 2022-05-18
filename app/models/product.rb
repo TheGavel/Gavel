@@ -10,6 +10,8 @@ class Product < ApplicationRecord
   validates :start_price, :direct_price , presence:true,numericality: { greater_than_or_equal_to: 0,  only_integer: true }
 
   belongs_to :user
+  has_one :room
+  has_many_attached :images
 
   def self.all_status
     [

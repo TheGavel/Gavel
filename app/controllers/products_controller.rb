@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   before_action :find_product, only: %i[show edit update destroy]
   before_action :pundit
   rescue_from Pundit::NotAuthorizedError, with: :no_permission
+
+
   def index
     @products = Product.all
     render layout: "product"
@@ -18,13 +20,15 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.new(product_params)
       if @product.save
-        redirect_to own_products_path, notice: 'Create Sussess!!'
+        session[:product_id] = @product.id
+        redirect_to new_room_path, notice: 'then create rooms!!'
       else
         render :new
       end
   end
 
   def edit
+    session[:product_id] = @product.id
   end
 
   def update
@@ -36,6 +40,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @room = Room.find_by_id(params[:id])
+    @room.destroy if @room
     @product.destroy
     redirect_to own_products_path, notice: "Delete Sussess!!"
   end
@@ -51,7 +57,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status)
+    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [])
   end
 
   def find_product
