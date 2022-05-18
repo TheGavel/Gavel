@@ -110,6 +110,9 @@
 .text span {
   display: none;
 }
+#menu_control:checked ~ #nav .text {
+  left: 0;
+}
 .search {
   left: 0;
   margin: auto;
