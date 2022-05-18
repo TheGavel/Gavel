@@ -57,9 +57,6 @@
 } */
 
 
-
-
-
 /* 導覽列 */
 .menu_btn{
   width: 40px;
@@ -111,6 +108,9 @@
 .text a:hover{
   background-color: rgb(206, 204, 204);
   color:rgb(37, 114, 238);
+}
+.text span{
+ display: none;
 }
 #menu_control:checked~ #nav .text{
   left :0;
@@ -167,12 +167,15 @@
   .text a{
     color: rgb(246, 244, 244);
     border-bottom:none;
-    margin-left: 20px;
+    margin:0px 5px;
   }
   .text a:hover{
     background-color:transparent;
     color:rgb(37, 114, 238);
   }
+  .text span{
+    display: inline;
+   }
   .search{
     margin-left:20px ;
   }
