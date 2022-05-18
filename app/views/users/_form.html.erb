@@ -11,60 +11,45 @@
     </div>
   <% end %>
 
-  <div class="w-11/12 md:w-6/12 lg:w-4/12 bg-white m-auto">
-    <div class="mt-10 py-5 text-center bg-gray-50">
+  <div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto">
+    <div class="mt-5 py-4 text-center bg-gray-50">
       <p class="text-gray-600">已經有帳戶？<%=link_to "登入", login_path, class:"font-medium text-blue-600 hover:text-gray-800"%></p>
     </div>
     <hr class="bg-gray-200">
 
     <div class="flex justify-between">
-      <h1 class="text-4xl font-bold m-5">註冊</h1>
+      <h1 class="text-4xl font-bold m-8">註冊</h1>
       <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
     </div>
 
-    <div class="mx-2 p-2">
+    <div class="mb-8 px-6">
       <div class="bg-gray-100 flex">
         <span class="m-2 text-red-600">*</span><%= form.label :email, "電子信箱", class:"w-3/12 text-sm font-medium pt-2.5 text-gray-700"%><br>
         <%= form.text_field :email, placeholder:"請輸入電子郵件", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
+    
+    <div class="mb-8 px-6">
+    <div class="bg-gray-100 flex">
+      <span class="text-red-600 m-2">*</span><%= form.label :username, "使用者名稱", class:"w-3/12 md:w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+      <%= form.text_field :username, placeholder:"請設定使用者名稱", class:"w-9/12 md:w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+    </div>
+  </div>
 
-    <div class="m-2 p-2">
       <div class="bg-gray-100 flex">
         <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
         <%= form.password_field :password, placeholder:"請設定3個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
 
-    <div class="m-2 p-2">
+    <div class="mb-8 px-6">
       <div class="bg-gray-100 flex">
         <span class="text-red-600 m-2">*</span><%=form.label :password_confirmation, "確認密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
         <%= form.password_field :password_confirmation, placeholder:"請再輸入一次密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
 
-    <div class="m-2 p-2">
-      <div class="bg-gray-100 flex">
-        <span class="text-red-600 m-2">*</span><%= form.label :username, "使用者名稱", class:"w-3/12 md:w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
-        <%= form.text_field :username, placeholder:"請設定使用者名稱", class:"w-9/12 md:w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="m-2 p-2">
-      <div class="bg-gray-100 flex">
-        <%= form.label :nickname, "暱稱", class:"w-4/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
-        <%= form.text_field :nickname, placeholder:"請輸入您的暱稱", class:"w-10/12 border py-1 px-2 outline-none focus:border-green-800 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="m-2 p-2">
-      <div class="bg-gray-100 flex">
-        <%= form.label :phone, "手機號碼", class:"w-4/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
-        <%= form.text_field :phone, placeholder:"請輸入您的手機號碼", class:"w-10/12 md:w-10/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="m-2 p-2">
+    <div class="mb-8 px-6">
       <div class=" flex items-center bg-gray-100">
         <%= form.label :address, "地址", class:"w-4/12 md:w-4/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
         <div class=w-10/12>
@@ -74,18 +59,9 @@
       </div>
     </div>
 
-    <div class="field">
-      <div class="flex m-2 p-2">
-        <div class="bg-gray-100 p-2">
-          <span class="text-red-600 ">*</span><%= form.label :level, class:"w-1/6 pl-1 mr-5 text-gray-700 text-sm font-medium"%><br>
-        </div>
-        <%= form.number_field :level, placeholder:"請選擇您的 Level", class:"w-6/12 border py-2 px-2 outline-none focus:border-green-500 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="actions pt-5 pb-10 ">
+    <div class="actions my-5 pb-10 px-1">
       <%= form.submit "註冊", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700"%>
     </div>
   <div>
-</div>
+  </div>
 <% end %>

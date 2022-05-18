@@ -1,0 +1,25 @@
+<%= form_with(model: room) do |form|%>
+
+  <div class="field">
+    <%= form.label :life_time, "競標時間:" %>
+    <%= form.text_field :life_time %>
+  </div>
+
+  <div class="field flex items-start">
+    <%= form.label :start_time ,"開標時間:"%>
+    <%= form.text_field :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status, "房間狀態:" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :maxpeople, "最多上線人數:" %>
+    <%= form.text_field :maxpeople %>
+  </div>
+
+  <%= form.submit%>
+
+<% end %>

@@ -40,6 +40,8 @@ group :development, :test do
   gem 'foreman', '~> 0.87.2'
   gem 'rubocop', '~> 1.28', require: false
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+  gem 'searchkick', '~> 5.0', '>= 5.0.3'
+  gem 'elasticsearch', '~> 7.0'
 end
 
 group :development do

@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :own
+      get :search
+    end
+  end
+  resources :rooms do
+    collection do
+      get :own
     end
   end
 
@@ -28,5 +34,4 @@ Rails.application.routes.draw do
     controller: :verification,
     only: %i[new create]
   end
-
 end
