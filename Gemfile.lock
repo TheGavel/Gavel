@@ -95,6 +95,8 @@ GEM
       multi_json
     erubi (1.10.0)
     faraday (2.3.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.2)
@@ -274,6 +276,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   dotenv-rails (~> 2.7, >= 2.7.6)
   elasticsearch (~> 7.0)
+  faker
   foreman (~> 0.87.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)

@@ -12,4 +12,5 @@ class User < ApplicationRecord
     if: lambda {new_record? || changes[:crypted_password]}
 
   has_many :products
+  has_one_attached :avatar
 end
