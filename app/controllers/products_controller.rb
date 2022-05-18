@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # debugger
     @product = current_user.products.new(product_params)
       if @product.save
         params[:selectChildren].each { |item|
