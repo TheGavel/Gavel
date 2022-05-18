@@ -32,11 +32,11 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:life_time,:start_time,:status,:maxpeople).merge(product_id: session[:product_id],id: session[:product_id])
+    params.require(:room).permit(:start_time,:end_time,:status,:maxpeople).merge(product_id: session[:product_id],id: session[:product_id])
   end
 
   def room_params_update
-    params.require(:room).permit(:life_time,:start_time,:status,:maxpeople)
+    params.require(:room).permit(:start_time,:end_time,:status,:maxpeople)
   end
 
   def find_room
