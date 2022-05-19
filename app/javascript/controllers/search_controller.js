@@ -4,7 +4,8 @@ import { createElement } from "react";
 export default class extends Controller {
 
   static targets = [ "query", "product" ]
- 
+
+
   search(e) {
     e.preventDefault();
     
