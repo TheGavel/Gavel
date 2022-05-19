@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const ClassificationBar = () => {
   // {overflow-x-scroll }
-  const category = ["3C","數位","家電","食品","運動戶外","衣鞋包錶","書店","日常"];
+  const category = ["3c","數位","家電","食品","運動戶外","衣鞋包錶","書店","日常"];
   return (
     <div className="scroll overflow-y-hidden relative my-5" >
       <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">

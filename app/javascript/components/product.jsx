@@ -1,6 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import Rails from "@rails/ujs"
 
 const ProductList = () => {
+  const params = useParams();
+  console.log( "params" ,params  );
   const data = {
     sellerImg: "https://tailwindcss.com/img/card-top.jpg",
     productImg: "https://tailwindcss.com/img/card-top.jpg",
@@ -8,6 +12,15 @@ const ProductList = () => {
     productContent: "我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文",
     labelList: ["標籤1","標籤2","標籤3","標籤4","標籤5"]
   }
+
+  Rails.ajax({
+    type: "get",
+    url: `/api/v1/categories/${params.id}`,
+    success: (data) => {
+      console.log(data);
+    },
+  })
+
   const dataArray = []
   for (let i = 0; i < 100; i++) {
     dataArray.push(data)

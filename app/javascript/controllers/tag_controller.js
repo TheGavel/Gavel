@@ -8,7 +8,7 @@ export default class extends Controller {
         iphone: ["iphone11"],
         android: ["oppo", "samsung"],
       },
-      運動: { 跑步機: ["喬山", "123"] },
+      運動: { 跑步機: ["喬山", "強生"] },
     };
 
     let index = 1;

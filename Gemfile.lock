@@ -94,11 +94,11 @@ GEM
       faraday
       multi_json
     erubi (1.10.0)
-    faraday (2.3.0)
     faker (2.21.0)
-      i18n (>= 1.8.11, < 2)
       faraday-net_http (~> 2.0)
+      i18n (>= 1.8.11, < 2)
       ruby2_keywords (>= 0.0.4)
+    faraday (2.3.0)
     faraday-net_http (2.0.2)
     ffi (1.15.5)
     foreman (0.87.2)
