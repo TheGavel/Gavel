@@ -1,4 +1,11 @@
-<%= simple_form_for @registration, url: sms_auth_registration_url do |f| %>
-  <%= f.input :cellphone %>
-  <%= f.submit '送出' %>
-<% end %>
+<div class="mt-10 flex justify-center">
+  <span class="text-2xl" >開啟賣家服務前，請先驗證手機號碼</span>
+</div>
+
+<div class="mt-10 flex justify-center items-center" >
+  
+    <%= simple_form_for @registration, url: sms_auth_registration_url do |f| %>
+        <%= f.input :cellphone, required: false, label: '請輸入您的手機號碼：', input_html: { class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 w-120'}, label_html: { class: 'text-lg pt-2.5' }, wrapper_html: { class: 'inline-flex' } %>
+        <%= f.submit '送出', class: 'text-xl mb-2.5 rounded px-4 bg-blue-500 text-white' %>
+    <% end %>
+</div>

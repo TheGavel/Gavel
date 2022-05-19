@@ -1,4 +1,6 @@
-<%= simple_form_for @verification, url: sms_auth_verification_path do |f| %>
-  <%= f.input :code %>
-  <%= f.submit '送出' %>
+<div class="mt-10 flex justify-center items-center" >
+<%= simple_form_for @verification, url: sms_auth_verification_path, class: "mt-10" do |f|  %>
+  <%= f.input :code, required: false, label: "請輸入您收到的驗證碼：", input_html: { class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5', maxlength: 6}, label_html: { class: 'text-xl pt-2.5 ' }, wrapper_html: { class: "inline-flex" } %>
+  <%= f.submit '送出' ,class: "text-xl mb-2.5 rounded px-4 bg-blue-500 text-white" %>
 <% end %>
+</div>
