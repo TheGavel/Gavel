@@ -76,7 +76,6 @@ class ProductsController < ApplicationController
   end
 
   def buy
-
     product = Product.find(params[:id])
     product_price = Product.find(params[:id]).start_price
     product_name = Product.find(params[:id]).name
