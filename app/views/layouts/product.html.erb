@@ -12,20 +12,27 @@
 
 
 
+
+
+
+
+
+
         <input type="checkbox" id="menu_control">
-        <div id="nav" class ="bg-gray-900 h-24 items-center flex z-10">
+        <div id="nav" class ="bg-gray-900 h-24 items-center flex">
             <div class="flex items-center">
                 <a href="/products"><%=image_tag("gavel_logo.png", alt: "Gavel logo", :class => "logo w-12 w-12 ml-4")%></a><br>
                 <a href="/products"><p class="Gavel text-gray-200 text-2xl font-mono font-bold ml-4">Gavel</p></a>
             </div>
 
-            <div data-controller="search" class="search max-w-xs mx auto bg-white md:flex w-4/12">
+            <div data-controller="search" class="search md:flex">
                 <form method="get" data-action="submit->search#search" class="flex justify-center shadow-2xl">
-                    <div data-controller="autocomplete" data-autocomplete-url-value="/autocomplete" class="input-group relative flex items-stretch m-2 w-full">
+                    <div data-controller="autocomplete" data-autocomplete-url-value="/autocomplete" class="input-group relative flex items-stretch">
                         <div calss="flex">
-                        <input type="text"  data-search-target="query" data-autocomplete-target="input" class="w-11/12 md:w-8/12 lg:w-6/12 pl-2 form-control relative min-w-0 block  py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                        <ul data-autocomplete-target="results" class="block z-30"></ul>
+                            <input type="text" data-search-target="query" data-autocomplete-target="input" class="pl-2 form-control relative block py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                            <ul data-autocomplete-target="results" class="mt-10"></ul>
                         </div>
+                        
                         <button class="w-4/12 md:w-2/12 lg:w-1/12 h-11 bg-blue-600 text-white hover:bg-blue-800 rounded">
                             <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.pngg" class="w-6 m-auto">
                         </button>

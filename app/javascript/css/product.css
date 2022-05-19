@@ -116,14 +116,26 @@
   left :0;
 }
 .search{
+  top:30px;
   left:0;
   margin: auto;
 }
+.search ul {
+  width: 127%;
+}
+.search ul li{
+  padding:10px 0 10px 10px;
+}
+.search ul li:hover{
+  background-color: rgb(225, 225, 229);
+  width: 100%;
+}
 .search input{
-  width: 400px;
+  width: 200px;
+  height: 43px;
 }
 .search button{
-  width: 120px;
+  width: 50px;
 }
 @media screen and (min-width:768px){
   .search{
