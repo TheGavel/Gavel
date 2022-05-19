@@ -57,13 +57,13 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    @search_results = Product.search(params[:q],
+    @search_results= Product.search(params[:q],
               misspellings: {edit_distance: 2},
               select: [:name])
       render layout: false 
   end
 
-private
+  private
   def product_params
     params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], selectChildren: [])
   end
