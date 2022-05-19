@@ -1,10 +1,7 @@
 import { Controller } from "stimulus";
-import Rails from "@rails/ujs";
-import { ajaxTransport } from "jquery";
 
 export default class extends Controller {
   connect() {
-    console.log(123);
     const json = {
       //從後端傳來的結構表
       "3c": {
