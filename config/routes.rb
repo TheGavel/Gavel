@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       get "categories/*path" , to: 'products#index'
     end
   end
+  
   resources :rooms do
     collection do
       get :own
@@ -50,7 +51,6 @@ Rails.application.routes.draw do
     end
     member do
       get  :auction
-      
     end
   end
 

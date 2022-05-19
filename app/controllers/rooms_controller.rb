@@ -6,6 +6,9 @@ class RoomsController < ApplicationController
     @record = Record.new
     @room = Room.find(params[:id])
     @product = Product.find(params[:id])
+    # if @record.save
+    #   ActionCable.server.broadcast("room_channel", bid: params[:bid])
+    # end
   end
 
   def new

@@ -7,11 +7,11 @@ import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
+import "controllers";
+import "../css/application.css";
+import "select2/dist/css/select2.css";
+import "./tag";
 
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
-
-import "../css/application.css";
-import "controllers";
-
