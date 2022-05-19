@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    render layout: "product"
   end
 
   def show
@@ -48,6 +49,11 @@ class ProductsController < ApplicationController
   def own
   end
 
+  def search
+    @products= Product.search(params[:query],
+              misspellings: {edit_distance: 2})
+    render json: @products.map{ |pro| {name: pro.name, desc: pro.description, status:  pro.status , direct_price: pro.direct_price } }  
+  end
   private
 
   def product_params

@@ -10,8 +10,6 @@ class User < ApplicationRecord
     if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true,
     if: lambda {new_record? || changes[:crypted_password]}
-  
 
-  
   has_many :products
 end
