@@ -24,6 +24,25 @@ def random_category_path(architecture)
 end
 
 
+json = {
+  "3c": {
+    "iphone": ["iphone11"],
+    "android": ["oppo", "samsung"],
+  },
+  "運動": { "跑步機": ["喬山", "強生"] },
+}
+
+def aaa(jsonn)
+  sample = jsonn.keys.sample
+  @category_path.push( sample.to_s )
+  if jsonn[sample].kind_of?(Array)
+    @category_path.push( jsonn[sample].sample )
+  else
+    aaa(jsonn[sample])
+  end
+end
+
+
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 Room.all.delete_all
 ProductsTag.all.delete_all
