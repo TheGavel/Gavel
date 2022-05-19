@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       
     end
     member do
-      get  :auction
+      resources :messages, only: [:create]
     end
   end
 

@@ -14,5 +14,9 @@ consumer.subscriptions.create("RoomChannel", {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
     document.querySelector("#output").innerHTML = data["bid"];
+    const datacontent = `<li>${data.content}</li>`;
+    document
+      .querySelector("#message")
+      .insertAdjacentHTML("beforeend", datacontent);
   },
 });

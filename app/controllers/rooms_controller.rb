@@ -2,12 +2,6 @@ class RoomsController < ApplicationController
   before_action :find_room, only: %i[show edit update]
   rescue_from ActiveRecord::RecordNotFound, with: :no_edit_data
 
-  def auction
-    @record = Record.new
-    @room = Room.find(params[:id])
-    @product = Product.find(params[:id])
-  end
-
   def new
     @room = Room.new
   end
