@@ -1,9 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (6.1.6)
-      actionpack (= 6.1.6)
-      activesupport (= 6.1.6)
+    aasm (5.2.0)
+      concurrent-ruby (~> 1.0)
+    actioncable (6.1.5)
+      actionpack (= 6.1.5)
+      activesupport (= 6.1.5)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
     actionmailbox (6.1.6)
@@ -312,6 +314,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  aasm (~> 5.2)
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
