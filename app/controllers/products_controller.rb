@@ -62,6 +62,13 @@ class ProductsController < ApplicationController
     render layout: false
   end
 
+  def autocomplete
+      @search_results =Product.all.map(&:name)
+      render layout: false 
+  end
+
+  private
+
   private
   def product_params
     params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], selectChildren: [])
