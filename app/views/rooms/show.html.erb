@@ -2,7 +2,7 @@
 <%= link_to "檢視產品設定" , product_path(@room.id)%>
 <ul>
   <li>開標時間:<%= @room.start_time %></li>
-  <li>結標時間:<%= @room._time%></li>
+  <li>結標時間:<%= @room.end_time%></li>
   <li>房間狀態:<%= @room.status%></li>
   <li>最多上線人數:<%= @room.maxpeople%></li>
 </ul>
