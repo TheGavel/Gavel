@@ -61,6 +61,12 @@ class ProductsController < ApplicationController
               misspellings: {edit_distance: 2})
     render json: @products.map{ |pro| {name: pro.name, desc: pro.description, status:  pro.status , direct_price: pro.direct_price } }  
   end
+
+  def autocomplete
+      @search_results =Product.all.map(&:name)
+      render layout: false 
+  end
+
   private
 
   def product_params

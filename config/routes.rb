@@ -28,12 +28,13 @@ Rails.application.routes.draw do
 
   namespace :sms_auth do
     resource :registration,
-             controller: :registration,
-             only: %i[new create]
+            controller: :registration,
+            only: %i[new create]
     resource :verification,
     controller: :verification,
     only: %i[new create]
   end
+
 
   namespace :api do
     namespace :v1 do
@@ -45,3 +46,7 @@ Rails.application.routes.draw do
     end
   end
 end
+
+  get '/autocomplete' , to: 'products#autocomplete'
+end
+
