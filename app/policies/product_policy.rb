@@ -37,6 +37,10 @@ class ProductPolicy < ApplicationPolicy
     visitor
   end
 
+  def autocomplete?
+    visitor
+  end
+
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
