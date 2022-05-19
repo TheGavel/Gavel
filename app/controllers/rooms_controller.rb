@@ -6,7 +6,6 @@ class RoomsController < ApplicationController
     @record = Record.new
     @room = Room.find(params[:id])
     @product = Product.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   def new
