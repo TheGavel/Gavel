@@ -1,0 +1,24 @@
+<h1 class="flex justify-center text-4xl"><%= @product.name%></h1>
+<div class="flex justify-center" >
+    <%= image_tag("rilakkuma.png", alt: "seller_photo", width:50) %>
+</div>
+<div class="mt-10 flex justify-center " >
+    <div class="text-xl font-bold">最高出價：</div>
+    <%# 找最高價錢 %>
+    <div class="text-xl font-bold" >直購價：</div>
+    <%# 找直購價 %>
+</div>
+
+<div class="flex justify-center mt-10" >
+    <% @product.images.each do |image| %>
+      <%= image_tag(image, width:500) %>
+    <% end %>
+</div>
+<div class="flex justify-center">
+    <span>拍賣剩餘時間：</span>
+    <span>1D 21H 23M 11S</span>
+    <button type="button"> <%= image_tag("logo.png", alt: "logo", width:80) %> </button>
+</div> 
+<div>
+    <div class="rounded-full bg-white flex items-center justify-center font-mono" style="height: 60px; width: 60px; font-size: 170px;"></div>
+</div>
