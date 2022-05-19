@@ -1,12 +1,8 @@
 
 <%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
   <div>
-    <div class=" bg-white h-20 items-center flex justify-between items-center shadow fixed top-0 right-0 left-0 z-10 rounded-md">
-      <div class="flex items-center">
-        <%=link_to "X", own_products_path, data: { confirm: '確定要離開嗎？' }, class:"font-medium text-lg text-gray-800 mx-3 md:ml-4, pl-10, text-2xl"%>
-        <h1 class="font-medium text-lg text-gray-800 md:text-2xl">今天想賣出什麼商品？</h1>
-      </div>
-
+    <div class=" bg-white h-20 items-center flex justify-between items-center shadow fixed top-0 right-0 left-0 p-4 z-10 rounded-md">
+      <h1 class="font-medium text-lg text-gray-800 md:text-2xl">今天想賣出什麼商品？</h1>
       <div class="flex justify-end mx-2">
         <%= link_to '取消', own_products_path, data: { confirm: '確定要離開嗎？' }, class:" border-2 border border-gray-400 hover:bg-gray-200 rounded px-4 py-3 mr-1 text-sm"%>
         <%= form.submit "立即刊登", class:"bg-blue-600 text-white hover:bg-blue-700 rounded p-2 py-3 mx-2 text-sm border border-blue-800"%>
