@@ -1,36 +1,7 @@
-import React from "react";
+import React , { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Rails from "@rails/ujs"
 
-const ProductList = () => {
-  const params = useParams();
-  console.log( "params" ,params  );
-  const data = {
-    sellerImg: "https://tailwindcss.com/img/card-top.jpg",
-    productImg: "https://tailwindcss.com/img/card-top.jpg",
-    productTitle: "我是商品我是商品",
-    productContent: "我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文我是內文",
-    labelList: ["標籤1","標籤2","標籤3","標籤4","標籤5"]
-  }
-
-  Rails.ajax({
-    type: "get",
-    url: `/api/v1/categories/${params.id}`,
-    success: (data) => {
-      console.log(data);
-    },
-  })
-
-  const dataArray = []
-  for (let i = 0; i < 100; i++) {
-    dataArray.push(data)
-  }
-  return (
-    dataArray.map( (item) => {
-      return <Product {...item}/>
-    })
-  )
-}
 
 const Product = (data) => {
   const {sellerImg,productImg,productTitle,productContent,labelList} = data;
@@ -56,4 +27,47 @@ const Product = (data) => {
     </div>
   )
 }
+
+
+const ProductList = () => {
+  const params = useParams();
+  const [myArray, setMyArray] = useState([]);
+  console.log( "params" ,params  );
+  let dataArray = []
+
+  useEffect(() => {
+    const getData = async () => {
+      Rails.ajax({
+        type: "get",
+        url: `/api/v1/categories/${params.id}`,
+        success: (data1) => {
+          console.log(data1);
+          dataArray = []
+          data1.forEach( (item) => {
+            let data = {}
+            data["sellerImg"] = item.image
+            data["productImg"] = item.image
+            data["productTitle"] = item.name
+            data["productContent"] = item.description
+            data["labelList"] = ["標籤1","標籤2","標籤3","標籤4","標籤5"]
+            dataArray.push(data)
+          })
+          setMyArray(() => dataArray );
+          console.log("dataArray",dataArray);
+        },
+      })
+    };
+    getData();
+  }, [params]); //<-- This is the dependency array
+
+
+  return (
+    myArray.map( (item) => {
+      return <Product {...item}/>
+    })
+  )
+
+}
+
+
 export default ProductList;
