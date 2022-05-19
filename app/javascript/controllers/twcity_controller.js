@@ -5,8 +5,7 @@ export default class extends Controller {
     new TwCitySelector({
       countyFieldName: "user[county]",
       districtFieldName: "user[district]",
-      zipcodeFieldName: "user[zipcode]",
-      bootstrapStyle: true
+      zipcodeFieldName: "user[zipcode]"
     });
   }
 }

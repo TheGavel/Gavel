@@ -33,6 +33,11 @@ class ProductPolicy < ApplicationPolicy
     seller || admin
   end
 
+  def search?
+    visitor
+  end
+
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve

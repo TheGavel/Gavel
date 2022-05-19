@@ -101,4 +101,134 @@
   position: absolute; 
   transform: rotateX(180deg);
   top: 30px;
+
+
+/* 導覽列 */
+.menu_btn{
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top:5px;
+  right: 10px;
+}
+#nav{
+  position: relative;
+  height:60px;
+  width:100%;
+
+}
+#menu_control{
+  position: absolute;
+}
+.menu_btn::before{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 30px;
+  left:2px;
+  background-color: rgb(245, 245, 245);
+  top: 10px;
+  bottom: 0;
+  margin: auto;
+  box-shadow: 0px 8px 0px rgb(244, 244, 244),
+              0px -8px 0px rgb(237, 237, 238);
+}
+.text{
+  width: 100%;
+  height: calc(100vh-60px);
+  background-color: rgb(229, 232, 232);
+  position:absolute;
+  top:60px;
+  left: 0%;
+  left:-100%;
+  transition: .3s;
+}
+.text a{
+  display: block;
+  padding: 20px;
+  color:rgb(10, 7, 45);
+  border-bottom:1px solid rgb(168, 168, 169);
+
+}
+.text a:hover{
+  background-color: rgb(206, 204, 204);
+  color:rgb(37, 114, 238);
+}
+.text span{
+ display: none;
+}
+#menu_control:checked~ #nav .text{
+  left :0;
+}
+.search{
+  left:0;
+  margin: auto;
+}
+.search input{
+  width: 400px;
+}
+.search button{
+  width: 120px;
+}
+@media screen and (min-width:768px){
+  .search{
+    width: 400px;
+    left:0px;
+    margin: auto;
+  }
+  .search input{
+    width: 300px;
+  }
+  .search button{
+    width: 80px;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .menu_btn{
+    display: none;
+  }
+  #nav{
+    align-items: center;
+  }
+
+  #nav .logo {
+    margin-right: 40px;
+  }
+  #nav .Gavel {
+    margin-right: 40px;
+  }
+  .text{
+    left :0px;
+    right:0;
+    position: relative;
+    height:60px;
+    display: flex;
+    align-items: center;  
+    justify-content: flex-end;
+    top: 0;
+    background-color: rgb(17 24 39);
+  }
+  .text a{
+    color: rgb(246, 244, 244);
+    border-bottom:none;
+    margin:0px 5px;
+  }
+  .text a:hover{
+    background-color:transparent;
+    color:rgb(37, 114, 238);
+  }
+  .text span{
+    display: inline;
+   }
+  .search{
+    margin-left:20px ;
+  }
+  .search input{
+    width: 400px;
+  }
+  .search button{
+    width: 80px;
+  }
 }

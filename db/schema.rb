@@ -113,4 +113,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   add_foreign_key "records", "products"
   add_foreign_key "records", "rooms"
   add_foreign_key "records", "users"
+  add_foreign_key "rooms", "products"
 end
+
