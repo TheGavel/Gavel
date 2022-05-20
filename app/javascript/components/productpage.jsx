@@ -12,7 +12,7 @@ const App = () => {
         <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] ">
           <div className="relative mt-6 grid gridfit-[18rem]  gap-y-12 gap-x-8">
           <Routes>
-            <Route path={encodeURI("/products/category/:id")}
+            <Route path={encodeURI("/products/categories/:id")}
                     element={<Card/>} />
           </Routes>
           </div>

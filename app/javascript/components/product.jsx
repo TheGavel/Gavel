@@ -39,7 +39,7 @@ const ProductList = () => {
     const getData = async () => {
       Rails.ajax({
         type: "get",
-        url: `/api/v1/categories/${params.id}`,
+        url: `/api/v1/products/categories/${params.id}`,
         success: (data1) => {
           console.log(data1);
           dataArray = []

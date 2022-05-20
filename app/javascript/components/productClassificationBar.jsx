@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Rails from "@rails/ujs"
 
 const ClassificationBar = () => {
   // {overflow-x-scroll }
-  const category = ["3c","數位","家電","食品","運動戶外","衣鞋包錶","書店","日常"];
+  const [firstLayerCategory, setfirstLayerCategory] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      Rails.ajax({
+        type: "get",
+        url: '/api/v1/products/categories/architecture',
+        success: (category) => {
+          setfirstLayerCategory(() => Object.keys(category) );
+        }
+      })
+    };
+    getData();
+  }, []); //<-- This is the dependency array
+
   return (
     <div className="scroll overflow-y-hidden relative my-5" >
       <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">
         {
-          category.map( (item) => {
-            return  <NavLink
+          firstLayerCategory.map( (item) => {
+            return  <NavLink key={item}
               className={({ isActive }) =>
                 "category " + (isActive ? "activeStyle" : "")}
-              to={`/products/category/${encodeURI(item)}`}>{item}</NavLink>
+              to={`/products/categories/${encodeURI(item)}`}>{item}</NavLink>
           })
         }
       </div>

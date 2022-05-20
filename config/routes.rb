@@ -36,12 +36,18 @@ Rails.application.routes.draw do
               controller: :verification,
               only: %i[new create]
   end
+  # member do
+  # end
 
   namespace :api do
     namespace :v1 do
-      resources :categories, only: [] do
-        member do
-          get :show
+      namespace :products, only: [] do
+        resources :categories, only: [:show] do
+          get :architecture, on: :collection
+          get ':page', to: 'categories#page'
+        end
+        resources :search, only: [:show] do
+          get ':page', to: 'search#page'
         end
       end
       namespace :products, only: [] do
@@ -51,4 +57,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end

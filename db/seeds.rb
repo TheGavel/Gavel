@@ -1,21 +1,25 @@
 require 'faker'
 require 'open-uri'
+category_architecture = JSON.parse(File.read(Rails.root.to_s + '/config/category.json'))
 
-json = {
-  "3c": {
-    "iphone": ["iphone11"],
-    "android": ["oppo", "samsung"],
-  },
-  "運動": { "跑步機": ["喬山", "強生"] },
-}
+def traverse_category_architecture_to_array(architecture)  #Depth-First-Search
+  architecture.keys.each do |key|
+    @tag_array.push(key)
+    if architecture[key].kind_of?(Array)
+      architecture[key].each { |i| @tag_array.push(i) }
+    else
+      traverse_category_architecture_to_array(architecture[key])
+    end
+  end
+end
 
-def aaa(jsonn)
-  sample = jsonn.keys.sample
+def random_category_path(architecture)
+  sample = architecture.keys.sample
   @category_path.push( sample.to_s )
-  if jsonn[sample].kind_of?(Array)
-    @category_path.push( jsonn[sample].sample )
+  if architecture[sample].kind_of?(Array)
+    @category_path.push( architecture[sample].sample )
   else
-    aaa(jsonn[sample])
+    random_category_path(architecture[sample])
   end
 end
 
@@ -29,9 +33,13 @@ Tag.all.delete_all
 User.all.delete_all
 
 
-
 ### TAG
-Tag.create([{ name: '3c' }, { name: '手機' }, { name: 'iphone' }, { name: 'oppo' }, { name: 'samsung' }, { name: '運動' }, { name: '跑步機' }, { name: '喬山' }, { name: '強生' }, { name: 'iphone11' }, { name: 'android' }])
+@tag_array = []
+traverse_category_architecture_to_array(category_architecture)
+@tag_array.map! { |tag|
+  [["name",tag]].to_h
+}
+Tag.create(@tag_array)
 
 ### USER
 def user_img(slug)
@@ -47,7 +55,7 @@ seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmatio
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-10.times do
+100.times do
   ### PRODUCT
   def product_img(width,height,count,id)
     {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
@@ -61,12 +69,12 @@ seller = [seller1,seller2,seller3]
                             user_id: user.id
                             )
   @category_path = []
-  aaa(json)
+  random_category_path(category_architecture)
   @category_path.each { |item|
     tag_id = Tag.find_by(name: item).id
     ProductsTag.create(product_id: product.id, tag_id: tag_id)
   }
-  3.times do
+  2.times do
     product.images.attach(product_img(600,350,3,product.id))
   end
 
