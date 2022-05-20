@@ -32,21 +32,20 @@ const Product = (data) => {
 const ProductList = () => {
   const params = useParams();
   const [myArray, setMyArray] = useState([]);
-  console.log( "params" ,params  );
   let dataArray = []
-
   useEffect(() => {
     const getData = async () => {
+      console.log("params.id",params.id);
       Rails.ajax({
         type: "get",
-        url: `/api/v1/products/categories/${params.id}`,
+        url: `/api/v1/products/categories/${params.id ? params.id: '3C數位' }`,
         success: (data1) => {
           console.log(data1);
           dataArray = []
           data1.forEach( (item) => {
             let data = {}
-            data["sellerImg"] = item.image
-            data["productImg"] = item.image
+            data["sellerImg"] = item.seller_image
+            data["productImg"] = item.product_image
             data["productTitle"] = item.name
             data["productContent"] = item.description
             data["labelList"] = ["標籤1","標籤2","標籤3","標籤4","標籤5"]
@@ -60,14 +59,11 @@ const ProductList = () => {
     getData();
   }, [params]); //<-- This is the dependency array
 
-
   return (
     myArray.map( (item) => {
       return <Product {...item}/>
     })
   )
-
 }
-
 
 export default ProductList;

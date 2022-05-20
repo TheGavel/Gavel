@@ -1,5 +1,4 @@
 import { Controller } from "stimulus"
-import Rails from "@rails/ujs"
 import  { Events,FileUploadWithPreview}  from '../lib/file-upload-with-preview/file-upload-with-preview.cjs.js';
 import '../lib/file-upload-with-preview/file-upload-with-preview.min.css';
 var upload = {}
