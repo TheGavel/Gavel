@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   host: <%= ENV.fetch('PG_HOST', 'localhost') %>
   port: <%= ENV.fetch('PG_PORT', '5432') %>
-  database: "exampledb"
+  database: <%= ENV['PG_DATABASE'] %>
   pool: 5
   username: <%= ENV['PG_USERNAME'] %>
   password: <%= ENV['PG_PASSWORD'] %>
