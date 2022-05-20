@@ -7,7 +7,7 @@ module Newebpay
       @key = ENV['NEWEBPAY_KEY']
       @iv = ENV['NEWEBPAY_IV']
       @merchant_id = ENV['NEWEBPAY_MERCHANT_ID']
-      @info = {}  # 使用 attr_accessor 讓 info 方便存取
+      @info = {}
       set_info(params)
     end
 
