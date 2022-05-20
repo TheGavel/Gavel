@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :own
-      get :search
       get :autocomplete
     end
   end
