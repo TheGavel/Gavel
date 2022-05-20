@@ -18,11 +18,13 @@ Rails.application.routes.draw do
     collection do
       get :own
       get :search
+      get :autocomplete
     end
   end
   resources :rooms do
     collection do
       get :own
+      
     end
   end
 
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
     controller: :verification,
     only: %i[new create]
   end
+
 
 
   namespace :api do
@@ -49,4 +52,3 @@ end
 
   get '/autocomplete' , to: 'products#autocomplete'
 end
-
