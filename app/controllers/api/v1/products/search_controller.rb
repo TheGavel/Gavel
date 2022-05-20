@@ -1,25 +1,23 @@
 class Api::V1::Products::SearchController < ApplicationController
     def show
-        # 找出搜尋的內容
-        product= Product.search(params[:id],
-        misspellings: {edit_distance: 2}, page:1, per_page:30)
-
-        # 返回hash
-        pro = product.as_json
-
-        # 接收一個及多個的引數，第一個引數是函數名，是需要通過url_for()函數來獲取路由的函數名，當函數中有引數時，則需要將這些引數依次傳入到url_for()函數第一個引數的後面
-        pro.each_with_index do |product,index|
-        product[:image] =url_for(pp[index].images[0])
-        end
-
-        render json: pro
-
+        product = Product.search(params[:id],
+                misspellings: {edit_distance: 2}, page:1, per_page:30)
+        render json: product.map{ |pro| {image: url_for(pro.images[0]),
+                                        name: pro.name,
+                                        description: pro.description,
+                                        status: pro.status,
+                                        direct_price: pro.direct_price,
+                                        start_price: pro.start_price}}
     end
-    
     
     def page
-   
+        product = Product.search(params[:search_id],
+        misspellings: {edit_distance: 2}, page: params[:page], per_page:30)
+        render json: product.map{ |pro| {image: url_for(pro.images[0]),
+                                        name: pro.name,
+                                        description: pro.description,
+                                        status: pro.status,
+                                        direct_price: pro.direct_price,
+                                        start_price: pro.start_price}}
     end
-
- 
 end
