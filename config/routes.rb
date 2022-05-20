@@ -37,8 +37,6 @@ Rails.application.routes.draw do
     only: %i[new create]
   end
 
-
-
   namespace :api do
     namespace :v1 do
       resources :categories, only: [] do
@@ -46,9 +44,11 @@ Rails.application.routes.draw do
           get :show
         end
       end
+      namespace :products, only: [] do
+        resources :search, only: [:show] do
+          get ':page', to: 'search#page'
+        end
+      end
     end
   end
-end
-
-  get '/autocomplete' , to: 'products#autocomplete'
 end
