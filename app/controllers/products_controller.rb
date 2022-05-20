@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :find_product, only: %i[show edit update destroy]
   before_action :pundit
   rescue_from Pundit::NotAuthorizedError, with: :no_permission
-
+  PRODUCTS_PER_PAGE=3
 
   def index
     @products = Product.all
@@ -55,10 +55,10 @@ class ProductsController < ApplicationController
 
   def own
   end
-
+  
   def search
     @products= Product.search(params[:query],
-              misspellings: {edit_distance: 2})
+              misspellings: {edit_distance: 2},page:1, per_page:30)
     render json: @products.map{ |pro| {name: pro.name, desc: pro.description, status:  pro.status , direct_price: pro.direct_price } }  
   end
 
@@ -69,9 +69,7 @@ class ProductsController < ApplicationController
       render layout: false 
   end
 
-
-
-  private
+private
 
   def product_params
     params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], selectChildren: [])

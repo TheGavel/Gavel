@@ -42,6 +42,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   gem 'searchkick', '~> 5.0', '>= 5.0.3'
   gem 'elasticsearch', '~> 7.0'
+  gem 'will_paginate', '~> 3.3.0'
 end
 
 group :development do

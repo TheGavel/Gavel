@@ -88,13 +88,14 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "countdown"
-    t.string "start_time"
+    t.string "life_time"
+    t.datetime "start_time"
     t.string "status"
-    t.string "level"
     t.integer "maxpeople"
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_rooms_on_product_id"
   end
 
   create_table "tags", force: :cascade do |t|
