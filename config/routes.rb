@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       post :return_response
     end
     member do
-      get :checkout
+      get :check
     end
   end
 
