@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   resources :rooms do
     collection do
       get :own
+      
     end
   end
 
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
   end
   # member do
   # end
+
 
 
   namespace :api do
