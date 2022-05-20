@@ -14,4 +14,3 @@ ActiveStorage.start();
 
 import "../css/application.css";
 import "controllers";
-

@@ -1,0 +1,68 @@
+.carousel {
+  box-sizing: border-box;
+  margin: 0 30px;
+}
+
+.room_container {
+  max-width: 300px;
+  position: relative;
+  padding: 5px;
+  background: #fff;
+  margin: 15px auto;
+  border-radius: 1rem;
+}
+
+.slider {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.slider img {
+  min-width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0.7rem;
+}
+
+#previous,
+#next {
+  cursor: pointer;
+  position: absolute;
+  border-radius: 16px;
+  background: #002369;
+  color: #fff;
+  padding: 15px;
+  top: calc(50% - 25px);
+  left: -20px;
+}
+
+#next {
+  left: unset;
+  right: -20px;
+}
+
+.dots {
+  margin-top: 5px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dots li {
+  width: 10px;
+  height: 10px;
+  background-color: silver;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+li.dot--active {
+  background-color: gray;
+}

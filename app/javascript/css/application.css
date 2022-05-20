@@ -1,6 +1,9 @@
 @import "./product.css";
+@import "./room.scss";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.zipcode{ width: 4rem; }
+.zipcode {
+  width: 4rem;
+}

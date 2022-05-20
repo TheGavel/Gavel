@@ -1,3 +1,42 @@
+<h1 class="flex justify-center text-4xl" >
+  <%= @product.name%>
+</h1>
+
+<%# 要能link_to點到賣家頁面 %>
+<div class="flex justify-center" >
+  <%= image_tag("rilakkuma.png", width:50) %>
+</div>
+
+
+<h2 class="flex justify-center text-2xl mt-10 " >最高出價：</h2>
+
+<section class="carousel" data-controller="carousel" >
+  <div class="room_container">
+    <span id="previous">＜</span>
+    <span id="next">＞</span>
+    <div id="slider" class="slider">
+      <% @product.images.each do |image| %>
+        <%= image_tag(image, width:50) %>
+      <% end %>
+    </div>
+    <ul id="dots" class="dots">
+      <% @product.images.each do |image| %>
+        <li></li>
+      <% end %>
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="flex justify-center" >
+    <% @product.images.each do |image| %>
+      <%= image_tag(image, width:200) %>
+    <% end %>
+</div>
+
+
 <h1 class="text-4xl">Room view</h1>
 <%= link_to "檢視產品設定" , product_path(@room.id)%>
 <ul>
