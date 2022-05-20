@@ -1,23 +1,13 @@
-class Api::V1::Products::SearchController < ApplicationController
+class Api::V1::Products::SearchController <  Api::V1::Products::BaseController
     def show
-        product = Product.search(params[:id],
+        products = Product.search(params[:id],
                 misspellings: {edit_distance: 2}, page:1, per_page:30)
-        render json: product.map{ |pro| {image: url_for(pro.images[0]),
-                                        name: pro.name,
-                                        description: pro.description,
-                                        status: pro.status,
-                                        direct_price: pro.direct_price,
-                                        start_price: pro.start_price}}
+                render json: product_architecture(products)
     end
     
     def page
-        product = Product.search(params[:search_id],
+        products = Product.search(params[:search_id],
         misspellings: {edit_distance: 2}, page: params[:page], per_page:30)
-        render json: product.map{ |pro| {image: url_for(pro.images[0]),
-                                        name: pro.name,
-                                        description: pro.description,
-                                        status: pro.status,
-                                        direct_price: pro.direct_price,
-                                        start_price: pro.start_price}}
+        render json: product_architecture(products)
     end
 end
