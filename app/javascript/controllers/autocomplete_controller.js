@@ -1,4 +1,4 @@
-import { Application } from '@hotwired/stimulus'
+import { Application } from "stimulus"
 import { Autocomplete } from 'stimulus-autocomplete'
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
