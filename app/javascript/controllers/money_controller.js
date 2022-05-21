@@ -2,7 +2,22 @@ import { Controller } from "stimulus";
 import Rails from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ["price", "output", "roomid", "productid", "userid"];
+  static targets = [
+    "price",
+    "output",
+    "roomid",
+    "productid",
+    "userid",
+    "message",
+  ];
+  // aaa(e) {
+  //   e.preventDefault();
+  //   const bbb = this.messageTarget.value;
+  //   const ddd = document.querySelector("#message");
+  //   const ccc = document.createElement("li");
+  //   ccc.textContent = bbb;
+  //   ddd.insertAdjacentElement("beforeend", ccc);
+  // }
 
   plus(e) {
     e.preventDefault();
@@ -13,16 +28,12 @@ export default class extends Controller {
     let roomid = this.roomidTarget.dataset.roomid;
     let productid = this.productidTarget.dataset.productid;
     let userid = this.useridTarget.dataset.userid;
-    // console.log(bid);
-    // console.log(productid);
-    // console.log(userid);
 
     const data = new FormData();
     data.append("bid", bid);
     data.append("productid", productid);
     data.append("userid", userid);
     data.append("roomid", roomid);
-    // console.log(data);
 
     Rails.ajax({
       type: "post",

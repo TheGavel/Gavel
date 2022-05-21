@@ -4,15 +4,15 @@ class MessagesController < ApplicationController
   end
   
   def create
-    @message = Message.new(msg_params)
+    @message = Message.new(message_params)
     if @message.save
-      ActionCable.server.broadcast "room_channel",content: @message.content
+      ActionCable.server.broadcast "chat_channel",content: @message.content
     end
   end
   
   private
   
-  def msg_params
+  def message_params
     params.require(:message).permit(:content)
   end
 end
