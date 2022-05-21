@@ -20,16 +20,11 @@ const Product = (data) => {
         <p className="text-gray-600 text-base">{productContent}</p>
       </div>
       <div className="px-6 py-4 bg-gray-200">
-        {labelList.map((element, idx) => {
-          return (
-            <span
-              key={"label" + idx}
-              className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2"
-            >
-              #{element}
-            </span>
-          );
-        })}
+        {
+          labelList.map( (element,idx) => {
+            return <span key={"label"+idx} className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#{element}</span>
+          })
+        }
       </div>
     </div>
   );
