@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback"
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  resources :oauths, only: [] do
+    collection do
+      post :callback
+      get :callback
+      get ':provider' => "oauths#oauth", :as => :auth_at_provider
+    end
+  end
 
   root "products#index"
   resources :users do
@@ -10,16 +14,33 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'login' => "user_sessions#create"
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  resources :user_sessions, only: [:new, :create] do
+    collection do
+      delete :destroy
+    end
+  end
+
+#   user_sessions_path	POST	/user_sessions(.:format)
+# user_sessions#create
+
+# new_user_session_path	GET	/user_sessions/new(.:format)
+# user_sessions#new
+
+# user_session_path	DELETE	/user_sessions/:id(.:format)
+# user_sessions#destroy
+
+
+
+  # get 'login' => 'user_sessions#new', :as => :login
+  # post 'login' => "user_sessions#create"
+  # post 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :products do
     collection do
       get :own
       get :autocomplete
       get "search/*path" , to: 'products#index'
-      get "category/*path" , to: 'products#index'
+      get "categories/*path" , to: 'products#index'
     end
   end
   resources :rooms do

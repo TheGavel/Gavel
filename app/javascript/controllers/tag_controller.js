@@ -30,7 +30,6 @@ export default class extends Controller {
 
           select.addEventListener("change", (e) => {
             if (index > maxInput) maxInput = index;
-            console.log("index", index, maxInput);
             maxInput++;
             for (let i = index + 1; i < maxInput + 1; i++) {
               let target = document.querySelector("#selectChildren" + i.toString());
@@ -42,6 +41,19 @@ export default class extends Controller {
         };
         newselect(index, category);
 
+        //讓賣家編輯時 類別可以自動還原自己所選之類別
+        let classification = JSON.parse(this.element.dataset.tags)
+        let selectChange = (tag,i) => {
+          Array.from(document.querySelector("#selectChildren"+i.toString()).children).forEach((child)=>{
+            if(child.value == tag) child.selected = true
+            let changeEvent = new Event('change');
+            document.querySelector("#selectChildren"+i.toString()).dispatchEvent(changeEvent);
+          })
+        }
+        classification.forEach((item,i) => {
+          console.log(item,i);
+          selectChange(item,i+1)
+        })
       }
     })
 
