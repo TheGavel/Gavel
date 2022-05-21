@@ -21,10 +21,9 @@ const ClassificationBar = () => {
   return (
     <div className="scroll overflow-y-hidden relative my-5">
       <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">
-        {firstLayerCategory.map((item, idx) => {
-          return (
-            <NavLink
-              key={"NavLink" + idx}
+        {
+          firstLayerCategory.map( (item,idx) => {
+            return  <NavLink key={"NavLink"+idx}
               className={({ isActive }) =>
                 "category " + (isActive ? "activeStyle" : "")
               }
