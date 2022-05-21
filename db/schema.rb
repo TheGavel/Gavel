@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
     t.integer "maxpeople"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-
   end
 
   create_table "tags", force: :cascade do |t|
@@ -131,5 +130,4 @@ ActiveRecord::Schema.define(version: 2022_05_11_024509) do
   add_foreign_key "records", "products"
   add_foreign_key "records", "rooms"
   add_foreign_key "records", "users"
-  add_foreign_key "rooms", "products"
 end
