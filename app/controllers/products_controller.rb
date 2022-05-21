@@ -56,9 +56,9 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    @search_results= Product.search(params[:q],
-              misspellings: {edit_distance: 2},
-              select: [:name])
+    @search_results = Product.search(params[:q],
+                      misspellings: {edit_distance: 2},
+                      select: [:name])
       render layout: false 
   end
 
