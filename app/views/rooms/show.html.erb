@@ -1,40 +1,53 @@
-<h1 class="flex justify-center text-4xl" >
-  <%= @product.name%>
-</h1>
+<div class="container my-5 mx-auto bg-white rounded-2xl" >
+  <h1 class="flex justify-center text-4xl" >
+    <%= @product.name%>
+  </h1>
 
-<%# 要能link_to點到賣家頁面 %>
-<div class="flex justify-center" >
-  <%= image_tag("rilakkuma.png", width:50) %>
-</div>
-
-
-<h2 class="flex justify-center text-2xl mt-10 " >最高出價：</h2>
-
-<section class="carousel" data-controller="carousel" >
-  <div class="room_container">
-    <span id="previous">＜</span>
-    <span id="next">＞</span>
-    <div id="slider" class="slider">
-      <% @product.images.each do |image| %>
-        <%= image_tag(image, width:50) %>
-      <% end %>
-    </div>
-    <ul id="dots" class="dots">
-      <% @product.images.each do |image| %>
-        <li></li>
-      <% end %>
-      
-    </ul>
+  <%# 要能link_to點到賣家頁面 %>
+  <div class="flex justify-center" >
+    <%= image_tag("rilakkuma.png", width:50) %>
   </div>
-</section>
 
+  <div class="flex justify-center mt-5" >
+  <h2 class="text-2xl" >最高出價：$2500 </h2>
+  <%# 用action cable 接最高價 %>
+  <h2 class="text-2xl" > 直購價：$10000 </h2>
+  </div>
 
+  <section class="carousel" data-controller="carousel" >
+    <div class="room_container">
+      <span id="previous">＜</span>
+      <span id="next">＞</span>
+      <div id="slider" class="slider">
+        <% @product.images.each do |image| %>
+          <%= image_tag(image, width:100) %>
+        <% end %>
+      </div>
+      <ul id="dots" class="dots">
+        <% @product.images.each do |image| %>
+          <li></li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
 
-<div class="flex justify-center" >
-    <% @product.images.each do |image| %>
-      <%= image_tag(image, width:200) %>
-    <% end %>
+  <%# 要再修正成剩餘時間 %>
+  <div class="flex justify-center text-xl relative" >拍賣剩餘時間：<%= @room.start_time %><button type="button" class="logo" ><%= image_tag("logo", width:80 ) %></button></div>
+
+  <div class="flex justify-center"  >
+      <div class="relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
+        <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-x-10" >2500</div>
+      </div>
+  </div>
+
+  <div class=""  >
+    <p class="font-bold text-lg flex justify-center" >目前最高出價：</p>
+  </div>
 </div>
+
+
+
+
 
 
 <h1 class="text-4xl">Room view</h1>
