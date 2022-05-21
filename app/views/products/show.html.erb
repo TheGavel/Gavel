@@ -10,6 +10,7 @@
       <%= image_tag(image, width:50) %>
     <% end %>
   </li>
+  <li>標籤分類:<% @product.tags.each do |tag| %><%= tag.name %>  <% end %></li>
 </ul>
 
 <%= link_to 'Back', own_products_path %>

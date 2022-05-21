@@ -13,6 +13,9 @@ class Product < ApplicationRecord
   has_one :room
   has_many_attached :images
 
+  has_many :products_tags, dependent: :destroy
+  has_many :tags, through: :products_tags
+    
   def self.all_status
     [
       %w[待拍賣 for_sale],

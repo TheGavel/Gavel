@@ -34,4 +34,14 @@ Rails.application.routes.draw do
     controller: :verification,
     only: %i[new create]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :categories, only: [] do
+        member do
+          get :show
+        end
+      end
+    end
+  end
 end
