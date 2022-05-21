@@ -13,11 +13,5 @@ consumer.subscriptions.create("ChatChannel", {
     document
       .querySelector("#message")
       .insertAdjacentHTML("beforeend", datacontent);
-    // e.preventDefault();
-    //   const bbb = this.messageTarget.value;
-    //   const ddd = document.querySelector("#message");
-    //   const ccc = document.createElement("li");
-    //   ccc.textContent = bbb;
-    //   ddd.insertAdjacentElement("beforeend", ccc);
   },
 });
