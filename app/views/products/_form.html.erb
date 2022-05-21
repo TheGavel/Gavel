@@ -14,7 +14,7 @@
           <%= form.label :name, "商品名稱：", class:"text-gray-800"%>
           <%= form.text_field :name, placeholder:"商品名稱", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
         </div>
-  
+
         <div class="field flex items-start my-5">
           <%= form.label :description, "商品描述：", class:"text-gray-800"%>
           <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "24x6", class:"w-9/12 border py-1 px-2 ml-1 border-gray-400 text-sm font-normal rounded"%>
@@ -33,27 +33,42 @@
           <%= form.label :start_price, "起標價格：", class:"text-gray-800"%>
           <%= form.text_field :start_price, type:"nunber" ,placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
         </div>
-  
+
         <div class="field my-5">
           <%= form.label :direct_price, "直購價格：", class:"text-gray-800"%>
           <%= form.text_field :direct_price, placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
         </div>
-  
+
         <div class="status my-5 flex">
           <%= form.label :status, "狀態：", class:"mt-3 ml-8 text-gray-800"%>
           <div class="styled-select", class="text-white">
             <%= form.select :status, Product.all_status, class:"text-blue-500 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
           </div>
         </div>
-  
+
         <div class="actions pt-5 pb-10">
           <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4"%>
           <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 text-white hover:bg-gray-200 border-2 border rounded"%>
         </div>
       <% end %>
   </div>
-</div>
-  
+
+  <div class="custom-file-container w-[600px]" data-upload-id="myFirstImage" data-controller="multipleImg" >
+  </div>
+
+  <div  data-controller="tag"
+        data-tags="[<%= product.tags.map{|i|
+                                          "\"#{i.name}\""
+                                        }.join(",") %> ]">
+  </div>
+
+  <!-- .map{
+    |tag| tag.name
+  }.join("', '") -->
+
+
+  <%= form.submit%>
+<% end %>
 <script> //DEBUG用
   function onChangeFunction(event) {
     let fileList = event.target.files;
