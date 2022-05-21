@@ -80,7 +80,6 @@ class ProductsController < ApplicationController
   end
 
   def no_permission
-    flash[:alert] = '請先驗證手機號碼，才能啟用賣場功能。'
     redirect_to new_sms_auth_registration_path
   end
 end

@@ -1,7 +1,7 @@
 <%# 登入頁面  %>
 <div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto">
   <div class="mt-10">
-    <%= form_with url: login_path, method: :post do |f| %>
+    <%= form_with url: user_sessions_path, method: :post do |f| %>
     <h1 class="text-4xl font-bold py-8 px-5 mt-2">登入</h1>
 
     <div class="mx-4">
@@ -24,20 +24,20 @@
 
     <div class="mb-4">
       <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-gray-200 hover:bg-gray-300 ">
-        <%= link_to '<img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2 inline"/> 使用Google登入'.html_safe, auth_at_provider_path(:provider => :google), class: "w-full text-center" %>
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/google-logo.png" class="w-6 mr-2 inline"/> 使用Google登入'.html_safe, auth_at_provider_oauths_path(:provider => :google), class: "w-full text-center" %>
       </div>
     </div>
 
     <div class="mb-4">
       <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-black text-white hover:bg-gray-700">
-        <%= link_to '<img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2 inline"/> 使用Github登入'.html_safe, auth_at_provider_path(:provider => :github), class: "w-full text-center"%> 
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/github.png" class="w-6 mr-2 inline"/> 使用Github登入'.html_safe, auth_at_provider_oauths_path(:provider => :github), class: "w-full text-center"%>
       </div>
     </div>
-    
+
     <%#臉書功能還沒做所以點了會失敗  %>
     <div class="mb-4">
       <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-800 text-white hover:bg-blue-700">
-        <%= link_to '<img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2 inline"/> 使用Facebook登入'.html_safe, auth_at_provider_path(:provider => :facebook), class: "w-full text-center"%> 
+        <%= link_to '<img src="https://img.icons8.com/color/48/000000/facebook.png" class="w-6 mr-2 inline"/> 使用Facebook登入'.html_safe, auth_at_provider_oauths_path(:provider => :facebook), class: "w-full text-center"%>
       </div>
     </div>
 

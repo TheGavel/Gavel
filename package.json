@@ -1,5 +1,5 @@
 {
-  "name": "garvel",
+  "name": "gavel",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
@@ -22,8 +22,7 @@
     "tw-city-selector": "^2.1.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
-    "jquery": "^3.5.1",
-    "select2": "^4.0.13"
+    "jquery": "^3.5.1"
   },
   "version": "0.1.0",
   "devDependencies": {

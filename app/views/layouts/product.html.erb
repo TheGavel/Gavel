@@ -32,13 +32,13 @@
 				<div class="text text-white xl:ml-28">
 					<% if current_user %>
 						<%= link_to "編輯個人資訊", edit_user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "登出", :logout, method: :post, class:"xl:mx-1 hover:text-blue-500" %>
 						<%= link_to "我的賣場", own_products_path , class:"xl:mx-0 hover:text-blue-500" %>
 						<%= link_to "驗證sms", :new_sms_auth_registration , class:"xl:mx-0 hover:text-blue-500" %>
 						<%= link_to "使用者資訊", :users , class:" xl:mx-0 hover:text-blue-500" %>
+            <%= link_to "登出", user_sessions_path, method: :delete, class:"xl:mx-1 hover:text-blue-500" %>
 					<% else %>
 						<%= link_to "註冊", new_user_path, class:"mx-2 hover:text-blue-500" %>|
-						<%= link_to "登入", :login, class:"mx-2 hover:text-blue-500" %>
+						<%= link_to "登入", new_user_session_path, class:"mx-2 hover:text-blue-500" %>
 					<% end %>
 				</div>
 				<label for="menu_control" class="menu_btn">

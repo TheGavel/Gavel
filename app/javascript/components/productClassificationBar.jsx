@@ -22,8 +22,8 @@ const ClassificationBar = () => {
     <div className="scroll overflow-y-hidden relative my-5" >
       <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">
         {
-          firstLayerCategory.map( (item) => {
-            return  <NavLink key={item}
+          firstLayerCategory.map( (item,idx) => {
+            return  <NavLink key={"NavLink"+idx}
               className={({ isActive }) =>
                 "category " + (isActive ? "activeStyle" : "")}
               to={`/products/categories/${encodeURI(item)}`}>{item}</NavLink>
