@@ -2,7 +2,6 @@ import React , { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Rails from "@rails/ujs"
 
-
 const Product = (data) => {
   const {sellerImg,productImg,productTitle,productContent,labelList} = data;
   return (
@@ -19,8 +18,8 @@ const Product = (data) => {
       </div>
       <div className="px-6 py-4 bg-gray-200">
         {
-          labelList.map( element => {
-            return <span className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#{element}</span>
+          labelList.map( (element,idx) => {
+            return <span key={"label"+idx} className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#{element}</span>
           })
         }
       </div>
@@ -35,14 +34,12 @@ const ProductList = () => {
   let dataArray = []
   useEffect(() => {
     const getData = async () => {
-      console.log("params.id",params.id);
       Rails.ajax({
         type: "get",
         url: `/api/v1/products/categories/${params.id ? params.id: '3C數位' }`,
-        success: (data1) => {
-          console.log(data1);
+        success: (productData) => {
           dataArray = []
-          data1.forEach( (item) => {
+          productData.forEach( (item) => {
             let data = {}
             data["sellerImg"] = item.seller_image
             data["productImg"] = item.product_image
@@ -52,7 +49,6 @@ const ProductList = () => {
             dataArray.push(data)
           })
           setMyArray(() => dataArray );
-          console.log("dataArray",dataArray);
         },
       })
     };
@@ -60,8 +56,8 @@ const ProductList = () => {
   }, [params]); //<-- This is the dependency array
 
   return (
-    myArray.map( (item) => {
-      return <Product {...item}/>
+    myArray.map( (item,idx) => {
+      return <Product key={"Product"+idx} {...item}/>
     })
   )
 }
