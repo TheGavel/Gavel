@@ -1,20 +1,9 @@
-
-<%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
-  <div>
-    <div class=" bg-white h-20 items-center flex justify-between items-center shadow fixed top-0 right-0 left-0 p-4 z-10 rounded-md">
-      <h1 class="font-medium text-lg text-gray-800 md:text-2xl">今天想賣出什麼商品？</h1>
-      <div class="flex justify-end mx-2">
-        <%= link_to '取消', own_products_path, data: { confirm: '確定要離開嗎？' }, class:" border-2 border border-gray-400 hover:bg-gray-200 rounded px-4 py-3 mr-1 text-sm"%>
-        <%= form.submit "立即刊登", class:"bg-blue-600 text-white hover:bg-blue-700 rounded p-2 py-3 mx-2 text-sm border border-blue-800"%>
-      </div>
-    </div>
-  </div>
-<% end %>
-
+<div class=" bg-white h-20 items-center flex justify-between items-center shadow fixed top-0 right-0 left-0 p-4 z-10 rounded-md">
+  <h1 class="text-2xl text-gray-800 md:text-2xl">今天想賣出什麼商品？</h1>
+</div>
 
 <div class="rounded-2xl w-11/12 m-auto md:w-8/12 lg:w-5/12 mt-20 shadow bg-white">
   <div class="bg-blue-500 h-4 top-0 m-auto rounded-t-2xl"></div>
-
     <div class="px-5">
       <h1 class="text-2xl my-8 font-bold font-mono text-gray-800">新增商品</h1>
         <%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
@@ -36,15 +25,14 @@
     <div class="field my-5">
       <div clas="flex">
         <%= form.label :start_price, "起標價格：", class:"text-gray-800"%>
-        <%= form.text_field :start_price, value:"", type:"nunber" ,placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
+        <%= form.text_field :start_price, type:"nunber" ,placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
       </div>
     </div>
 
     <div class="field my-5">
       <%= form.label :direct_price, "直購價格：", class:"text-gray-800"%>
-      <%= form.text_field :direct_price, value:"", placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
+      <%= form.text_field :direct_price, placeholder:"NT$", class:"text-gray-800 w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
     </div>
-
 
     <div class="status my-5 flex">
       <%= form.label "狀態：", class:"mt-3 ml-8 text-gray-800"%>
@@ -54,7 +42,8 @@
     </div>
 
     <div class="actions pt-5 pb-10">
-      <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700"%>
+      <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4"%>
+      <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 text-white hover:bg-gray-200 border-2 border rounded "%>
     </div>
     <% end %>
 </div>
