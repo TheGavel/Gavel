@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resources :rooms do
     collection do
       get :own
-      
+
     end
     member do
       resources :messages, only: [:create]
