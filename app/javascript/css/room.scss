@@ -66,3 +66,23 @@
 li.dot--active {
   background-color: gray;
 }
+
+#timer {
+  font-family: sans-serif;
+  font-weight: lighter;
+  padding: 70px 50px;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 100;
+}
+
+#timer div {
+  display: inline-block;
+  min-width: 90px;
+}
+
+#timer div span {
+  display: block;
+  font-size: 0.35em;
+  font-weight: 400;
+}

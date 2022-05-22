@@ -31,23 +31,25 @@
     </div>
   </section>
 
-  <%# 要再修正成剩餘時間 %>
-  <div class="flex justify-center text-xl relative" >拍賣剩餘時間：<%= @room.start_time %><button type="button" class="logo" ><%= image_tag("logo", width:80 ) %></button></div>
+  <div data-controller="bid">
+    <%# 要再修正成剩餘時間 %>
+    <div class="flex justify-center text-xl relative" >拍賣剩餘時間：
+      <div id="timer" data-controller="timer" data-content-loader-refresh-interval-value="1000"></div>
+      <div><%= Time.now %></div>
+      <button type="button" class="logo"  data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+    </div>
 
-  <div class="flex justify-center"  >
-      <div class="relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
-        <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-x-10" >2500</div>
-      </div>
-  </div>
+    <div class="flex justify-center" data-bid-target="record" >
+        <div class="relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
+          <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-x-10" >2500</div>
+        </div>
+    </div>
 
-  <div class=""  >
-    <p class="font-bold text-lg flex justify-center" >目前最高出價：</p>
+    <div style="display:none;" data-bid-target="price" >
+      <p class="font-bold text-lg flex justify-center" >目前最高出價：</p>
+    </div>
   </div>
 </div>
-
-
-
-
 
 
 <h1 class="text-4xl">Room view</h1>
