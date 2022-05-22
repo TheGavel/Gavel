@@ -10,14 +10,6 @@ export default class extends Controller {
     "userid",
     "message",
   ];
-  // aaa(e) {
-  //   e.preventDefault();
-  //   const bbb = this.messageTarget.value;
-  //   const ddd = document.querySelector("#message");
-  //   const ccc = document.createElement("li");
-  //   ccc.textContent = bbb;
-  //   ddd.insertAdjacentElement("beforeend", ccc);
-  // }
 
   plus(e) {
     e.preventDefault();
@@ -42,7 +34,9 @@ export default class extends Controller {
       success: (resp) => {
         console.log(resp);
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 }

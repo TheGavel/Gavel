@@ -1,7 +1,9 @@
 import consumer from "./consumer";
 
 consumer.subscriptions.create("RoomChannel", {
-  connected() {},
+  connected() {
+    console.log("fff");
+  },
 
   disconnected() {},
 
