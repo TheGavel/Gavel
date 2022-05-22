@@ -158,7 +158,7 @@
   .search ul li{
     padding:10px 0 10px 10px;
     background: white;
-}
+  }
 }
 
 @media screen and (min-width:1200px){
@@ -207,7 +207,6 @@
   .search ul li{
     padding:10px 0 10px 10px;
     background: white;
-  
   }
   .search ul li:hover{
     background-color: rgb(218, 218, 219);
