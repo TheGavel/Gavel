@@ -168,12 +168,8 @@
   #nav{
     align-items: center;
   }
-
-  #nav .logo {
-    margin-right: 40px;
-  }
   #nav .Gavel {
-    margin-right: 40px;
+    margin-right: 10px;
   }
   .text{
     left :0px;
@@ -192,14 +188,14 @@
     margin:0px 5px;
   }
   .text a:hover{
-    background-color:transparent;
+    background-color: transparent;
     color:rgb(37, 114, 238);
   }
   .text span{
     display: inline;
   }
   .search{
-    margin-left:20px ;
+    margin-left:100px ;
   }
   .search ul {
     width: 400px;
