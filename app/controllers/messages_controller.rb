@@ -5,9 +5,7 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(message_params)
-    if @message.save
       ActionCable.server.broadcast "chat_channel",content: @message.content
-    end
   end
   
   private
