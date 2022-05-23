@@ -290,10 +290,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
-<<<<<<< HEAD
-=======
   x86_64-linux
->>>>>>> 9bb5738 (add_product_launch_page)
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
