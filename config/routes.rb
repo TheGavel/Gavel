@@ -78,10 +78,6 @@ Rails.application.routes.draw do
           get ':page', to: 'search#page'
         end
       end
-      namespace :products, only: [] do
-        resources :search, only: [:show] do
-          get ':page', to: 'search#page'
-      resources :auction, only: [] do
       resources :room, only: [] do
         member do
           post :auction
