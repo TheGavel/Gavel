@@ -14,7 +14,7 @@
 			<div id="nav" class ="bg-gray-900 h-24 items-center flex fixed top-0 right-0 left-0">
 				<div class="flex items-center">
 					<%=image_tag("gavel_logo.png", alt: "Gavel logo", :class => "logo w-12 w-12 ml-4")%><br>
-					<p class="Gavel text-gray-200 text-2xl font-mono font-bold ml-4">Gavel</p>
+					<p class="Gavel text-gray-200 text-2xl font-mono font-bold">Gavel</p>
 				</div>
 				<div data-controller="search" class="search md:flex">
 					<form method="get" data-action="submit->search#search" class="flex justify-center shadow-2xl">
@@ -31,10 +31,9 @@
 				</div>
 				<div class="text text-white xl:ml-28">
 					<% if current_user %>
-						<%= link_to "編輯個人資訊", edit_user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "我的賣場", own_products_path , class:"xl:mx-0 hover:text-blue-500" %>
+						<%= link_to "個人資訊", user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
+						<%= link_to "我的商品", own_products_path , class:"xl:mx-0 hover:text-blue-500" %>
 						<%= link_to "驗證sms", :new_sms_auth_registration , class:"xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "使用者資訊", :users , class:" xl:mx-0 hover:text-blue-500" %>
             <%= link_to "登出", user_sessions_path, method: :delete, class:"xl:mx-1 hover:text-blue-500" %>
 					<% else %>
 						<%= link_to "註冊", new_user_path, class:"mx-2 hover:text-blue-500" %>|
