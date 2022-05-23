@@ -26,7 +26,7 @@ export default class extends Controller {
     upload = new FileUploadWithPreview('myFirstImage',{
       "multiple": true,
       "text": {
-        "label": "選擇圖片:"
+        "label": "選擇照片:"
       },
       "images": {
         // "baseImage": "https://ch-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fas.chdev.tw%2Fweb%2Farticle%2F9%2Ff%2F4%2F903276c8-ff55-4e63-b49c-819b3d6c8de0%2FA1105542.jpg/?w=621"
