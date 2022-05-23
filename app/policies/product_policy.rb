@@ -6,7 +6,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-    seller || admin
+    visitor
   end
 
   def new?
