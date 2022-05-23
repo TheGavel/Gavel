@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   root "products#index"
+
   resources :users do
     member do
       get :activate
@@ -19,21 +20,6 @@ Rails.application.routes.draw do
       delete :destroy
     end
   end
-
-#   user_sessions_path	POST	/user_sessions(.:format)
-# user_sessions#create
-
-# new_user_session_path	GET	/user_sessions/new(.:format)
-# user_sessions#new
-
-# user_session_path	DELETE	/user_sessions/:id(.:format)
-# user_sessions#destroy
-
-
-
-  # get 'login' => 'user_sessions#new', :as => :login
-  # post 'login' => "user_sessions#create"
-  # post 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :products do
     collection do
