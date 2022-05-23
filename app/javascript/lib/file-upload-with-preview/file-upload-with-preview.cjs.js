@@ -891,7 +891,7 @@ var UNIQUE_ID_IDENTIFIER = ':upload:';
 var MULTI_ITEM_CLEAR_ANIMATION_CLASS = 'multi-item-clear-animation';
 
 var DEFAULT_CHOOSE_FILE_TEXT = 'Choose file...';
-var DEFAULT_BROWSE_TEXT = 'Browse';
+var DEFAULT_BROWSE_TEXT = '上傳照片';
 var DEFAULT_FILES_SELECTED_TEXT = 'files selected';
 var DEFAULT_LABEL_TEXT = 'Upload';
 
