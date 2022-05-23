@@ -1,6 +1,6 @@
 <div class="container my-5 mx-auto bg-white rounded-2xl" >
   <h1 class="flex justify-center text-4xl" >
-    <%= @product.name%>
+    <%= @product.name %>
   </h1>
 
   <%# 要能link_to點到賣家頁面 %>
@@ -11,7 +11,7 @@
   <div class="flex justify-center mt-5" >
   <h2 class="text-2xl" >最高出價：$2500 </h2>
   <%# 用action cable 接最高價 %>
-  <h2 class="text-2xl" > 直購價：$10000 </h2>
+  <h2 class="text-2xl" > 直購價：$<%= @product.direct_price %> </h2>
   </div>
 
   <section class="carousel" data-controller="carousel" >
@@ -31,12 +31,11 @@
     </div>
   </section>
 
-  <div data-controller="bid">
+  <div class="relative" data-controller="bid">
     <%# 要再修正成剩餘時間 %>
-    <div class="flex justify-center text-xl relative" >拍賣剩餘時間：
-      <div id="timer" data-controller="timer" data-content-loader-refresh-interval-value="1000"></div>
-      <div><%= Time.now %></div>
-      <button type="button" class="logo"  data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+    <div class="flex justify-center text-xl" >拍賣剩餘時間：
+      <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.life_time %>" data-countdown-now-value="<%= Time.now %>" >...</span>
+      <button type="button" class="logo absolute "  data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
     </div>
 
     <div class="flex justify-center" data-bid-target="record" >
