@@ -4,8 +4,12 @@
     <% @products.each do |product|%>
       <li>
       <%= link_to product.name , product_path(product.id)%>
+      |
       <%= link_to "edit" , edit_product_path(product.id)%>
+      |
       <%= link_to "delete" , product_path(product.id) , method:"DELETE" , data: {confirm: "Are you sure?"}%>
+      |
+      <%= link_to "CreateRoom", new_room_path %>
       </li>
     <% end%>
   </ul>

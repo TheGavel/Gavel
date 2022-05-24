@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
         }
 
         session[:product_id] = @product.id
-        redirect_to new_room_path, notice: 'then create rooms!!'
+        redirect_to new_room_path
       else
         render :new
       end
