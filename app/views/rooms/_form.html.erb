@@ -1,25 +1,27 @@
-<%= form_with(model: room) do |form|%>
+<div class="rounded-2xl m-auto md:w-8/12 lg:w-5/12 mt-10 shadow bg-white">
+  <div class="bg-blue-500 h-4 top-0 w-12/12 rounded-t-2xl"></div>
+  <h1 class="text-2xl my-8 font-bold font-mono text-gray-800 text-center">創建拍賣房間</h1>
+  <%= form_with(model: room) do |form|%>
 
-  <div class="field flex items-start">
-    <%= form.label :start_time ,"開標時間:"%>
-    <%= form.text_field :start_time %>
+  <div class="field my-5 mx-auto text-center">
+    <%= form.label :start_time ,"開始時間："%>
+    <%= form.text_field :start_time, data:{controller:"timepicker"},placeholder:"設置開始時間" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
   </div>
 
-  <div class="field">
-    <%= form.label :end_time, "結標時間:" %>
-    <%= form.text_field :end_time %>
+  <div class="field my-5 mx-auto text-center">
+    <%= form.label :end_time ,"結束時間："%>
+    <%= form.text_field :end_time, data:{controller:"timepicker"},placeholder:"設置結束時間", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status, "房間狀態:" %>
-    <%= form.text_field :status %>
+  <div class="field my-5 mx-auto text-center">
+    <%= form.label :maxpeople, "房間人數：" %>
+    <%= form.text_field :maxpeople , placeholder:"房間人數上限" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
+  </div>
+  <div class="actions pt-5 pb-10">
+    <%= form.submit "建立拍賣房間" ,class:"w-5/6 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
+    <%= link_to "返回我的商品" , own_products_path,data: { confirm: '確定要返回嗎？' }, class:"w-5/6 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded"%>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :maxpeople, "最多上線人數:" %>
-    <%= form.text_field :maxpeople %>
-  </div>
 
-  <%= form.submit%>
-
-<% end %>
+</div>
