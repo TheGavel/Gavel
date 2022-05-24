@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(message_params)
-      ActionCable.server.broadcast "chat_channel",content: @message.content
+      ActionCable.server.broadcast "chat_channel", content: @message.content, username: @message.username
   end
   
   private
   
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :username)
   end
 end

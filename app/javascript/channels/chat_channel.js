@@ -1,6 +1,6 @@
 import consumer from "./consumer";
 
-consumer.subscriptions.create("ChatChannel", {
+consumer.subscriptions.create("ChatChannel"`${room_id}`, {
   connected() {
     console.log("hello");
   },
@@ -8,7 +8,7 @@ consumer.subscriptions.create("ChatChannel", {
   disconnected() {},
 
   received(data) {
-    const datacontent = `<li>${data.content}</li>`;
+    const datacontent = `<li>${data.username} : ${data.content}</li>`;
     console.log(data);
     document
       .querySelector("#message")

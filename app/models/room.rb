@@ -3,4 +3,5 @@
 class Room < ApplicationRecord
   belongs_to :product
   has_many :record
+  has_many :messages
 end

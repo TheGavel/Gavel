@@ -16,7 +16,7 @@ end
 
   has_many :products_tags, dependent: :destroy
   has_many :tags, through: :products_tags
-
+  has_many :records
   def self.all_status
     [
       %w[待拍賣 for_sale],
