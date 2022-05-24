@@ -19,8 +19,11 @@
         <div class="text text-white xl:ml-28">
           <% if current_user %>
               <%= link_to "個人資訊", user_path(current_user.id) ,class:" xl:mx-0 hover:text-blue-500"%>
-              <%= link_to "我的商品", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
+            <% if not current_user.role == "seller"%>
               <%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
+            <% else %>
+              <%= link_to "我的商品", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
+            <% end %>
               <%= link_to "登出", user_sessions_path, method: "delete"  ,class:"xl:mx-1 hover:text-blue-500"%>
           <% else %>
               <%= link_to "註冊", new_user_path ,class:"hover:text-blue-500"%><span class="none">|</span>
