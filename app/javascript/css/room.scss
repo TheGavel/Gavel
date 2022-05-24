@@ -1,3 +1,9 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
 .carousel {
   box-sizing: border-box;
   margin: 0 30px;
@@ -32,18 +38,18 @@
 #previous,
 #next {
   cursor: pointer;
+  font-size: x-large;
   position: absolute;
   border-radius: 16px;
-  background: #407bff;
-  color: #fff;
+  color: rgb(0, 0, 0);
   padding: 15px;
-  top: calc(50% - 25px);
-  left: -20px;
+  top: calc(50% - 40px);
+  left: -50px;
 }
 
 #next {
   left: unset;
-  right: -20px;
+  right: -50px;
 }
 
 .dots {

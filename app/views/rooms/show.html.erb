@@ -41,35 +41,42 @@
       <div class="relative">
         <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.life_time %>" data-countdown-now-value="<%= Time.now %>" >...</span>
         <button type="button" class="logo absolute -top-8
-        -right-20"  data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+        -right-20 rounded-full w-70 h-70 shadow-2xl transform transition-all hover:rotate-12"  data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
       </div>
     </div>
 
-    <div class="flex justify-center" data-bid-target="record" >
+    <div class="flex justify-center mt-10" data-bid-target="record" >
         <div class="relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
-          <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-x-10" >2500</div>
+          <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-y-10" >2500</div>
         </div>
     </div>
 
-    <div class="hidden my-5" data-bid-target="bid" >
-      <p class="font-bold text-lg flex justify-center" >競標</p>
+    <div class="hidden my-5 bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl mx-auto w-3/5 rounded-lg mt-5" data-bid-target="bid" >
+      <span class="font-bold text-4xl flex justify-center pt-5 mb-5" >開始競標！</span>
       <div class="flex justify-center" >
-        你的出價：$ <span data-bid-target="priceNow">2500</span> + 
-        $<input type="number" data-bid-target="input" >
-        <button data-action="click->bid#addPrice">加價</button> = 
-        $<span data-bid-target="yourPrice" ></span>
+        <span class="text-4xl" >$</span>
+        <span data-bid-target="priceNow" class="text-4xl relative" >2500</span>
+        <span class="text-4xl mx-5" >+</span>
+        <div class="test" >
+          <input type="number" min="0" data-bid-target="input" data-action="bid#addPrice" class="font-bold text-xl border rounded-xl py-2 px-3 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" >
+        </div>
+        <span class="text-4xl mx-5" > = </span>
+        <span class="text-4xl" >$</span>
+        <span data-bid-target="yourPrice" class="text-4xl relative">$2500
+          <p class="absolute text-lg" >你的出價</p>
+        </span>
       </div>
-      <div class="flex justify-center" >
-        <button>+100</button>
-        <button>+500</button>
-        <button>+1000</button>
-        <button>確認出價！</button>
+      <div class="flex justify-center mt-5" >
+        <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
+        <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
+        <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
+      </div>
+      <div class="flex justify-center " >
+        <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" >確認出價！</button>
       </div>
     </div>
 
   </div>
-
-
 
 </div>
 
