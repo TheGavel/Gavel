@@ -10,7 +10,7 @@ module SmsAuth
         if verify_pin(@verification) == 'approved'
           update_user_phone_and_role(session[:phone])
           flash[:alert] = "手機驗證成功"
-          redirect_to users_path
+          redirect_to root_path
         else
           flash[:alert] = '驗證碼無效'
           redirect_to new_sms_auth_verification_path
