@@ -1,0 +1,49 @@
+<div class="antialiased bg-gray-100 text-gray-600 h-screen px-4">
+  <div class="flex flex-col justify-center h-30">
+    <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+      <div class="p-3">
+        <div class="overflow-x-auto">
+          <table class="table w-full mx-auto">
+            <!-- head -->
+            <thead class="text-xs font-semibold text-gray-400 bg-gray-50">
+              <tr>
+                <th class="p-2 whitespace-nowrap text-xl">訂單編號</th>
+                <th class="p-2 whitespace-nowrap text-xl">商品名稱</th>
+                <th class="p-2 whitespace-nowrap text-xl">商品價格</th>
+                <th class="p-2 whitespace-nowrap text-xl">訂單狀態</th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-100">
+              <% @records.each do |record| %>
+                <tr class="hover:bg-blue-400 text-center p-10 ">
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-gray-800">
+                      <%= record.id %>
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-gray-800">
+                     <%= record.description %>
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-gray-800">
+                      <%= record.price %>
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-gray-800">
+                      <%= record.status %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
