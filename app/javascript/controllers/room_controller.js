@@ -2,26 +2,39 @@ import { Controller } from "stimulus";
 import { createConsumer } from "@rails/actioncable";
 
 export default class extends Controller {
+
+  static targets = [ "currentprice","yourprice","finalprice" ]
+
   initialize() {
     let thisController = this;
-    this.channel = createConsumer().subscriptions.create( "ChatRoomSidebarChannel", {
+    this.channel = createConsumer().subscriptions.create( "RoomChannel", {
       connected() {
         thisController.listen()
       },
-      received({ chat_room_details, chat_room_id }) {
-        let existingItem = document.querySelector(`[data-chat-room-id='${ chat_room_id }']`)
-        if (existingItem) {
-          let html = new DOMParser().parseFromString( chat_room_details , 'text/html');
-          const itemHTML = html.body.firstChild;
-          existingItem.parentNode.replaceChild(itemHTML, existingItem);
+      received({ bid , message , user }) {
+        console.log(bid);
+        if(bid != undefined){
+          thisController.currentpriceTargets.map( (currentprice)=>{ currentprice.textContent = bid } )
+          thisController.yourpriceTarget.value = thisController.yourpriceTarget.min
+          thisController.updatePrice()
         }
-      }
+
+        if(message != undefined){
+        }
+
+      },
+
     });
   }
 
+  updatePrice(){
+    this.finalpriceTarget.textContent = Number(this.currentpriceTarget.textContent)
+    + Number(this.yourpriceTarget.value)
+  }
+
   connect() {
-    console.log("aaa");
-    this.listen()
+    this.updatePrice()
+    this.yourpriceTarget.addEventListener('input', ()=>{ this.updatePrice()});
   }
 
   disconnect() {
@@ -30,13 +43,26 @@ export default class extends Controller {
     }
   }
 
-  listen() {
+  bid() {
     if (this.channel) {
-      let chatRooms = []
-      for (const value of document.querySelectorAll(`[data-chat-room-id]`)) {
-        chatRooms.push( value.getAttribute('data-chat-room-id') )
-      }
-      this.channel.perform('follow', { chatRooms: chatRooms } )
+      this.channel.perform("bid", {room: this.element.dataset.room,
+                                   user: this.element.dataset.user,
+                                   price: this.finalpriceTarget.textContent })
     }
   }
+
+  chat() {
+    if (this.channel) {
+      this.channel.perform("chat", {room: this.element.dataset.room,
+                                   user: this.element.dataset.user,
+                                   message: 100 })
+    }
+  }
+
+  listen() {
+    if (this.channel) {
+      this.channel.perform('follow', { room: this.element.dataset.room } )
+    }
+  }
+
 }

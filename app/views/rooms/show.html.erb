@@ -128,3 +128,28 @@
 
 <button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase"><%= link_to '返回', product_path %></button>
 <button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>
+
+
+<h1 class="text-4xl">Room view</h1>
+<%= link_to "檢視產品設定" , product_path(@room.id)%>
+<ul>
+  <li>開標時間:<%= @room.start_time %></li>
+  <li>結標時間:<%= @room.end_time%></li>
+  <li>房間狀態:<%= @room.status%></li>
+  <li>最多上線人數:<%= @room.maxpeople%></li>
+</ul>
+
+<div data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>" >
+  <div data-room-target="currentprice">300</div>
+  <span data-room-target="currentprice">300</span> +
+  <input data-room-target="yourprice" type="number" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>">
+  <span data-room-target="finalprice"></span>
+
+  <button data-action="click->room#bid">
+    bid
+  </button>
+
+  <button data-action="click->room#chat" class="block">
+    chat
+  </button>
+</div>
