@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   resources :oauths, only: [] do
     collection do
       post :callback
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
       get "categories/*path" , to: 'products#index'
     end
   end
-  
+
   resources :rooms do
     collection do
       get :own
