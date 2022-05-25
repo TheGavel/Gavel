@@ -2,23 +2,23 @@
 
 class ProductPolicy < ApplicationPolicy
   def index?
-    visitor
+    true
   end
 
   def show?
-    visitor
+    true
   end
 
   def new?
-    seller || admin
+    create?
   end
 
   def create?
-    seller || admin
+    seller
   end
 
   def edit?
-    seller || admin
+    update?
   end
 
   def update?
@@ -26,19 +26,15 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def destroy?
-    seller || admin
+    update?
   end
 
   def own?
-    seller || admin
+    seller
   end
 
-  def search?
-    visitor
-  end
-
-  def autocomplete?
-    visitor
+  def autocomplete
+    true
   end
 
 
