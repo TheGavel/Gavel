@@ -5,12 +5,14 @@
 
   <div class="field my-5 mx-auto text-center">
     <%= form.label :start_time ,"開始時間："%>
-    <%= form.text_field :start_time, data:{controller:"timepicker"},placeholder:"設置開始時間" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
+    <input type="datetime-local" name="room[start_time]">
+    <%#= form.text_field :start_time, data:{controller:"timepicker"},placeholder:"設置開始時間" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
   </div>
 
   <div class="field my-5 mx-auto text-center">
     <%= form.label :end_time ,"結束時間："%>
-    <%= form.text_field :end_time, data:{controller:"timepicker"},placeholder:"設置結束時間", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
+    <input type="datetime-local" name="room[end_time]">
+    <%#= form.text_field :end_time, data:{controller:"timepicker"},placeholder:"設置結束時間", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
   </div>
 
   <div class="field my-5 mx-auto text-center">
