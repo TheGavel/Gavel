@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-
+require 'open-uri'
+require 'faker'
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index new create activate] # 僅當您允許用戶自己註冊時才應使用。
@@ -9,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show
+  end
 
   # GET /users/new
   def new
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    @user.avatar.attach(user_img(@user.id))
 
     respond_to do |format|
       if @user.save
@@ -82,5 +85,9 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :username, :nickname, :address).merge(address:params[:user][:zipcode] + params[:user][:county] + params[:user][:district] + params[:user][:address])
+  end
+
+  def user_img(slug)
+    {io: open("https://robohash.org/#{slug}") , filename: slug+"_images.jpg"}
   end
 end
