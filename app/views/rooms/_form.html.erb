@@ -1,18 +1,27 @@
 <div class="rounded-2xl m-auto md:w-8/12 lg:w-5/12 mt-10 shadow bg-white">
   <div class="bg-blue-500 h-4 top-0 w-12/12 rounded-t-2xl"></div>
-  <h1 class="text-2xl my-8 font-bold font-mono text-gray-800 text-center">創建拍賣房間</h1>
+
   <%= form_with(model: room) do |form|%>
+
+    <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <ul>
+        <% room.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field my-5 mx-auto text-center">
     <%= form.label :start_time ,"開始時間："%>
-    <input type="datetime-local" name="room[start_time]">
-    <%#= form.text_field :start_time, data:{controller:"timepicker"},placeholder:"設置開始時間" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
+    <input type="datetime-local" name="room[start_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded">
   </div>
 
   <div class="field my-5 mx-auto text-center">
     <%= form.label :end_time ,"結束時間："%>
-    <input type="datetime-local" name="room[end_time]">
-    <%#= form.text_field :end_time, data:{controller:"timepicker"},placeholder:"設置結束時間", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" %>
+    <input type="datetime-local" name="room[end_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded">
   </div>
 
   <div class="field my-5 mx-auto text-center">

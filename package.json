@@ -10,7 +10,6 @@
     "autoprefixer": "^9",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "file-upload-with-preview": "^5.0.6",
-    "flatpickr": "^4.6.13",
     "jquery": "^3.5.1",
     "postcss": "^7",
     "prop-types": "^15.8.1",
