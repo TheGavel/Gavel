@@ -3,18 +3,18 @@ class Order < ApplicationRecord
 
   aasm column: "status" do
     state :pending, initial: true
-    state :Paid, :Failed, :cancelled
+    state :paid, :failed, :cancelled
 
     event :pay do
-      transitions from: [:pending , :Failed], to: :Paid
+      transitions from: [:pending , :failed], to: :paid
     end
 
     event :fail do
-      transitions from: :pending, to: :Failed
+      transitions from: :pending, to: :failed
     end
 
     event :cancel do
-      transitions from: :Failed, to: :cancelled
+      transitions from: :failed, to: :cancelled
     end
   end
 
