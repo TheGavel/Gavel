@@ -140,14 +140,20 @@
 </ul>
 
 <div data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>" >
-  <div data-room-target="currentprice">300</div>
-  <span data-room-target="currentprice">300</span> +
+  <div data-room-target="currentprice">
+    <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price  %>
+  </div>
+  <span data-room-target="currentprice">
+    <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price  %>
+  </span> +
   <input data-room-target="yourprice" type="number" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>">
   <span data-room-target="finalprice"></span>
 
   <button data-action="click->room#bid">
     bid
   </button>
+
+  <div data-room-target="biduser" class="flex h-[60px]">aaa</div>
 
   <button data-action="click->room#chat" class="block">
     chat

@@ -70,6 +70,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :rooms, only: [] do
+        resources :getavatar, only: [:show]
+      end
       namespace :products, only: [] do
         resources :categories, only: [:show] do
           get :architecture, on: :collection
@@ -79,11 +82,7 @@ Rails.application.routes.draw do
           get ':page', to: 'search#page'
         end
       end
-      resources :room, only: [] do
-        member do
-          post :auction
-        end
-      end
+
     end
   end
 end

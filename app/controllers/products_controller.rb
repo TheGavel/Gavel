@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
   end
 
   def new
+    # BroadcastEndtimeWorker.new.perform("I was performed!")
+    # BroadcastEndtimeWorker.perform_at( DateTime.now+10.second,"I was performed!")
     @product = Product.new
     @tags = Tag.all
   end

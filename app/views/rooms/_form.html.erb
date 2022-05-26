@@ -4,10 +4,15 @@
     <%= form.label :start_time ,"開標時間:"%>
     <%= form.text_field :start_time %>
   </div>
+<!--
+  <div class="field">
+    <%#= form.label :end_time, "結標時間:" %>
+    <%#= form.text_field :end_time %>
+  </div> -->
 
   <div class="field">
     <%= form.label :end_time, "結標時間:" %>
-    <%= form.text_field :end_time %>
+    <input type="datetime-local" name="room[end_time]">
   </div>
 
   <div class="field">
