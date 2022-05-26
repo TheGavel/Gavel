@@ -30,7 +30,7 @@
 					</form>
 				</div>
 				<div class="text text-white xl:ml-28">
-          <% if current_user %>							
+          <% if current_user %>
             <% if not current_user.role == "seller"%>
 							<ul>
 								<li>
@@ -53,7 +53,7 @@
 								<li><%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500"%></li>
 								<li><%= link_to "已賣清單", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
 								<li><%= link_to "成交紀錄", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
-							</ul> 
+							</ul>
 						</li>
 						<li>
 							<%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
