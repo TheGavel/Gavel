@@ -1,85 +1,104 @@
-<div class="sm:container pt-5 my-5 mx-auto rounded-xl bg-gray-100 ">
-  <section class="carousel" data-controller="carousel" >
-    <div class="room_container">
-      <span id="previous" class="text-lg">＜</span>
-      <span id="next" class="text-lg">＞</span>
-      <div id="slider" class="slider">
-        <% @product.images.each do |image| %>
-          <%= image_tag(image, width:100) %>
-        <% end %>
+<div class="container pt-5 my-5 mx-auto rounded-xl bg-gray-100">
+  <div class="sm:flex justify-around">
+    <div class="sm:flex flex-col sm:justify-center" >
+      <section class="carousel" data-controller="carousel" >
+        <div class="room_container my-15 mx-auto sm:ml-5">
+          <span id="previous" class="text-lg">＜</span>
+          <span id="next" class="text-lg">＞</span>
+          <div id="slider" class="slider">
+            <% @product.images.each do |image| %>
+              <%= image_tag image.variant(resize_to_limit: [600, 300])  %>
+            <% end %>
+          </div>
+          <ul id="dots" class="dots">
+            <% @product.images.each do |image| %>
+              <li></li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+
+      <div class="flex justify-evenly mt-5 sm:justify-start sm:mt-10">
+        <div class="ml-3">
+          <%= image_tag("rilakkuma.png", width:50) %>
+        </div>
+        <h1 class=" text-4xl text-center"><%= @product.name %></h1>
       </div>
-      <ul id="dots" class="dots">
-        <% @product.images.each do |image| %>
-          <li></li>
-        <% end %>
-      </ul>
+
     </div>
-  </section>
-  
-  <div class="flex  justify-evenly mt-5">
-    <div class="ml-3">
-      <%= image_tag("rilakkuma.png", width:50) %>
+
+    <div class="sm:flex flex-col ">
+      <div class="flex justify-center mt-5 sm:inline sm:mx-auto">
+          <span class="inline-block rounded-lg mr-5 sm:mr-20 sm:text-2xl text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2">最高價：$2500</span>
+          <span class="inline-block rounded-full mr-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
+          <span class="inline-block rounded-full text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">最低標：$200</span>
+      </div>
+
+      <%# 要能link_to點到賣家頁面 %>
+
+      <div data-controller="bid">
+        <%# 要再修正成剩餘時間 %>
+        <div class=" w-11/12 text-2xl text-center mx-auto mt-5 text-black py-5 rounded-lg bg-white" >拍賣剩餘時間：
+          <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
+        </div>
+        <div class="flex justify-center mt-5 " data-bid-target="record">
+          <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
+            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
+          </div>
+           <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
+            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
+          </div>
+           <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
+            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
+          </div>
+        </div>
+        <div class="flex justify-center sm:hidden">
+          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+        </div>
+
+        <div class="sm:block hidden my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
+          <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
+          <div class="flex justify-center">
+            <span class="text-xl leading-10">$</span>
+            <span data-bid-target="priceNow" class="text-xl leading-10">2500</span>
+            <span class="text-xl leading-9 mx-2">+</span>
+            <input type="number" min="0" data-bid-target="input" data-action="bid#addPrice" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
+            <span class="text-xl leading-10 mx-2">=</span>
+            <span class="text-xl leading-10">$</span>
+            <span data-bid-target="yourPrice" class="text-xl leading-10">2500
+            </span>
+          </div>
+          <div class="flex justify-center mt-5" >
+            <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
+            <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
+            <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
+          </div>
+          <div class="flex justify-center " >
+            <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" >確認出價！</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1 class=" text-4xl text-center"><%= @product.name %></h1>
   </div>
-  <div class="flex justify-evenly mt-5">
-      <span class="inline-block rounded-full text-white bg-yellow-400 font-bold opacity-90 text-xl px-4 py-2">最高價：$2500</span>
-      <span class="inline-block rounded-full text-white bg-blue-500 font-bold  opacity-90 text-xl px-4 py-2">起標價：$2000</span> 
-  </div>
-
-
-  <%# 要能link_to點到賣家頁面 %>
-  
-  <div data-controller="bid">
-    <%# 要再修正成剩餘時間 %>
-    <div class=" w-11/12 text-lg text-center mx-auto mt-5 text-white bg-gray-500 py-5 rounded-full" >拍賣剩餘時間：
-      <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-xl text-red-500 block">...</span>
-    </div>
-    <div class="flex justify-center">
-      <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
-    </div>
-
-    <div class="flex justify-center mt-5 bg-white" data-bid-target="record">
-      <div class="relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 60px; width: 60px; font-size: 12px;">name
-        <div class="bg-yellow-400 absolute bottom-0 left-8 transform skew-y-10" >2500</div>
-      </div>
-    </div>
-
-    <div class="hidden my-5 bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
-      <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
-      <div class="flex justify-center">
-        <span class="text-xl leading-10">$</span>
-        <span data-bid-target="priceNow" class="text-xl leading-10">2500</span>
-        <span class="text-xl leading-9 mx-2">+</span>
-        <input type="number" min="0" data-bid-target="input" data-action="bid#addPrice" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
-        <span class="text-xl leading-10 mx-2">=</span>
-        <span class="text-xl leading-10">$</span>
-        <span data-bid-target="yourPrice" class="text-xl leading-10">$2500
-        </span>
-      </div>
-      <div class="flex justify-center mt-5" >
-        <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
-        <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
-        <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
-      </div>
-      <div class="flex justify-center " >
-        <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" >確認出價！</button>
-      </div>
-    </div>
-    <div class="bg-white mx-auto w-96 rounded-2xl my-5 p-5 ">
-      <span class="flex justify-center text-xl mb-7 border-b-4 ">房間聊天室</span>
+  <div class="">
+    <div class="bg-white mx-auto w-96 rounded-2xl my-5 p-5 sm:w-full">
+      <span class="flex justify-center text-xl mb-7 pb-5 border-b-4 ">房間聊天室</span>
       <div>
-        <div id="messages" class="block">
-          <p class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">嗨^_^</p>
-          <p class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">推推優質賣家</p>
-          <p class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">早安!</p>
-          <p class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">謝謝~</p>
+        <div id="messages" class="flex">
+          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">嗨^_^</span>
+          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">推推</span>
+          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">早安!</span>
+          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">謝謝~</span>
         </div>
         <form id="send_message" class="flex place-content-between mt-5 mb-5">
-          <input type="text" id="message" name="message" class="rounded-full px-2 border-4" placeholder="留個言吧">
+          <input type="text" id="message" name="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="留個言吧">
           <button class="px-8 rounded-full  bg-blue-200  text-gray-800 font-bold p-2 uppercase">發送</button>
         </form>
       </div>
+    </div>
+    <div class="bg-white mx-auto rounded-2xl my-5 p-5 w-96 sm:w-full ">
+      <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
+      <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
     </div>
   </div>
 </div>
