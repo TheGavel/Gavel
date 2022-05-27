@@ -1,3 +1,7 @@
 .zipcode {
   width: 4rem;
 }
+
+#error_explanation {
+  @apply text-red-500;
+}
