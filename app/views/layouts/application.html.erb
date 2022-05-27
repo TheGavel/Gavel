@@ -35,8 +35,7 @@
           <div class="btn"></div>
         </labal>
     </div>
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
+      <%= render "shared/flash" if flash %>
     </div>
     <%= yield %>
   </body>
