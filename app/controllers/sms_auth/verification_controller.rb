@@ -9,7 +9,7 @@ module SmsAuth
       if @verification.valid?
         if verify_pin(@verification) == 'approved'
           update_user_phone_and_role(session[:phone])
-          flash[:alert] = "手機驗證成功"
+          flash[:notice] = '手機驗證成功'
           redirect_to root_path
         else
           flash[:alert] = '驗證碼無效'
@@ -34,7 +34,7 @@ module SmsAuth
     end
 
     def update_user_phone_and_role(phone)
-      current_user.update!(phone: phone,role: "seller")
+      current_user.update!(phone: phone, role: 'seller')
     end
 
     def verification_params
