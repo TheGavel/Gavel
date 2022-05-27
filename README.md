@@ -10,14 +10,14 @@ Gavel 主要功能為以下三項：
 
 ## 使用技術
 
-- 前端 : HTML / CSS / Tailwind / JavaScript / React.js
+- 前端 : HTML / CSS / Tailwind / JavaScript / React.js / Stimulus
 - 後端 : Ruby on Rails
 - 資料庫 : PostgreSQL
 - 版本控制 ： Git
 - 部屬環境 : Heroku
 - 第三方登入 : Google / GitHub
 - 第三方金流 : NewebPay
-- 其他技術 : AWS S3 (圖片) / ActionCable / Elaeticsearch / AASM / Socery
+- 其他技術 : AWS S3 (圖片) / ActionCable / Elasticsearch / AASM / Sorcery
 
 ## 開發團隊
 
