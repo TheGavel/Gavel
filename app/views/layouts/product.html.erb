@@ -30,14 +30,37 @@
 					</form>
 				</div>
 				<div class="text text-white xl:ml-28">
-          <% if current_user %>
-              <%= link_to "個人資訊", user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
-            <% if not current_user.role == "seller" %>
-              <%= link_to "成為賣家", :new_sms_auth_registration, class:"xl:mx-0 hover:text-blue-500" %>
-            <% else %>
-              <%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500" %>
+          <% if current_user %>							
+            <% if not current_user.role == "seller"%>
+							<ul>
+								<li>
+									<%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
+								</li>
+								<li>
+									<%= link_to "個人資訊", user_path(current_user.id) ,class:" xl:mx-0 hover:text-blue-500"%>
+										<ul class="sub-nav">
+											<li>
+												<%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
+												<%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
+											</li>
+										</ul>
+								</li>
+							</ul>
+          	<% else %>
+							<ul>
+								<li>
+									<%= link_to "賣家中心", "#"  ,class:"xl:mx-0 hover:text-blue-500"%>
+									<ul class="sub-nav">
+										<li>
+											<%= link_to "我的商品", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
+											<%= link_to "已賣清單", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
+											<%= link_to "成交紀錄", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
+										</li>
+									</ul> 
+								</li>
+							</ul>
             <% end %>
-              <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500" %>
+              <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500"%>
           <% else %>
               <%= link_to "註冊", new_user_path, class:"hover:text-blue-500"%><span class="none">|</span>
               <%= link_to "登入", new_user_session_path, class:"hover:text-blue-500"%>
