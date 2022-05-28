@@ -25,8 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'will_paginate', '~> 3.3.0'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-gem 'dragonfly_libvips', '~> 2.4', '>= 2.4.2'
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
+# gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'twilio-ruby', '~> 5.67'

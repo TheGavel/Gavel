@@ -1,8 +1,12 @@
-<div class="container pt-5 my-5 mx-auto rounded-xl bg-gray-100">
-  <div class="sm:flex justify-around">
-    <div class="sm:flex flex-col sm:justify-center" >
+<div class="container pt-2  mx-auto rounded-xl bg-gray-100">
+  <div class="text-2xl text-center mx-auto text-black py-5 rounded-lg bg-white" >
+    <p>拍賣剩餘時間：</p>
+    <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
+  </div>
+  <div class="md:flex justify-center mt-2">
+    <div class="md:flex md:mx-7 mx-auto flex-col justify-center w-10/12" >
       <section class="carousel" data-controller="carousel" >
-        <div class="room_container my-15 mx-auto sm:ml-5">
+        <div class="room_container mx-auto">
           <span id="previous" class="text-lg">＜</span>
           <span id="next" class="text-lg">＞</span>
           <div id="slider" class="slider">
@@ -11,37 +15,40 @@
             <% end %>
           </div>
           <ul id="dots" class="dots">
-            <% @product.images.each do |image| %>
+            <% @product.images.count.times do %>
               <li></li>
             <% end %>
           </ul>
         </div>
       </section>
 
-      <div class="flex justify-evenly mt-5 sm:justify-start sm:mt-10">
+      <div class="flex mt-5 justify-center">
         <div class="ml-3">
           <%= image_tag("rilakkuma.png", width:50) %>
         </div>
         <h1 class=" text-4xl text-center"><%= @product.name %></h1>
       </div>
 
+
+      <div class="bg-white mx-auto rounded-2xl m-5 p-5">
+        <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
+        <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
+      </div>
+
     </div>
 
-    <div class="sm:flex flex-col ">
-      <div class="flex justify-center mt-5 sm:inline sm:mx-auto">
-          <span class="inline-block rounded-lg mr-5 sm:mr-20 sm:text-2xl text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2">最高價：$2500</span>
-          <span class="inline-block rounded-full mr-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
-          <span class="inline-block rounded-full text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">最低標：$200</span>
-      </div>
+    <div class="md:mx-7 mx-auto w-10/12">
 
       <%# 要能link_to點到賣家頁面 %>
 
-      <div data-controller="bid">
+      <div data-controller="bid" class="">
         <%# 要再修正成剩餘時間 %>
-        <div class=" w-11/12 text-2xl text-center mx-auto mt-5 text-black py-5 rounded-lg bg-white" >拍賣剩餘時間：
-          <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
+
+        <div class="flex justify-center mt-5">
+          <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2">最高價：$2500</span>
+          <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
         </div>
-        <div class="flex justify-center mt-5 " data-bid-target="record">
+        <div class="flex justify-around mt-5 " data-bid-target="record">
           <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
             <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
           </div>
@@ -52,7 +59,7 @@
             <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
           </div>
         </div>
-        <div class="flex justify-center sm:hidden">
+        <div class="flex justify-center">
           <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
         </div>
 
@@ -81,14 +88,33 @@
     </div>
   </div>
   <div class="">
-    <div class="bg-white mx-auto w-96 rounded-2xl my-5 p-5 sm:w-full">
+    <div class="bg-white  rounded-2xl my-5 p-5 W-10/12">
       <span class="flex justify-center text-xl mb-7 pb-5 border-b-4 ">房間聊天室</span>
       <div>
-        <div id="messages" class="flex">
-          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">嗨^_^</span>
-          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">推推</span>
-          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">早安!</span>
-          <span class=" rounded-full text-white bg-blue-500 font-bold md:mr-2 mb-2 px-2 md:px-4 py-1 opacity-90 text-lg mr-5">謝謝~</span>
+        <div id="messages" class="">
+
+          <div class="mx-2 mb-2">
+            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
+            &nbsp&nbsp
+            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 嗨^_^ </span>
+          </div>
+
+          <div class="mx-2 mb-2">
+            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
+            &nbsp&nbsp
+            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 推推 </span>
+          </div>
+          <div class="mx-2 mb-2">
+            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
+            &nbsp&nbsp
+            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 早安! </span>
+          </div>
+          <div class="mx-2 mb-2">
+            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
+            &nbsp&nbsp
+            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" >謝謝~</span>
+          </div>
+
         </div>
         <form id="send_message" class="flex place-content-between mt-5 mb-5">
           <input type="text" id="message" name="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="留個言吧">
@@ -96,10 +122,7 @@
         </form>
       </div>
     </div>
-    <div class="bg-white mx-auto rounded-2xl my-5 p-5 w-96 sm:w-full ">
-      <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
-      <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
-    </div>
+
   </div>
 </div>
 
