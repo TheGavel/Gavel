@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_own_product, only: %i[own]
+  before_action :find_own_product, only: %i[own sellitem buyerlist]
   before_action :find_product, only: %i[show edit update destroy]
   before_action :pundit
   skip_before_action :require_login, only: %i[index]
@@ -59,9 +59,12 @@ class ProductsController < ApplicationController
   end
 
   def sellitem
+  end
+
+  def buyerlist
     
   end
-  
+
   def autocomplete
     @search_results = Product.search(params[:q],
                       misspellings: {edit_distance:5},

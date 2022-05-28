@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
-    t.string "role"
+    t.string "role", default: "buyer"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -37,6 +37,13 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def sellitem?
+    seller
+  end
+
+  def buyerlist?
+    true
+  end
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
