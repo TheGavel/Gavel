@@ -3,8 +3,9 @@ class BroadcastEndtimeWorker
   sidekiq_options retry: true
 
   def perform(room_id)
+    
     ActionCable.server.broadcast "Bid:#{room_id}",
-    bid: 1000000,
+    end: end,
     user: "user"
   end
 

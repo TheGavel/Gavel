@@ -4,7 +4,7 @@
     <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
   </div>
   <div class="md:flex justify-between mt-2  mx-auto w-10/12">
-    <div class="md:flex  mx-auto flex-col justify-around " >
+    <div class="md:flex  mx-auto flex-col justify-around w-1/2" >
       <section class="carousel" data-controller="carousel" >
         <div class="room_container mx-auto">
           <span id="previous" class="text-lg">＜</span>
@@ -36,50 +36,48 @@
       </div>
 
     </div>
-
       <%# 要能link_to點到賣家頁面 %>
+    <div data-controller="bid" class="md:flex mx-auto flex-col justify-center w-1/2 ">
+      <%# 要再修正成剩餘時間 %>
 
-      <div data-controller="bid" class="md:flex mx-auto flex-col justify-center ">
-        <%# 要再修正成剩餘時間 %>
+      <div class="flex justify-center mt-5">
 
-        <div class="flex justify-center mt-5">
+        <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
 
-          <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
+        <!-- <span class="text-xl leading-10" data-room-target="currentprice"></span> -->
 
-          <!-- <span class="text-xl leading-10" data-room-target="currentprice"></span> -->
+        <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
+      </div>
+      <div data-room-target="biduser" class="flex justify-around mt-5 h-20 ">
 
-          <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
-        </div>
-        <div data-room-target="biduser" class="flex justify-around mt-5 h-20 ">
+        <!-- <div  class="flex h-[60px]"></div> -->
+      </div>
+      <div class="flex justify-center">
+        <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+      </div>
 
-          <!-- <div  class="flex h-[60px]"></div> -->
-        </div>
+      <div class="my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
+        <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
         <div class="flex justify-center">
-          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
+          <span class="text-xl leading-10">$</span>
+          <span class="text-xl leading-10" data-room-target="currentprice"><%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
+          <span class="text-xl leading-9 mx-2">+</span>
+          <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
+          <span class="text-xl leading-10 mx-2">=</span>
+          <span class="text-xl leading-10">$</span>
+          <span data-room-target="finalprice" class="text-xl leading-10"></span>
+        </div>
+        <div class="flex justify-center mt-5" >
+          <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
+          <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
+          <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
         </div>
 
-        <div class="my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
-          <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
-          <div class="flex justify-center">
-            <span class="text-xl leading-10">$</span>
-            <span class="text-xl leading-10" data-room-target="currentprice"><%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
-            <span class="text-xl leading-9 mx-2">+</span>
-            <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
-            <span class="text-xl leading-10 mx-2">=</span>
-            <span class="text-xl leading-10">$</span>
-            <span data-room-target="finalprice" class="text-xl leading-10"></span>
-          </div>
-          <div class="flex justify-center mt-5" >
-            <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
-            <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
-            <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
-          </div>
-
-          <div class="flex justify-center " >
-            <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button>
-          </div>
+        <div class="flex justify-center " >
+          <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button>
         </div>
       </div>
+    </div>
   </div>
 
   <div class="bg-white  rounded-2xl mx-auto p-5 w-10/12">
