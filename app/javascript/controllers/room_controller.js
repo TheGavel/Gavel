@@ -12,7 +12,7 @@ export default class extends Controller {
       connected() {
         thisController.listen()
       },
-      received({ bid , message , user }) {
+      received({ bid , message , user, endbid, bidder }) {
         if(bid != undefined){
           thisController.currentpriceTargets.map( (currentprice,idx) => {
             currentprice.textContent = bid
@@ -59,8 +59,15 @@ export default class extends Controller {
           })();
         }
 
-      },
+        if( endbid == "end" ){
+          if(thisController.element.dataset.user == bidder){
+            location.href = '/products/own';
+          }else{
+            location.href = '/';
+          }
+        }
 
+      },
     });
   }
 

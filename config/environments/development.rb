@@ -26,7 +26,7 @@ Rails.application.configure do
   read_timeout: 5
   }
 
-  # config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_adapter = :sidekiq
   # config.hosts << ENV['NGROK_HOST_NAME'] || 127.0.0.1
   # Settings specified here will take precedence over those in config/application.rb.
 

@@ -3,8 +3,8 @@
     <p>拍賣剩餘時間：</p>
     <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
   </div>
-  <div class="md:flex justify-between mt-2  mx-auto w-10/12">
-    <div class="md:flex  mx-auto flex-col justify-around w-1/2" >
+  <div class="md:flex justify-between mt-2  mx-auto w-10/12 flex-col  md:flex-row ">
+    <div class="md:flex  mx-auto flex-col justify-between w-1/2" >
       <section class="carousel" data-controller="carousel" >
         <div class="room_container mx-auto">
           <span id="previous" class="text-lg">＜</span>
@@ -30,14 +30,14 @@
       </div>
 
 
-      <div class="bg-white mx-auto rounded-2xl m-5 p-5">
+      <div class="bg-white mx-auto rounded-2xl w-11/12 m-5 p-5">
         <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
         <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
       </div>
 
     </div>
       <%# 要能link_to點到賣家頁面 %>
-    <div data-controller="bid" class="md:flex mx-auto flex-col justify-center w-1/2 ">
+    <div data-controller="bid" class="md:flex mx-auto flex-col justify-between w-1/2 ">
       <%# 要再修正成剩餘時間 %>
 
       <div class="flex justify-center mt-5">
@@ -48,15 +48,13 @@
 
         <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
       </div>
-      <div data-room-target="biduser" class="flex justify-around mt-5 h-20 ">
+      <div data-room-target="biduser" class="flex justify-evenly mt-5 h-20 w-full overflow-auto">
 
         <!-- <div  class="flex h-[60px]"></div> -->
       </div>
-      <div class="flex justify-center">
-        <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
-      </div>
 
-      <div class="my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
+
+      <div class="my-5 mx-auto w-11/12 p-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl rounded-lg mt-5" data-bid-target="bid" >
         <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
         <div class="flex justify-center">
           <span class="text-xl leading-10">$</span>
@@ -74,7 +72,10 @@
         </div>
 
         <div class="flex justify-center " >
-          <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button>
+
+          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-md transform transition-all hover:rotate-12" data-action="click->room#bid" ><%= image_tag("logo", width:80 ) %></button>
+<!--
+          <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button> -->
         </div>
       </div>
     </div>
