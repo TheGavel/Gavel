@@ -58,6 +58,10 @@ class ProductsController < ApplicationController
   def own
   end
 
+  def sellitem
+    
+  end
+  
   def autocomplete
     @search_results = Product.search(params[:q],
                       misspellings: {edit_distance:5},

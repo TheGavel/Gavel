@@ -1,0 +1,29 @@
+<div id="products" class="container mx-auto ">
+  <table class="min-w-full bg-white ">
+    <thead class="bg-gray-800 text-white ">
+      <tr class="mx-auto text-center">
+        <th id="product-name" class="py-3 px-6">
+          <span>得標商品</span>
+        </th>
+        <th id="product-bid" class=" py-3 px-6 ">
+          <span>得標金額</span>
+        </th>
+        <th id="checkout" class="py-3 px-6 ">
+          <span>結帳</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product|%>  
+        <tr class="text-center text-lg">
+          <td class="py-3 px-6"><%= link_to product.name , product_path(product.id)%></td>
+          <td class="py-3 px-6">2500</td>
+          <td class="py-3 px-6 "><button class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl text-white text-2x">結帳</button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-right my-5">
+    <button class=" bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl text-white text-2xl" >全部結帳</button>
+  </div>
+</div>
