@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
     # @room = Product.find(session[:product_id]).room.new(room_params)
     @room = Room.new(room_params)
     if @room.save
-      redirect_to root_path, notice: 'create Sussess!!'
+      redirect_to root_path, notice: '拍賣房間創建成功'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
 
   def update
     if @room.update(room_params_update)
-      redirect_to own_products_path, notice: "Update Sussess!!"
+      redirect_to own_products_path, notice: '拍賣房間資訊更新成功'
     else
       render :edit
     end
@@ -44,6 +44,6 @@ class RoomsController < ApplicationController
   end
 
   def no_edit_data
-    redirect_to new_room_path, notice: 'then create rooms!!'
+    redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
   end
 end

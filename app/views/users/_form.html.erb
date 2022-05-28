@@ -25,7 +25,7 @@
     </div>
 
   <% else %>
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-10">
       <h1 class="text-4xl font-bold m-8 ">編輯個人資訊</h1>
       <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
     </div>
@@ -47,7 +47,7 @@
     <div class="mb-8 px-6">
       <div class="bg-gray-100 flex">
         <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
-        <%= form.password_field :password, placeholder:"請設定3個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+        <%= form.password_field :password, placeholder:"請設定6個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
       </div>
     </div>
 
@@ -78,7 +78,4 @@
         <%= form.submit "更新", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"%>
       </div>
     <% end %>
-
-
-    <div>
 <% end %>
