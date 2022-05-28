@@ -1,10 +1,9 @@
 import { Controller } from "stimulus";
 import { createConsumer } from "@rails/actioncable";
-import Rails from "@rails/ujs";
 import axios from "axios"
 export default class extends Controller {
 
-  static targets = [ "currentprice","yourprice","finalprice","biduser" ]
+  static targets = [ "message","messagescontainer","currentprice","yourprice","finalprice","biduser" ]
   userArray = []
   userhash = {}
   initialize() {
@@ -15,9 +14,11 @@ export default class extends Controller {
       },
       received({ bid , message , user }) {
         if(bid != undefined){
-          console.log(bid, user );
-          thisController.currentpriceTargets.map( (currentprice) => {
+          thisController.currentpriceTargets.map( (currentprice,idx) => {
             currentprice.textContent = bid
+            if (idx == 0){
+              currentprice.textContent = `最高價：$${bid}`
+            }
           })
 
           thisController.userArray.unshift({id: user,
@@ -25,22 +26,37 @@ export default class extends Controller {
           thisController.yourpriceTarget.value = thisController.yourpriceTarget.min
           thisController.biduserTarget.innerHTML = '';
 
-
-          thisController.userArray.slice(0, 6).forEach( async(user) => {
+          thisController.asyncForEach(thisController.userArray.slice(0, 6),  async(user) => {
             const user_id = user.id,
-                  user_bid = user.bid,
-                  img = document.createElement("img");
+                  user_bid = user.bid
             if ( !Object.keys(thisController.userhash).includes(user_id) ){
               thisController.userhash[user_id] = await thisController.getavatar(user_id);
             }
-            img.src = thisController.userhash[user_id]
-            thisController.biduserTarget.appendChild(img)
+            let imgHtml = `<div class="relative">
+                          <img src="${thisController.userhash[user_id]}" class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px;"/>
+                          <div class="bottom-0" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);background-color: rgb(252 211 77); padding: 0 1.25rem;">${user_bid}</div>
+                          </div>`
+            thisController.biduserTarget.insertAdjacentHTML("beforeend",imgHtml)
           })
 
           thisController.updatePrice()
         }
 
         if(message != undefined){
+          (async() => {
+            const user_id = user;
+            if ( !Object.keys(thisController.userhash).includes(user_id) ){
+              thisController.userhash[user_id] = await thisController.getavatar(user_id)
+            }
+            let messageHtml = `<div class="m-2">
+              <img src="${thisController.userhash[user_id]}" class="w-12 h-12 inline-block rounded-full bg-gray-300"/>
+              &nbsp&nbsp
+              <span class="p-4 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg"> ${message} </span>
+            </div>`;
+            thisController.messageTarget.value = ""
+            thisController.messagescontainerTarget.insertAdjacentHTML("beforeend",messageHtml)
+            thisController.messagescontainerTarget.scrollTop = thisController.messagescontainerTarget.scrollHeight
+          })();
         }
 
       },
@@ -49,13 +65,18 @@ export default class extends Controller {
   }
 
   updatePrice(){
-    this.finalpriceTarget.textContent = Number(this.currentpriceTarget.textContent)
+    this.finalpriceTarget.textContent = Number(this.currentpriceTargets[1].textContent)
     + Number(this.yourpriceTarget.value)
   }
 
   connect() {
     this.updatePrice()
     this.yourpriceTarget.addEventListener('input', () => { this.updatePrice()});
+    this.messageTarget.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        this.chat()
+      }
+    });
   }
 
   disconnect() {
@@ -73,10 +94,10 @@ export default class extends Controller {
   }
 
   chat() {
-    if (this.channel) {
+    if (this.channel && this.messageTarget.value != '') {
       this.channel.perform("chat", {room: this.element.dataset.room,
                                     user: this.element.dataset.user,
-                                    message: 100 })
+                                    message: this.messageTarget.value.trim() })
     }
   }
 
@@ -92,11 +113,14 @@ export default class extends Controller {
       const csrfToken = document.querySelector("meta[name=csrf-token]").content
       axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
       const response = await axios.get(`/api/v1/rooms/getavatar/${user_id}`);
-      console.log(response);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   }
-
+  async asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+    }
+  }
 }

@@ -1,10 +1,10 @@
-<div class="container pt-2  mx-auto rounded-xl bg-gray-100">
+<div class="container pt-2  mx-auto rounded-xl bg-gray-100" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
   <div class="text-2xl text-center mx-auto text-black py-5 rounded-lg bg-white" >
     <p>拍賣剩餘時間：</p>
     <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
   </div>
-  <div class="md:flex justify-center mt-2">
-    <div class="md:flex md:mx-7 mx-auto flex-col justify-center w-10/12" >
+  <div class="md:flex justify-between mt-2  mx-auto w-10/12">
+    <div class="md:flex  mx-auto flex-col justify-around " >
       <section class="carousel" data-controller="carousel" >
         <div class="room_container mx-auto">
           <span id="previous" class="text-lg">＜</span>
@@ -37,125 +37,61 @@
 
     </div>
 
-    <div class="md:mx-7 mx-auto w-10/12">
-
       <%# 要能link_to點到賣家頁面 %>
 
-      <div data-controller="bid" class="">
+      <div data-controller="bid" class="md:flex mx-auto flex-col justify-center ">
         <%# 要再修正成剩餘時間 %>
 
         <div class="flex justify-center mt-5">
-          <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2">最高價：$2500</span>
+
+          <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
+
+          <!-- <span class="text-xl leading-10" data-room-target="currentprice"></span> -->
+
           <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
         </div>
-        <div class="flex justify-around mt-5 " data-bid-target="record">
-          <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
-            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
-          </div>
-           <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
-            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
-          </div>
-           <div class="mx-5 relative font-bold text-white rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 50px; width: 50px; font-size: 12px;">name
-            <div class="bg-yellow-400 absolute bottom-0 left-5 px-2" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);">250000</div>
-          </div>
+        <div data-room-target="biduser" class="flex justify-around mt-5 h-20 ">
+
+          <!-- <div  class="flex h-[60px]"></div> -->
         </div>
         <div class="flex justify-center">
           <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-2xl transform transition-all hover:rotate-12" data-action="click->bid#show" ><%= image_tag("logo", width:80 ) %></button>
         </div>
 
-        <div class="sm:block hidden my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
+        <div class="my-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl mx-auto rounded-lg mt-5" data-bid-target="bid" >
           <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
           <div class="flex justify-center">
             <span class="text-xl leading-10">$</span>
-            <span data-bid-target="priceNow" class="text-xl leading-10">2500</span>
+            <span class="text-xl leading-10" data-room-target="currentprice"><%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
             <span class="text-xl leading-9 mx-2">+</span>
-            <input type="number" min="0" data-bid-target="input" data-action="bid#addPrice" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
+            <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
             <span class="text-xl leading-10 mx-2">=</span>
             <span class="text-xl leading-10">$</span>
-            <span data-bid-target="yourPrice" class="text-xl leading-10">2500
-            </span>
+            <span data-room-target="finalprice" class="text-xl leading-10"></span>
           </div>
           <div class="flex justify-center mt-5" >
             <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
             <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
             <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
           </div>
+
           <div class="flex justify-center " >
-            <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" >確認出價！</button>
+            <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button>
           </div>
         </div>
       </div>
-    </div>
   </div>
-  <div class="">
-    <div class="bg-white  rounded-2xl my-5 p-5 W-10/12">
-      <span class="flex justify-center text-xl mb-7 pb-5 border-b-4 ">房間聊天室</span>
-      <div>
-        <div id="messages" class="">
 
-          <div class="mx-2 mb-2">
-            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
-            &nbsp&nbsp
-            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 嗨^_^ </span>
-          </div>
-
-          <div class="mx-2 mb-2">
-            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
-            &nbsp&nbsp
-            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 推推 </span>
-          </div>
-          <div class="mx-2 mb-2">
-            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
-            &nbsp&nbsp
-            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" > 早安! </span>
-          </div>
-          <div class="mx-2 mb-2">
-            <%= image_tag  current_user.avatar.variant(resize_to_limit: [50, 50]), class: "inline-block rounded-full bg-gray-300"  %>
-            &nbsp&nbsp
-            <span class="p-1 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg" >謝謝~</span>
-          </div>
-
-        </div>
-        <form id="send_message" class="flex place-content-between mt-5 mb-5">
-          <input type="text" id="message" name="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="留個言吧">
-          <button class="px-8 rounded-full  bg-blue-200  text-gray-800 font-bold p-2 uppercase">發送</button>
-        </form>
-      </div>
-    </div>
-
+  <div class="bg-white  rounded-2xl mx-auto p-5 w-10/12">
+    <span class="flex justify-center text-xl mb-7 pb-5 border-b-4 ">房間聊天室</span>
+      <div data-room-target="messagescontainer" class="overflow-auto h-[400px]"></div>
+      <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="賣家隨時為您解答">
+      <button class="px-8 rounded-full bg-blue-200 text-gray-800 font-bold p-2 uppercase" data-action="click->room#chat">發送</button>
   </div>
+
+
+
 </div>
 
 <button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase"><%= link_to '返回', product_path %></button>
 <button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>
-
-
-<h1 class="text-4xl">Room view</h1>
-<%= link_to "檢視產品設定" , product_path(@room.id)%>
-<ul>
-  <li>開標時間:<%= @room.start_time %></li>
-  <li>結標時間:<%= @room.end_time%></li>
-  <li>房間狀態:<%= @room.status%></li>
-  <li>最多上線人數:<%= @room.maxpeople%></li>
-</ul>
-
-<div data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>" >
-  <div data-room-target="currentprice">
-    <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price  %>
-  </div>
-  <span data-room-target="currentprice">
-    <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price  %>
-  </span> +
-  <input data-room-target="yourprice" type="number" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>">
-  <span data-room-target="finalprice"></span>
-
-  <button data-action="click->room#bid">
-    bid
-  </button>
-
-  <div data-room-target="biduser" class="flex h-[60px]">aaa</div>
-
-  <button data-action="click->room#chat" class="block">
-    chat
-  </button>
-</div>
