@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return(
-    <div className="bg-white relative mx-auto  z-1">
+    <div className="bg-white relative mx-auto z-1">
       <h2 className="text-center text-3xl py-6">Explore Collections </h2>
       <Router>
         <Bar />

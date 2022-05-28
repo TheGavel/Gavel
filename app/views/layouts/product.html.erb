@@ -39,10 +39,9 @@
 								<li>
 									<%= link_to "個人資訊", user_path(current_user.id) ,class:" xl:mx-0 hover:text-blue-500"%>
 										<ul class="sub-nav">
-											<li>
-												<%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-												<%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-											</li>
+											<li><%= link_to "編輯個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
+											<li><%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+											<li><%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
 										</ul>
 								</li>
 							</ul>
@@ -51,11 +50,9 @@
 								<li>
 									<%= link_to "賣家中心", "#"  ,class:"xl:mx-0 hover:text-blue-500"%>
 									<ul class="sub-nav">
-										<li>
-											<%= link_to "我的商品", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
-											<%= link_to "已賣清單", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
-											<%= link_to "成交紀錄", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%>
-										</li>
+										<li><%= link_to "我的商品", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%></li>
+										<li><%= link_to "已賣清單", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%></li>
+										<li><%= link_to "成交紀錄", own_products_path  ,class:"xl:mx-0 hover:text-blue-500"%></li>
 									</ul> 
 								</li>
 							</ul>
