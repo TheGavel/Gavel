@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :own
+      get :buyerlist
       get :sellitem
       get :autocomplete
       get "search/*path" , to: 'products#index'
