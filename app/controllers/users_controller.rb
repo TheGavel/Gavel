@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class UsersController < ApplicationController
   require 'open-uri'
-  require 'faker'
   before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index new create activate] # 僅當您允許用戶自己註冊時才應使用。
   # GET /users or /users.json
