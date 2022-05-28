@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
         }
 
         session[:product_id] = @product.id
-        redirect_to new_room_path
+        redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
       else
         render :new
       end
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to own_products_path, notice: "Update Sussess!!"
+      redirect_to own_products_path, notice: '商品資訊更新成功'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     @room = Room.find_by_id(params[:id])
     @room.destroy if @room
     @product.destroy
-    redirect_to own_products_path, notice: "Delete Sussess!!"
+    redirect_to own_products_path, notice: '已成功刪除'
   end
 
   def own
