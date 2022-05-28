@@ -3,7 +3,7 @@
 }
 
 .flash-notice {
-  @apply bg-green-500 bg-opacity-75 text-green-50;
+  @apply bg-green-400 bg-opacity-100 text-green-50;
 
   #flashCloseBtn {
     @apply hover:bg-green-200 text-green-300 px-3 py-1 rounded-full;
