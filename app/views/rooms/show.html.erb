@@ -103,5 +103,5 @@
   </div>
 </div>
 
-<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase"><%= link_to '返回', product_path %></button>
-<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>
+<div class="inline-block rounded-full bg-gray-900 text-white font-bold"><%= link_to '返回', product_path, class:"inline-block px-8 py-2" %></div>
+<div class="inline-block rounded-full bg-gray-900 text-white font-bold" data-controller="copylink"><%= link_to "copylink", {class:"inline-block px-8 py-2"}, data: {action: "click->copylink#copy", url: @url } %></div>

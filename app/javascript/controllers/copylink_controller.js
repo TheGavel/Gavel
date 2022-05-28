@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from "stimulus";
 
 export default class extends Controller {
   copy(e) {
@@ -7,7 +7,6 @@ export default class extends Controller {
     navigator.clipboard
       .writeText(copyText)
       .then((data) => {
-        console.log(data);
         alert("已複製房間連結");
       })
       .catch((err) => {
