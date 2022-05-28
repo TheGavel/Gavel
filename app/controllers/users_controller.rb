@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user.avatar.attach(user_img(@user.id.to_s))
-        format.html { redirect_to user_url(@user), notice: '註冊成功' }
+        format.html { redirect_to new_user_session_path, notice: '註冊成功' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
