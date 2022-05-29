@@ -1,5 +1,5 @@
 <h1 class="text-4xl">Product <%= @product.name%></h1>
-<%= link_to "檢視房間設定" , room_path(@product.id)%>
+
 <ul>
   <li>商品名稱:<%= @product.name%></li>
   <li>商品描述:<%= @product.description %></li>
@@ -13,5 +13,5 @@
   </li>
   <li>標籤分類:<% @product.tags.each do |tag| %><%= tag.name %>  <% end %></li>
 </ul>
-
+<%= link_to "檢視房間設定" , room_path(@product.id)%>
 <%= link_to 'Back', own_products_path %>
