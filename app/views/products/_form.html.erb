@@ -48,27 +48,14 @@
 
         <div class="actions pt-5 pb-10">
           <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4"%>
-          <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 text-white hover:bg-gray-200 border-2 border rounded"%>
+          <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded"%>
         </div>
+
       <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="custom-file-container w-[600px]" data-upload-id="myFirstImage" data-controller="multipleImg" >
-  </div>
-
-  <div  data-controller="tag"
-        data-tags="[<%= product.tags.map{|i|
-                                          "\"#{i.name}\""
-                                        }.join(",") %> ]">
-  </div>
-
-  <!-- .map{
-    |tag| tag.name
-  }.join("', '") -->
-
-
-  <%= form.submit%>
-<% end %>
 <script> //DEBUG用
   function onChangeFunction(event) {
     let fileList = event.target.files;
