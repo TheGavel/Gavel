@@ -7,8 +7,8 @@ import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
+import "../css";
 import "controllers";
-import "../css/application.css";
 
 Rails.start();
 Turbolinks.start();

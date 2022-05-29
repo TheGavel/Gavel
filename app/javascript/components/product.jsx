@@ -10,7 +10,7 @@ const Product = (data) => {
       <img className="w-full" src={productImg} alt="productImg" />
       <div className="flex items-center justify-center overflow-hidden">
         <img
-          className="w-10 h-10 rounded-full group-hover:rotate-[360deg] transition duration-[600ms]"
+          className="w-10 h-10 bg-gray-400 rounded-full group-hover:rotate-[360deg] transition duration-[600ms]"
           src={sellerImg}
           alt="sellerImg"
         />

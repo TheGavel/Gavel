@@ -1,15 +1,16 @@
 # frozen_string_literal: true
-
 class UsersController < ApplicationController
+  require 'open-uri'
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: %i[index new create activate] # 僅當您允許用戶自己註冊時才應使用。
+  skip_before_action :require_login, only: %i[index new create activate]
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show
+  end
 
   # GET /users/new
   def new
@@ -22,10 +23,10 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: 'User was successfully created.' }
+        @user.avatar.attach(user_img(@user.id.to_s))
+        format.html { redirect_to new_user_session_path, notice: '註冊成功' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         # user_url(@user)
         format.html do
-          redirect_to :user, notice: 'User was successfully updated.'
+          redirect_to :user, notice: '個人資訊已更新'
         end
         format.json { render :show, status: :ok, location: @user }
       else
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: '帳戶已成功刪除' }
       format.json { head :no_content }
     end
   end
@@ -64,10 +65,10 @@ class UsersController < ApplicationController
     @user = User.load_from_activation_token(params[:id])
     if @user
       @user.activate!
-      flash[:success] = 'User was successfully activated.'
+      flash[:notice] = '帳戶已成功啟用'
       redirect_to login_path
     else
-      flash[:warning] = 'Cannot activate this user.'
+      flash[:alert] = '帳戶無法啟用'
       redirect_to root_path
     end
   end
@@ -82,5 +83,9 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :username, :nickname, :address).merge(address:params[:user][:zipcode] + params[:user][:county] + params[:user][:district] + params[:user][:address])
+  end
+
+  def user_img(id)
+    {io: open("https://robohash.org/#{id}") , filename: id + "_images.jpg"}
   end
 end

@@ -8,31 +8,35 @@ module.exports = {
     "app/views/**/*.{erb,haml,html,slim}",
   ],
   variants: {
-    extend: {
-    },
-},
+    extend: {},
+  },
   theme: {
     extend: {
       gridTemplateColumns: {
-        'auto-fit': 'repeat(auto-fit, minmax(0, 1fr))',
-        'auto-fill': 'repeat(auto-fill, minmax(0, 1fr))',
-        'fit-250' : 'repeat(auto-fit, minmax(250px , 1fr))',
+        "auto-fit": "repeat(auto-fit, minmax(0, 1fr))",
+        "auto-fill": "repeat(auto-fill, minmax(0, 1fr))",
+        "fit-250": "repeat(auto-fit, minmax(250px , 1fr))",
       },
       gridTemplateRows: {
-        'auto-fit': 'repeat(auto-fit, minmax(0, 1fr))',
-        'auto-fill': 'repeat(auto-fill, minmax(0, 1fr))',
+        "auto-fit": "repeat(auto-fit, minmax(0, 1fr))",
+        "auto-fill": "repeat(auto-fill, minmax(0, 1fr))",
+      },
+      zIndex: {
+        1: "1",
+        100: "100",
       },
     },
   },
   plugins: [
-    plugin(function({ matchUtilities, theme }) {
-      matchUtilities({
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
           gridfit: (value) => ({
-            "grid-template-columns": `repeat(auto-fit, minmax(${value}, 1fr))`
+            "grid-template-columns": `repeat(auto-fit, minmax(${value}, 1fr))`,
           }),
         },
-        { values: theme('width') }
-      )
-    })
+        { values: theme("width") }
+      );
+    }),
   ],
 };

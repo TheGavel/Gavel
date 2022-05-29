@@ -1,4 +1,5 @@
 class Api::V1::Products::BaseController < ApplicationController
+  skip_before_action :require_login
   def product_architecture(products)
     products.map{ |product|
       {

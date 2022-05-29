@@ -7,7 +7,7 @@ module SmsAuth
     def create
       @registration = SmsRegistration.new(registration_params)
       if is_phone_exist?(@registration)
-        flash[:alert] = '此手機號碼不合法'
+        flash[:alert] = '此手機號碼不存在'
         redirect_to new_sms_auth_registration_path
         return
       end

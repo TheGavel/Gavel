@@ -9,46 +9,47 @@
 		<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	</head>
 	<body>
-		<div class="fixed top-0 right-0 left-0">
+		<div class="fixed z-100 top-0 right-0 left-0">
 			<input type="checkbox" id="menu_control">
 			<div id="nav" class ="bg-gray-900 h-24 items-center flex fixed top-0 right-0 left-0">
-				<div class="flex items-center">
-					<%=image_tag("gavel_logo.png", alt: "Gavel logo", :class => "logo w-12 w-12 ml-4")%><br>
-					<p class="Gavel text-gray-200 text-2xl font-mono font-bold ml-4">Gavel</p>
+				<div class="flex items-center ">
+					<%=image_tag("gavel_logo.png", alt: "Gavel logo", class:"logo w-12 ml-4 cursor-pointer")%><br>
+					<p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
 				</div>
 				<div data-controller="search" class="search md:flex">
 					<form method="get" data-action="submit->search#search" class="flex justify-center shadow-2xl">
 						<div data-controller="autocomplete" data-autocomplete-url-value="/products/autocomplete" class="input-group relative flex items-stretch">
 							<div calss="relative">
-								<input type="text" data-search-target="query" data-autocomplete-target="input" class="pl-2 form-control relative py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+								<input type="text" data-search-target="query" data-autocomplete-target="input" class="pl-2 form-control relative py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none rounded-l-lg" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
 								<ul data-autocomplete-target="results" class="fixed"></ul>
 							</div>
-							<button class="w-4/12 md:w-2/12 lg:w-1/12 h-11 bg-blue-600 text-white hover:bg-blue-800 rounded">
+							<button class="w-4/12 md:w-2/12 lg:w-1/12 h-11 bg-blue-500 text-white hover:bg-blue-800 rounded-r-lg">
 								<img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.pngg" class="w-6 m-auto">
 							</button>
 						</div>
 					</form>
 				</div>
 				<div class="text text-white xl:ml-28">
-					<% if current_user %>
-						<%= link_to "編輯個人資訊", edit_user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "我的賣場", own_products_path , class:"xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "驗證sms", :new_sms_auth_registration , class:"xl:mx-0 hover:text-blue-500" %>
-						<%= link_to "使用者資訊", :users , class:" xl:mx-0 hover:text-blue-500" %>
-            <%= link_to "登出", user_sessions_path, method: :delete, class:"xl:mx-1 hover:text-blue-500" %>
-					<% else %>
-						<%= link_to "註冊", new_user_path, class:"mx-2 hover:text-blue-500" %>|
-						<%= link_to "登入", new_user_session_path, class:"mx-2 hover:text-blue-500" %>
-					<% end %>
+          <% if current_user %>
+              <%= link_to "個人資訊", user_path(current_user.id), class:" xl:mx-0 hover:text-blue-500" %>
+            <% if not current_user.role == "seller" %>
+              <%= link_to "成為賣家", :new_sms_auth_registration, class:"xl:mx-0 hover:text-blue-500" %>
+            <% else %>
+              <%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500" %>
+            <% end %>
+              <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500" %>
+          <% else %>
+              <%= link_to "註冊", new_user_path, class:"hover:text-blue-500"%><span class="none">|</span>
+              <%= link_to "登入", new_user_session_path, class:"hover:text-blue-500"%>
+          <% end %>
 				</div>
 				<label for="menu_control" class="menu_btn">
 					<div class="btn"></div>
-				</labal>
+				</label>
 			</div>
-			<div>
-				<p id="notice"><%= flash[:notice] %></p>
-				<p id="alert"><%= flash[:alert] %></p>
-			</div>
+      <div>
+        <%= render "shared/flash" if flash %>
+      </div>
 		</div>
 		<%= yield %>
 	</body>

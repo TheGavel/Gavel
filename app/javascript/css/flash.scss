@@ -1,0 +1,19 @@
+.flash {
+  @apply flex justify-between items-center text-lg font-medium mb-6 px-4 py-2 rounded-sm;
+}
+
+.flash-notice {
+  @apply bg-green-400 bg-opacity-100 text-green-50;
+
+  #flashCloseBtn {
+    @apply hover:bg-green-200 text-green-300 px-3 py-1 rounded-full;
+  }
+}
+
+.flash-alert {
+  @apply bg-red-500 text-red-50;
+
+  #flashCloseBtn {
+    @apply hover:bg-red-200 text-red-300 px-3 py-1 rounded-full;
+  }
+}
