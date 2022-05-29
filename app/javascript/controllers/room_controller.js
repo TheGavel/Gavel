@@ -114,7 +114,6 @@ export default class extends Controller {
     }
   }
 
-
   async getavatar(user_id) {
     try {
       const csrfToken = document.querySelector("meta[name=csrf-token]").content

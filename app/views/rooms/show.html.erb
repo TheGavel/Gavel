@@ -29,41 +29,38 @@
         <h1 class=" text-4xl text-center"><%= @product.name %></h1>
       </div>
 
-
       <div class="bg-white mx-auto rounded-2xl w-11/12 m-5 p-5">
         <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
         <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
       </div>
-
     </div>
       <%# 要能link_to點到賣家頁面 %>
     <div data-controller="bid" class="md:flex mx-auto flex-col justify-between w-1/2 ">
-      <%# 要再修正成剩餘時間 %>
-
       <div class="flex justify-center mt-5">
-
         <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
-
-        <!-- <span class="text-xl leading-10" data-room-target="currentprice"></span> -->
-
         <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">商品起標價：$<%= @room.product.start_price %></span>
       </div>
       <div data-room-target="biduser" class="flex justify-evenly mt-5 h-20 w-full overflow-auto">
-
-        <!-- <div  class="flex h-[60px]"></div> -->
       </div>
-
 
       <div class="my-5 mx-auto w-11/12 p-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl rounded-lg mt-5" data-bid-target="bid" >
         <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
         <div class="flex justify-center">
           <span class="text-xl leading-10">$</span>
-          <span class="text-xl leading-10" data-room-target="currentprice"><%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
+          <span class="text-xl leading-10"
+                data-room-target="currentprice"
+                data-bid-target="currentprice">
+                <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %>
+          </span>
           <span class="text-xl leading-9 mx-2">+</span>
-          <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice" value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
+          <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice"
+          value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
           <span class="text-xl leading-10 mx-2">=</span>
           <span class="text-xl leading-10">$</span>
-          <span data-room-target="finalprice" class="text-xl leading-10"></span>
+          <span data-room-target="finalprice"
+                data-bid-target="finalprice"
+                class="text-xl leading-10">
+          </span>
         </div>
         <div class="flex justify-center mt-5" >
           <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
@@ -84,10 +81,7 @@
       <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="賣家隨時為您解答">
       <button class="px-8 rounded-full bg-blue-200 text-gray-800 font-bold p-2 uppercase" data-action="click->room#chat">發送</button>
   </div>
-
-
-
 </div>
 
 <button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase"><%= link_to '返回', product_path %></button>
-<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>
+<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink" data-copylink-target="link"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>
