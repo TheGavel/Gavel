@@ -20,8 +20,7 @@
 .category:hover::before {
   opacity: 1;
 }
-
-.category:first-child {
+.category:first-child{
   margin-left: auto;
 }
 .category:last-child {
@@ -59,6 +58,41 @@
 
 .field_with_errors {
   display: inline-block;
+}
+
+/* 商品狀態 */
+.styled-select select{
+  height: 40px;
+  width: 240px;
+  font-size: 14x;
+  border-radius: 10px;
+  margin: 0 0 0 6px;
+}
+.styled-select select{
+  width: 240px;
+  font-size: 14px;
+  border-radius: 0.25rem;
+  border: 1px solid #aaa;
+  padding: 2px 2px 2px 10px;
+}
+.styled-select {
+  position: relative;
+  display: block;
+  height: 40px;
+  width: 200px;
+  color: rgb(57, 57, 57);
+}
+
+/* 標籤分類 */
+.field select{
+  width: 150px;
+  height: 2.5rem;
+  border: 1px solid rgb(171, 169, 169);
+  padding: 2px 2px 2px 10px;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-left: 5px;
 }
 
 /* 導覽列 */
@@ -214,39 +248,34 @@
   .search button {
     width: 80px;
   }
-}
-
-/* 商品狀態 */
-.styled-select select{
-  height: 40px;
-  width: 240px;
-  font-size: 14x;
-  border-radius: 10px;
-  margin: 0 0 0 6px;
-}
-.styled-select select{
-  width: 240px;
-  font-size: 14px;
-  border-radius: 0.25rem;
-  border: 1px solid #aaa;
-  padding: 2px 2px 2px 10px;
-}
-.styled-select {
-  position: relative;
-  display: block;
-  height: 40px;
-  width: 200px;
-  color: rgb(57, 57, 57);
-}
-
-/* 標籤分類 */
-.field select{
-  width: 150px;
-  height: 2.5rem;
-  border: 1px solid rgb(171, 169, 169);
-  padding: 2px 2px 2px 10px;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  margin-left: 5px;
+  .text > ul{
+    display: flex;
+  }
+  .text a{
+    display: block;
+    padding: 10px 20px;
+  }
+  
+  .text > ul{
+    display: flex;
+  }
+  .text li{
+    position: relative;
+    color: black;
+  }
+  .text .sub-nav{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width: 10em;
+  }
+  .text li:hover > .sub-nav{
+    display: block; 
+    background-color: rgb(17 24 39);
+    width: 110px;
+    top:40px;
+  } 
+  .text li:hover >a{
+    background-color:transparent;
+  }
 }
