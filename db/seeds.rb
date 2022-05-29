@@ -23,10 +23,11 @@ def random_category_path(architecture)
   end
 end
 
-
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+Record.all.delete_all
 Room.all.delete_all
 ProductsTag.all.delete_all
+Boughtlist.all.delete_all
 Product.all.delete_all
 
 Tag.all.delete_all

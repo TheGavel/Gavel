@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   resources :oauths, only: [] do
     collection do
       post :callback
@@ -29,9 +30,14 @@ Rails.application.routes.draw do
       get "categories/*path" , to: 'products#index'
     end
   end
+
   resources :rooms do
     collection do
       get :own
+      
+    end
+    member do
+      resources :messages, only: [:create]
     end
   end
 
@@ -46,8 +52,13 @@ Rails.application.routes.draw do
   # member do
   # end
 
+
+
   namespace :api do
     namespace :v1 do
+      namespace :rooms, only: [] do
+        resources :getavatar, only: [:show]
+      end
       namespace :products, only: [] do
         resources :categories, only: [:show] do
           get :architecture, on: :collection
@@ -57,12 +68,7 @@ Rails.application.routes.draw do
           get ':page', to: 'search#page'
         end
       end
-      namespace :products, only: [] do
-        resources :search, only: [:show] do
-          get ':page', to: 'search#page'
-        end
-      end
+
     end
   end
-
 end

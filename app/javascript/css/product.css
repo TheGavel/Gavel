@@ -31,6 +31,31 @@
   border-bottom: 1px rgb(188, 188, 188) solid;
   padding-bottom: 10px;
 }
+/*
+.navbar::before{
+  content: "";
+  position: absolute;
+  border-bottom: 1px rgb(188, 188, 188) solid;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1rem;
+}
+*/
+/*
+.scroll::-webkit-scrollbar {
+  height: 7px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
 
 .field_with_errors {
   display: inline-block;

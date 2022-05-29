@@ -1,0 +1,93 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+.carousel {
+  box-sizing: border-box;
+  margin: 0 30px;
+}
+
+.room_container {
+  max-width: 450px;
+  position: relative;
+  padding: 5px;
+  background: #fff;
+  border-radius: 1rem;
+}
+
+.slider {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.slider img {
+  min-width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0.7rem;
+}
+
+#previous,
+#next {
+  cursor: pointer;
+  font-size: x-large;
+  position: absolute;
+  border-radius: 16px;
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  top: calc(50% - 40px);
+  left: -50px;
+}
+
+#next {
+  left: unset;
+  right: -50px;
+}
+
+.dots {
+  margin-top: 5px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dots li {
+  width: 10px;
+  height: 10px;
+  background-color: silver;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+li.dot--active {
+  background-color: gray;
+}
+
+#timer {
+  font-family: sans-serif;
+  font-weight: lighter;
+  padding: 70px 50px;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 100;
+}
+
+#timer div {
+  display: inline-block;
+  min-width: 90px;
+}
+
+#timer div span {
+  display: block;
+  font-size: 0.35em;
+  font-weight: 400;
+}

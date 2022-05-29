@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
   end
 
   def new
+    # BroadcastEndtimeWorker.new.perform("I was performed!")
+    # BroadcastEndtimeWorker.perform_at( DateTime.now+10.second,"I was performed!")
     @product = Product.new
     @tags = Tag.all
   end
@@ -61,6 +63,11 @@ class ProductsController < ApplicationController
                       misspellings: {edit_distance:5},
                       select: [:name])
     render layout: false
+  end
+
+  def autocomplete
+      @search_results =Product.all.map(&:name)
+      render layout: false 
   end
 
   private

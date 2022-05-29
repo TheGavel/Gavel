@@ -24,7 +24,9 @@ Rails.application.configure do
   enable_starttls_auto: true,
   open_timeout: 5,
   read_timeout: 5
-}
+  }
+
+  config.active_job.queue_adapter = :sidekiq
   # config.hosts << ENV['NGROK_HOST_NAME'] || 127.0.0.1
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -58,7 +60,6 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 

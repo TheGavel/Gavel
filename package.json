@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "autoprefixer": "^9",
+    "axios": "^0.27.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "file-upload-with-preview": "^5.0.6",
     "jquery": "^3.5.1",

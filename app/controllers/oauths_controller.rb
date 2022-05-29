@@ -1,13 +1,13 @@
 # app/controllers/oauths_controller.rb
 class OauthsController < ApplicationController
   skip_before_action :require_login, raise: false
-      
+
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
   def oauth
     login_at(params[:provider])
   end
-      
+
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
@@ -25,8 +25,8 @@ class OauthsController < ApplicationController
       end
     end
   end
-  
-  #example for Rails 4: add private method below and use "auth_params[:provider]" in place of 
+
+  #example for Rails 4: add private method below and use "auth_params[:provider]" in place of
   #"params[:provider] above.
 
   # private

@@ -17,6 +17,9 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @url = "#{root_url}rooms/#{params[:id]}"
+    # @url = request.host + "/rooms/" + params[:id]
   end
 
   def edit

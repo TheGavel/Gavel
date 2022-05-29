@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_121428) do
+ActiveRecord::Schema.define(version: 2022_05_28_151945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2022_05_18_121428) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
+  create_table "boughtlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_boughtlists_on_product_id"
+    t.index ["user_id"], name: "index_boughtlists_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -61,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_121428) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "start_price"
     t.bigint "user_id", null: false
+    t.integer "basicprice", default: 99
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -126,6 +136,8 @@ ActiveRecord::Schema.define(version: 2022_05_18_121428) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "boughtlists", "products"
+  add_foreign_key "boughtlists", "users"
   add_foreign_key "products", "users"
   add_foreign_key "products_tags", "products"
   add_foreign_key "products_tags", "tags"
