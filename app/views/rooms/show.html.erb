@@ -42,11 +42,11 @@
 
       <div class="flex justify-center mt-5">
 
-        <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
+        <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
 
         <!-- <span class="text-xl leading-10" data-room-target="currentprice"></span> -->
 
-        <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">起標價：$2000</span>
+        <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">商品起標價：$<%= @room.product.start_price %></span>
       </div>
       <div data-room-target="biduser" class="flex justify-evenly mt-5 h-20 w-full overflow-auto">
 
