@@ -140,9 +140,12 @@
   color: rgb(10, 7, 45);
   border-bottom: 1px solid rgb(168, 168, 169);
 }
-.text a:hover {
-  background-color: rgb(206, 204, 204);
-  color: rgb(37, 114, 238);
+.text a:hover{
+  color:rgb(37, 114, 238);
+  /* background: rgb(247, 245, 245); */
+}
+.text :hover{
+  color:rgb(37, 114, 238);
 }
 .text span {
   display: none;
@@ -277,5 +280,8 @@
   } 
   .text li:hover >a{
     background-color:transparent;
+  }
+  .text .sub-nav a{
+    background-color: transparent;
   }
 }
