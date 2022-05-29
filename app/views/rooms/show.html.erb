@@ -24,7 +24,7 @@
 
       <div class="flex mt-5 justify-center">
         <div class="ml-3">
-          <%= image_tag("rilakkuma.png", width:50) %>
+          <%= image_tag(@product.user.avatar, width:50) %>
         </div>
         <h1 class=" text-4xl text-center"><%= @product.name %></h1>
       </div>
@@ -71,11 +71,8 @@
           <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
         </div>
 
-        <div class="flex justify-center " >
-
-          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-md transform transition-all hover:rotate-12" data-action="click->room#bid" ><%= image_tag("logo", width:80 ) %></button>
-<!--
-          <button class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 my-5" data-action="click->room#bid">確認出價！</button> -->
+        <div class="flex justify-center">
+          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-md transform transition-all hover:rotate-12" data-action="click->room#bid" ><%= image_tag("gavel_logo", width:80 ) %></button>
         </div>
       </div>
     </div>
