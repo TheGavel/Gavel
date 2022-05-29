@@ -1,8 +1,8 @@
 <%# TODO 已得標 得標人 如果沒有房間可以創建房間 如果競標中顯示最高出價%>
 
 <h1 class="text-center text-4xl mt-10" >我的商品</h1>
-<% if @products%>
-  <% @products.each do |product|%>
+<% if @products %>
+  <% @products.each do |product| %>
     <div class="container w-8/12 mx-auto bg-gray-200 rounded-lg shadow-lg relative" >
       <div class="mt-5" >
         <div class="flex justify-between px-5 pt-2 mb-2 w-full" >
@@ -10,14 +10,14 @@
             <span class="text-white" ><%= product.status %></span>
           </div>
           <div>
-            <% product.tags.each do |tag|%>
+            <% product.tags.each do |tag| %>
               <div class="bg-white shadow px-2 py-2 rounded-xl inline-block" >
                 <span class="text-gray-600 " ><%= tag.name %> </span>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="flex" >
+        <div class="flex">
           <div class="ml-5 mb-5 w-24 h-24" >
             <div class="h-24 w-24" >
             <%= link_to image_tag(product.images.first, class:"h-full hover:scale-110 transition duration-300 ease-in-out object-cover rounded-lg" ), room_path(product.id) %>

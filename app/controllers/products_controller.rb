@@ -59,10 +59,11 @@ class ProductsController < ApplicationController
   end
 
   def sellitem
+    @products = current_user.boughtproducts
   end
 
   def buyerlist
-    
+    @products = current_user.boughtproducts
   end
 
   def autocomplete
