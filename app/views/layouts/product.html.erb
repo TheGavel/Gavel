@@ -13,8 +13,11 @@
 			<input type="checkbox" id="menu_control">
 			<div id="nav" class ="bg-gray-900 h-24 items-center flex fixed top-0 right-0 left-0">
 				<div class="flex items-center ">
-					<%=image_tag("gavel_logo.png", alt: "Gavel logo", class:"logo w-12 ml-4 cursor-pointer")%><br>
-					<p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
+            <%= link_to root_path, class:"inline-block logo w-12" do %>
+              <%=image_tag("gavel_logo.png", alt: "Gavel logo",class:"logo w-12 ml-4 cursor-pointer")%>
+            <% end %>
+            <br>
+					<p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-4 cursor-pointer">Gavel</p>
 				</div>
 				<div data-controller="search" class="search md:flex">
 					<form method="get" data-action="submit->search#search" class="flex justify-center shadow-2xl">

@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   end
 
   def own
-    @productbuy = current_user.boughtproducts
+
   end
 
   def sellitem
