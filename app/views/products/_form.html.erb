@@ -1,12 +1,7 @@
-<div class="bg-white h-20 flex justify-start items-center shadow fixed top-0 right-0 left-0 p-4 z-10 rounded-md">
-  <h1 class="text-2xl text-gray-800 md:text-2xl">今天想賣出什麼商品？</h1>
-</div>
-
-<div class="rounded-2xl w-11/12 m-auto md:w-8/12 lg:w-5/12 mt-20 shadow bg-white">
+<div class="rounded-2xl w-11/12 mx-auto md:w-8/12 lg:w-5/12 my-8 shadow bg-white">
   <div class="bg-blue-500 h-4 top-0 w-12/12 rounded-t-2xl"></div>
   <div class="px-5">
-    <h1 class="text-2xl my-8 font-bold font-mono text-gray-800">新增商品</h1>
-      <%= form_for( product, html:  {enctype: "multipart/form-data"}) do |form|%>
+      <%= form_for( product, html: {enctype: "multipart/form-data"}) do |form|%>
         <div class="bg-white">
           <div class="custom-file-container border" data-upload-id="myFirstImage" data-controller="multipleImg"></div>
         </div>

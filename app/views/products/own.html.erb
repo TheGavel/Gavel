@@ -35,10 +35,10 @@
                 <p>起標價：$<%= product.start_price %> </p>
                 <p>最低每標金額：$<%= product.basicprice %> </p>
             </div>
-
-            <div class= "absolute right-5 bottom-3">
-              <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-xl text-white text-lg shadow-lg " ><%= link_to "編輯" , edit_product_path(product.id)%></button>
-              <button class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-xl text-white text-lg shadow-lg" ><%= link_to "刪除" , product_path(product.id) , method:"DELETE" , data: {confirm: "確定刪除嗎？"}%></button>
+            
+            <div class= "absolute right-5 bottom-3 flex">
+              <div class="flex item-center bg-blue-500 hover:bg-blue-600 rounded-xl text-white text-lg shadow-lg" ><%= link_to "編輯" , edit_product_path(product.id), class:"w-full px-6 py-3 box-border"%></div>
+              <div class="flex item-center bg-red-500 hover:bg-red-600 rounded-xl text-white text-lg shadow-lg ml-2" ><%= link_to "刪除" , product_path(product.id), method:"DELETE" , data: {confirm: "確定刪除嗎？"}, class:"w-full px-6 py-3 box-border"%></div>
             </div>
           </div>
         </div>
@@ -47,5 +47,5 @@
   <% end %>
 <% end %>
 <div class="flex justify-center mt-10 pb-10" >
-  <button class="bg-blue-500 hover:bg-blue-600 px-10 rounded-xl text-white text-2xl" ><%= link_to "＋建立新商品" , new_product_path%></button>
+  <div class="bg-blue-500 hover:bg-blue-600 rounded-xl text-white text-2xl" ><%= link_to "＋建立新商品" , new_product_path, class:"w-full flex px-6 py-3 box-border" %></div>
 </div>
