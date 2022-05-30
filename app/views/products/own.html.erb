@@ -27,10 +27,10 @@
             <%= link_to image_tag(product.images.first, class:"h-full hover:scale-110 transition duration-300 ease-in-out object-cover rounded-lg" ), room_path(product.id) %>
             </div>
           </div>
-          <div class="ml-5 w-full flex flex-wrap justify-between ">  
+          <div class="ml-5 w-full flex flex-wrap justify-between">  
             <div class="flex w-full" >
               <%= link_to product.name , room_path(product.id), class: "w-3/5 md:w-4/5 h2 text-2xl whitespace-wrap md:text-4xl pr-8"%>
-              <div class="w-2/5 md:w-1/5 text-center mr-8 md:mr-6">
+              <div class="w-2/5 md:w-1/5 text-center mr-[1.75rem] md:mr-6">
                 <span class="text-gray-800 block md:text-[1.4rem]" >目前最高出價</span>
                 <span class="text-yellow-600 block text-3xl md:text-4xl" >$250</span>
               </div>
