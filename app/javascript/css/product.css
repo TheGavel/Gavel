@@ -20,7 +20,7 @@
 .category:hover::before {
   opacity: 1;
 }
-.category:first-child{
+.category:first-child {
   margin-left: auto;
 }
 .category:last-child {
@@ -61,14 +61,14 @@
 }
 
 /* 商品狀態 */
-.styled-select select{
+.styled-select select {
   height: 40px;
   width: 240px;
   font-size: 14x;
   border-radius: 10px;
   margin: 0 0 0 6px;
 }
-.styled-select select{
+.styled-select select {
   width: 240px;
   font-size: 14px;
   border-radius: 0.25rem;
@@ -84,7 +84,7 @@
 }
 
 /* 標籤分類 */
-.field select{
+.field select {
   width: 150px;
   height: 2.5rem;
   border: 1px solid rgb(171, 169, 169);
@@ -96,196 +96,195 @@
 }
 
 /* 導覽列 */
-.menu_btn{
+.menu_btn {
   width: 40px;
   height: 40px;
   display: block;
   position: absolute;
-  top:5px;
+  top: 5px;
   right: 10px;
 }
-#nav{
+#nav {
   position: relative;
-  height:60px;
-  width:100%;
+  height: 60px;
+  width: 100%;
 }
-#menu_control{
+#menu_control {
   position: absolute;
 }
-.menu_btn::before{
-  content: '';
+.menu_btn::before {
+  content: "";
   position: absolute;
   height: 2px;
   width: 30px;
-  left:2px;
+  left: 2px;
   background-color: rgb(245, 245, 245);
   top: 10px;
   bottom: 0;
   margin: auto;
-  box-shadow: 0px 8px 0px rgb(244, 244, 244),
-              0px -8px 0px rgb(237, 237, 238);
+  box-shadow: 0px 8px 0px rgb(244, 244, 244), 0px -8px 0px rgb(237, 237, 238);
 }
-.text{
+.text {
   width: 100%;
   height: calc(100vh-60px);
-  position:absolute;
-  top:60px;
+  position: absolute;
+  top: 60px;
   left: 0%;
-  left:-100%;
-  transition: .3s;
+  left: -100%;
+  transition: 0.3s;
 }
-.text a{
+.text a {
   display: block;
-  color:rgb(10, 7, 45);
-  border-bottom:1px solid rgb(168, 168, 169);
+  color: rgb(10, 7, 45);
+  border-bottom: 1px solid rgb(168, 168, 169);
   padding: 15px;
   background-color: rgb(206, 204, 204);
 }
-.text a:hover{
-  color:rgb(37, 114, 238);
+.text a:hover {
+  color: rgb(37, 114, 238);
   /* background: rgb(247, 245, 245); */
 }
-.text :hover{
-  color:rgb(37, 114, 238);
+.text :hover {
+  color: rgb(37, 114, 238);
 }
-.text span{
+.text span {
   display: none;
 }
-#menu_control:checked~ #nav .text{
-  left :0;
+#menu_control:checked ~ #nav .text {
+  left: 0;
 }
-.search{
-  top:30px;
-  left:0;
+.search {
+  top: 30px;
+  left: 0;
   margin: auto;
 }
 .search ul {
   width: 110px;
 }
-.search ul li{
-  padding:10px 0 10px 10px;
+.search ul li {
+  padding: 10px 0 10px 10px;
   background: white;
   border-radius: 3px;
 }
-.search ul li:hover{
+.search ul li:hover {
   background-color: rgb(218, 218, 219);
 }
-.search input{
+.search input {
   width: 110px;
   height: 40px;
 }
-.search button{
+.search button {
   width: 40px;
   height: 40px;
 }
-.text .sub-nav a{
+.text .sub-nav a {
   background-color: #fff;
 }
 
-@media screen and (min-width:768px){
-  .search{
+@media screen and (min-width: 768px) {
+  .search {
     width: 400px;
-    left:0px;
+    left: 0px;
     margin: auto;
   }
-  .search input{
+  .search input {
     width: 300px;
   }
-  .search button{
+  .search button {
     width: 80px;
   }
   .search ul {
     width: 300px;
   }
 
-  .search ul li{
-    padding:10px 0 10px 10px;
+  .search ul li {
+    padding: 10px 0 10px 10px;
     background: white;
   }
 }
 
-@media screen and (min-width:1200px){
-  .menu_btn{
+@media screen and (min-width: 1200px) {
+  .menu_btn {
     display: none;
   }
-  #nav{
+  #nav {
     align-items: center;
   }
   #nav .Gavel {
     margin-right: 10px;
   }
-  .text{
-    left :0px;
-    right:0;
+  .text {
+    left: 0px;
+    right: 0;
     position: relative;
-    height:60px;
+    height: 60px;
     display: flex;
-    align-items: center;  
+    align-items: center;
     justify-content: flex-end;
     top: 0;
     background-color: rgb(17 24 39);
   }
-  .text a{
+  .text a {
     color: rgb(246, 244, 244);
-    border-bottom:none;
-    background-color:transparent;
-  }
-  .text a:hover{
+    border-bottom: none;
     background-color: transparent;
   }
-  .text span{
+  .text a:hover {
+    background-color: transparent;
+  }
+  .text span {
     display: inline;
   }
-  .search{
-    margin-left:100px ;
+  .search {
+    margin-left: 100px;
   }
   .search ul {
     width: 400px;
   }
-  .search ul li{
-    padding:10px 0 10px 10px;
+  .search ul li {
+    padding: 10px 0 10px 10px;
     background: white;
   }
-  .search ul li:hover{
+  .search ul li:hover {
     background-color: rgb(218, 218, 219);
   }
-  .search input{
+  .search input {
     width: 400px;
   }
-  .search button{
+  .search button {
     width: 80px;
   }
-  .text > ul{
+  .text > ul {
     display: flex;
   }
-  .text a{
+  .text a {
     display: block;
     padding: 10px 20px;
   }
-  
-  .text > ul{
+
+  .text > ul {
     display: flex;
   }
-  .text li{
+  .text li {
     position: relative;
     color: black;
   }
-  .text .sub-nav{
+  .text .sub-nav {
     display: none;
     position: absolute;
     z-index: 10;
     width: 10em;
   }
-  .text li:hover > .sub-nav{
-    display: block; 
+  .text li:hover > .sub-nav {
+    display: block;
     background-color: rgb(17 24 39);
     width: 110px;
-    top:40px;
-  } 
-  .text li:hover >a{
-    background-color:transparent;
+    top: 40px;
   }
-  .text .sub-nav a{
+  .text li:hover > a {
+    background-color: transparent;
+  }
+  .text .sub-nav a {
     background-color: transparent;
   }
 }
