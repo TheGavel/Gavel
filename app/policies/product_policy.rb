@@ -22,7 +22,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    seller || admin
+    seller
   end
 
   def destroy?
@@ -42,11 +42,11 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def buyerlist?
-    true
+    buy?
   end
 
   def buy?
-    seller || admin
+    buyer || seller
   end
 
   class Scope < Scope
