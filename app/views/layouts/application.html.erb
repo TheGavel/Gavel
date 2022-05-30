@@ -11,47 +11,44 @@
   <body class ="bg-gray-100">
     <input type="checkbox" id="menu_control">
     <div id="nav" class="bg-gray-900 h-16 flex items-center">
-        <div class="flex items-center">
-            <%= link_to root_path, class:"inline-block logo w-12" do%>
-              <%=image_tag("gavel_logo.png", alt: "Gavel logo",class:"logo w-12 ml-4 cursor-pointer")%>
-            <% end %>
-            <p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-4 cursor-pointer">Gavel</p>
-        </div>
+      <div class="flex items-center">
+          <%=image_tag("gavel_logo.png", alt: "Gavel logo",class:"logo w-12 ml-4 cursor-pointer")%>
+          <p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
+      </div>
 
-        <div class="text text-white xl:ml-28">
-        <% if current_user %>
-          <% if not current_user.role == "seller"%>
-            <ul>
-              <%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
-              <li>
-                <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-                <ul class="sub-nav">
-                  <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
-                  <li><%= link_to "得標紀錄", buyerlist_products_path  ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                  <li><%= link_to "交易紀錄", record_orders_path ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                </ul>
-              </li>
-            </ul>
-          <% else %>
-            <ul>
-              <li>
-                <%= link_to "賣家中心", "#", class:"xl:mx-0 hover:text-blue-500"%>
-                <ul class="sub-nav">
-                  <li><%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500"%></li>
-                  <li><%= link_to "已賣清單", sellitem_products_path, class:"xl:mx-0 hover:text-blue-500"%></li>
-                  <li><%= link_to "成交紀錄", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
-                </ul>
-              </li>
-              <li>
-                <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-                <ul class="sub-nav">
-                  <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
-                  <li><%= link_to "得標紀錄", buyerlist_products_path ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                  <li><%= link_to "交易紀錄", record_orders_path ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                </ul>
-              </li>
-            </ul>
-          <% end %>
+      <div class="text text-white xl:ml-28">
+        <% if policy(:application).buyer_without_email_authenticate %>
+          <ul>
+            <%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
+            <li>
+              <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
+              <ul class="sub-nav">
+                <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
+                <li><%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+                <li><%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+              </ul>
+            </li>
+          </ul>
+          <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500"%>
+        <% elsif policy(:application).seller %>
+          <ul>
+            <li>
+              <%= link_to "賣家中心", "#", class:"xl:mx-0 hover:text-blue-500"%>
+              <ul class="sub-nav">
+                <li><%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500"%></li>
+                <li><%= link_to "已賣清單", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
+                <li><%= link_to "成交紀錄", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
+              </ul>
+            </li>
+            <li>
+              <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
+              <ul class="sub-nav">
+                <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
+                <li><%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+                <li><%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+              </ul>
+            </li>
+          </ul>
           <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500"%>
         <% else %>
           <%= link_to "註冊", new_user_path ,class:"hover:text-blue-500"%>
