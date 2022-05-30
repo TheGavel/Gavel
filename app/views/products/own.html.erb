@@ -3,42 +3,46 @@
 <h1 class="text-center text-4xl mt-10" >我的商品</h1>
 <% if @products %>
   <% @products.each do |product| %>
-    <div class="container w-8/12 mx-auto bg-gray-200 rounded-lg shadow-lg relative" >
+    <div class="md:w-8/12 md:mx-auto md: bg-gray-200 md:rounded-lg md:shadow-lg " >
       <div class="mt-5" >
-        <div class="flex justify-between px-5 pt-2 mb-2 w-full" >
+        <div class="flex pt-2 mb-2 ml-5" >
           <div class="bg-blue-400 px-4 py-2 rounded-xl" >
-            <span class="text-white" ><%= product.status %></span>
+            <span class="text-white whitespace-nowrap" ><%= product.status %></span>
           </div>
-          <div>
-            <% product.tags.each do |tag| %>
-              <div class="bg-white shadow px-2 py-2 rounded-xl inline-block" >
-                <span class="text-gray-600 " ><%= tag.name %> </span>
+          <div class="flex w-full justify-between">
+              <div>
+                <% product.tags.each do |tag| %>
+                <span class="text-gray-600 ml-2 bg-white shadow px-2 py-2 rounded-xl inline-block" ><%= tag.name %> </span>
+                <% end %>
               </div>
+            <% if product.room %>
+            <% else %>
+              <div class="flex flex-shrink bg-blue-500 hover:bg-blue-600 rounded-xl text-white shadow-lg mr-2"><%= link_to "創建房間", edit_room_path(product.id), class:"w-full px-6 py-2 box-border"%></div>
             <% end %>
           </div>
         </div>
-        <div class="flex">
+        <div class="flex items-center">
           <div class="ml-5 mb-5 w-24 h-24" >
             <div class="h-24 w-24" >
             <%= link_to image_tag(product.images.first, class:"h-full hover:scale-110 transition duration-300 ease-in-out object-cover rounded-lg" ), room_path(product.id) %>
             </div>
           </div>
-          <div class="ml-5 w-full" >
-            <div class="flex w-full justify-between" >
-              <%= link_to product.name , room_path(product.id), class: "h2 text-4xl"%>
-              <div class="mt-2 mr-5 ">
-                <span class="text-gray-800" >目前最高出價：</span>
-                <span class="text-yellow-600 text-4xl" >$250</span>
+          <div class="ml-5 w-full flex flex-wrap justify-between ">  
+            <div class="flex w-full" >
+              <%= link_to product.name , room_path(product.id), class: "w-3/5 md:w-4/5 h2 text-2xl whitespace-wrap md:text-4xl pr-8"%>
+              <div class="w-2/5 md:w-1/5 text-center mr-8 md:mr-6">
+                <span class="text-gray-800 block md:text-[1.4rem]" >目前最高出價</span>
+                <span class="text-yellow-600 block text-3xl md:text-4xl" >$250</span>
               </div>
             </div>
-            <div class="text-gray-800" >
-                <p>起標價：$<%= product.start_price %> </p>
-                <p>最低每標金額：$<%= product.basicprice %> </p>
+            <div class="text-gray-800 mt-2" >
+                <p class="md:text-xl">起標價：$<%= product.start_price %> </p>
+                <p class="md:text-xl">最低每標金額：$<%= product.basicprice %> </p>
             </div>
             
-            <div class= "absolute right-5 bottom-3 flex">
-              <div class="flex item-center bg-blue-500 hover:bg-blue-600 rounded-xl text-white text-lg shadow-lg" ><%= link_to "編輯" , edit_product_path(product.id), class:"w-full px-6 py-3 box-border"%></div>
-              <div class="flex item-center bg-red-500 hover:bg-red-600 rounded-xl text-white text-lg shadow-lg ml-2" ><%= link_to "刪除" , product_path(product.id), method:"DELETE" , data: {confirm: "確定刪除嗎？"}, class:"w-full px-6 py-3 box-border"%></div>
+            <div class= "flex justify-end mt-2 mb-2">
+              <div class="flex item-center bg-blue-500 hover:bg-blue-600 rounded-xl text-white text-lg shadow-lg" ><%= link_to "編輯" , edit_product_path(product.id), class:"w-full px-4 py-3 md:px-6 md:py-3 box-border"%></div>
+              <div class="flex item-center bg-red-500 hover:bg-red-600 rounded-xl text-white text-lg shadow-lg ml-2 mr-2" ><%= link_to "刪除" , product_path(product.id), method:"DELETE" , data: {confirm: "確定刪除嗎？"}, class:"w-full px-4 py-3 md:px-6 md:py-3 box-border"%></div>
             </div>
           </div>
         </div>
