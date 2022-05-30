@@ -32,6 +32,7 @@ module Newebpay
     end
 
     private
+
       def decrypy(encrypted_data)
         encrypted_data = [encrypted_data].pack('H*')
         decipher = OpenSSL::Cipher::AES256.new(:CBC)
