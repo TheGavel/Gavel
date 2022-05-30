@@ -55,8 +55,7 @@ class ProductsController < ApplicationController
     redirect_to own_products_path, notice: '已成功刪除'
   end
 
-  def own
-
+  def own 
   end
 
   def sellitem
