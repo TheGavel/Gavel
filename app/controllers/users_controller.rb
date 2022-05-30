@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     if @user
       @user.activate!
       flash[:notice] = '帳戶已成功啟用'
-      redirect_to login_path
+      redirect_to new_user_session_path
     else
       flash[:alert] = '帳戶無法啟用'
       redirect_to root_path
