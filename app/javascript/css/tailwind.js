@@ -25,6 +25,9 @@ module.exports = {
         1: "1",
         100: "100",
       },
+      flexGrow: {
+        '2': 2
+      },
     },
   },
   plugins: [

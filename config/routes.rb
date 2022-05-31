@@ -80,8 +80,8 @@ Rails.application.routes.draw do
           get :architecture, on: :collection
           get ':page', to: 'categories#page'
         end
-        resources :search, only: [:show] do
-          get ':page', to: 'search#page'
+        resources :search, only: [:show], constraints: { id: /[^\/]+/ } do
+          get ':page', to: 'search#page', constraints: { :page => /[^\/]+/ }
         end
       end
 

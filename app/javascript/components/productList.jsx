@@ -30,15 +30,25 @@ const Product = (data) => {
   );
 };
 
-const ProductList = () => {
+const productList = () => {
   const params = useParams();
+  console.log("paramsid",params.id  );
   const [myArray, setMyArray] = useState([]);
-  let dataArray = [];
+  let dataArray = []
+  let url = ''
+  if( params.mode == "categories" )
+    url = `/api/v1/products/categories/${params.id != undefined ? params.id: '3C數位' }`
+  else if(params.id == undefined){
+    url = '/api/v1/products/categories/3C數位'
+  }
+  else{
+    url = `/api/v1/products/search/${params.id}`
+  }
   useEffect(() => {
     const getData = async () => {
       Rails.ajax({
         type: "get",
-        url: `/api/v1/products/categories/${params.id ? params.id : "3C數位"}`,
+        url: url,
         success: (productData) => {
           dataArray = [];
           productData.forEach((item) => {
@@ -62,4 +72,4 @@ const ProductList = () => {
   });
 };
 
-export default ProductList;
+export default productList;

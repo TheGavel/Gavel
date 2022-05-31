@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render layout: "product"
+    # render layout: "product"
   end
 
   def show
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
     redirect_to own_products_path, notice: '已成功刪除'
   end
 
-  def own 
+  def own
   end
 
   def sellitem
@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     @search_results = Product.search(params[:q],
                       misspellings: {edit_distance:5},
                       select: [:name])
+    # @search_results =Product.all.map(&:name)
     render layout: false
   end
 
@@ -79,7 +80,6 @@ class ProductsController < ApplicationController
     product_name = Product.find(params[:id]).name
     order = current_user.orders.create(description: product_name, price: product_price, product: product, email: current_user.email)
     redirect_to check_order_path(order.id)
-  end
 
   private
   def product_params

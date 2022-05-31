@@ -28,11 +28,11 @@ class ApplicationPolicy
   end
 
   def buyer_without_email_authenticate
-    user && user.activation_state == "pending"
+    user && user.activation_state == "pending" && !(user.role == 'seller')
   end
 
   def buyer
-    user && user.activation_state == "active"
+    user && user.activation_state == "active" && !(user.role == 'seller')
   end
 
   def seller
