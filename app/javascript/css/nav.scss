@@ -1,0 +1,120 @@
+
+/* NavBar */
+nav {
+  background: #eee;
+  // box-shadow: 0px 1px 3px #00000088;
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  h1 {
+    float: left;
+    padding-left: 50px;
+    line-height: 50px;
+  }
+}
+/* 隱藏 checkbox */
+.checkbox {
+  display: none;
+}
+
+/* 漢堡按鈕 */
+label {
+  float: right;
+  padding-right: 50px;
+  line-height: 50px;
+  cursor: pointer;
+  img {
+    width: 30px;
+    vertical-align: middle;
+  }
+}
+
+/* menu*/
+.menu {
+  clear: both;
+  background: #111827;
+  .firstlayer {
+    text-align: center;
+    border-bottom: 1px solid #efefef;
+    .link {
+      display: block;
+      line-height: 50px;
+      // font-size: 18px;
+      color: rgb(246, 244, 244);
+      // &:hover {
+
+      //   color: rgb(37, 114, 238);
+      // }
+    }
+  }
+}
+
+/* 下拉選單效果 */
+.menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: .2s; /* 動畫秒數 */
+}
+
+input:checked ~ .menu   {
+
+  max-height: 800px;
+  // z-index: 9999;
+  overflow: visible;
+  > ul{
+    background-color: #111827;
+  }
+
+}
+
+/* mediaquery */
+@media screen and (min-width: 768px) {
+  label {
+    display: none;
+  }
+  .menu {
+    float: right;
+    clear: none;
+    max-height: 50px;
+    background: #111827;
+    overflow: visible;
+    .firstlayer {
+      border-bottom: 0;
+      display: inline-grid;
+
+      .sub-nav{
+        // transform: translateY(-0.5rem);
+        vertical-align: top;
+        display: none;
+        // visibility: hidden;
+      }
+
+      .sub-nav > li > a{
+        display: block;
+        // color: green;
+      }
+
+      .link {
+        color: rgb(245,245,245);
+        padding: 0 10px;
+        &:hover{
+          color: rgb(37, 114, 238);
+        }
+      }
+      .sub-nav{
+
+      }
+      &:hover  .sub-nav{
+        display: inline-block;
+        background: #111827;
+      }
+
+    }
+    // .logoutt{
+    //   transform: translateY(-3rem);
+    // }
+  }
+}
+

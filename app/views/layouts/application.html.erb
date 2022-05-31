@@ -9,6 +9,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class ="bg-gray-100">
+    <!-- "controller"=>"products", "action"=>"index" -->
+    <% if not (params["controller"] == "products" && params["action"] == "index") %>
+    <#% if not current_page?(:controller => 'products', :action => 'index') %>
     <input type="checkbox" id="menu_control">
     <div id="nav" class="bg-gray-900 h-16 flex items-center">
       <div class="flex items-center">
@@ -17,7 +20,7 @@
       </div>
 
       <div class="text text-white xl:ml-28">
-        <% if policy(:application).buyer_without_email_authenticate %>
+        <% if policy(:application).buyer_without_email_authenticate ||  policy(:application).buyer %>
           <ul>
             <%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
             <li>
@@ -60,6 +63,7 @@
         <div class="btn"></div>
       </labal>
     </div>
+    <% end %>
       <%= render "shared/flash" if flash %>
     </div>
     <%= yield %>
