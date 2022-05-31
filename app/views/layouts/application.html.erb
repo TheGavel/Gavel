@@ -11,7 +11,6 @@
   <body class ="bg-gray-100">
     <!-- "controller"=>"products", "action"=>"index" -->
     <% if not (params["controller"] == "products" && params["action"] == "index") %>
-    <#% if not current_page?(:controller => 'products', :action => 'index') %>
     <input type="checkbox" id="menu_control">
     <div id="nav" class="bg-gray-900 h-16 flex items-center">
       <div class="flex items-center">
