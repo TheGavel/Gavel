@@ -55,7 +55,6 @@ body {
 .field_with_errors textarea{
   outline: 1px solid red;
 }
-
 /* 商品狀態 */
 
 .styled-select select{
