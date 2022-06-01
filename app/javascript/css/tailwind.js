@@ -25,6 +25,9 @@ module.exports = {
         1: "1",
         100: "100",
       },
+      colors: {
+        "gavel-blue": "#0066CC",
+      },
     },
   },
   plugins: [

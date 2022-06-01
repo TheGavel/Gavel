@@ -12,6 +12,6 @@ export default class extends Controller {
         console.log(err);
       });
 
-    this.element.textContent = "已複製！";
+    this.element.textContent = "已複製連結！";
   }
 }
