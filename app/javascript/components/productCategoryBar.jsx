@@ -18,7 +18,7 @@ const categoryBar = () => {
   }, []);
 
   return (
-    <div className="scroll overflow-y-hidden relative my-5" >
+    <div className="scroll mt-28 overflow-y-hidden relative my-5" >
       <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">
         {
           firstLayerCategory.map( (item,idx) => {

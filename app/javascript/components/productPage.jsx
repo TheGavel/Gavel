@@ -10,10 +10,10 @@ const Productpage = ({props}) => {
     <div className="bg-white relative mx-auto">
       <Router>
       <NavBar props={props}/>
-      <h2 className="text-center text-3xl py-6 mt-14">Explore Collections </h2>
+      {/* <h2 className="text-center text-3xl py-6 mt-14">Explore Collections </h2> */}
 
         <CategoryBar/>
-        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] z-20">
+        <div className="mx-auto py-2 px-4 sm:px-6 lg:px-8 max-w-2xl lg:max-w-[1420px] z-20">
           <div className="relative mt-6 grid gridfit-[18rem]  gap-y-12 gap-x-8">
           <Routes>
             <Route path="/" element={<ProductList/>}/>

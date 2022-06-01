@@ -9,27 +9,30 @@ const Product = (data) => {
   // 182 39 139 89
   // w-full
   return (
-    <div className="w-[310px] md:w-full transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-110 hover:z-50 group duration-300">
+    <div className="w-[310px] md:w-full transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-[102%] hover:z-50 group">
+       {/* duration-300 */}
       {/* <div className="h-[182px] flex items-center justify-center overflow-hidden">
       </div> */}
       {/*  */}
       {/*   object-cover */}
       {/**/}
       <img className="w-full h-[182px]  object-cover" src={productImg} alt="productImg" />
-      <div className="h-[39px] flex items-center justify-center overflow-hidden">
+      <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-1.85rem]  flex items-center justify-center overflow-hidden ">
+      {/*       rotate-[360deg] */}
+      {/* transition duration-[600ms] */}
         <img
-          className="w-10 h-10 bg-gray-400 rounded-full group-hover:rotate-[360deg] transition duration-[600ms]"
+          className="w-10 h-10 p-1 bg-white rounded-full group-hover:animate-waving	 border-2 shadow-inner"
           src={sellerImg}
           alt="sellerImg"
         />
       </div>
       {/* overflow-auto break-words */}
       {/* text-clip overflow-hidden */}
-      <div className="h-[142px] px-6 pt-4 bg-gray-300 overflow-hidden">
+      <div className="h-[142px] px-6 pt-4 bg-white overflow-hidden">
         <div className="font-bold text-xl mb-2">{productTitle}</div>
         <p className="text-gray-600 text-base text-ellipsis ">{productContent}</p>
       </div>
-      <div className="h-[89px] px-6 py-4 bg-gray-200">
+      <div className="h-[56px] px-6 py-4 bg-white">
         {labelList.map((element, idx) => {
           return (
             <span

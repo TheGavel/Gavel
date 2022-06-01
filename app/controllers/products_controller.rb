@@ -80,6 +80,7 @@ class ProductsController < ApplicationController
     product_name = Product.find(params[:id]).name
     order = current_user.orders.create(description: product_name, price: product_price, product: product, email: current_user.email)
     redirect_to check_order_path(order.id)
+  end
 
   private
   def product_params
