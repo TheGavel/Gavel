@@ -10,9 +10,9 @@
 .category::before {
   content: "";
   position: absolute;
-  bottom: -0.3rem;
+  bottom: -0.5rem;
   left: 0;
-  border-bottom: 3px red solid;
+  border-bottom: 3px #0066CC solid;
   width: 100%;
   opacity: 0;
 }
@@ -30,7 +30,7 @@
   border-bottom: 1px rgb(188, 188, 188) solid;
   padding-bottom: 10px;
 }
-/*
+/*f
 .navbar::before{
   content: "";
   position: absolute;
