@@ -12,10 +12,13 @@
     <!-- "controller"=>"products", "action"=>"index" -->
     <% if not (params["controller"] == "products" && params["action"] == "index") %>
     <input type="checkbox" id="menu_control">
-    <div id="nav" class="bg-gray-900 h-16 flex items-center">
-      <div class="flex items-center">
+    <div id="nav" class="bg-gray-900 h-24 items-center flex fixed top-0 right-0 left-0">
+      <div class="items-cente">
+        <a href="/" class="flex items-center mr-2">
           <%=image_tag("gavel_logo.png", alt: "Gavel logo",class:"logo w-12 ml-4 cursor-pointer")%>
-          <p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
+
+          <p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-4 cursor-pointer">Gavel</p>
+        </a>
       </div>
 
       <div class="text text-white xl:ml-28">

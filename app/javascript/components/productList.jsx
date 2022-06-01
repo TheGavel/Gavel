@@ -5,7 +5,7 @@ import Rails from "@rails/ujs";
 const Product = (data) => {
   const { sellerImg, productImg, productTitle, productContent, labelList ,id } =
     data;
-
+    console.log("room",id);
   return (
     <a href={`/rooms/${id}`} className="transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-110 hover:z-50 group duration-300">
       <div className="w-[310px] md:w-full transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-[102%] hover:z-50 group">
@@ -66,6 +66,7 @@ const productList = () => {
             data["productTitle"] = item.name;
             data["productContent"] = item.description;
             data["labelList"] = item.label_list
+            data["id"] = item.id;
             console.log(data["labelList"]);
             dataArray.push(data);
           });
