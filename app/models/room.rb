@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Room < ApplicationRecord
-  after_create { BroadcastEndtimeWorker.perform_at( self.end_time,self.id) }
+  attr_accessor :skip_callback
+  after_create :Broadcast, unless: :skip_callback
 
   belongs_to :product
   has_many :record
@@ -11,5 +12,7 @@ class Room < ApplicationRecord
   validates_datetime :start_time, after: Time.now
   validates_datetime :end_time, after: :start_time , after: Time.now
 
-
+  def Broadcast
+    BroadcastEndtimeWorker.perform_at( self.end_time,self.id)
+  end
 end

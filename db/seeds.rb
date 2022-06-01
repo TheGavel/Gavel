@@ -24,6 +24,7 @@ def random_category_path(architecture)
 end
 
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+Order.all.delete_all
 Record.all.delete_all
 Room.all.delete_all
 ProductsTag.all.delete_all
@@ -56,34 +57,38 @@ seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmatio
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-20.times do
+10.times do
   ### PRODUCT
   def product_img(width,height,count,id)
     {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
   end
   user = seller.sample
-  product = Product.create( name: Faker::Lorem.sentence(word_count: 2),
+  product = Product.new( name: Faker::Lorem.sentence(word_count: 2),
                             description: Faker::Lorem.sentence(word_count: 10),
                             status: %w[待拍賣 立即競標].sample,
                             start_price: rand(100..500) ,
                             direct_price: rand(1000..10000),
                             user_id: user.id
                             )
+
+  2.times do
+    product.images.attach(product_img(600,350,3,product.id))
+  end
+  product.save
+
   @category_path = []
   random_category_path(category_architecture)
   @category_path.each { |item|
     tag_id = Tag.find_by(name: item).id
     ProductsTag.create(product_id: product.id, tag_id: tag_id)
   }
-  2.times do
-    product.images.attach(product_img(600,350,3,product.id))
-  end
-
   #ROOM
-  Room.create(start_time: Time.now,
-              end_time: Faker::Time.between_dates(from: Date.today+1, to: Date.today + 30, period: :all),
+  r = Room.new(start_time: Time.now+ 30.seconds,
+              end_time: Faker::Time.between_dates(from: Date.today+2, to: Date.today + 30, period: :all),
               product_id: product.id,
               id: product.id,
               status: %w[未開賣 開賣中 結束競標].sample,
               maxpeople: rand(10..100))
+  r.skip_callback = true
+  r.save
 end
