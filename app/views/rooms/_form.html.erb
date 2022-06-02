@@ -6,10 +6,10 @@
   <div class="field my-5 mx-auto text-center">
     <%= form.label "開始時間："%>
     <input type="datetime-local" name="room[start_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" required= true>
+    <% if room.errors[:start_time].any? %>
+      <div class="text-sm text-red-700"><%= room.errors[:start_time][0] %></div>
+    <% end %>
   </div>
-  <% if room.errors[:start_time].any? %>
-    <div class="bg-red-100 text-sm text-red-700"><%= room.errors[:start_time][0] %></div>
-  <% end %>
 
   <div class="field my-5 mx-auto text-center">
     <%= form.label "結束時間："%>
