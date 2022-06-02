@@ -8,7 +8,7 @@ const Product = (data) => {
     console.log("room",id);
   return (
     <a href={`/rooms/${id}`} className="transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300">
-      <div className="w-[310px] max-w-[430px] md:w-full transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:z-50 group">
+      <div className="w-[310px] max-w-[430px]  transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:z-50 group">
         <img className="w-full h-[182px]  object-cover" src={productImg} alt="productImg" />
         <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-1.85rem]  flex items-center justify-center overflow-hidden ">
           <img
