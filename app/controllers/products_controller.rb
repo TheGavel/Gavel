@@ -59,13 +59,6 @@ class ProductsController < ApplicationController
   end
 
   def sellitem
-    @products = current_user.products.order.where(status:"未付款")
-    @products.each do |product|
-      @a = order_product = Order.find_by(product_id: product.id).status
-      if @a == "pending"
-        @products.update(status:"aaa")
-      end
-    end
   end
 
   def buyerlist
