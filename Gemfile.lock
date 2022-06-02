@@ -128,6 +128,9 @@ GEM
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
     ffi (1.15.5)
+    font_awesome5_rails (1.5.0)
+      nokogiri (>= 1.11.3)
+      railties (>= 4.2)
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -161,6 +164,10 @@ GEM
     multipart-post (2.1.1)
     nio4r (2.5.8)
     nokogiri (1.13.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     oauth (0.5.10)
     oauth2 (1.4.9)
@@ -319,6 +326,9 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-19
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   aasm (~> 5.2)
@@ -328,6 +338,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7, >= 2.7.6)
   elasticsearch (~> 7.0)
   faker (~> 2.21)
+  font_awesome5_rails (~> 1.5)
   foreman (~> 0.87.2)
   image_processing (~> 1.12, >= 1.12.2)
   jbuilder (~> 2.7)
