@@ -4,6 +4,7 @@ class BroadcastEndtimeWorker
 
   def perform(room_id)
     highest_record = Record.where(room_id: room_id).last
+    Product.find(room_id).update(status: "未付款")
     Boughtlist.create( user_id: highest_record.user.id ,
                        product_id: highest_record.product.id)
     ActionCable.server.broadcast "Bid:#{room_id}",

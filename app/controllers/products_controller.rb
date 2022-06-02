@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def sellitem
-    @products = current_user.boughtproducts
+    @products = current_user.products.where(status:"未付款")
   end
 
   def buyerlist

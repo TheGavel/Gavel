@@ -20,20 +20,26 @@
           <th class="py-4 px-6 whitespace-nowrap rounded-tr-xl">
             <span>買家名稱</span>
         </th>
+        <th id="product-bid" class=" py-3 px-6 ">
+          <span>結標金額</span>
+        </th>
+        <th id="product-time" class=" py-3 px-6 ">
+          <span>結標時間</span>
+        </th>
+        <th id="product-status" class=" py-3 px-6 ">
+          <span>商品狀態</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="text-center text-lg border-b-2 border-b-gray-200">
+          <td class="py-3 px-6"><%= product.name %></td>
+          <td class="py-3 px-6"><%= product.records.last.bid %></td>
+          <td class="py-3 px-6"><%= product.records.last.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td class="py-3 px-6"><%= product.status %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @products.each do |product| %>  
-          <tr class="text-center text-lg border-b-2 bg-white border-b-gray-200">
-            <td class="py-6 px-6 whitespace-nowrap"><%= product.name %></td>
-            <td class="py-6 px-6 whitespace-nowrap"><%= product.records.last.bid %></td>
-            <td class="py-6 px-6 whitespace-nowrap"><%= product.room.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-            <td class="py-6 px-6 whitespace-nowrap"><%= product.status %></td>
-            <td class="py-6 px-6 whitespace-nowrap"></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<% end %>

@@ -2,13 +2,19 @@
   <%= form_for( product, html: {enctype: "multipart/form-data"}) do |form|%>
     <div class="mx-4 m-auto md:ml-10 xl:ml-24">
       <div class="field my-5">
-        <%= form.label :name, "商品名稱：", class:"text-gray-500"%>
+        <%= form.label "商品名稱：", class:"text-gray-500"%>
         <%= form.text_field :name, placeholder:"商品名稱", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <% if product.errors[:name].any? %>
+          <div class="text-center text-sm text-red-700"><%= product.errors[:name][0] %></div>
+        <% end %>
       </div>
 
       <div class="field flex justify-start my-4 md:my-6">
-        <%= form.label :description, "商品描述：", class:"text-gray-500"%>
+        <%= form.label "商品描述：", class:"text-gray-500"%>
         <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-9/12 border py-2 px-2 ml-1 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <% if product.errors[:description].any? %>
+          <div class="text-center text-sm text-red-700"><%= product.errors[:description][0] %></div>
+        <% end %>
       </div>
 
       <div>
@@ -25,8 +31,11 @@
       </div>
 
       <div class="field my-4 md:my-6">
-        <%= form.label :start_price, "起標價格：", class:"text-gray-500"%>
+        <%= form.label "起標價格：", class:"text-gray-500"%>
         <%= form.text_field :start_price, type:"nunber" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
+        <% if product.errors[:start_price].any? %>
+          <div class="text-center text-sm text-red-700"><%= product.errors[:start_price][0] %></div>
+        <% end %>
       </div>
 
       <div class="status my-4 md:my-6 flex">
