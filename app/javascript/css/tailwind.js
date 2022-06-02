@@ -12,23 +12,20 @@ module.exports = {
   },
   theme: {
     extend: {
-      colors: {
-        "gavel-blue": "#0066CC"
-      },
       keyframes: {
         wave: {
-          '0%': { transform: 'rotate(0.0deg)' },
-          '10%': { transform: 'rotate(10deg)' },
-          '20%': { transform: 'rotate(-6deg)' },
-          '30%': { transform: 'rotate(10deg)' },
-          '40%': { transform: 'rotate(-4deg)' },
-          '50%': { transform: 'rotate(8.0deg)' },
-          '60%': { transform: 'rotate(0.0deg)' },
-          '100%': { transform: 'rotate(0.0deg)' },
+          "0%": { transform: "rotate(0.0deg)" },
+          "10%": { transform: "rotate(10deg)" },
+          "20%": { transform: "rotate(-6deg)" },
+          "30%": { transform: "rotate(10deg)" },
+          "40%": { transform: "rotate(-4deg)" },
+          "50%": { transform: "rotate(8.0deg)" },
+          "60%": { transform: "rotate(0.0deg)" },
+          "100%": { transform: "rotate(0.0deg)" },
         },
       },
       animation: {
-        'waving': 'wave 1.5s ease-in-out 1',
+        waving: "wave 1.5s ease-in-out 1",
       },
       gridTemplateColumns: {
         "auto-fit": "repeat(auto-fit, minmax(0, 1fr))",
@@ -44,7 +41,10 @@ module.exports = {
         100: "100",
       },
       flexGrow: {
-        '2': 2
+        2: 2,
+      },
+      colors: {
+        "gavel-blue": "#0066CC",
       },
     },
   },
