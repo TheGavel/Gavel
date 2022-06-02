@@ -17,8 +17,6 @@
         <% end %>
       </div>
 
-
-
       <div class="field my-4 md:my-6 flex items-center">
         <%= form.label "商品分類：", class:"text-gray-500"%>
         <div data-controller="tag"
@@ -31,7 +29,7 @@
           <%= form.label "每標最低金額：", class:"text-gray-800"%>
           <%= form.text_field :basicprice, type:"nunber" ,placeholder:"NT$", class:"text-gray-800 w-full h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
           <% if product.errors[:basicprice].any? %>
-            <div class="bg-red-100 text-sm text-red-700"><%= product.errors[:basicprice][0] %></div>
+            <div class="text-center text-sm text-red-700 "><%= product.errors[:basicprice][0] %></div>
           <% end %>
         </div>
 

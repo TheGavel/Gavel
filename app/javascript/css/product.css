@@ -48,6 +48,7 @@ body {
 }
 .field_with_errors {
   display: inline-block;
+  width: 65%;
 }
 
 /* 商品狀態 */
