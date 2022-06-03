@@ -57,7 +57,7 @@ seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmatio
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-10.times do
+100.times do
   ### PRODUCT
   def product_img(width,height,count,id)
     {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
@@ -71,7 +71,7 @@ seller = [seller1,seller2,seller3]
                             user_id: user.id
                             )
 
-  2.times do
+  1.times do
     product.images.attach(product_img(600,350,3,product.id))
   end
   product.save
