@@ -6,10 +6,11 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :price
       t.string :status, default: "pending"
       t.string :email
-      t.belongs_to :user, null: false, foreign_key: true
       t.text :description
-
+      t.references :buyer, null: false,foreign_key: { to_table: :users }
+      t.references :seller, null: false,foreign_key: { to_table: :users }
       t.timestamps
     end
+
   end
 end

@@ -12,8 +12,9 @@ class User < ApplicationRecord
     if: lambda {new_record? || changes[:crypted_password]}
 
   has_many :products
+  has_many :seller_orders, class_name: 'Order', foreign_key: 'seller_id'
+  has_many :buyer_orders, class_name: 'Order', foreign_key: 'buyer_id'
   has_many :boughtlist
   has_many :boughtproducts, through: :boughtlist, source: :product
   has_one_attached :avatar
-  has_many :orders
 end
