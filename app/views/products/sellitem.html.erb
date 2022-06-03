@@ -1,18 +1,19 @@
+<h1 class="text-center text-4xl mt-10">已賣清單</h1>
 <% if @products.any? %>
-<div id="products" class=" container mx-auto mt-10">
-  <table class="min-w-full bg-white">
-    <thead class="bg-blue-800 text-white text-lg">
-      <tr class="mx-auto text-center">
-        <th id="product-name" class="py-3 px-6">
+<div id="products" class="container mx-auto mt-5">
+  <table class="w-10/12 mx-1 bg-white mx-auto rounded-2xl shadow-xl">
+    <thead class="bg-gavel-blue text-white text-lg">
+      <tr class="mx-auto text-center shadow-xl">
+        <th id="product-name" class="py-4 px-6 rounded-tl-xl">
           <span>已結標商品</span>
         </th>
-        <th id="product-bid" class=" py-3 px-6 ">
+        <th id="product-bid" class=" py-3 px-6">
           <span>結標金額</span>
         </th>
-        <th id="product-time" class=" py-3 px-6 ">
+        <th id="product-time" class=" py-3 px-6">
           <span>結標時間</span>
         </th>
-        <th id="product-status" class=" py-3 px-6 ">
+        <th id="product-status" class="py-4 px-6 rounded-tr-xl">
           <span>商品狀態</span>
         </th>
       </tr>
@@ -20,10 +21,10 @@
     <tbody>
       <% @products.each do |product| %>  
         <tr class="text-center text-lg border-b-2 border-b-gray-200">
-          <td class="py-3 px-6"><%= product.name %></td>
-          <td class="py-3 px-6"><%= product.records.last.bid %></td>
-          <td class="py-3 px-6">2022/11/27 14:30</td>
-          <td class="py-3 px-6"><%= product.status %></td>
+          <td class="py-6 px-6"><%= product.name %></td>
+          <td class="py-6 px-6"><%= product.records.last.bid %></td>
+          <td class="py-6 px-6">2022/11/27 14:30</td>
+          <td class="py-6 px-6"><%= product.status %></td>
         </tr>
       <% end %>
     </tbody>
