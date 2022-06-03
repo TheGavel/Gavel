@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useRef,useCallback   } from "react";
 import { useParams } from "react-router-dom";
-import Rails from "@rails/ujs";
-
+import useSearch from './useSearch'
 const Product = (data) => {
   const { sellerImg, productImg, productTitle, productContent, labelList, id } =
     data;
-  console.log("room", id);
   return (
     <a
       href={`/rooms/${id}`}
@@ -49,47 +47,47 @@ const Product = (data) => {
 
 const productList = () => {
   const params = useParams();
-  console.log("paramsid", params.id);
-  const [myArray, setMyArray] = useState([]);
-  let dataArray = [];
-  let url = "";
-  if (params.mode == "categories")
-    url = `/api/v1/products/categories/${
-      params.id != undefined ? params.id : "3C數位"
-    }`;
-  else if (params.id == undefined) {
-    url = "/api/v1/products/categories/3C數位";
-  } else {
-    url = `/api/v1/products/search/${params.id}`;
-  }
-  useEffect(() => {
-    const getData = async () => {
-      Rails.ajax({
-        type: "get",
-        url: url,
-        success: (productData) => {
-          dataArray = [];
-          productData.forEach((item) => {
-            let data = {};
-            data["sellerImg"] = item.seller_image;
-            data["productImg"] = item.product_image;
-            data["productTitle"] = item.name;
-            data["productContent"] = item.description;
-            data["labelList"] = item.label_list;
-            data["id"] = item.id;
-            console.log(data["labelList"]);
-            dataArray.push(data);
-          });
-          setMyArray(() => dataArray);
-        },
-      });
-    };
-    getData();
-  }, [params]); //<-- This is the dependency array
+  const [pageNumber, setPageNumber] = useState(1)
+  const {
+    products,
+    hasMore,
+    loading,
+    error
+  } = useSearch(params.id, pageNumber,setPageNumber,params)
 
-  return myArray.map((item, idx) => {
-    return <Product key={"Product" + idx} {...item} />;
-  });
+  const observer = useRef()
+  const lastBookElementRef = useCallback(node => {
+    if (loading) return
+    if (observer.current) observer.current.disconnect()
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPageNumber(prevPageNumber => prevPageNumber + 1)
+      }
+    })
+    if (node) observer.current.observe(node)
+  }, [loading, hasMore])
+
+  return(
+  <>
+    {products.map((product, idx) => {
+      if (products.length === idx + 1) {
+        return(
+          <div ref={lastBookElementRef} key={`product${idx}`}>
+            <Product   {...product} />
+          </div>
+        )
+      }else{
+        return(
+          <div  key={`product${idx}`}>
+            <Product   {...product} />
+          </div>
+        )
+      }
+    })}
+    <div>{loading && 'Loading...'}</div>
+    <div>{error && 'Error'}</div>
+  </>
+  )
 };
 
 export default productList;
