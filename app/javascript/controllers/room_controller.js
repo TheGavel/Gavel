@@ -12,7 +12,10 @@ export default class extends Controller {
       connected() {
         thisController.listen()
       },
-      received({ bid , message , user, endbid, bidder }) {
+      received({ bid , message , user, endbid, bidder,race_condition }) {
+        if(race_condition != undefined){
+          console.log("race_condition");
+        }
         if(bid != undefined){
           thisController.currentpriceTargets.map( (currentprice,idx) => {
             currentprice.textContent = bid
