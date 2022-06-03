@@ -67,12 +67,14 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
     t.integer "price"
     t.string "status", default: "pending"
     t.string "email"
-    t.bigint "user_id", null: false
     t.text "description"
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -153,7 +155,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
   add_foreign_key "boughtlists", "products"
   add_foreign_key "boughtlists", "users"
   add_foreign_key "orders", "products"
-  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users", column: "seller_id"
   add_foreign_key "products", "users"
   add_foreign_key "products_tags", "products"
   add_foreign_key "products_tags", "tags"
