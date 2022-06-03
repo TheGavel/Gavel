@@ -5,11 +5,8 @@ const Product = (data) => {
   const { sellerImg, productImg, productTitle, productContent, labelList, id } =
     data;
   return (
-    <a
-      href={`/rooms/${id}`}
-      className="transition relative rounded-lg border overflow-hidden mx-auto shadow-md hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300"
-    >
-      <div className="w-[310px] max-w-[430px] transition relative rounded-lg border overflow-hidden mx-auto shadow-md hover:shadow-lg hover:z-50 group">
+    <a href={`/rooms/${id}`} >
+      <div className="w-[310px] max-w-[430px] transition relative rounded-lg border overflow-hidden mx-auto shadow-md hover:shadow-lg hover:z-50 group hover:scale-[107%]">
         <img
           className="w-full h-[182px] object-cover"
           src={productImg}
@@ -84,8 +81,8 @@ const productList = () => {
         )
       }
     })}
-    <div>{loading && 'Loading...'}</div>
-    <div>{error && 'Error'}</div>
+ {/* <div>{loading && 'Loading...'}</div>
+    <div>{error && 'Error'}</div> */}
   </>
   )
 };
