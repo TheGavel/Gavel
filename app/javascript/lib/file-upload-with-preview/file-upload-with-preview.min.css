@@ -2,6 +2,7 @@
   box-sizing: border-box;
   position: relative;
   display: block;
+  padding:  0 40px 5px 0px;
 }
 .custom-file-container * {
   box-sizing: border-box;
@@ -45,7 +46,7 @@
   background-color: #fff;
   border-radius: 4px;
   border: 1px solid #c0c0af;
-  color: #333;
+  color: rgb(110, 110, 110);
   height: 40px;
   left: 0;
   line-height: 1.5;
@@ -70,12 +71,12 @@
   z-index: 6;
 }
 .custom-file-container .image-preview {
-  background-color: #edede8;
+  background-color: #f9f9f6;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
-  height: 250px;
+  height: 120px;
   overflow: auto;
   padding: 4px;
   transition: background 0.2s ease-in-out;
@@ -118,3 +119,13 @@
   display: block;
   margin-top: -2px;
 }
+.custom-file-container{
+  border: none;
+}
+.label-container label{
+  margin-top:18px;
+  margin-bottom:5px;
+  color: rgb(31 41 55);
+  font-size: 16px;
+}
+
