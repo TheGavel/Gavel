@@ -10,64 +10,67 @@
   </head>
   <body class ="">
     <!-- "controller"=>"products", "action"=>"index" -->
-    <% if not (params["controller"] == "products" && params["action"] == "index") %>
-    <input type="checkbox" id="menu_control">
-    <div id="nav" class="bg-gray-900 h-24 items-center flex fixed top-0 right-0 left-0">
-      <div class="items-cente">
-        <a href="/" class="flex items-center mr-2">
-          <%=image_tag("gavel_logo.png", alt: "Gavel logo",class:"logo w-12 ml-4 cursor-pointer")%>
-
-          <p class="Gavel text-gray-200 text-2xl font-mono font-bold pl-4 cursor-pointer">Gavel</p>
-        </a>
-      </div>
-
-      <div class="text text-white xl:ml-28">
-        <% if policy(:application).buyer_without_email_authenticate ||  policy(:application).buyer %>
-          <ul>
-            <%= link_to "成為賣家", :new_sms_auth_registration  ,class:"xl:mx-0 hover:text-blue-500"%>
-            <li>
-              <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-              <ul class="sub-nav">
-                <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
-                <li><%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                <li><%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
+    <section>
+      <div class="fixed top-0 z-100 left-0 right-0">
+        <% if not (params["controller"] == "products" && params["action"] == "index") %>
+        <input type="checkbox" id="menu_control">
+        <div id="nav" class="bg-gradient-to-r from-gavel-blue to-green-400 shadow-lg items-center flex h-20 justify-between">
+          <div class="flex items-cente ml-8">
+						<%= link_to root_path, class:"flex logo w-12" do %>
+							<%= image_tag("gavel_reverse-modified.png", alt: "Gavel logo",class:"logo w-12 cursor-pointer") %>
+              <br>
+              <p class="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
+						<% end %>
+          </div>
+          <div class="text text-white mx-6">
+            <% if policy(:application).buyer_without_email_authenticate ||  policy(:application).buyer %>
+              <ul>
+                <li><%= link_to "成為賣家", :new_sms_auth_registration, class:"xl:mx-0 hover:text-blue-200 text-xl" %></li>
+                <li>
+                  <%= link_to "買家中心", "#", class:" xl:mx-0 hover:text-blue-200 text-xl" %>
+                  <ul class="sub-nav">
+                    <li><%= link_to "個人資訊", user_path(current_user.id), class:"xl:mx-0 text-center hover:text-blue-200 text-xl" %></li>
+                    <li><%= link_to "得標紀錄", buyerlist_products_path, class:" xl:mx-0 hover:text-blue-200 text-xl" %></li>
+                    <li><%= link_to "交易紀錄", record_orders_path, class:" xl:mx-0 hover:text-blue-200 text-xl" %></li>
+                  </ul>
+                </li>
               </ul>
-            </li>
-          </ul>
-          <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500"%>
-        <% elsif policy(:application).seller %>
-          <ul>
-            <li>
-              <%= link_to "賣家中心", "#", class:"xl:mx-0 hover:text-blue-500"%>
-              <ul class="sub-nav">
-                <li><%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-500"%></li>
-                <li><%= link_to "已賣清單", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
-                <li><%= link_to "成交紀錄", "#", class:"xl:mx-0 hover:text-blue-500"%></li>
+              <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-0 hover:text-blue-200 text-xl" %>
+            <% elsif policy(:application).seller %>
+              <ul>
+                <li>
+                  <%= link_to "賣家中心", "#", class:"xl:mx-0 hover:text-blue-200 text-xl"%>
+                  <ul class="sub-nav">
+                    <li><%= link_to "我的商品", own_products_path, class:"xl:mx-0 hover:text-blue-200 text-xl"%></li>
+                    <li><%= link_to "成交清單", sellitem_products_path, class:"xl:mx-0 hover:text-blue-200 text-xl"%></li>
+                    <li><%= link_to "成交紀錄", "#", class:"xl:mx-0 hover:text-blue-200 text-xl"%></li>
+                  </ul>
+                </li>
+                <li>
+                  <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-200 text-xl"%>
+                  <ul class="sub-nav">
+                    <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:mx-0 text-center hover:text-blue-200 text-xl"%></li>
+                    <li><%= link_to "得標紀錄", buyerlist_products_path ,class:" xl:mx-0 hover:text-blue-200 text-xl"%></li>
+                    <li><%= link_to "交易紀錄", record_orders_path ,class:" xl:mx-0 hover:text-blue-200 text-xl"%></li>
+                  </ul>
+                </li>
               </ul>
-            </li>
-            <li>
-              <%= link_to "買家中心", "#" ,class:" xl:mx-0 hover:text-blue-500"%>
-              <ul class="sub-nav">
-                <li><%= link_to "個人資訊", user_path(current_user.id) ,class:"xl:text-center hover:text-blue-500"%></li>
-                <li><%= link_to "得標紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
-                <li><%= link_to "交易紀錄", "#" ,class:" xl:mx-0 hover:text-blue-500"%></li>
-              </ul>
-            </li>
-          </ul>
-          <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-1 hover:text-blue-500"%>
-        <% else %>
-          <%= link_to "註冊", new_user_path ,class:"hover:text-blue-500"%>
-          <%= link_to "登入", new_user_session_path ,class:"hover:text-blue-500"%>
+              <%= link_to "登出", user_sessions_path, method: "delete", class:"xl:mx-0 hover:text-blue-200 text-xl"%>
+            <% else %>
+              <%= link_to "註冊", new_user_path ,class:"hover:mx-0 text-blue-200 text-xl"%>
+              <%= link_to "登入", new_user_session_path ,class:"mx-0 hover:text-blue-200 text-xl"%>
+            <% end %>
+          </div>
+          <label for="menu_control" class="menu_btn">
+            <div class="btn"></div>
+          </label>
+        </div>
         <% end %>
+        <div>
+          <%= render "shared/flash" if flash %>
+        </div>
       </div>
-
-      <label for="menu_control" class="menu_btn">
-        <div class="btn"></div>
-      </label>
-    </div>
-    <% end %>
-      <%= render "shared/flash" if flash %>
-    </div>
-    <%= yield %>
+      <%= yield %>
+    </section>
   </body>
 </html>
