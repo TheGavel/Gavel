@@ -14,20 +14,20 @@ const ProductNavbar = ({ props }) => {
         id="nav"
         className="bg-gradient-to-r from-gavel-blue to-green-400 shadow-lg items-center flex h-20 justify-between"
       >
-        <div className="flex items-center ml-8">
-          <a href="/" className="flex logo w-full">
+        <div className="flex items-center ml-2 md:ml-8">
+          <a href="/" className="logo flex w-full items-center">
             <img
               src={LogoImage}
               alt="Gavel logo"
-              className="logo w-12 cursor-pointer"
+              className="logo cursor-pointer w-8 md:w-12"
             />
-            <h1 className="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">
+            <h1 className="Gavel text-white font-mono font-bold pl-2 cursor-pointer text-3xl md:text-5xl">
               Gavel
             </h1>
           </a>
         </div>
         <NavBarSuggestions />
-        <div className="text text-white mx-6">
+        <div className="text text-white xl:mx-6">
           {current_user ? (
             <>
               {!(current_user?.role == "seller") ? (
@@ -183,8 +183,10 @@ const ProductNavbar = ({ props }) => {
             </>
           )}
         </div>
-        <label htmlFor="menu_control" className="menu_btn">
-          <div className="btn"></div>
+        <label htmlFor="menu_control" className="menu_btn mr-1 md:mr-8">
+          <span></span>
+          <span></span>
+          <span></span>
         </label>
       </div>
     </div>
