@@ -26,7 +26,7 @@
       </div>
 
       <div class="status my-5 flex">
-        <%= form.label :status, "狀態：", class:"mt-3 ml-8 text-gray-800"%>
+        <%= form.label :status, "商品狀態：", class:"mt-3 text-gray-800"%>
         <div class="styled-select", class="text-white">
           <%= form.select :status, Product.all_status, class:"text-blue-500 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
         </div>
