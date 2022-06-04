@@ -3,13 +3,20 @@ import { useParams } from "react-router-dom";
 import Rails from "@rails/ujs";
 
 const Product = (data) => {
-  const { sellerImg, productImg, productTitle, productContent, labelList ,id } =
+  const { sellerImg, productImg, productTitle, productContent, labelList, id } =
     data;
-    console.log("room",id);
+  console.log("room", id);
   return (
-    <a href={`/rooms/${id}`} className="transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300">
-      <div className="w-[310px] max-w-[430px]  transition relative rounded overflow-hidden mx-auto shadow hover:shadow-lg hover:z-50 group">
-        <img className="w-full h-[182px]  object-cover" src={productImg} alt="productImg" />
+    <a
+      href={`/rooms/${id}`}
+      className="transition relative rounded-lg border overflow-hidden mx-auto shadow-md hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300"
+    >
+      <div className="w-[310px] max-w-[430px] transition relative rounded-lg border overflow-hidden mx-auto shadow-md hover:shadow-lg hover:z-50 group">
+        <img
+          className="w-full h-[182px] object-cover"
+          src={productImg}
+          alt="productImg"
+        />
         <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-1.85rem]  flex items-center justify-center overflow-hidden ">
           <img
             className="w-10 h-10 p-1 bg-white rounded-full group-hover:animate-waving	 border-2 shadow-inner"
@@ -17,18 +24,22 @@ const Product = (data) => {
             alt="sellerImg"
           />
         </div>
-        <div className="h-[142px] px-6 pt-4 bg-white overflow-hidden">
-          <div className="font-bold text-xl mb-2">{productTitle}</div>
-          <p className="text-gray-600 text-base text-ellipsis ">{productContent}</p>
+        <div className="h-[142px] px-6 pt-8 bg-white overflow-hidden overflow-y-scroll">
+          <div className="font-bold text-xl mb-2 text-gray-800">
+            {productTitle}
+          </div>
+          <p className="text-gray-600 text-base text-ellipsis ">
+            {productContent}
+          </p>
         </div>
-        <div className="h-[56px] px-6 py-4 bg-white">
+        <div className="h-[56px] px-6 py-4 bg-green-200">
           {labelList.map((element, idx) => {
             return (
               <span
                 key={"label" + idx}
-                className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2"
+                className="inline-block bg-green-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2"
               >
-                #{element}
+                {element}
               </span>
             );
           })}
@@ -40,17 +51,18 @@ const Product = (data) => {
 
 const productList = () => {
   const params = useParams();
-  console.log("paramsid",params.id  );
+  console.log("paramsid", params.id);
   const [myArray, setMyArray] = useState([]);
-  let dataArray = []
-  let url = ''
-  if( params.mode == "categories" )
-    url = `/api/v1/products/categories/${params.id != undefined ? params.id: '3C數位' }`
-  else if(params.id == undefined){
-    url = '/api/v1/products/categories/3C數位'
-  }
-  else{
-    url = `/api/v1/products/search/${params.id}`
+  let dataArray = [];
+  let url = "";
+  if (params.mode == "categories")
+    url = `/api/v1/products/categories/${
+      params.id != undefined ? params.id : "3C數位"
+    }`;
+  else if (params.id == undefined) {
+    url = "/api/v1/products/categories/3C數位";
+  } else {
+    url = `/api/v1/products/search/${params.id}`;
   }
   useEffect(() => {
     const getData = async () => {
@@ -65,7 +77,7 @@ const productList = () => {
             data["productImg"] = item.product_image;
             data["productTitle"] = item.name;
             data["productContent"] = item.description;
-            data["labelList"] = item.label_list
+            data["labelList"] = item.label_list;
             data["id"] = item.id;
             console.log(data["labelList"]);
             dataArray.push(data);
