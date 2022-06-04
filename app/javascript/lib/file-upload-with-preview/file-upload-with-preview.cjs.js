@@ -1266,7 +1266,7 @@ var FileUploadWithPreview = /*#__PURE__*/function () {
           backgroundImage = _this4.options.images.successVideoImage;
         }
 
-        _this4.imagePreview.innerHTML += "\n        <div\n          class=\"image-preview-item\"\n          data-upload-name=\"".concat(file.name, "\"\n          style=\"background-image: url('").concat(backgroundImage, "'); \"\n        >\n          ").concat(_this4.options.showDeleteButtonOnImages ? imageClearContent(file.name) : undefined, "\n        </div>\n      ");
+        _this4.imagePreview.innerHTML += "\n        <div\n          class=\"image-preview-item\"\n          data-upload-name=\"".concat(file.name, "\"\n          style=\"background-image: url('").concat(backgroundImage, "'); \"\n        >\n          ")
       };
     }
   }, {
