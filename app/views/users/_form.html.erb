@@ -11,71 +11,89 @@
     </div>
   <% end %>
 
-  <div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto">
-
-  <% if not current_user %>
-    <div class="mt-5 py-4 text-center bg-gray-50">
-      <p class="text-gray-600">已經有帳戶？<%=link_to "登入", new_user_session_path, class:"font-medium text-blue-600 hover:text-gray-800"%></p>
-    </div>
-    <hr class="bg-gray-200">
-
-    <div class="flex justify-between">
-      <h1 class="text-4xl font-bold m-8">註冊</h1>
-      <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
-    </div>
-
-  <% else %>
-    <div class="flex justify-between mt-10">
-      <h1 class="text-4xl font-bold m-8 ">編輯個人資訊</h1>
-      <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
-    </div>
-  <% end %>
-    <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex">
-        <span class="m-2 text-red-600">*</span><%= form.label :email, "電子信箱", class:"w-3/12 text-sm font-medium pt-2.5 text-gray-700"%><br>
-        <%= form.text_field :email, placeholder:"請輸入電子郵件", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex">
-        <span class="text-red-600 m-2">*</span><%= form.label :username, "使用者名稱", class:"w-3/12 md:w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
-        <%= form.text_field :username, placeholder:"請設定使用者名稱", class:"w-9/12 md:w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex">
-        <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
-        <%= form.password_field :password, placeholder:"請設定6個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex">
-        <span class="text-red-600 m-2">*</span><%=form.label :password_confirmation, "確認密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
-        <%= form.password_field :password_confirmation, placeholder:"請再輸入一次密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-      </div>
-    </div>
-
-    <div class="mb-8 px-6">
-      <div class=" flex items-center bg-gray-100">
-        <%= form.label :address, "地址", class:"w-4/12 md:w-4/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
-        <div class=w-10/12>
-          <div data-controller="twcity" role="tw-city-selector" data-has-zipcode class="w-full m-1 flex grow shrink-0 rounded-lg text-gray-700 font-medium">
-          </div>
-          <%= form.text_field :address, placeholder:"請輸入您的地址", class:"w-full border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
-        </div>
-      </div>
-    </div>
+  <div class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto mt-32">
 
     <% if not current_user %>
-      <div class="actions my-5 pb-10 px-1">
-        <%= form.submit "註冊", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"%>
+      <div class="mt-5 py-4 text-center bg-gray-50">
+        <p class="text-gray-600">已經有帳戶？<%=link_to "登入", new_user_session_path, class:"font-medium text-blue-600 hover:text-gray-800"%></p>
       </div>
+      <hr class="bg-gray-200">
+
+      <div class="flex justify-between">
+        <h1 class="text-4xl font-bold m-8 text-gray-800">註冊</h1>
+        <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
+      </div>
+
     <% else %>
-      <div class="actions my-5 pb-10 px-1">
-        <%= form.submit "更新", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"%>
+      <div class="flex justify-between mt-10">
+        <h1 class="text-4xl font-bold m-8 text-gray-800">編輯個人資訊</h1>
+        <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
       </div>
     <% end %>
+      <div class="mb-8 px-6">
+        <div class="bg-gray-100 flex">
+          <span class="m-2 text-red-600">*</span><%= form.label :email, "電子信箱", class:"w-3/12 text-sm font-medium pt-2.5 text-gray-700"%><br>
+          <%= form.text_field :email, placeholder:"請輸入電子郵件", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+        </div>
+      </div>
+
+      <div class="mb-8 px-6">
+        <div class="bg-gray-100 flex">
+          <span class="text-red-600 m-2">*</span><%= form.label :username, "使用者名稱", class:"w-3/12 md:w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+          <%= form.text_field :username, placeholder:"請設定使用者名稱", class:"w-9/12 md:w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+        </div>
+      </div>
+
+      <% if not current_user %>
+        <div class="mb-8 px-6">
+          <div class="bg-gray-100 flex">
+            <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+            <%= form.password_field :password, placeholder:"請設定6個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+          </div>
+        </div>
+
+        <div class="mb-8 px-6">
+          <div class="bg-gray-100 flex">
+            <span class="text-red-600 m-2">*</span><%=form.label :password_confirmation, "確認密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
+            <%= form.password_field :password_confirmation, placeholder:"請再輸入一次密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+          </div>
+        </div>
+      <% else %>
+        <div class="mb-8 px-6">
+          <div class="bg-gray-100 flex">
+            <%= form.label :password,"密碼", class:"w-3/12 m-2.5 pl-[0.9em] text-gray-700 text-sm font-medium"%><br>
+            <%= form.password_field :password, placeholder:"若無需修改留空即可", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+          </div>
+        </div>
+
+        <div class="mb-8 px-6">
+          <div class="bg-gray-100 flex">
+            <%=form.label :password_confirmation, "確認密碼", class:"w-3/12 m-2.5 pl-[0.9em] text-gray-700 text-sm font-medium"%><br>
+            <%= form.password_field :password_confirmation, placeholder:"若無需修改留空即可", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mb-8 px-6">
+        <div class=" flex items-center bg-gray-100">
+          <%= form.label :address, "地址", class:"w-3/12 m-2.5 pl-[0.9em] text-gray-700 text-sm font-medium"%><br>
+          <div class=w-9/12>
+            <div data-controller="twcity" role="tw-city-selector" data-has-zipcode class="w-full m-1 flex rounded-lg text-gray-700 font-medium">
+            </div>
+            <%= form.text_field :address, placeholder:"請輸入您的地址", class:"w-full box-border border py-1 px-2 outline-none focus:border-green-500 border-gray-300 text-sm font-normal"%>
+          </div>
+        </div>
+      </div>
+
+      <% if not current_user %>
+        <div class="actions my-5 pb-10 px-1">
+          <%= form.submit "註冊", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"%>
+        </div>
+      <% else %>
+        <div class="actions my-5 pb-10 px-1">
+          <%= form.submit "更新", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"%>
+        </div>
+      <% end %>
+
+    </div>
 <% end %>
