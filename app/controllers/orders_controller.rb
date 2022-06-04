@@ -22,10 +22,10 @@ class OrdersController < ApplicationController
     order= Order.find(response.result["MerchantOrderNo"])
     if response.status == "SUCCESS"
       order.pay!
-      redirect_to root_path , notice: "已付款成功"
+      redirect_to record_orders_path, notice: '已付款成功'
     else
       order.fail!
-      redirect_to root_path , alert: "付款失敗"
+      redirect_to record_orders_path, alert: '付款失敗'
     end
   end
 end
