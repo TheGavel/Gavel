@@ -55,7 +55,7 @@ export default class extends Controller {
                   await thisController.getavatar(user_id);
               }
               let imgHtml = `<div style='margin: 20px 20px 0 20px; display: flex; flex-direction: column; align-items: center;'>
-                          <img src="${crowns[index]}" style="margin-bottom: -10px"  /> 
+                          <img src="${crowns[index]}" style="margin-bottom: -10px"  />
                           <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px;"/>
                           <div style="margin-top: 5px; text-align: center; color: white; font-size: 12px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
@@ -97,11 +97,11 @@ export default class extends Controller {
           })();
         }
 
-        if (endbid == "end") {
-          if (thisController.element.dataset.user == bidder) {
-            location.href = "/products/own";
-          } else {
-            location.href = "/";
+        if( endbid == "end" ){
+          if(thisController.element.dataset.user == bidder){
+            location.href = '/orders/buyer_order';
+          }else{
+            location.href = `/rooms/${this.element.dataset.room}`;
           }
         }
       },

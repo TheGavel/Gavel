@@ -7,15 +7,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    # render layout: "product"
   end
 
   def show
   end
 
   def new
-    # BroadcastEndtimeWorker.new.perform("I was performed!")
-    # BroadcastEndtimeWorker.perform_at( DateTime.now+10.second,"I was performed!")
     @product = Product.new
     @tags = Tag.all
   end
@@ -63,7 +60,7 @@ class ProductsController < ApplicationController
   end
 
   def buyerlist
-    @products = current_user.boughtproducts
+    @buyer_orders = current_user.buyer_orders
   end
 
   def autocomplete
@@ -72,16 +69,6 @@ class ProductsController < ApplicationController
                       select: [:name])
     # @search_results =Product.all.map(&:name)
     render layout: false
-  end
-
-  def buy
-    product = Product.find(params[:id])
-    product_price = Product.find(params[:id]).start_price
-    product_name = Product.find(params[:id]).name
-    order = current_user.orders.create(description: product_name, price: product_price, product: product, email: current_user.email)
-    # Order.create( slug: "asd5asd", product_id: p1.id, price: 566, status: "pending", email: u2.email, description: "fdsfgsdgdfgsdgsgsgnil", buyer_id: u2.id, seller_id: u1.id)
-
-    redirect_to check_order_path(order.id)
   end
 
   private

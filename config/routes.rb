@@ -31,18 +31,18 @@ Rails.application.routes.draw do
       get "search/*path" , to: 'products#index'
       get "categories/*path" , to: 'products#index'
     end
-    member do
-      post :buy
-    end
   end
 
   resources :orders do
     collection do
+      get :buyer_order
+      get :seller_order
       post :notify_response
       post :return_response
     end
     member do
       get :check
+      post :buy
     end
   end
 

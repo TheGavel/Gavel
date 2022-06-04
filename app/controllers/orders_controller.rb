@@ -2,6 +2,19 @@ class OrdersController < ApplicationController
   protect_from_forgery
   skip_before_action :require_login
 
+
+  def buyer_order
+    @orders = current_user&.buyer_orders
+  end
+
+  def seller_order
+    @orders = current_user&.seller_orders
+  end
+
+  def buy
+    redirect_to check_order_path(params[:id].to_i)
+  end
+
   def check
     @order = Order.find(params[:id])
     @form_info = Newebpay::Mpg.new(@order).form_info
