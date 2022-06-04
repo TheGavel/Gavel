@@ -15,16 +15,15 @@ const ProductNavbar = ({ props }) => {
         className="bg-gradient-to-r from-gavel-blue to-green-400 shadow-lg items-center flex h-20 justify-between"
       >
         <div className="flex items-center ml-8">
-          <a href="/" className="flex logo w-12">
+          <a href="/" className="flex logo w-full">
             <img
               src={LogoImage}
               alt="Gavel logo"
               className="logo w-12 cursor-pointer"
             />
-            <br />
-            <p className="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">
+            <h1 className="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">
               Gavel
-            </p>
+            </h1>
           </a>
         </div>
         <NavBarSuggestions />

@@ -10,6 +10,7 @@
   </head>
   <body class ="">
     <!-- "controller"=>"products", "action"=>"index" -->
+    <h1 class="hidden">Gavel</h1>
     <section>
       <div class="fixed top-0 z-100 left-0 right-0">
         <% if not (params["controller"] == "products" && params["action"] == "index") %>
@@ -19,7 +20,7 @@
 						<%= link_to root_path, class:"flex logo w-12" do %>
 							<%= image_tag("gavel_reverse-modified.png", alt: "Gavel logo",class:"logo w-12 cursor-pointer") %>
               <br>
-              <p class="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">Gavel</p>
+              <h1 class="Gavel text-white text-5xl font-mono font-bold pl-2 cursor-pointer">Gavel</h1>
 						<% end %>
           </div>
           <div class="text text-white mx-6">

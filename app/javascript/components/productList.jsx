@@ -24,20 +24,18 @@ const Product = (data) => {
             alt="sellerImg"
           />
         </div>
-        <div className="h-[142px] px-6 pt-8 bg-white overflow-hidden overflow-y-scroll">
-          <div className="font-bold text-xl mb-2 text-gray-800">
+        <div className="h-[142px] px-6 pt-8 bg-white overflow-hidden">
+          <div className="font-bold text-xl mb-2 text-gray-800 truncate">
             {productTitle}
           </div>
-          <p className="text-gray-600 text-base text-ellipsis ">
-            {productContent}
-          </p>
+          <p className="text-gray-600 text-base">{productContent}</p>
         </div>
-        <div className="h-[56px] px-6 py-4 bg-green-200">
+        <div className="h-[56px] px-6 py-4 bg-blue-200">
           {labelList.map((element, idx) => {
             return (
               <span
                 key={"label" + idx}
-                className="inline-block bg-green-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2"
+                className="inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2"
               >
                 {element}
               </span>
