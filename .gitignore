@@ -54,3 +54,4 @@ yarn-debug.log*
 .vscode/settings.json
 .env
 dump.rdb
+*.DS_Store
