@@ -1,55 +1,55 @@
 <div class="rounded-2xl w-11/12 mx-auto my-8 shadow-2xl bg-white pt-6 md:w-8/12 lg:w-9/12">
   <%= form_for( product, html: {enctype: "multipart/form-data"}) do |form|%>
     <div class="mx-4 m-auto md:ml-10 xl:ml-24">
-      <div class="field my-5">
+      <div class="field flex items-center my-4 md:my-6 whitespace-nowrap">
         <%= form.label "商品名稱：", class:"text-gray-500"%>
         <%= form.text_field :name, placeholder:"商品名稱", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
       </div>
       <% if product.errors[:name].any? %>
-        <div class="w-5/6 text-center text-sm text-red-700"><%= product.errors[:name][0] %></div>
+        <div class="text-center text-sm text-red-700 md:w-3/4"><%= product.errors[:name][0] %></div>
       <% end %>
 
-      <div class="field flex justify-start my-4 md:my-6">
+      <div class="field flex my-4 md:my-6 whitespace-nowrap">
         <%= form.label "商品描述：", class:"text-gray-500"%>
-        <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-9/12 border py-2 px-2 ml-1 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-9/12 border py-2 px-2 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
       </div>
       <% if product.errors[:description].any? %>
-        <div class="w-5/6 text-center text-sm text-red-700"><%= product.errors[:description][0] %></div>
+        <div class="md:w-3/4 text-center text-sm text-red-700"><%= product.errors[:description][0] %></div>
       <% end %>
 
       <div>
         <div class="custom-file-container border" data-upload-id="myFirstImage" data-controller="multipleImg"></div>
       </div>
 
-      <div class="field my-4 md:my-6 flex items-center">
+      <div class="field my-4 md:my-6 flex items-center whitespace-nowrap">
         <%= form.label "商品分類：", class:"text-gray-500"%>
-        <div data-controller="tag"
+        <div class="flex" data-controller="tag"
             data-tags="[<%= product.tags.map{|i|
                                               "\"#{i.name}\""
                                             }.join(",") %> ]">
         </div>
       </div>
 
-      <div class="field my-4 md:my-6">
+      <div class="field flex items-center my-4 md:my-6 whitespace-nowrap">
         <%= form.label "起標價格：", class:"text-gray-500"%>
-        <%= form.text_field :start_price, type:"nunber" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded" %>
+        <%= form.text_field :start_price, type:"number" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-1 focus:border-blue-900 border-gray-300 text-sm font-normal rounded" %>
       </div>
       <% if product.errors[:start_price].any? %>
-        <div class="w-4/6 text-center text-sm text-red-700 "><%= product.errors[:start_price][0] %></div>
+        <div class="text-center text-sm text-red-700 md:w-3/4"><%= product.errors[:start_price][0] %></div>
       <% end %>
 
-      <div class="field my-4 md:my-6">
+      <div class="field flex items-center my-4 md:my-6 whitespace-nowrap">
           <%= form.label "每標金額：", class:"text-gray-500"%>
-          <%= form.text_field :basicprice, type:"nunber" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
+          <%= form.text_field :basicprice, type:"number" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
       </div>
       <% if product.errors[:basicprice].any? %>
-        <div class="w-5/6 text-center text-sm text-red-700 "><%= product.errors[:basicprice][0] %></div>
+        <div class="w-3/6 text-center text-sm text-red-700 "><%= product.errors[:basicprice][0] %></div>
       <% end %>
 
       <div class="status my-4 md:my-6 flex">
         <%= form.label :status, "商品狀態：", class:"mt-3 text-gray-500"%>
-        <div class="styled-select", class="text-white">
-          <%= form.select :status, Product.all_status, class:"w-9/12 text-blue-500 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
+        <div class="styled-select">
+          <%= form.select :status, Product.all_status, class:"w-9/12 text-blue-500 border focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
         </div>
       </div>
 
