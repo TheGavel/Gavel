@@ -35,11 +35,17 @@
           <%= form.select :status, Product.all_status, class:"w-9/12 text-blue-500 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
         </div>
       </div>
+
+      <div class="actions pt-5 pb-10">
+        <% if product.id.present? %>
+          <%= form.submit "更新商品", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
+        <% else %>
+          <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
+        <% end %>
+          <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded"%>
+      </div>
+
     </div>
-        <div class="actions pt-5 pb-10 text-center">
-          <%= form.submit "立即刊登", class:"w-11/12 h-11 m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4"%>
-          <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-300 text-gray-900 hover:bg-gray-200 border rounded"%>
-        </div>
   <% end %>
 </div>
 
