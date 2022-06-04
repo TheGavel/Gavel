@@ -63,16 +63,17 @@
 /* 商品狀態 */
 .styled-select select{
   height: 40px;
-  width: 240px;
+  width: 258px;
   font-size: 14x;
   border-radius: 10px;
   margin: 0 0 0 6px;
+  color: rgb(110, 110, 110);
 }
 .styled-select select{
-  width: 240px;
+  width: 258px;
   font-size: 14px;
   border-radius: 0.25rem;
-  border: 1px solid #aaa;
+  border: 1px solid rgb(209 213 219);;
   padding: 2px 2px 2px 10px;
 }
 .styled-select {
@@ -85,14 +86,18 @@
 
 /* 標籤分類 */
 .field select{
-  width: 150px;
+  width: 127px;
   height: 2.5rem;
-  border: 1px solid rgb(171, 169, 169);
+  border: 1px solid rgb(209 213 219);;
   padding: 2px 2px 2px 10px;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin-left: 5px;
+  color: rgb(110, 110, 110);
+}
+.start_price{
+  width: 260px;
 }
 /* 導覽列 */
 .menu_btn{
@@ -142,7 +147,6 @@
 }
 .text a:hover{
   color:rgb(37, 114, 238);
-  /* background: rgb(247, 245, 245); */
 }
 .text :hover{
   color:rgb(37, 114, 238);
@@ -200,6 +204,18 @@
   .search ul li{
     padding:10px 0 10px 10px;
     background: white;
+  }
+  .field select{
+    width: 201px;
+  }
+  .start_price{
+    width: 407px;
+  }
+  .styled-select select{
+    width: 407px;
+  }
+  .styled-select select{
+    width: 406px;
   }
 }
 
