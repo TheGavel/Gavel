@@ -1,4 +1,4 @@
-<div class="container pt-2  mx-auto rounded-xl bg-gray-100" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
+<div class="container pt-2 mt-36 mx-auto rounded-xl bg-gray-100" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
   <div class="text-2xl text-center mx-auto text-black py-5 rounded-lg bg-white" >
     <p>拍賣剩餘時間：</p>
     <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
