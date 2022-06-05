@@ -8,8 +8,11 @@
     <div class="mt-20">
       <div class="w-4/5 md:w-1/2 mx-auto bg-white rounded-md">
         <!-- first -->
-        <div class="flex flex-col justify-center items-center rounded-2xl shadow-xl bg-blue-300">
-          <h6 class="text-black font-bold text-xl my-4">訂單確認</h6>
+        <div class="flex flex-col justify-center items-center rounded-2xl shadow-xl bg-white">
+          <div class="bg-gavel-blue w-full rounded-t-2xl text-center">
+            <h6 class="text-white font-bold text-xl my-4">再次確認商品資訊</h6>
+          </div>
+
           <div
             class="
               flex
@@ -48,7 +51,7 @@
             "
           >
             <p class="text-gray-700 font-semibold ml-4">付款金額</p>
-            <p class="text-indigo-600 mr-4">$NT<%= @order.price%></p>
+            <p class="text-indigo-600 mr-4">NT$<%= @order.price%></p>
           </div>
           <div
             class="

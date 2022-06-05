@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product_price = Product.find(params[:id]).start_price
     product_name = Product.find(params[:id]).name
-    order = current_user.orders.create(description: product_name, price: product_price, product: product, email: current_user.email)
+    order = current_user.orders.create(description: product_name, price: product.records.last.bid, product: product, email: current_user.email)
     redirect_to check_order_path(order.id)
   end
 
