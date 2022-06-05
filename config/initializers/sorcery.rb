@@ -82,14 +82,8 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  config.external_providers = [:github, :google, :facebook]
+  config.external_providers = [:google]
   #
-  config.github.key = ENV["GITHUB_CLIENT_ID"]
-  config.github.secret = ENV["GITHUB_CLIENT_SECRECTS"]
-  config.github.callback_url = ENV["GITHUB_AUTHORIZATION_CALLBACK_URL"]
-  config.github.user_info_mapping = {:email => "email"}
-  config.github.scope = ""
-
   config.google.key = ENV["GOOGLE_CLIENT_ID"]
   config.google.secret = ENV["GOOGLE_CLIENT_SECRECTS"]
   config.google.callback_url = ENV["GOOGLE_AUTHORIZATION_CALLBACK_URL"]
