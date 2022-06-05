@@ -1,49 +1,31 @@
 <h1 class="text-center text-4xl mt-10">交易紀錄</h1>
-<div class="antialiased bg-gray-100 text-gray-600 px-4">
-  <div class="flex flex-col justify-center my-4">
-    <div class="w-full xl:w-9/12 mx-auto bg-white border border-gray-200 rounded-2xl shadow-xl">
-      <div class="p-3">
-        <div class="overflow-x-auto">
-          <table class="table w-full mx-auto shadow-lg">
-            <!-- head -->
-            <thead class="text-xs font-semibold text-white bg-gavel-blue">
-              <tr>
-                <th class="p-4 whitespace-nowrap text-lg rounded-l-lg">訂單編號</th>
-                <th class="p-4 whitespace-nowrap text-lg">商品名稱</th>
-                <th class="p-4 whitespace-nowrap text-lg">商品價格</th>
-                <th class="p-4 whitespace-nowrap text-lg rounded-r-lg">訂單狀態</th>
-              </tr>
-            </thead>
-
-            <tbody class="text-sm divide-y divide-gray-100">
-              <% @records.each do |record| %>
-                <tr class="hover:bg-blue-300 hover:shadow-2xl text-center transition ease-out duration-100">
-                  <td class="p-6 whitespace-nowrap">
-                    <div class="font-medium text-lg text-gray-800">
-                      <%= record.id %>
-                    </div>
-                  </td>
-                  <td class="p-6 whitespace-nowrap">
-                    <div class="font-medium text-lg text-gray-800">
-                    <%= record.description %>
-                    </div>
-                  </td>
-                  <td class="p-6 whitespace-nowrap">
-                    <div class="font-lg text-lg text-gray-800">
-                      <%= record.price %>
-                    </div>
-                  </td>
-                  <td class="p-6 whitespace-nowrap">
-                    <div class="font-medium text-lg text-gray-800">
-                      <%= record.status %>
-                    </div>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div class="container mx-auto mt-5 overflow-x-auto">
+    <table class="w-10/12 bg-white mx-auto md:rounded-2xl shadow-xl overflow-hidden">
+      <thead class="bg-gavel-blue text-white text-lg">
+        <tr class="mx-auto text-center shadow-xl">
+          <th class="py-4 px-6 whitespace-nowrap">
+            <span>訂單編號</span>
+          </th>
+          <th class="py-4 px-6 whitespace-nowrap">
+            <span>商品名稱</span>
+          </th>
+          <th class="py-4 px-6 whitespace-nowrap">
+            <span>商品價格</span>
+          </th>
+          <th class="py-4 px-6 whitespace-nowrap">
+            <span>商品名稱</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @records.each do |record| %>
+          <tr class="text-center text-lg border-b-2 border-b-gray-200">
+            <td class="py-6 px-6"><%= record.id %></td>
+            <td class="py-6 px-6"><%= record.description %></td>
+            <td class="py-6 px-6 whitespace-nowrap"><%= record.price %></td>
+            <td class="py-6 px-6"><%= record.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-</div>

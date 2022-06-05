@@ -1,13 +1,13 @@
 <h1 class="text-center text-4xl mt-10">得標紀錄</h1>
 <% if @products.any? %>
 <div id="products" class="container mx-auto mt-5">
-<table class="w-10/12 mx-1 bg-white mx-auto rounded-2xl shadow-xl">
+<table class="w-10/12 bg-white mx-auto rounded-2xl shadow-xl">
   <thead class="bg-gavel-blue text-white text-lg">
     <tr class="mx-auto text-center shadow-xl">
-      <th id="product-name" class="py-4 px-6 rounded-tl-xl">
+      <th id="product-name" class="py-4 px-6 rounded-tl-xl whitespace-nowrap">
         <span>得標商品</span>
       </th>
-      <th id="product-bid" class="py-4 px-6">
+      <th id="product-bid" class="py-4 px-6 whitespace-nowrap">
         <span>得標金額</span>
       </th>
       <th id="checkout" class="py-4 px-6 rounded-tr-xl">
@@ -21,7 +21,7 @@
         <td class="py-6 px-6"><%= product.name %></td>
         <td class="py-6 px-6"><%= product.records.last.bid %></td>
         <td class="py-6 px-6 ">
-        <%= link_to "結帳" , buy_product_path(product.id), method:"POST",class:"bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
+        <%= link_to "付款" , buy_product_path(product.id), method:"POST",class:"inline-block whitespace-nowrap bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
         </td>
       </tr>
     <% end %>
