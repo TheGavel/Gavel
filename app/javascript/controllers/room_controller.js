@@ -1,6 +1,12 @@
 import { Controller } from "stimulus";
 import { createConsumer } from "@rails/actioncable";
 import axios from "axios";
+import crown1 from "images/crown1.svg";
+import crown2 from "images/crown2.svg";
+import crown3 from "images/crown3.svg";
+
+const crowns = [crown1, crown2, crown3];
+
 export default class extends Controller {
   static targets = [
     "message",
@@ -35,21 +41,23 @@ export default class extends Controller {
 
           thisController.asyncForEach(
             thisController.userArray.slice(0, 3),
-            async (user) => {
+            async (user, index) => {
               const user_id = user.id,
                 user_bid = user.bid;
               if (!Object.keys(thisController.userhash).includes(user_id)) {
                 thisController.userhash[user_id] =
                   await thisController.getavatar(user_id);
               }
-              let imgHtml = `<div style='margin: 20px 20px 0 20px; display: flex; flex-direction: column;'>
-                          <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 70px; width: 70px;"/>
-                          <div style="text-align: center; color: white; font-size: 12px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
+              let imgHtml = `<div style='margin: 20px 20px 0 20px; display: flex; flex-direction: column; align-items: center;'>
+                          <img src="${crowns[index]}" style="margin-bottom: -10px"  /> 
+                          <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px;"/>
+                          <div style="margin-top: 5px; text-align: center; color: white; font-size: 12px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
               thisController.biduserTarget.insertAdjacentHTML(
                 "beforeend",
                 imgHtml
               );
+              console.log(index);
             }
           );
 
@@ -64,11 +72,15 @@ export default class extends Controller {
                 user_id
               );
             }
-            let messageHtml = `<div class="m-2">
-              <img src="${thisController.userhash[user_id]}" class="w-12 h-12 inline-block rounded-full bg-gray-300"/>
+
+            let messageHtml =
+              (thisController.element.dataset.user == user_id
+                ? '<div class="m-2" style="display:flex; align-items: center; flex-direction: row-reverse;" >'
+                : '<div class="m-2" style="display:flex; align-items: center;">') +
+              `<img src="${thisController.userhash[user_id]}" class="w-12 h-12 inline-block rounded-full bg-gray-300"/>
               &nbsp&nbsp
-              <span class="p-4 rounded-full text-white font-bold bg-blue-500 opacity-90 text-lg"> ${message} </span>
-            </div>`;
+              <span class="h-15 px-2 rounded-lg leading-10 text-white font-bold bg-blue-500 opacity-90 text-md"> ${message} </span>
+              </div>`;
             thisController.messageTarget.value = "";
             thisController.messagescontainerTarget.insertAdjacentHTML(
               "beforeend",
