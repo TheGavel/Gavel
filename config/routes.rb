@@ -38,7 +38,6 @@ Rails.application.routes.draw do
 
   resources :orders do
     collection do
-      get :record
       post :notify_response
       post :return_response
     end
