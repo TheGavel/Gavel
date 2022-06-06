@@ -30,7 +30,7 @@
   background-color: white;
 }
 
-.orderlist  thead  tr > th:first-child {
+.orderlist thead  tr th:first-child {
   z-index: 1;
   left: 0;
 }
