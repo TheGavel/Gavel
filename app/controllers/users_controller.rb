@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class UsersController < ApplicationController
   require 'open-uri'
+  include Rails.application.routes.url_helpers
   before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index new create activate]
   # GET /users or /users.json

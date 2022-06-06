@@ -48,47 +48,51 @@ Tag.create(@tag_array)
 def user_img(slug)
   {io: open("https://robohash.org/#{slug}") , filename: slug+"_images.jpg"}
 end
-seller1 = User.create( email: "aaa@aaa",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: Faker::Name.name ,role: "seller" )
+seller1 = User.create( email: "aaa@aaa.com",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: Faker::Name.name ,role: "seller" )
 seller1.avatar.attach(user_img(seller1.id.to_s))
 
-seller2 = User.create( email: "bbb@bbb",password: "bbbbbb" ,password_confirmation: "bbbbbb" ,username: Faker::Name.name ,role: "seller" )
+seller2 = User.create( email: "bbb@bbb.com",password: "bbbbbb" ,password_confirmation: "bbbbbb" ,username: Faker::Name.name ,role: "seller" )
 seller2.avatar.attach(user_img(seller2.id.to_s))
 
-seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmation: "cccccc" ,username: Faker::Name.name ,role: "seller" )
+seller3 = User.create( email: "ccc@ccc.com",password: "cccccc" ,password_confirmation: "cccccc" ,username: Faker::Name.name ,role: "seller" )
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-  {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
-end
+
 def product_imgg(url,name)
   {io: open(url) , filename: "#{name}_images.jpg"}
 end
 
-products_list.each do |prod|
-  ### PRODUCT
-                            description: prod["description"],
-                            status: %w[發布 草稿].sample,
-                            start_price: rand(100..500) ,
-                            direct_price: rand(1000..10000),
-                            user_id: user.id
-                            )
-p prod["image"]
-  prod["image"].each do |img,idx|
-    product.images.attach(product_imgg(img,idx.to_s+prod["name"]))
-  end
-  product.save
+1.times do
+  products_list.each do |prod|
+    ### PRODUCT
 
-  prod["tag"].each { |item|
-    tag_id = Tag.find_by(name: item).id
-    ProductsTag.create(product_id: product.id, tag_id: tag_id)
-  }
-  #ROOM
-  r = Room.new(start_time: Time.now+ 30.seconds,
-              end_time: Faker::Time.between_dates(from: Date.today+2, to: Date.today + 30, period: :all),
-              product_id: product.id,
-              id: product.id,
-              status: %w[未開賣 開賣中 結束競標].sample,
-              maxpeople: rand(10..100))
-  r.skip_callback = true
-  r.save
+    user = seller.sample
+    product = Product.new( name: prod["name"],
+                              description: prod["description"],
+                              status: %w[發布 草稿].sample,
+                              start_price: rand(100..500) ,
+                              direct_price: rand(1000..10000),
+                              user_id: user.id
+                              )
+    p prod["image"]
+    prod["image"].each do |img,idx|
+      product.images.attach(product_imgg(img,idx.to_s+prod["name"]))
+    end
+    product.save
+
+    prod["tag"].each { |item|
+      tag_id = Tag.find_by(name: item).id
+      ProductsTag.create(product_id: product.id, tag_id: tag_id)
+    }
+    #ROOM
+    r = Room.new(start_time: Time.now+ 30.seconds,
+                end_time: Faker::Time.between_dates(from: Date.today+2, to: Date.today + 30, period: :all),
+                product_id: product.id,
+                id: product.id,
+                status: %w[未開賣 開賣中 結束競標].sample,
+                maxpeople: rand(10..100))
+    r.skip_callback = true
+    r.save
+  end
 end

@@ -40,13 +40,13 @@ gem 'twilio-ruby', '~> 5.67'
 gem 'simple_form', '~> 5.1'
 gem 'faker', '~> 2.21'
 gem 'validates_timeliness', '~> 6.0.0.beta2'
-
+gem 'elasticsearch', '~> 6.0'
+gem 'searchkick', '~> 5.0.1', '>= 5.0.3'
+gem "aws-sdk-s3", require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'rubocop', '~> 1.28', require: false
-  gem 'elasticsearch', '~> 7.0'
-  gem 'searchkick', '~> 5.0', '>= 5.0.3'
   gem 'rspec', '~> 3.11'
   gem 'rspec-rails'
 end

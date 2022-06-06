@@ -4,7 +4,22 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.mailgun.org',
+  port: 587,
+  domain: 'sandbox60f4cfff1b4943fc91c976f46f04510b.mailgun.org',
+  user_name: ENV['USER_MAILGUN_ADDRESS'],
+  password: ENV['USER_MAILGUN_PASSWORD'],
+  authentication: 'plain',
+  enable_starttls_auto: true,
+  open_timeout: 5,
+  read_timeout: 5
+  }
+  config.action_mailer.default_url_options = { host: 'gavel.store' }
+  config.action_mailer.perform_deliveries = true
 
+  config.active_job.queue_adapter = :sidekiq
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -40,8 +55,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
-
+  # config.active_storage.service = :local
+  config.active_storage.service = :amazon
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
@@ -68,8 +83,8 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
