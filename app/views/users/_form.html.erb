@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="w-11/12 md:w-6/12 lg:w-96 bg-gray-50 m-auto rounded-2xl shadow-2xl">
-    <div class="my-10">
+    <div class="my-16">
     <% if not current_user %>
       <div class="py-6 text-center bg-gray-100 rounded-t-xl shadow-sm">
         <p class="text-gray-600">已經有帳戶？<%=link_to "登入", new_user_session_path, class:"font-medium text-blue-600 hover:text-gray-800"%></p>
@@ -30,35 +30,35 @@
           <span class="text-xs font-medium mt-14 mr-5 text-red-600">* 為必填</span>
         </div>
       <% end %>
-        <div class="mb-8 px-6">
+        <div class="mb-6 px-6">
           <div class="bg-gray-100 flex rounded-lg">
             <span class="m-2 text-red-600">*</span><%= form.label :email, "電子信箱", class:"w-3/12 text-sm font-medium pt-2.5 text-gray-700"%><br>
             <%= form.text_field :email, placeholder:"請輸入電子郵件", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-400 text-sm font-normal rounded-lg"%>
           </div>
         </div>
 
-        <div class="mb-8 px-6">
+        <div class="mb-6 px-6">
           <div class="bg-gray-100 flex rounded-lg">
             <span class="text-red-600 m-2">*</span><%= form.label :username, "使用者名稱", class:"w-3/12 md:w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
             <%= form.text_field :username, placeholder:"請設定使用者名稱", class:"w-9/12 md:w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-400 text-sm font-normal rounded-lg"%>
           </div>
         </div>
 
-        <div class="mb-8 px-6">
+        <div class="mb-6 px-6">
           <div class="bg-gray-100 flex rounded-lg">
             <span class="text-red-600 m-2">*</span><%= form.label :password,"密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
             <%= form.password_field :password, placeholder:"請設定6個字元以上的密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-400 text-sm font-normal rounded-lg"%>
           </div>
         </div>
 
-        <div class="mb-8 px-6">
+        <div class="mb-6 px-6">
           <div class="bg-gray-100 flex rounded-lg">
             <span class="text-red-600 m-2">*</span><%=form.label :password_confirmation, "確認密碼", class:"w-3/12 pt-2.5 text-gray-700 text-sm font-medium"%><br>
             <%= form.password_field :password_confirmation, placeholder:"請再輸入一次密碼", class:"w-9/12 border py-1 px-2 outline-none focus:border-green-500 border-gray-400 text-sm font-normal rounded-lg"%>
           </div>
         </div>
 
-        <div class="mb-8 px-6">
+        <div class="mb-6 px-6">
           <div class=" flex items-center bg-gray-100 rounded-lg">
             <%= form.label :address, "地址", class:"w-4/12 md:w-4/12 p-2.5 pl-6 text-gray-700 text-sm font-medium"%><br>
             <div class=w-10/12>
