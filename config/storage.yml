@@ -8,8 +8,8 @@ local:
 
 amazon:
   service: S3
-  access_key_id: ""
-  secret_access_key: ""
+  access_key_id: <%=ENV['ACCESS_KEY_ID']%>
+  secret_access_key: <%=ENV['SECRET_ACCESS_KEY']%>
   bucket: "gavel"
   region: "ap-east-1" # e.g. 'us-east-1'
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
