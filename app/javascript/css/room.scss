@@ -6,14 +6,16 @@ input::-webkit-inner-spin-button {
 
 .carousel {
   box-sizing: border-box;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 
 .room_container {
-  max-width: 450px;
+  height: 400px;
+  width: auto;
+  margin: 0 auto;
   position: relative;
   padding: 5px;
-  background: #fff;
+  background: #d0d0d0;
   border-radius: 1rem;
 }
 
@@ -21,7 +23,7 @@ input::-webkit-inner-spin-button {
   margin: 0 auto;
   width: 100%;
   height: 100%;
-  border-radius: 0.7rem;
+  border-radius: 0.5rem;
   display: flex;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -30,6 +32,7 @@ input::-webkit-inner-spin-button {
 .slider img {
   min-width: 100%;
   max-width: 100%;
+  height: 100%;
   object-fit: contain;
   border-radius: 0.7rem;
 }
@@ -37,22 +40,29 @@ input::-webkit-inner-spin-button {
 #previous,
 #next {
   cursor: pointer;
-  font-size: x-large;
   position: absolute;
-  border-radius: 16px;
-  color: rgb(0, 0, 0);
-  padding: 15px;
+  font-weight: bolder;
   top: calc(50% - 40px);
-  left: -50px;
+  left: 10px;
+}
+
+#previous:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
+#next:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
 }
 
 #next {
   left: unset;
-  right: -50px;
+  right: 10px;
 }
 
 .dots {
-  margin-top: 5px;
+  margin-top: 15px;
   padding-left: 0;
   list-style: none;
   display: flex;

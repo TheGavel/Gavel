@@ -1,87 +1,168 @@
-<div class="container pt-2 mt-36 mx-auto rounded-xl bg-gray-100" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
-  <div class="text-2xl text-center mx-auto text-black py-5 rounded-lg bg-white" >
-    <p>拍賣剩餘時間：</p>
-    <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-2xl text-red-500 block">...</span>
-  </div>
-  <div class="md:flex justify-between mt-2  mx-auto w-10/12 flex-col  md:flex-row ">
-    <div class="md:flex  mx-auto flex-col justify-between w-1/2" >
-      <section class="carousel" data-controller="carousel" >
-        <div class="room_container mx-auto">
-          <span id="previous" class="text-lg">＜</span>
-          <span id="next" class="text-lg">＞</span>
-          <div id="slider" class="slider">
-            <% @product.images.each do |image| %>
-              <%= image_tag image.variant(resize_to_limit: [600, 300])  %>
-            <% end %>
+<div class="relative bg-gray-100 pt-32" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
+    <div class="top md:relative md:px-10" >
+      <div class="md:flex">
+        <div class="pic md:w-4/6" >
+          <h1 class="text-4xl my-5 text-center"><%= @product.name %></h1>
+          <div class="flex mx-auto flex-col justify-between" >
+            <section class="carousel" data-controller="carousel" >
+              <div class="room_container">
+                <button id="previous" class="inline-block w-10 h-10 text-md bg-white rounded-full shadow-2xl">＜</button>
+                <button id="next" class="inline-block w-10 h-10 text-md bg-white rounded-full shadow-2xl">＞</button>
+                <div id="slider" class="slider">
+                  <% @product.images.each do |image| %>
+                    <%= image_tag image %>
+                  <% end %>
+                </div>
+                <ul id="dots" class="dots">
+                  <% @product.images.count.times do %>
+                    <li></li>
+                  <% end %>
+                </ul>
+              </div>
+            </section>
           </div>
-          <ul id="dots" class="dots">
-            <% @product.images.count.times do %>
-              <li></li>
-            <% end %>
-          </ul>
+          <div class="flex justify-center" data-controller="copylink" >
+            <%= link_to raw('<i class="fa-solid fa-share-nodes"> <span>複製連結</span></i>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "mt-10 px-8 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold"%>
+          </div>
         </div>
-      </section>
 
-      <div class="flex mt-5 justify-center">
-        <div class="ml-3">
-          <%= image_tag(@product.user.avatar, width:50) %>
+        <div class="bid md:w-2/6" >
+          <div class="text-lg text-center w-full mt-5 text-black py-5 bg-gray-200 md:rounded-t-lg" >
+            <span>拍賣剩餘時間：</span>
+            <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
+          </div>
+
+          <div class="flex items-center justify-center h-20 border-b md:border-b-0 md:bg-white font-bold">
+            <span class="rounded-md text-gavel-blue text-2xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：<span>$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span></span>
+          </div>
+
+          <div class="modal sm:block" data-controller="bid" data-room-target="modal" >
+            <div class="content mx-auto bg-gray-200 text-gray-700 shadow-2xl md:shadow-none rounded-lg md:rounded-b-lg" data-bid-target="bid" >
+              <div class="bid_information flex flex-col items-center" >
+                <div class="flex items-center bg-gray-200 text-xl rounded-lg h-20" >
+                  <span class="text-2xl" >競標資訊</span>
+                  <button class="md:hidden absolute right-5 text-4xl" data-action="click->room#closeModal" >
+                    <i class="fas fa-window-close"></i>
+                  </button>
+                </div>
+                <p class="text-md text-gray-500" >
+                  商品起標價：<span class="text-gray-900 font-bold hover:text-gavel-blue" >$<%= @room.product.start_price %></span>
+                </p>
+                <p class="mt-2 text-md text-gray-500" >
+                  最低每標價：<span class="text-gray-900 font-bold hover:text-gavel-blue" >$<%= @room.product.start_price %></span>
+                </p>
+                <p class="mt-5 text-md text-gray-500" >出價排名：</p>
+                <div data-room-target="biduser" class="flex px-auto h-32 items-center">
+                  目前暫無出價
+                </div>
+              </div>
+              <div class="text-2xl mt-5 first-letter:rounded-lg flex w-full justify-center py-5 bg-white">設定金額</div>
+              <div class="mt-5 py-5 px-5">
+                <div class="flex justify-center items-center">
+                  <div class="flex flex-col items-center pb-2" >
+                    <span class="text-sm" >最高價</span>
+                    <div class="flex justify-center" >
+                      <span class="text-xl">$</span>
+                      <span class="price_now text-xl"
+                            data-room-target="currentprice"
+                            data-bid-target="currentprice">
+                            <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %>
+                      </span>
+                    </div>
+                  </div>
+
+                  <span class="text-xl mx-2">+</span>
+
+                  <input type="number" data-bid-target="input" data-room-target="yourprice"
+                  value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class="w-32 text-md border rounded-xl py-2  text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="自訂加價">
+
+                  <span class="text-xl mx-2">=</span>
+
+                  <div class="flex flex-col items-center pb-2" >
+                    <span class="text-sm" >你的出價</span>
+                    <div class="flex justify-center" >
+                      <span class="text-xl">$</span>
+                      <span data-room-target="finalprice"
+                            data-bid-target="finalprice"
+                            class="your_price text-xl">
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="flex justify-center mt-5" >
+                  <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
+                  <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
+                  <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
+                </div>
+
+                <div class="flex justify-center">
+                  <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-5 shadow-lg hover:bg-blue-800" data-action="click->room#bid" >
+                    確認出價！
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <h1 class=" text-4xl text-center"><%= @product.name %></h1>
       </div>
 
-      <div class="bg-white mx-auto rounded-2xl w-11/12 m-5 p-5">
-        <h3 class="border-b-4 text-xl text-center pb-5">產品敘述</h3>
-        <p class="text-center text-xl mt-5 break-words"><%= @product.description %></p>
+      <div class="seller md:w-3/5 md:rounded-lg md:absolute md:bottom-16 md:left-16" >
+        <p class="text-center mt-5 text-lg md:text-2xl text-gray-500" >賣家資訊</p>
+        <div class="mt-2 flex flex-col items-center ">
+          <%= image_tag(@product.user.avatar, width:50, class:"bg-white rounded-full" ) %>
+          <span class="mt-2 md:text-lg" ><%= @product.user.username %></span>
+        </div>
       </div>
+
     </div>
-      <%# 要能link_to點到賣家頁面 %>
-    <div data-controller="bid" class="md:flex mx-auto flex-col justify-between w-1/2 ">
-      <div class="flex justify-center mt-5">
-        <span class="inline-block rounded-full mr-5 text-white bg-yellow-500 font-bold opacity-90 text-xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span>
-        <span class="inline-block rounded-full ml-5 text-white bg-blue-500 font-bold  opacity-90 text-lg text-center px-4 py-2">商品起標價：$<%= @room.product.start_price %></span>
-      </div>
-      <div data-room-target="biduser" class="flex justify-evenly mt-5 h-20 w-full overflow-auto">
+
+    
+    
+    <div class="bottom md:flex md:px-10" > 
+
+      <div class="information bg-white rounded-2xl w-11/12 my-5 mx-auto p-5 md:box-border md:w-4/6 md:p-15 md:h-96">
+        <div class="product_information" >
+          <h3 class="ml-5 text-2xl md:border-b-4 md:pb-4 ">產品詳情</h3>
+          <p class="border-b-2 md:border-b-0 text-md p-5 break-words"><%= @product.description %></p>
+        </div>
+        <div class="bid_information md:hidden" >
+          <h3 class="ml-5 mt-5 text-2xl mb-5" >競標資訊</h3>
+          <p class="ml-5 text-md text-gray-500" >
+            商品起標價：
+            <span class="ml-32 text-gray-900 font-bold hover:text-gavel-blue" >
+              $<%= @room.product.start_price %>
+            </span>
+          </p>
+          <p class="ml-5 mt-2 text-md text-gray-500" >
+            最低每標價：
+            <span class="ml-32 text-gray-900 font-bold hover:text-gavel-blue" >
+              $<%= @room.product.start_price %>
+            </span>
+          </p>  
+        </div>
       </div>
 
-      <div class="my-5 mx-auto w-11/12 p-5 bg-gradient-to-r from-blue-300 to-blue-500 text-white shadow-2xl rounded-lg mt-5" data-bid-target="bid" >
-        <span class="font-bold text-4xl flex justify-center pt-5 mb-5">開始競標！</span>
-        <div class="flex justify-center">
-          <span class="text-xl leading-10">$</span>
-          <span class="text-xl leading-10"
-                data-room-target="currentprice"
-                data-bid-target="currentprice">
-                <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %>
-          </span>
-          <span class="text-xl leading-9 mx-2">+</span>
-          <input type="number" data-bid-target="input" data-action="bid#addPrice" data-room-target="yourprice"
-          value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class=" w-6/12 text-xl border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
-          <span class="text-xl leading-10 mx-2">=</span>
-          <span class="text-xl leading-10">$</span>
-          <span data-room-target="finalprice"
-                data-bid-target="finalprice"
-                class="text-xl leading-10">
-          </span>
-        </div>
-        <div class="flex justify-center mt-5" >
-          <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
-          <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
-          <button data-action="click->bid#plus1000" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3">+1000</button>
-        </div>
-
-        <div class="flex justify-center">
-          <button type="button" class="logo rounded-full w-70 h-70 mt-5 shadow-md transform transition-all hover:rotate-12" data-action="click->room#bid" ><%= image_tag("gavel_logo", width:80 ) %></button>
+      <div class="chatroom bg-white mt-5 mb-24 rounded-2xl mx-auto md:ml-6 p-5 w-10/12 md:w-2/6">
+        <span class="flex justify-center text-xl pb-5 border-b-4 ">房間聊天室</span>
+        <div data-room-target="messagescontainer" class="overflow-auto mt-5 h-[234px]"></div>
+        <div class="send flex justify-between" >
+          <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 w-8/12 " placeholder="賣家隨時為您解答">
+          <button class="w-3/12 rounded-full bg-gavel-blue text-white font-bold p-2 uppercase" data-action="click->room#chat">發送</button>
         </div>
       </div>
+
     </div>
-  </div>
 
-  <div class="bg-white  rounded-2xl mx-auto p-5 w-10/12">
-    <span class="flex justify-center text-xl mb-7 pb-5 border-b-4 ">房間聊天室</span>
-      <div data-room-target="messagescontainer" class="overflow-auto h-[400px]"></div>
-      <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 sm:w-11/12 sm:py-3" placeholder="賣家隨時為您解答">
-      <button class="px-8 rounded-full bg-blue-200 text-gray-800 font-bold p-2 uppercase" data-action="click->room#chat">發送</button>
-  </div>
+
+
+    <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center bg-white box-border h-20 shadow-2xl">
+      <span class="text-sm"  >剩餘時間：</span>
+      <span class="text-sm" data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
+      <button class="bg-gavel-blue text-white rounded-2xl p-2 h-10 w-32" data-action="click->room#showModal" >我要出價</button>
+    </div>
+
 </div>
 
-<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase"><%= link_to '返回', product_path %></button>
-<button class="px-8 rounded-full  bg-gray-900  text-white font-bold p-2 uppercase" data-controller="copylink" data-copylink-target="link"><%= link_to "copylink", '#', data: {action: "click->copylink#copy", url: @url } %></button>

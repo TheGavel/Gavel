@@ -1,6 +1,6 @@
 import { Controller } from "stimulus";
 export default class extends Controller {
-  static targets = ["input","finalprice","currentprice"];
+  static targets = ["input", "finalprice", "currentprice", "modal"];
   plus100() {
     this.inputTarget.value = Number(this.inputTarget.value) + 100;
     this.updatePrice();
@@ -13,8 +13,11 @@ export default class extends Controller {
     this.inputTarget.value = Number(this.inputTarget.value) + 1000;
     this.updatePrice();
   }
-  updatePrice(){
-    this.finalpriceTarget.textContent = Number(this.currentpriceTarget.textContent)
-    + Number(this.inputTarget.value)
+  updatePrice() {
+    if (this.inputTarget.value > 0) {
+      this.finalpriceTarget.textContent =
+        Number(this.currentpriceTarget.textContent) +
+        Number(this.inputTarget.value);
+    }
   }
 }
