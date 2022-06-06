@@ -6,7 +6,7 @@ input::-webkit-inner-spin-button {
 
 .carousel {
   box-sizing: border-box;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 
 .room_container {
@@ -90,4 +90,31 @@ li.dot--active {
   display: block;
   font-size: 0.35em;
   font-weight: 400;
+}
+.information {
+  height: fit-content;
+}
+
+.price_now {
+  position: relative;
+}
+
+.price_now::before {
+  content: "目前最高價";
+  font-size: 12px;
+  position: absolute;
+  top: -25px;
+  white-space: nowrap;
+}
+
+.your_price {
+  position: relative;
+}
+
+.your_price::before {
+  content: "你的出價";
+  font-size: 12px;
+  position: absolute;
+  top: -25px;
+  white-space: nowrap;
 }

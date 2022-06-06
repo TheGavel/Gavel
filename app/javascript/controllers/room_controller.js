@@ -34,7 +34,7 @@ export default class extends Controller {
           thisController.biduserTarget.innerHTML = "";
 
           thisController.asyncForEach(
-            thisController.userArray.slice(0, 6),
+            thisController.userArray.slice(0, 3),
             async (user) => {
               const user_id = user.id,
                 user_bid = user.bid;
@@ -42,9 +42,9 @@ export default class extends Controller {
                 thisController.userhash[user_id] =
                   await thisController.getavatar(user_id);
               }
-              let imgHtml = `<div class="relative">
-                          <img src="${thisController.userhash[user_id]}" class="mx-5 relative rounded-full bg-gray-600 flex items-center justify-center font-mono" style="height: 70px; width: 70px;"/>
-                          <div style="text-align: center; color: white; font-size: 12px; position: absolute; left: 12px; bottom: 0px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
+              let imgHtml = `<div style='margin: 20px 20px 0 20px; display: flex; flex-direction: column;'>
+                          <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 70px; width: 70px;"/>
+                          <div style="text-align: center; color: white; font-size: 12px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
               thisController.biduserTarget.insertAdjacentHTML(
                 "beforeend",
@@ -150,11 +150,13 @@ export default class extends Controller {
       console.error(error);
     }
   }
+
   async asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
       await callback(array[index], index, array);
     }
   }
+
   closeModal() {
     this.modalTarget.style.display = "none";
   }
