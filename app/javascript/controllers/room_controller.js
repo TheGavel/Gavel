@@ -25,7 +25,7 @@ export default class extends Controller {
       connected() {
         thisController.listen();
       },
-      received({ bid, message, user, endbid, bidder }) {
+      received({ bid, message, user, endbid, bidder, username }) {
         if (bid != undefined) {
           thisController.currentpriceTargets.map((currentprice, idx) => {
             currentprice.textContent = bid;
@@ -33,6 +33,12 @@ export default class extends Controller {
               currentprice.textContent = `目前最高價：$${bid}`;
             }
           });
+
+          let bidMessage = `<div style="text-align: center; color: #888888; font-size: 12px; margin-bottom: 5px;" >${username} 已出價 ${bid} 元</div>`;
+          thisController.messagescontainerTarget.insertAdjacentHTML(
+            "beforeend",
+            bidMessage
+          );
 
           thisController.userArray.unshift({ id: user, bid: bid });
           thisController.yourpriceTarget.value =

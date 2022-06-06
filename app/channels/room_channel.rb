@@ -26,7 +26,8 @@ class RoomChannel < ApplicationCable::Channel
           record.save
           ActionCable.server.broadcast "Bid:#{data["room"]}",
           bid: data["price"],
-          user: data["user"]
+          user: data["user"],
+          username: User.find(data["user"]).username
           return
         else
           # flash.now[:alert] = "您的出價小於最低標"
@@ -42,7 +43,8 @@ class RoomChannel < ApplicationCable::Channel
         record.save!
         ActionCable.server.broadcast "Bid:#{data["room"]}",
         bid: data["price"],
-        user: data["user"]
+        user: data["user"],
+        username: User.find(data["user"]).username
       end
 
     end
