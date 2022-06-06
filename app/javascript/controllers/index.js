@@ -7,4 +7,4 @@ const application = Application.start();
 const context = require.context("controllers", true, /_controller\.js$/);
 application.load(definitionsFromContext(context));
 application.register("autocomplete", Autocomplete);
-application.register('flash', Notification);
+application.register('flash_animation', Notification);
