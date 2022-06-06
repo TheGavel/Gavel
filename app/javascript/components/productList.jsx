@@ -9,7 +9,7 @@ const Product = (data) => {
       href={`/rooms/${id}`}
       className="transition relative rounded-lg overflow-hidden mx-auto shadow-xl hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300"
     >
-      <div className="w-[310px] max-w-[430px] transition bg-white relative rounded-lg overflow-hidden mx-auto shadow-xl hover:shadow-2xl hover:z-50 group">
+      <div className="w-[310px] max-w-[430px] transition bg-white relative rounded-lg overflow-hidden mx-auto shadow-xl hover:shadow-2xl hover:z-50 hover:scale-[107%] group">
         <div className="w-[310px] max-w-[430px] h-[182px] flex justify-center bg-white pt-6">
           <img
             className="h-full object-cover"
