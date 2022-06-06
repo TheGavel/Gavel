@@ -45,6 +45,7 @@ module.exports = {
       },
       colors: {
         "gavel-blue": "#0066CC",
+        "2blue": "#0078c4",
       },
     },
   },

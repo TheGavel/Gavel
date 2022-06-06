@@ -62,13 +62,19 @@
 }
 .text a {
   display: block;
-  color: rgb(10, 7, 45);
+  color: #fff;
   border-bottom: 1px solid rgb(168, 168, 169);
   padding: 15px;
   background-color: rgb(206, 204, 204);
 }
 .text a:hover {
-  color: rgb(12, 0, 59);
+  color: #01468b;
+}
+.text ul li .navitem {
+  color: rgb(97, 97, 97);
+}
+.text ul li .navitem:hover {
+  background-color: #d1e0f1d8;
 }
 .text .sub-nav a {
   background-color: #fff;
@@ -93,14 +99,17 @@
     box-sizing: content-box;
   }
   .text a {
-    color: rgb(246, 244, 244);
+    color: #fff;
     border-bottom: none;
     background-color: transparent;
     display: block;
     padding: 26px 20px;
   }
-  .text a:hover {
-    background-color: transparent;
+  .text ul li .navitem {
+    color: rgb(97, 97, 97);
+  }
+  .text ul li .navitem:hover {
+    background-color: #d1e0f1d8;
   }
   .text span {
     display: inline;
@@ -117,8 +126,9 @@
   }
   .text li:hover > .sub-nav {
     display: block;
-    background-color: #00c4a6;
-    background-image: linear-gradient(to bottom, #00c4a6, #0066cc);
+    /* background-color: #217edb; */
+    background-color: #fff;
+    /* background-image: linear-gradient(to bottom, #00c4a6, #0066cc); */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
     opacity: 1;
