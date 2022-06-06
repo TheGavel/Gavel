@@ -93,7 +93,6 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    e2mmap (0.1.0)
     elasticsearch (7.17.1)
       elasticsearch-api (= 7.17.1)
       elasticsearch-transport (= 7.17.1)
@@ -309,8 +308,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.2.1)
-    thwait (0.2.0)
-      e2mmap
     tilt (2.0.10)
     timeliness (0.4.4)
     turbolinks (5.2.1)
@@ -384,7 +381,6 @@ DEPENDENCIES
   simple_form (~> 5.1)
   sorcery (~> 0.16.1)
   spring
-  thwait (~> 0.2.0)
   turbolinks (~> 5)
   twilio-ruby (~> 5.67)
   tzinfo-data
