@@ -35,7 +35,7 @@
         <%= form.text_field :start_price, type:"number" ,placeholder:"NT$", class:"start_price text-gray-800 h-10 border py-1 px-1 focus:border-blue-900 border-gray-300 text-sm font-normal rounded" %>
       </div>
       <% if product.errors[:start_price].any? %>
-        <div class="text-center text-sm text-red-700 md:w-3/4"><%= product.errors[:start_price][0] %></div>
+        <div class="text-center text-sm text-red-700 md:w-8/12"><%= product.errors[:start_price][0] %></div>
       <% end %>
 
       <div class="field flex items-center my-4 md:my-6 whitespace-nowrap">
