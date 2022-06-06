@@ -4,22 +4,18 @@
   overflow: auto;
 }
 
-.orderlist table {
+.orderlist > table {
   width: 100%;
   min-width: 1000px;
   table-layout: fixed;
   border-spacing:0;
 }
 
-.orderlist td,th {
+.orderlist td, .orderlist th {
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.orderlist td:first-child,th:first-child {
-  width: 150px;
 }
 
 .orderlist thead tr th {
@@ -34,7 +30,7 @@
   background-color: white;
 }
 
-.orderlist thead tr th:first-child {
+.orderlist  thead  tr > th:first-child {
   z-index: 1;
   left: 0;
 }
