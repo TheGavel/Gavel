@@ -1,3 +1,4 @@
+require 'open-uri'
 # app/controllers/oauths_controller.rb
 class OauthsController < ApplicationController
   skip_before_action :require_login, raise: false
@@ -11,12 +12,19 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
+      @user.activate!
+      begin
+        url_for(@user.avatar)
+      rescue
+        @user.update(username: @user.email)
+        @user.avatar.attach({io: open("https://robohash.org/#{@user.id.to_s}") , filename: @user.id.to_s+"_images.jpg"})
+      end
+
       redirect_to root_path, :notice => "已成功透過 #{provider.titleize} 登入！"
     else
       begin
         @user = create_from(provider)
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
-
         reset_session # protect from session fixation attack
         auto_login(@user)
         redirect_to root_path, :notice => "已成功透過 #{provider.titleize} 登入！"
