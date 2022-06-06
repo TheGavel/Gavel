@@ -8,32 +8,28 @@
           <th id="product-name" class="py-4 px-6 whitespace-nowrap rounded-tl-xl">
             <span>已結標商品</span>
           </th>
-          <th class="py-4 px-6 whitespace-nowrap">
-            <span>買方名稱</span>
-          </th>
-          <th class="py-4 px-6 whitespace-nowrap">
-            <span>賣方名稱</span>
-          </th>
           <th id="product-bid" class=" py-4 px-6 whitespace-nowrap">
             <span>結標金額</span>
           </th>
           <th id="product-time" class=" py-4 px-6 whitespace-nowrap">
             <span>結標時間</span>
           </th>
-          <th id="product-status" class="py-4 px-6 whitespace-nowrap rounded-tr-xl">
+          <th id="product-status" class="py-4 px-6 whitespace-nowrap">
             <span>訂單狀態</span>
           </th>
+          <th class="py-4 px-6 whitespace-nowrap rounded-tr-xl">
+            <span>買家名稱</span>
+        </th>
         </tr>
       </thead>
       <tbody>
         <% @products.each do |product| %>  
           <tr class="text-center text-lg border-b-2 bg-white border-b-gray-200">
             <td class="py-6 px-6 whitespace-nowrap"><%= product.name %></td>
-            <td class="py-6 px-6 whitespace-nowrap"></td>
-            <td class="py-6 px-6 whitespace-nowrap"></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= product.records.last.bid %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= product.room.end_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= product.status %></td>
+            <td class="py-6 px-6 whitespace-nowrap"></td>
           </tr>
         <% end %>
       </tbody>
