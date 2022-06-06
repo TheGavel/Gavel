@@ -46,6 +46,16 @@ input::-webkit-inner-spin-button {
   left: 10px;
 }
 
+#previous:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
+#next:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
 #next {
   left: unset;
   right: 10px;
@@ -90,28 +100,4 @@ li.dot--active {
   display: block;
   font-size: 0.35em;
   font-weight: 400;
-}
-
-.price_now {
-  position: relative;
-}
-
-.price_now::before {
-  content: "目前最高價";
-  font-size: 12px;
-  position: absolute;
-  top: -25px;
-  white-space: nowrap;
-}
-
-.your_price {
-  position: relative;
-}
-
-.your_price::before {
-  content: "你的出價";
-  font-size: 12px;
-  position: absolute;
-  top: -25px;
-  white-space: nowrap;
 }

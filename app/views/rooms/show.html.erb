@@ -1,4 +1,4 @@
-<div class="relative bg-gray-100" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
+<div class="relative bg-gray-100 pt-32" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
     <div class="top md:relative md:px-10" >
       <div class="md:flex">
         <div class="pic md:w-4/6" >
@@ -32,11 +32,11 @@
             <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
           </div>
 
-          <div class="flex items-center justify-center h-20 border-b md:border-b-0 md:bg-white font-bold ">
-            <span class="rounded-md text-gavel-blue font-medium text-2xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：<span>$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span></span>
+          <div class="flex items-center justify-center h-20 border-b md:border-b-0 md:bg-white font-bold">
+            <span class="rounded-md text-gavel-blue text-2xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：<span>$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span></span>
           </div>
 
-          <div class="modal md:block" data-controller="bid" data-room-target="modal" >
+          <div class="modal sm:block" data-controller="bid" data-room-target="modal" >
             <div class="content mx-auto bg-gray-200 text-gray-700 shadow-2xl md:shadow-none rounded-lg md:rounded-none" data-bid-target="bid" >
               <div class="bid_information flex flex-col items-center" >
                 <div class="flex items-center bg-gray-200 text-xl rounded-lg h-20" >
@@ -52,28 +52,43 @@
                   最低每標價：<span class="text-gray-900 font-bold hover:text-gavel-blue" >$<%= @room.product.start_price %></span>
                 </p>
                 <p class="mt-5 text-md text-gray-500" >出價排名：</p>
-                <div data-room-target="biduser" class="flex px-auto">
+                <div data-room-target="biduser" class="flex px-auto h-32 items-center">
+                  目前暫無出價
                 </div>
               </div>
               <div class="text-2xl mt-5 first-letter:rounded-lg flex w-full justify-center py-5 bg-white">設定金額</div>
               <div class="mt-5 py-5 px-5">
-                <div class="flex justify-center">
-                  <span class="text-xl leading-10">$</span>
-                  <span class="price_now text-xl leading-10"
-                        data-room-target="currentprice"
-                        data-bid-target="currentprice">
-                        <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %>
-                  </span>
-                  <span class="text-xl leading-9 mx-2">+</span>
+                <div class="flex justify-center items-center">
+                  <div class="flex flex-col items-center" >
+                    <span class="text-sm" >目前最高價</span>
+                    <div class="flex justify-center" >
+                      <span class="text-xl">$</span>
+                      <span class="price_now text-xl"
+                            data-room-target="currentprice"
+                            data-bid-target="currentprice">
+                            <%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %>
+                      </span>
+                    </div>
+                  </div>
+
+                  <span class="text-xl mx-2">+</span>
                   <input type="number" data-bid-target="input" data-room-target="yourprice"
                   value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class="w-32 text-sm border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
-                  <span class="text-xl leading-10 mx-2">=</span>
-                  <span class="text-xl leading-10">$</span>
-                  <span data-room-target="finalprice"
-                        data-bid-target="finalprice"
-                        class="your_price text-xl leading-10">
-                  </span>
+                  <span class="text-xl mx-2">=</span>
+
+                  <div class="flex flex-col items-center" >
+                    <span class="text-sm" >你的出價</span>
+                    <div class="flex justify-center" >
+                      <span class="text-xl">$</span>
+                      <span data-room-target="finalprice"
+                            data-bid-target="finalprice"
+                            class="your_price text-xl">
+                      </span>
+                    </div>
+                  </div>
+
                 </div>
+
                 <div class="flex justify-center mt-5" >
                   <button data-action="click->bid#plus100" class="shadow text-gray-700 rounded-xl font-bold bg-white hover:bg-gray-300 py-2 px-3">+100</button>
                   <button data-action="click->bid#plus500" class="shadow text-gray-700 rounded-xl bg-white font-bold hover:bg-gray-300 py-2 px-3 mx-5">+500</button>
@@ -92,11 +107,11 @@
         </div>
       </div>
 
-      <div class="seller md:w-4/6 md:absolute" >
-        <p class="text-center mt-5 md:-mt-20 text-lg text-gray-500" >賣家資訊</p>
+      <div class="seller md:w-3/5 md:rounded-lg md:absolute md:bottom-16 md:left-16" >
+        <p class="text-center mt-5 text-lg md:text-2xl text-gray-500" >賣家資訊</p>
         <div class="mt-2 flex flex-col items-center ">
           <%= image_tag(@product.user.avatar, width:50, class:"bg-white rounded-full" ) %>
-          <span class="mt-2 hover:text-gavel-blue" ><%= @product.user.username %></span>
+          <span class="mt-2 md:text-lg" ><%= @product.user.username %></span>
         </div>
       </div>
 
@@ -106,7 +121,7 @@
     
     <div class="bottom md:flex md:px-10" > 
 
-      <div class="information bg-white rounded-2xl w-11/12 m-5 p-5 md:box-border md:w-4/6 md:p-15 md:h-96">
+      <div class="information bg-white rounded-2xl w-11/12 my-5 p-5 md:box-border md:w-4/6 md:p-15 md:h-96">
         <div class="product_information" >
           <h3 class="ml-5 text-2xl md:border-b-4 md:pb-4 ">產品詳情</h3>
           <p class="border-b-2 md:border-b-0 text-md p-5 break-words"><%= @product.description %></p>
@@ -128,7 +143,7 @@
         </div>
       </div>
 
-      <div class="chatroom bg-white mt-5 mb-24 rounded-2xl mx-auto p-5 w-10/12 md:w-2/6">
+      <div class="chatroom bg-white mt-5 mb-24 rounded-2xl mx-auto ml-6 p-5 w-10/12 md:w-2/6">
         <span class="flex justify-center text-xl pb-5 border-b-4 ">房間聊天室</span>
         <div data-room-target="messagescontainer" class="overflow-auto mt-5 h-[300px]"></div>
         <div class="send flex justify-between" >
@@ -141,8 +156,8 @@
 
 
 
-    <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center rounded-lg bg-white box-border h-20 shadow-2xl">
-      <span class="text-sm"  >拍賣剩餘時間：</span>
+    <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center bg-white box-border h-20 shadow-2xl">
+      <span class="text-sm"  >剩餘時間：</span>
       <span class="text-sm" data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
       <button class="bg-gavel-blue text-white rounded-2xl p-2 h-10 w-32" data-action="click->room#showModal" >我要出價</button>
     </div>

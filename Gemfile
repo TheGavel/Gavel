@@ -47,7 +47,6 @@ group :development, :test do
   gem 'rubocop', '~> 1.28', require: false
   gem 'elasticsearch', '~> 7.0'
   gem 'searchkick', '~> 5.0', '>= 5.0.3'
-  gem 'byebug'
   gem 'rspec', '~> 3.11'
   gem 'rspec-rails'
 end

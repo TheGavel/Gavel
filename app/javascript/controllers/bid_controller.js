@@ -16,7 +16,6 @@ export default class extends Controller {
   updatePrice() {
     if (this.inputTarget.value > 0) {
       this.finalpriceTarget.textContent =
-        "$" +
         Number(this.currentpriceTarget.textContent) +
         Number(this.inputTarget.value);
     }
