@@ -39,7 +39,6 @@ gem 'twilio-ruby', '~> 5.67'
 gem 'simple_form', '~> 5.1'
 gem 'faker', '~> 2.21'
 gem 'validates_timeliness', '~> 6.0.0.beta2'
-gem "font_awesome5_rails", "~> 1.5"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

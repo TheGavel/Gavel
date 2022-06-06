@@ -65,14 +65,6 @@ const ProductNavbar = ({ props }) => {
                             得標紀錄
                           </a>
                         </li>
-                        <li>
-                          <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
-                            href="/orders/record"
-                          >
-                            交易紀錄
-                          </a>
-                        </li>
                       </ul>
                     </li>
                   </ul>
@@ -112,14 +104,6 @@ const ProductNavbar = ({ props }) => {
                             成交清單
                           </a>
                         </li>
-                        <li>
-                          <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
-                            href="#"
-                          >
-                            成交紀錄
-                          </a>
-                        </li>
                       </ul>
                     </li>
                     <li>
@@ -144,14 +128,6 @@ const ProductNavbar = ({ props }) => {
                             href="/products/buyerlist"
                           >
                             得標紀錄
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
-                            href="/orders/record"
-                          >
-                            交易紀錄
                           </a>
                         </li>
                       </ul>
