@@ -1,18 +1,1 @@
-<h1 class="text-4xl m-5">Products List</h1>
-<% if @products %>
-	<div class="hidden" id="search">
-		<ul data-search-target="product">
-			<% @products.each do |product| %>
-				<%= url_for(product.images[0]) %>
-				<%= product.name %>
-				<%= product.description %>
-				<%= product.status %>
-				<%= product.start_price %>
-				<%= product.direct_price %>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
-
-<%= javascript_pack_tag 'product', 'data-turbolinks-track': 'reload' %>
-<div id="app"></div>
+<%=  react_component 'productPage', props: {current_user: current_user,policy: policy(:application)}  %>

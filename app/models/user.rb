@@ -15,4 +15,5 @@ class User < ApplicationRecord
   has_many :boughtlist
   has_many :boughtproducts, through: :boughtlist, source: :product
   has_one_attached :avatar
+  has_many :orders
 end

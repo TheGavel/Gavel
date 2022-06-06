@@ -22,7 +22,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    seller || admin
+    seller
   end
 
   def destroy?
@@ -37,6 +37,17 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def sellitem?
+    seller
+  end
+
+  def buyerlist?
+    buy?
+  end
+
+  def buy?
+    buyer || seller
+  end
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!

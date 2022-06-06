@@ -22,13 +22,12 @@ class ApplicationPolicy
     attr_reader :user, :scope
   end
 
-  private
-  def visitor
-    true
+  def buyer_without_email_authenticate
+    user && user.activation_state == "pending" && !(user.role == 'seller')
   end
 
   def buyer
-    user && user.role == 'buyer'
+    user && user.activation_state == "active" && !(user.role == 'seller')
   end
 
   def seller

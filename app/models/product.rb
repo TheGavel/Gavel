@@ -4,15 +4,17 @@ class Product < ApplicationRecord
   searchkick  searchable: [:name],
               word_middle: [:name],
               callbacks: :async
-  validates :name , presence: true
+
+  validates :name, :images, presence: true
   validates :description, presence: true, length: { minimum: 10 }
-  validates :start_price, :direct_price , presence:true,numericality: { greater_than: 0,  only_integer: true }
+  validates :start_price, presence:true,numericality: { greater_than: 0,  only_integer: true }
 
   belongs_to :user
   has_one :room
   has_many_attached :images do |attachable|
     attachable.variant :thumb, resize_to_limit: [600, 300]
   end
+  has_one :order
 
   has_one :boughtlist
   has_one :owner, through: :boughtlist, source: :user

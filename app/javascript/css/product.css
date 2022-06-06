@@ -2,7 +2,9 @@
   font-family: "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體",
     sans-serif;
 }
-
+body {
+  background-color: rgba(239, 246, 255);
+}
 .category {
   position: relative;
   margin: 0 1.2rem;
@@ -10,15 +12,20 @@
 .category::before {
   content: "";
   position: absolute;
-  bottom: -0.3rem;
+  bottom: 0;
   left: 0;
-  border-bottom: 3px red solid;
   width: 100%;
-  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: 0.5s;
+  border-bottom: 4px solid #0000;
+  border-radius: 8px 8px 0 0;
 }
 .activeStyle::before,
 .category:hover::before {
-  opacity: 1;
+  border-bottom: 4px solid #0066cc;
+  border-radius: 8px 8px 0 0;
+  transform: scaleX(1);
 }
 .category:first-child {
   margin-left: auto;
@@ -27,35 +34,18 @@
   margin-right: auto;
 }
 .scroll {
-  border-bottom: 1px rgb(188, 188, 188) solid;
-  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(188, 188, 188);
 }
-/*
-.navbar::before{
-  content: "";
-  position: absolute;
-  border-bottom: 1px rgb(188, 188, 188) solid;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1rem;
+.navbar a {
+  padding: 45px 35px 15px 35px;
+  color: #6b7280;
 }
-*/
-/*
-.scroll::-webkit-scrollbar {
-  height: 7px;
+.navbar a:focus {
+  color: #1f2937;
 }
-.scroll::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.navbar a:hover {
+  color: #1f2937;
 }
-.scroll::-webkit-scrollbar-thumb {
-  background: #888;
-}
-.scroll::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
-
 .field_with_errors {
   display: inline-block;
 }
@@ -63,16 +53,17 @@
 /* 商品狀態 */
 .styled-select select {
   height: 40px;
-  width: 240px;
+  width: 258px;
   font-size: 14x;
   border-radius: 10px;
   margin: 0 0 0 6px;
+  color: rgb(110, 110, 110);
 }
 .styled-select select {
-  width: 240px;
+  width: 258px;
   font-size: 14px;
   border-radius: 0.25rem;
-  border: 1px solid #aaa;
+  border: 1px solid rgb(209 213 219);
   padding: 2px 2px 2px 10px;
 }
 .styled-select {
@@ -85,206 +76,16 @@
 
 /* 標籤分類 */
 .field select {
-  width: 150px;
+  width: 127px;
   height: 2.5rem;
-  border: 1px solid rgb(171, 169, 169);
+  border: 1px solid rgb(209 213 219);
   padding: 2px 2px 2px 10px;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin-left: 5px;
+  color: rgb(110, 110, 110);
 }
-
-/* 導覽列 */
-.menu_btn {
-  width: 40px;
-  height: 40px;
-  display: block;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-#nav {
-  position: relative;
-  height: 60px;
-  width: 100%;
-}
-#menu_control {
-  position: absolute;
-}
-.menu_btn::before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 30px;
-  left: 2px;
-  background-color: rgb(245, 245, 245);
-  top: 10px;
-  bottom: 0;
-  margin: auto;
-  box-shadow: 0px 8px 0px rgb(244, 244, 244), 0px -8px 0px rgb(237, 237, 238);
-}
-.text {
-  width: 100%;
-  height: calc(100vh-60px);
-  position: absolute;
-  top: 60px;
-  left: 0%;
-  left: -100%;
-  transition: 0.3s;
-}
-.text a {
-  display: block;
-  color: rgb(10, 7, 45);
-  border-bottom: 1px solid rgb(168, 168, 169);
-  padding: 15px;
-  background-color: rgb(206, 204, 204);
-}
-.text a:hover {
-  color: rgb(37, 114, 238);
-  /* background: rgb(247, 245, 245); */
-}
-.text :hover {
-  color: rgb(37, 114, 238);
-}
-.text span {
-  display: none;
-}
-#menu_control:checked ~ #nav .text {
-  left: 0;
-}
-.search {
-  top: 30px;
-  left: 0;
-  margin: auto;
-}
-.search ul {
-  width: 110px;
-}
-.search ul li {
-  padding: 10px 0 10px 10px;
-  background: white;
-  border-radius: 3px;
-}
-.search ul li:hover {
-  background-color: rgb(218, 218, 219);
-}
-.search input {
-  width: 110px;
-  height: 40px;
-}
-.search button {
-  width: 40px;
-  height: 40px;
-}
-.text .sub-nav a {
-  background-color: #fff;
-}
-
-@media screen and (min-width: 768px) {
-  .search {
-    width: 400px;
-    left: 0px;
-    margin: auto;
-  }
-  .search input {
-    width: 300px;
-  }
-  .search button {
-    width: 80px;
-  }
-  .search ul {
-    width: 300px;
-  }
-
-  .search ul li {
-    padding: 10px 0 10px 10px;
-    background: white;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .menu_btn {
-    display: none;
-  }
-  #nav {
-    align-items: center;
-  }
-  #nav .Gavel {
-    margin-right: 10px;
-  }
-  .text {
-    left: 0px;
-    right: 0;
-    position: relative;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    top: 0;
-    background-color: rgb(17 24 39);
-  }
-  .text a {
-    color: rgb(246, 244, 244);
-    border-bottom: none;
-    background-color: transparent;
-  }
-  .text a:hover {
-    background-color: transparent;
-  }
-  .text span {
-    display: inline;
-  }
-  .search {
-    margin-left: 100px;
-  }
-  .search ul {
-    width: 400px;
-  }
-  .search ul li {
-    padding: 10px 0 10px 10px;
-    background: white;
-  }
-  .search ul li:hover {
-    background-color: rgb(218, 218, 219);
-  }
-  .search input {
-    width: 400px;
-  }
-  .search button {
-    width: 80px;
-  }
-  .text > ul {
-    display: flex;
-  }
-  .text a {
-    display: block;
-    padding: 10px 20px;
-  }
-
-  .text > ul {
-    display: flex;
-  }
-  .text li {
-    position: relative;
-    color: black;
-  }
-  .text .sub-nav {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    width: 10em;
-  }
-  .text li:hover > .sub-nav {
-    display: block;
-    background-color: rgb(17 24 39);
-    width: 110px;
-    top: 40px;
-  }
-  .text li:hover > a {
-    background-color: transparent;
-  }
-  .text .sub-nav a {
-    background-color: transparent;
-  }
+.start_price {
+  width: 260px;
 }

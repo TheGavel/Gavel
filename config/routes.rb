@@ -25,16 +25,32 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :own
+      get :buyerlist
+      get :sellitem
       get :autocomplete
       get "search/*path" , to: 'products#index'
       get "categories/*path" , to: 'products#index'
+    end
+    member do
+      post :buy
+    end
+  end
+
+  resources :orders do
+    collection do
+      get :record
+      post :notify_response
+      post :return_response
+    end
+    member do
+      get :check
     end
   end
 
   resources :rooms do
     collection do
       get :own
-      
+
     end
     member do
       resources :messages, only: [:create]
@@ -64,8 +80,8 @@ Rails.application.routes.draw do
           get :architecture, on: :collection
           get ':page', to: 'categories#page'
         end
-        resources :search, only: [:show] do
-          get ':page', to: 'search#page'
+        resources :search, only: [:show], constraints: { id: /[^\/]+/ } do
+          get ':page', to: 'search#page', constraints: { :page => /[^\/]+/ }
         end
       end
 

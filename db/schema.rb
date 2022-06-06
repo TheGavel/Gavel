@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
     t.index ["user_id"], name: "index_boughtlists_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "slug"
+    t.bigint "product_id", null: false
+    t.integer "price"
+    t.string "status", default: "pending"
+    t.string "email"
+    t.bigint "user_id", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -129,7 +143,7 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
-    t.string "role"
+    t.string "role", default: "buyer"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
@@ -138,6 +152,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_151945) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boughtlists", "products"
   add_foreign_key "boughtlists", "users"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "products_tags", "products"
   add_foreign_key "products_tags", "tags"

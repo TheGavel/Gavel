@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_own_product, only: %i[own]
+  before_action :find_own_product, only: %i[own sellitem buyerlist]
   before_action :find_product, only: %i[show edit update destroy]
   before_action :pundit
   skip_before_action :require_login, only: %i[index]
@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render layout: "product"
+    # render layout: "product"
   end
 
   def show
@@ -58,21 +58,33 @@ class ProductsController < ApplicationController
   def own
   end
 
+  def sellitem
+    @products = current_user.boughtproducts
+  end
+
+  def buyerlist
+    @products = current_user.boughtproducts
+  end
+
   def autocomplete
     @search_results = Product.search(params[:q],
                       misspellings: {edit_distance:5},
                       select: [:name])
+    # @search_results =Product.all.map(&:name)
     render layout: false
   end
 
-  def autocomplete
-      @search_results =Product.all.map(&:name)
-      render layout: false 
+  def buy
+    product = Product.find(params[:id])
+    product_price = Product.find(params[:id]).start_price
+    product_name = Product.find(params[:id]).name
+    order = current_user.orders.create(description: product_name, price: product_price, product: product, email: current_user.email)
+    redirect_to check_order_path(order.id)
   end
 
   private
   def product_params
-    params.require(:product).permit(:name,:description,:start_price,:direct_price,:status, images: [], selectChildren: [])
+    params.require(:product).permit(:name, :description, :start_price, :direct_price, :status, images: [], selectChildren: [])
   end
 
   def find_product

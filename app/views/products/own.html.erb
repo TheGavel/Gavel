@@ -1,51 +1,75 @@
 <%# TODO 已得標 得標人 如果沒有房間可以創建房間 如果競標中顯示最高出價%>
 
-<h1 class="text-center text-4xl mt-10" >我的商品</h1>
-<% if @products%>
-  <% @products.each do |product|%>
-    <div class="container w-8/12 mx-auto bg-gray-200 rounded-lg shadow-lg relative" >
-      <div class="mt-5" >
-        <div class="flex justify-between px-5 pt-2 mb-2 w-full" >
-          <div class="bg-blue-400 px-4 py-2 rounded-xl" >
-            <span class="text-white" ><%= product.status %></span>
+  <h1 class="text-center text-4xl mt-36 text-gray-800" >我的商品</h1>
+  <div class="flex justify-end mt-5 md:mr-5">
+    <div class="bg-gavel-blue hover:bg-blue-600 rounded-2xl text-xl text-white mr-2 mb-4 " ><%= link_to "＋建立新商品", new_product_path, class:"w-full flex px-4 py-2 md:px-6 md:py-3" %></div>
+  </div>
+<% if @products %>
+  <main class="mx-3 lg:mx-0 lg:grid lg:grid-cols-3">
+    <% @products.each do |product|%>
+      <div class="md:px-4">
+        <div class=" w-full mb-10 bg-gray-200 rounded-lg shadow-xl px-5 py-3 md:box-border md:gap-4">
+          <div class="flex justify-between">
+            <div class="inline-block bg-blue-500 px-3 py-2 ml-4 mt-2 mb-2 shadow-lg rounded-lg " >
+              <span class="text-white"><%= product.status %></span>
+            </div>
+            <div class="mr-2">
+              <% product.tags.each do |tag| %>
+              <span class="text-gray-600 mt-2 mr-2 bg-white shadow p-2 rounded-full inline-block" ><%= tag.name %></span>
+              <% end %>
+            </div>
           </div>
           <div>
-            <% product.tags.each do |tag|%>
-              <div class="bg-white shadow px-2 py-2 rounded-xl inline-block" >
-                <span class="text-gray-600 " ><%= tag.name %> </span>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="flex" >
-          <div class="ml-5 mb-5 w-24 h-24" >
-            <div class="h-24 w-24" >
-            <%= link_to image_tag(product.images.first, class:"h-full hover:scale-110 transition duration-300 ease-in-out object-cover rounded-lg" ), room_path(product.id) %>
-            </div>
-          </div>
-          <div class="ml-5 w-full" >
-            <div class="flex w-full justify-between" >
-              <%= link_to product.name , room_path(product.id), class: "h2 text-4xl"%>
-              <div class="mt-2 mr-5 ">
-                <span class="text-gray-800" >目前最高出價：</span>
-                <span class="text-yellow-600 text-4xl" >$250</span>
+            <div class=" flex justify-center " >
+              <div class="h-72 w-72 md:h-96 md:w-96 " >
+                <%= link_to image_tag(product.images.first, class:"h-full w-full rounded-lg object-cover object-center" ), room_path(product.id) %>
               </div>
             </div>
-            <div class="text-gray-800" >
-                <p>起標價：$<%= product.start_price %> </p>
-                <p>最低每標金額：$<%= product.basicprice %> </p>
-            </div>
-            
-            <div class= "absolute right-5 bottom-3">
-              <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-xl text-white text-lg shadow-lg " ><%= link_to "編輯" , edit_product_path(product.id)%></button>
-              <button class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-xl text-white text-lg shadow-lg" ><%= link_to "刪除" , product_path(product.id) , method:"DELETE" , data: {confirm: "確定刪除嗎？"}%></button>
+            <div class="w-full bg-gray-200">
+              <div class=" w-full flex flex-wrap justify-between">
+                <div class="flex w-full h-15">
+                  <div class="flex items-center justify-center w-full">
+                  <%= link_to product.name , room_path(product.id), class: "truncate w-3/5 h-15 text-center text-2xl whitespace-wrap border-b-2 border-gray-400 py-2 md:font-bold "%>
+                  </div>
+                </div>
+                <div class="w-full my-4 flex justify-evenly items-center ">
+                  <div class="flex flex-col text-center text-gray-600">
+                    <span class="text-lg">商品起標價</span>
+                    <span class="text-2xl mt-2">$<%= product.start_price %></span>
+                  </div>
+                  <div class="flex flex-col text-center text-gray-600">
+                    <span class="text-lg">每標最低價</span>
+                    <span class="text-2xl mt-2">$<%= product.basicprice %></span>
+                  </div>
+                  <div class="text-center flex flex-col justify-center ">
+                    <span class=" text-lg ">目前最高價</span>
+                    <span class="text-red-400 text-2xl font-bold mt-2" ><%= product.records.last&.bid ? product.records.last&.bid : "-" %></span>
+                  </div>
+                </div>
+                <div class= "w-full flex justify-between mb-2">
+                  <div>
+                    <% if product.room %>
+                    <% else %>
+                    <div class="flex flex-shrink  bg-gavel-blue hover:bg-blue-600 rounded-xl text-white shadow-lg ml-4">
+                      <%= link_to "創建房間", edit_room_path(product.id), class:"w-full px-6 py-2 box-border"%>
+                    </div>
+                    <% end %>
+                  </div>
+                  <div class="flex mr-2">
+                    <div class="flex item-center bg-blue-500 hover:bg-blue-600 rounded-lg text-white text-lg shadow-lg" >
+                      <%= link_to fa_inline_icon('edit', class:'w-4 m-auto') , edit_product_path(product.id), class:"w-full px-6 py-3 box-border"%>
+                    </div>
+                    <div class="flex item-center bg-red-400 hover:bg-red-600 rounded-lg text-white text-lg shadow-lg ml-2 mr-2">
+                      <%= link_to fa_inline_icon('trash-alt', class:'w-4 m-auto'), product_path(product.id), method: "DELETE", class:"w-full px-6 py-3 box-border",data: {confirm: "確定刪除嗎？"}%>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
-<div class="flex justify-center mt-10 pb-10" >
-  <button class="bg-blue-500 hover:bg-blue-600 px-10 rounded-xl text-white text-2xl" ><%= link_to "＋建立新商品" , new_product_path%></button>
-</div>
+  </main>
+

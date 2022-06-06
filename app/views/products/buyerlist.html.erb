@@ -1,0 +1,29 @@
+<h1 class="text-center text-4xl mt-36 text-gray-800" >得標紀錄</h1>
+<div id="products" class="container mx-auto mt-10">
+  <table class="w-5/6 bg-white mx-auto">
+    <thead class="bg-blue-800 text-white text-lg">
+      <tr class="mx-auto text-center">
+        <th id="product-name" class="py-3 px-6">
+          <span>得標商品</span>
+        </th>
+        <th id="product-bid" class=" py-3 px-6 ">
+          <span>得標金額</span>
+        </th>
+        <th id="checkout" class="py-3 px-6 ">
+          <span>結帳</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="text-center text-lg border-b-2 border-b-gray-200">
+          <td class="py-3 px-6"><%= product.name %></td>
+          <td class="py-3 px-6"><%= product.records.last.bid %></td>
+          <td class="py-3 px-6 ">
+          <%= link_to "buy" , buy_product_path(product.id), method:"POST",class:"bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl text-white text-2x" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -4,3 +4,5 @@ import "./flash.scss";
 import "./user";
 import "./room.scss";
 import "./modal.scss";
+import "./suggestion";
+import "./navbar";

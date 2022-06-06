@@ -1,6 +1,13 @@
 <% flash.each do |type, message| %>
-  <div data-controller="flash" class="flash flash-<%= type %>">
-    <div><%= message %></div>
-    <button id="flashCloseBtn" data-action="click->flash#close">X</button>
-  </div>
+  <% if current_user && current_page?(root_url) %>
+    <div data-controller="flash" class="flash flash-<%= type %> w-full absolute top-20">
+      <div><%= message %></div>
+      <button id="flashCloseBtn" data-action="click->flash#close">X</button>
+    </div>
+  <% else %>
+    <div data-controller="flash" class="flash flash-<%= type %>">
+      <div><%= message %></div>
+      <button id="flashCloseBtn" data-action="click->flash#close">X</button>
+    </div>
+  <% end %>
 <% end %>

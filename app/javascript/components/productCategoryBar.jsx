@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Rails from "@rails/ujs";
 
-const ClassificationBar = () => {
-  // {overflow-x-scroll }
+const categoryBar = () => {
   const [firstLayerCategory, setfirstLayerCategory] = useState([]);
   useEffect(() => {
     const getData = async () => {
@@ -16,11 +15,11 @@ const ClassificationBar = () => {
       });
     };
     getData();
-  }, []); //<-- This is the dependency array
+  }, []);
 
   return (
-    <div className="scroll overflow-y-hidden relative my-5">
-      <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-xl ">
+    <div className="scroll mt-20 overflow-y-hidden relative mb-5">
+      <div className="navbar flex whitespace-nowrap tracking-wider font-semibold text-2xl mx-auto">
         {firstLayerCategory.map((item, idx) => {
           return (
             <NavLink
@@ -38,4 +37,4 @@ const ClassificationBar = () => {
     </div>
   );
 };
-export default ClassificationBar;
+export default categoryBar;
