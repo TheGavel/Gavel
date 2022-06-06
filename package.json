@@ -27,6 +27,7 @@
     "react_ujs": "^2.6.2",
     "stimulus": "^3.0.1",
     "stimulus-autocomplete": "^3.0.2",
+    "stimulus-notification": "^2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "throttle-debounce": "^5.0.0",
     "turbolinks": "^5.2.0",

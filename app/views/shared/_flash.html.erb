@@ -1,11 +1,21 @@
 <% flash.each do |type, message| %>
   <% if current_user && current_page?(root_url) %>
-    <div data-controller="flash" class="flash flash-<%= type %> w-full absolute top-20">
+    <div data-controller="flash" class="flash flash-<%= type %> w-full absolute top-20 transition transform duration-1000 hidden"
+    data-flash-delay-value="3000"
+    data-transition-enter-from="opacity-0 translate-y-0"
+    data-transition-enter-to="opacity-100 translate-y-0"
+    data-transition-leave-from="opacity-100 translate-y-0"
+    data-transition-leave-to="opacity-0 translate-y-0">
       <div><%= message %></div>
       <button id="flashCloseBtn" data-action="click->flash#close">X</button>
     </div>
   <% else %>
-    <div data-controller="flash" class="flash flash-<%= type %>">
+    <div data-controller="flash" class="flash flash-<%= type %> transition transform duration-1000 hidden"
+    data-flash-delay-value="3000"
+    data-transition-enter-from="opacity-0 translate-y-0"
+    data-transition-enter-to="opacity-100 translate-y-0"
+    data-transition-leave-from="opacity-100 translate-y-0"
+    data-transition-leave-to="opacity-0 translate-y-0">
       <div><%= message %></div>
       <button id="flashCloseBtn" data-action="click->flash#close">X</button>
     </div>

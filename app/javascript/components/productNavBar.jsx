@@ -12,7 +12,7 @@ const ProductNavbar = ({ props }) => {
       <input type="checkbox" id="menu_control" />
       <div
         id="nav"
-        className="bg-gradient-to-r from-gavel-blue to-green-400 shadow-lg items-center flex h-20 justify-between"
+        className="bg-gradient-to-r from-gavel-blue to-blue-400 shadow-lg items-center flex h-20 justify-between"
       >
         <div className="flex items-center ml-2 md:ml-8">
           <a href="/" className="logo flex w-full items-center">
@@ -51,7 +51,7 @@ const ProductNavbar = ({ props }) => {
                       <ul className="sub-nav">
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href={`/users/${current_user?.id}`}
                           >
                             個人資訊
@@ -59,7 +59,7 @@ const ProductNavbar = ({ props }) => {
                         </li>
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href="/products/buyerlist"
                           >
                             得標紀錄
@@ -82,7 +82,7 @@ const ProductNavbar = ({ props }) => {
                   <ul>
                     <li>
                       <a
-                        className="xl:mx-0 hover:text-blue-200 text-xl"
+                        className="xl:mx-0 hover:text-blue-200 text-xl font-normal"
                         href="#"
                       >
                         賣家中心
@@ -90,7 +90,7 @@ const ProductNavbar = ({ props }) => {
                       <ul className="sub-nav">
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href="/products/own"
                           >
                             我的商品
@@ -98,7 +98,7 @@ const ProductNavbar = ({ props }) => {
                         </li>
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href="#"
                           >
                             成交清單
@@ -116,7 +116,7 @@ const ProductNavbar = ({ props }) => {
                       <ul className="sub-nav">
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href={`/users/${current_user?.id}`}
                           >
                             個人資訊
@@ -124,7 +124,7 @@ const ProductNavbar = ({ props }) => {
                         </li>
                         <li>
                           <a
-                            className="xl:mx-0 hover:text-blue-200 text-xl"
+                            className="navitem xl:mx-0 hover:text-blue-200 text-xl"
                             href="/products/buyerlist"
                           >
                             得標紀錄
@@ -149,7 +149,6 @@ const ProductNavbar = ({ props }) => {
               <a className="hover:text-blue-200 text-xl" href="/users/new">
                 註冊
               </a>
-              <span className="none">|</span>
               <a
                 className="hover:text-blue-200 text-xl"
                 href="/user_sessions/new"

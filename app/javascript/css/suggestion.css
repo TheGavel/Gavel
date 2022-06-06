@@ -64,7 +64,7 @@
 .search_icon {
   display: inline-block;
   font-size: 16px;
-  background: rgb(59, 130, 246);
+  background-color: #0066cc;
   width: 40px;
   height: 40px;
   text-align: center;
@@ -74,7 +74,8 @@
   box-sizing: border-box;
 }
 .search_icon:hover {
-  background-color: #0066cc;
+  background: #004993;
+  /* background: rgb(59, 130, 246); */
 }
 
 @media screen and (min-width: 768px) {
