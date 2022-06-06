@@ -27,7 +27,7 @@
         </div>
 
         <div class="bid md:w-2/6" >
-          <div class="text-lg text-center w-full mt-5 text-black py-5 bg-gray-200 " >
+          <div class="text-lg text-center w-full mt-5 text-black py-5 bg-gray-200 md:rounded-t-lg" >
             <span>拍賣剩餘時間：</span>
             <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
           </div>
@@ -37,10 +37,10 @@
           </div>
 
           <div class="modal sm:block" data-controller="bid" data-room-target="modal" >
-            <div class="content mx-auto bg-gray-200 text-gray-700 shadow-2xl md:shadow-none rounded-lg md:rounded-none" data-bid-target="bid" >
+            <div class="content mx-auto bg-gray-200 text-gray-700 shadow-2xl md:shadow-none rounded-lg md:rounded-b-lg" data-bid-target="bid" >
               <div class="bid_information flex flex-col items-center" >
                 <div class="flex items-center bg-gray-200 text-xl rounded-lg h-20" >
-                  <span>競標資訊</span>
+                  <span class="text-2xl" >競標資訊</span>
                   <button class="md:hidden absolute right-5 text-4xl" data-action="click->room#closeModal" >
                     <i class="fas fa-window-close"></i>
                   </button>
@@ -59,8 +59,8 @@
               <div class="text-2xl mt-5 first-letter:rounded-lg flex w-full justify-center py-5 bg-white">設定金額</div>
               <div class="mt-5 py-5 px-5">
                 <div class="flex justify-center items-center">
-                  <div class="flex flex-col items-center" >
-                    <span class="text-sm" >目前最高價</span>
+                  <div class="flex flex-col items-center pb-2" >
+                    <span class="text-sm" >最高價</span>
                     <div class="flex justify-center" >
                       <span class="text-xl">$</span>
                       <span class="price_now text-xl"
@@ -72,11 +72,13 @@
                   </div>
 
                   <span class="text-xl mx-2">+</span>
+
                   <input type="number" data-bid-target="input" data-room-target="yourprice"
-                  value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class="w-32 text-sm border rounded-xl py-2 leading-tight text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="輸入您的出價">
+                  value="<%= @room.product.basicprice %>" min="<%= @room.product.basicprice %>" class="w-32 text-md border rounded-xl py-2  text-gray-700 focus:outline-none focus:shadow-outline text-center" placeholder="自訂加價">
+
                   <span class="text-xl mx-2">=</span>
 
-                  <div class="flex flex-col items-center" >
+                  <div class="flex flex-col items-center pb-2" >
                     <span class="text-sm" >你的出價</span>
                     <div class="flex justify-center" >
                       <span class="text-xl">$</span>
@@ -96,7 +98,7 @@
                 </div>
 
                 <div class="flex justify-center">
-                  <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-10 shadow-lg hover:bg-blue-800" data-action="click->room#bid" >
+                  <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-5 shadow-lg hover:bg-blue-800" data-action="click->room#bid" >
                     確認出價！
                   </button>
                 </div>
@@ -121,7 +123,7 @@
     
     <div class="bottom md:flex md:px-10" > 
 
-      <div class="information bg-white rounded-2xl w-11/12 my-5 p-5 md:box-border md:w-4/6 md:p-15 md:h-96">
+      <div class="information bg-white rounded-2xl w-11/12 my-5 mx-auto p-5 md:box-border md:w-4/6 md:p-15 md:h-96">
         <div class="product_information" >
           <h3 class="ml-5 text-2xl md:border-b-4 md:pb-4 ">產品詳情</h3>
           <p class="border-b-2 md:border-b-0 text-md p-5 break-words"><%= @product.description %></p>
@@ -134,7 +136,7 @@
               $<%= @room.product.start_price %>
             </span>
           </p>
-          <p class="ml-5 mx-20 mt-2 text-md text-gray-500" >
+          <p class="ml-5 mt-2 text-md text-gray-500" >
             最低每標價：
             <span class="ml-32 text-gray-900 font-bold hover:text-gavel-blue" >
               $<%= @room.product.start_price %>
@@ -143,9 +145,9 @@
         </div>
       </div>
 
-      <div class="chatroom bg-white mt-5 mb-24 rounded-2xl mx-auto ml-6 p-5 w-10/12 md:w-2/6">
+      <div class="chatroom bg-white mt-5 mb-24 rounded-2xl mx-auto md:ml-6 p-5 w-10/12 md:w-2/6">
         <span class="flex justify-center text-xl pb-5 border-b-4 ">房間聊天室</span>
-        <div data-room-target="messagescontainer" class="overflow-auto mt-5 h-[300px]"></div>
+        <div data-room-target="messagescontainer" class="overflow-auto mt-5 h-[234px]"></div>
         <div class="send flex justify-between" >
           <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 w-8/12 " placeholder="賣家隨時為您解答">
           <button class="w-3/12 rounded-full bg-gavel-blue text-white font-bold p-2 uppercase" data-action="click->room#chat">發送</button>
