@@ -1,6 +1,7 @@
 require 'faker'
 require 'open-uri'
 category_architecture = JSON.parse(File.read(Rails.root.to_s + '/config/category.json'))
+products_list = JSON.parse(File.read(Rails.root.to_s + '/config/product.json'))
 
 def traverse_category_architecture_to_array(architecture)  #Depth-First-Search
   architecture.keys.each do |key|
@@ -57,28 +58,31 @@ seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmatio
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-100.times do
+def product_img(width,height,count,id)
+  {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
+end
+def product_imgg(url,name)
+  {io: open(url) , filename: "#{name}_images.jpg"}
+end
+
+products_list.each do |prod|
   ### PRODUCT
-  def product_img(width,height,count,id)
-    {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
-  end
+
   user = seller.sample
-  product = Product.new( name: Faker::Lorem.sentence(word_count: 2),
-                            description: Faker::Lorem.sentence(word_count: 10),
-                            status: %w[待拍賣 立即競標].sample,
+  product = Product.new( name: prod["name"],
+                            description: prod["description"],
+                            status: %w[發布 草稿].sample,
                             start_price: rand(100..500) ,
                             direct_price: rand(1000..10000),
                             user_id: user.id
                             )
-
-  1.times do
-    product.images.attach(product_img(600,350,3,product.id))
+p prod["image"]
+  prod["image"].each do |img,idx|
+    product.images.attach(product_imgg(img,idx.to_s+prod["name"]))
   end
   product.save
 
-  @category_path = []
-  random_category_path(category_architecture)
-  @category_path.each { |item|
+  prod["tag"].each { |item|
     tag_id = Tag.find_by(name: item).id
     ProductsTag.create(product_id: product.id, tag_id: tag_id)
   }

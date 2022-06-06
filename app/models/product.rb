@@ -3,21 +3,21 @@
 class Product < ApplicationRecord
   include AASM
 
-  aasm column: "status" do
-    state :draft , :publish, :soldout
+  # aasm column: "status" do
+  #   state :draft , :publish, :soldout
 
-    event :onshelf do
-      transitions from: :draft, to: :publish
-    end
+  #   event :onshelf do
+  #     transitions from: :draft, to: :publish
+  #   end
 
-    event :offshelf do
-      transitions from: :publish, to: :draft
-    end
+  #   event :offshelf do
+  #     transitions from: :publish, to: :draft
+  #   end
 
-    event :sold do
-      transitions from: :publish, to: :soldout
-    end
-  end
+  #   event :sold do
+  #     transitions from: :publish, to: :soldout
+  #   end
+  # end
 
 
 
