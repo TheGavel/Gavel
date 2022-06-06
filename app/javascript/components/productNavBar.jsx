@@ -60,7 +60,7 @@ const ProductNavbar = ({ props }) => {
                         <li>
                           <a
                             className="navitem xl:mx-0 hover:text-blue-200 text-xl"
-                            href="/products/buyerlist"
+                            href="/orders/buyer_order"
                           >
                             得標紀錄
                           </a>
@@ -99,7 +99,7 @@ const ProductNavbar = ({ props }) => {
                         <li>
                           <a
                             className="navitem xl:mx-0 hover:text-blue-200 text-xl"
-                            href="#"
+                            href="/orders/seller_order"
                           >
                             成交清單
                           </a>
@@ -125,7 +125,7 @@ const ProductNavbar = ({ props }) => {
                         <li>
                           <a
                             className="navitem xl:mx-0 hover:text-blue-200 text-xl"
-                            href="/products/buyerlist"
+                            href="/orders/buyer_order"
                           >
                             得標紀錄
                           </a>

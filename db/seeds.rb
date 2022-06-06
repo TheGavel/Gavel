@@ -58,7 +58,6 @@ seller3 = User.create( email: "ccc@ccc",password: "cccccc" ,password_confirmatio
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
-def product_img(width,height,count,id)
   {io: open("https://loremflickr.com/#{width}/#{height}") , filename: id.to_s+"_images.jpg"}
 end
 def product_imgg(url,name)
@@ -67,9 +66,6 @@ end
 
 products_list.each do |prod|
   ### PRODUCT
-
-  user = seller.sample
-  product = Product.new( name: prod["name"],
                             description: prod["description"],
                             status: %w[發布 草稿].sample,
                             start_price: rand(100..500) ,
