@@ -1,6 +1,26 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  include AASM
+
+  aasm column: "status" do
+    state :draft , :publish, :soldout
+
+    event :onshelf do
+      transitions from: :draft, to: :publish
+    end
+
+    event :offshelf do
+      transitions from: :publish, to: :draft
+    end
+
+    event :sold do
+      transitions from: :publish, to: :soldout
+    end
+  end
+
+
+
   searchkick  searchable: [:name],
               word_middle: [:name],
               callbacks: :async
@@ -23,8 +43,8 @@ class Product < ApplicationRecord
   has_many :records
   def self.all_status
     [
-      %w[待拍賣 for_sale],
-      %w[立即競標 sales]
+      %w[草稿 draft],
+      %w[發佈 publish]
     ]
   end
 end
