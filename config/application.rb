@@ -14,7 +14,7 @@ module Garvel
     config.load_defaults 6.1
     config.active_job.queue_adapter = :sidekiq
     config.hosts << ENV["NGROK_HOST_NAME"]
-
+    config.i18n.default_locale = "zh-TW"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
