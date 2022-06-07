@@ -1,14 +1,14 @@
-<div class="rounded-2xl w-11/12 mx-auto my-8 shadow-2xl bg-white pt-6 md:w-8/12 lg:w-9/12">
+<div class="rounded-2xl lg:rounded-3xl w-11/12 mx-auto my-8 shadow-2xl bg-white pt-6 md:w-8/12 lg:w-9/12">
   <%= form_for( product, html: {enctype: "multipart/form-data"}) do |form|%>
-    <div class="mx-4 m-auto md:ml-10 xl:ml-24">
+    <div class="mx-4 m-auto ml-6 sm:ml-10 md:ml-10 xl:ml-24">
       <div class="field my-5">
         <%= form.label :name, "商品名稱：", class:"text-gray-500"%>
-        <%= form.text_field :name, placeholder:"商品名稱", class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <%= form.text_field :name, placeholder:"商品名稱", class:"w-8/12 md:w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
       </div>
 
       <div class="field flex justify-start my-4 md:my-6">
         <%= form.label :description, "商品描述：", class:"text-gray-500"%>
-        <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-9/12 border py-2 px-2 ml-1 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-8/12 md:w-9/12 border py-2 px-2 ml-1 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
       </div>
 
       <div>
@@ -35,17 +35,17 @@
           <%= form.select :status, Product.all_status, class:"w-9/12 text-blue-500 border py-1 px-2 focus:border-blue-900 border-gray-300 text-sm font-normal rounded"%>
         </div>
       </div>
-
-      <div class="actions pt-5 pb-10">
-        <% if product.id.present? %>
-          <%= form.submit "更新商品", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
-        <% else %>
-          <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
-        <% end %>
-          <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded"%>
-      </div>
-
     </div>
+
+    <div class="actions pt-5 pb-10 mx-2">
+      <% if product.id.present? %>
+        <%= form.submit "更新商品", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
+      <% else %>
+        <%= form.submit "立即刊登", class:"w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
+      <% end %>
+        <%= link_to '返回上一頁', own_products_path, data: { confirm: '確定要離開嗎？' }, class:"w-11/12 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded"%>
+    </div>
+    
   <% end %>
 </div>
 
