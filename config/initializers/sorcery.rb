@@ -225,7 +225,7 @@ Rails.application.config.sorcery.configure do |config|
     # Activation needed email method on your mailer class.
     # Default: `:activation_needed_email`
     #
-    user.activation_needed_email_method_name = nil #'activation_needed_email' #'activation_needed_email'
+    user.activation_needed_email_method_name = 'activation_needed_email' #'activation_needed_email' #'activation_needed_email'
     ##關掉
     # Activation success email method on your mailer class.
     # Default: `:activation_success_email`

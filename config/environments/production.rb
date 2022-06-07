@@ -8,7 +8,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: 'smtp.mailgun.org',
   port: 587,
-  domain: 'sandbox60f4cfff1b4943fc91c976f46f04510b.mailgun.org',
+  domain: 'mail.gavel.store',
   user_name: ENV['USER_MAILGUN_ADDRESS'],
   password: ENV['USER_MAILGUN_PASSWORD'],
   authentication: 'plain',
