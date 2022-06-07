@@ -44,11 +44,11 @@ input::-webkit-inner-spin-button {
   font-weight: bolder;
   top: calc(50% - 40px);
   left: 10px;
+  transition-duration: 0.2s;
 }
 
 #previous:hover {
   transform: scale(1.2);
-  transition-duration: 0.2s;
 }
 
 #next:hover {
