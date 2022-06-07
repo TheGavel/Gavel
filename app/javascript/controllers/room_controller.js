@@ -54,16 +54,15 @@ export default class extends Controller {
                 thisController.userhash[user_id] =
                   await thisController.getavatar(user_id);
               }
-              let imgHtml = `<div style='margin: 20px 20px 0 20px; display: flex; flex-direction: column; align-items: center;'>
-                          <img src="${crowns[index]}" style="margin-bottom: -10px"  />
+              let imgHtml = `<div style='margin: -5px 20px 0 20px; display: flex; flex-direction: column; align-items: center;'>
+                          <img src="${crowns[index]}" style="margin-bottom: -10px"  /> 
                           <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px;"/>
-                          <div style="margin-top: 5px; text-align: center; color: white; font-size: 12px; border-radius: 9999px; background-color: #0066CC; padding: 0 1.25rem;">$${user_bid}</div>
+                          <div style="margin-top: 5px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
               thisController.biduserTarget.insertAdjacentHTML(
                 "beforeend",
                 imgHtml
               );
-              console.log(index);
             }
           );
 
@@ -85,7 +84,7 @@ export default class extends Controller {
                 : '<div class="m-2" style="display:flex; align-items: center;">') +
               `<img src="${thisController.userhash[user_id]}" class="w-12 h-12 inline-block rounded-full bg-gray-300"/>
               &nbsp&nbsp
-              <span class="h-15 px-2 rounded-lg leading-10 text-white font-bold bg-blue-500 opacity-90 text-md"> ${message} </span>
+              <span class="h-15 px-3 rounded-lg leading-10 text-white font-bold bg-blue-500 opacity-90 text-md"> ${message} </span>
               </div>`;
             thisController.messageTarget.value = "";
             thisController.messagescontainerTarget.insertAdjacentHTML(
@@ -97,11 +96,11 @@ export default class extends Controller {
           })();
         }
 
-        if( endbid == "end" ){
-          if(thisController.element.dataset.user == bidder){
-            location.href = '/orders/buyer_order';
-          }else{
-            location.href = `/rooms/${this.element.dataset.room}`;
+        if (endbid == "end") {
+          if (thisController.element.dataset.user == bidder) {
+            location.href = "/products/own";
+          } else {
+            location.href = "/";
           }
         }
       },

@@ -8,6 +8,6 @@ export default class extends Controller {
       console.log(err);
     });
 
-    this.element.innerHTML = `<span class="mt-10 px-8 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold" >已複製連結！</span>`;
+    this.element.innerHTML = `<span class="px-8 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold whitespace-nowrap" >已複製連結</span>`;
   }
 }
