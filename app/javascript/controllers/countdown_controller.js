@@ -1,17 +1,18 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
     end: String,
     start: String,
-    now: String,
     refreshInterval: { type: Number, default: 1000 },
     expiredMessage: { type: String, default: "此拍賣已結束" },
     message: {
       type: String,
-      default: "Deal ends in ${days}d ${hours}h ${minutes}m ${seconds}s",
+      default: "${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒",
     },
   };
+  static targets = ["bid", "span"];
 
   connect() {
     this.endTime = new Date(this.endValue).getTime();
@@ -36,19 +37,23 @@ export default class extends Controller {
   update() {
     let mode;
 
-    if (this.startTime - new Date().getTime() > 0) mode = "before";
+    if (this.startTime - new Date().getTime() > 0) {
+      mode = "before";
+    }
 
     if (
       this.endTime - new Date().getTime() > 0 &&
       this.startTime - new Date().getTime() < 0
-    )
+    ) {
       mode = "mid";
+    }
 
     if (
       this.endTime - new Date().getTime() < 0 &&
       this.startTime - new Date().getTime() < 0
-    )
+    ) {
       mode = "end";
+    }
 
     let difference;
     let span;
@@ -56,15 +61,21 @@ export default class extends Controller {
     if (mode == "before") {
       difference = this.timeDifference(this.startTime, new Date().getTime());
       span = "開賣倒數時間：";
+      this.bidTarget.disabled = true;
+      this.bidTarget.style.backgroundColor = "#666666";
+      this.bidTarget.children[1].innerHTML = "尚未開賣";
     }
     if (mode == "mid") {
       difference = this.timeDifference(this.endTime, new Date().getTime());
       span = "拍賣剩餘時間：";
+      this.bidTarget.disabled = false;
+      this.bidTarget.style.backgroundColor = "#0066CC";
+      this.bidTarget.children[1].innerHTML = "馬上出價";
     }
     if (mode == "end") {
-      this.element.textContent = this.expiredMessageValue;
-      this.stopTimer();
-      return;
+      this.bidTarget.disabled = true;
+      this.bidTarget.style.backgroundColor = "#666666";
+      this.bidTarget.children[1].innerHTML = "拍賣結束";
     }
 
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -74,12 +85,22 @@ export default class extends Controller {
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    this.element.textContent = this.messageValue
-      .replace("${span}", span)
-      .replace("${days}", days)
-      .replace("${hours}", hours)
-      .replace("${minutes}", minutes)
-      .replace("${seconds}", seconds);
+    if (mode == "before" || mode == "mid") {
+      this.spanTargets.forEach((element) => {
+        element.textContent = this.messageValue
+          .replace("${span}", span)
+          .replace("${days}", days)
+          .replace("${hours}", hours)
+          .replace("${minutes}", minutes)
+          .replace("${seconds}", seconds);
+      });
+    } else {
+      this.spanTargets.forEach((element) => {
+        element.textContent = this.expiredMessageValue;
+        this.stopTimer();
+        return;
+      });
+    }
   }
 
   timeDifference(timing, starttime) {

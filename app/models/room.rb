@@ -2,7 +2,7 @@
 
 class Room < ApplicationRecord
   attr_accessor :skip_callback
-  after_create :Broadcast, unless: :skip_callback
+  after_save :Broadcast, unless: :skip_callback
 
   belongs_to :product
   has_many :record
