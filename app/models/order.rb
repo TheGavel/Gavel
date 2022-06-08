@@ -18,6 +18,10 @@ class Order < ApplicationRecord
     end
   end
 
+  def self.statusTW(s)
+    status = { paid: "已付款" , pending: "待付款", failed:"付款失敗" , canceled:"取消訂單"}
+    status[s.to_sym]
+  end
 
   belongs_to :product
   belongs_to :buyer, :class_name => "User"
