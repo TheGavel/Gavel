@@ -41,8 +41,7 @@
             </div>
 
             <div class="text-lg text-center w-full text-black py-5  bg-gray-200 md:rounded-b-lg md:bg-gavel-blue md:text-white" >
-              <span>拍賣剩餘時間：</span>
-              <span data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>">...</span>
+              <span data-controller="countdown" data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-end-value="<%= @room.end_time %>" data-countdown-start-value="<%= @room.start_time %>">...</span>
             </div>
           </div>
 
@@ -132,7 +131,7 @@
                   </div>
 
                   <div class="flex justify-center">
-                    <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-8 shadow-lg hover:bg-blue-800" data-action="click->room#bid" >
+                    <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-8 shadow-lg hover:bg-blue-800" data-action="<%= @product.room.start_time > Time.now ?  "click->room#beforeStartTime" : @product.room.end_time < Time.now ? "click->room#afterEndTime" : "click->room#bid" %>" >
                       馬上出價！
                     </button>
                   </div>
@@ -201,8 +200,8 @@
 
 
     <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center bg-white box-border h-20 shadow-2xl whitespace-nowrap">
-      <span class="text-sm"  >剩餘時間：</span>
-      <span class="text-sm" data-controller="countdown" data-countdown-message-value="${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-date-value="<%= @room.end_time %>" class="text-black">...</span>
+
+      <span data-controller="countdown" data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-end-value="<%= @room.end_time %>" data-countdown-start-value="<%= @room.start_time %>">...</span>
       <button class="bg-gavel-blue text-white rounded-2xl p-2 h-10 w-32" data-action="click->room#showModal" >我要出價</button>
     </div>
 

@@ -141,6 +141,14 @@ export default class extends Controller {
     }
   }
 
+  beforeStartTime() {
+    alert("尚未開始競標！");
+  }
+
+  afterEndTime() {
+    alert("競標已結束！");
+  }
+
   chat() {
     if (this.channel && this.messageTarget.value != "") {
       this.channel.perform("chat", {
