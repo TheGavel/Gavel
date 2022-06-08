@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
-    date: String,
+    end: String,
+    start: String,
     now: String,
     refreshInterval: { type: Number, default: 1000 },
     expiredMessage: { type: String, default: "此拍賣已結束" },
@@ -13,19 +14,13 @@ export default class extends Controller {
   };
 
   connect() {
-    if (this.hasDateValue) {
-      this.endTime = new Date(this.dateValue).getTime();
+    this.endTime = new Date(this.endValue).getTime();
+    this.startTime = new Date(this.startValue).getTime();
 
+    this.update();
+    this.timer = setInterval(() => {
       this.update();
-      this.timer = setInterval(() => {
-        this.update();
-      }, this.refreshIntervalValue);
-    } else {
-      console.error(
-        "Missing data-countdown-date-value attribute",
-        this.element
-      );
-    }
+    }, this.refreshIntervalValue);
   }
 
   disconnect() {
@@ -39,9 +34,34 @@ export default class extends Controller {
   }
 
   update() {
-    let difference = this.timeDifference();
+    let mode;
 
-    if (difference < 0) {
+    if (this.startTime - new Date().getTime() > 0) mode = "before";
+
+    if (
+      this.endTime - new Date().getTime() > 0 &&
+      this.startTime - new Date().getTime() < 0
+    )
+      mode = "mid";
+
+    if (
+      this.endTime - new Date().getTime() < 0 &&
+      this.startTime - new Date().getTime() < 0
+    )
+      mode = "end";
+
+    let difference;
+    let span;
+
+    if (mode == "before") {
+      difference = this.timeDifference(this.startTime, new Date().getTime());
+      span = "開賣倒數時間：";
+    }
+    if (mode == "mid") {
+      difference = this.timeDifference(this.endTime, new Date().getTime());
+      span = "拍賣剩餘時間：";
+    }
+    if (mode == "end") {
       this.element.textContent = this.expiredMessageValue;
       this.stopTimer();
       return;
@@ -55,13 +75,14 @@ export default class extends Controller {
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
     this.element.textContent = this.messageValue
+      .replace("${span}", span)
       .replace("${days}", days)
       .replace("${hours}", hours)
       .replace("${minutes}", minutes)
       .replace("${seconds}", seconds);
   }
 
-  timeDifference() {
-    return this.endTime - new Date().getTime();
+  timeDifference(timing, starttime) {
+    return timing - starttime;
   }
 }
