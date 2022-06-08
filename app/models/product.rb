@@ -44,7 +44,7 @@ class Product < ApplicationRecord
   def self.all_status
     [
       %w[草稿 draft],
-      %w[發佈 publish]
+      %w[發布 publish]
     ]
   end
 end

@@ -20,8 +20,6 @@ zh-TW:
         status/paid: 已付款
         status/failed: 付款失敗
         status/cancelled: 取消訂單
-    errors:
-      messages:
         record_invalid: '校驗失敗: %{errors}'
         restrict_dependent_destroy:
           has_one: 由於 %{record} 需要此記錄，所以無法移除記錄

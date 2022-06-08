@@ -1,0 +1,16 @@
+zh-TW:
+  errors:
+    messages:
+      invalid_date: 不是有效日期
+      invalid_time: 不是有效時間
+      invalid_datetime: 不是有效日期和時間
+      is_at: 必須在 %{restriction}
+      before: 必須在 %{restriction} 之前
+      on_or_before: 必須在 %{restriction} 或之前
+      after: 必須在 %{restriction} 之後
+      on_or_after: 必須在 %{restriction} 或之後
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y-%m-%d'
+      time: '%H:%M:%S'
+      datetime: '%Y-%m-%d %H:%M:%S'
