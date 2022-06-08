@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
         }
 
         if params[:product][:status] == "draft"
-          redirect_to own_products_path, notice: '記得更改產本狀態為發布，大家才選的到您的產品歐~'
+          redirect_to own_products_path, notice: '更改商品狀態為發布，大家才選的到您的商品歐~'
           return
         else
           session[:product_id] = @product.id
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       if @product.status != params[:product][:status]
         if params[:product][:status] == "draft"
-          flash.now[:alert] = '發布產品中的，不能轉為草稿'
+          flash.now[:alert] = '發布商品中的，不能轉為草稿'
           render :edit
           return
         else

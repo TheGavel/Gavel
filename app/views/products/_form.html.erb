@@ -11,7 +11,7 @@
 
       <div class="field flex my-4 md:my-6 whitespace-nowrap">
         <%= form.label "商品描述：", class:"text-gray-500"%>
-        <%= form.text_area :description, placeholder:"描述您所銷售的產品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的產品！", size: "30x6", class:"w-9/12 border py-2 px-2 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
+        <%= form.text_area :description, placeholder:"描述您所銷售的商品，並包含買家可能感興趣的任何細節。用戶們喜歡有故事的商品！", size: "30x6", class:"w-9/12 border py-2 px-2 border-gray-300 text-sm font-normal rounded lg:w-10/12"%>
       </div>
       <% if product.errors[:description].any? %>
         <div class="md:w-3/4 text-center text-sm text-red-700"><%= product.errors[:description][0] %></div>
