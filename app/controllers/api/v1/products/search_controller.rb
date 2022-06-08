@@ -7,9 +7,10 @@ class Api::V1::Products::SearchController <  Api::V1::Products::BaseController
     end
 
     def page
-        products = Product.where(status: "publish").search(params[:search_id],
+        products = Product.search(params[:search_id],
                     misspellings: {edit_distance: 5},
                     page: params[:page], per_page:10)
+                    .where(status: "publish")
         render json: product_architecture(products)
     end
 end
