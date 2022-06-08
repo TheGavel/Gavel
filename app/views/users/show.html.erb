@@ -1,44 +1,44 @@
-<section class="w-11/12 md:w-6/12 lg:w-96 bg-white m-auto mt-36 py-8">
+<section class="w-11/12 md:w-6/12 lg:w-96 rounded-3xl shadow-2xl bg-white m-auto mt-36 py-8">
   <div class="text-center">
     <img class="rounded-full shadow-lg m-auto" src="<%= url_for(@user.avatar)%>" alt="sellerImage" />
-    <h1 class="text-4xl font-boldpx-5 mt-4 mb-4 text-gray-800"><%= @user.username %><span class="block text-center">個人資訊</span></h1>
+    <h1 class="text-4xl font-bold px-5 mt-4 mb-4 text-gray-800"><%= @user.username %><span class="block text-center">個人資訊</span></h1>
   </div>
 
   <div class="mt-6">
     <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex h-10">
+      <div class="bg-gray-100 flex h-10 rounded-lg">
         <label class="text-sm font-medium m-auto text-gray-700">用戶名稱</label>
-        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.username%></p>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal rounded-lg"><%= @user.username%></p>
       </div>
     </div>
 
     <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex h-10">
+      <div class="bg-gray-100 flex h-10 rounded-lg">
         <label class="text-sm font-medium m-auto text-gray-700">電子信箱</label>
-        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.email%></p>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal rounded-lg"><%= @user.email%></p>
       </div>
     </div>
 
     <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex h-10">
+      <div class="bg-gray-100 flex h-10 rounded-lg">
         <label class="text-sm font-medium m-auto text-gray-700">手機號碼</label>
-        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.phone%></p>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal rounded-lg"><%= @user.phone%></p>
       </div>
     </div>
     <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex h-10">
+      <div class="bg-gray-100 flex h-10 rounded-lg">
         <label class="text-sm font-medium m-auto text-gray-700">聯絡地址</label>
-        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.address%></p>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal rounded-lg"><%= @user.address%></p>
       </div>
     </div>
     <div class="mb-8 px-6">
-      <div class="bg-gray-100 flex h-10">
+      <div class="bg-gray-100 flex h-10 rounded-lg">
         <label class="text-sm font-medium m-auto text-gray-700">身份組別</label>
-        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal"><%= @user.role%></p>
+        <p class="w-9/12 border py-2 px-2 outline-none bg-white text-sm font-normal rounded-lg"><%= @user.role%></p>
       </div>
     </div>
-    <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700"><%= link_to '編輯個人資訊', edit_user_path(@user), class: "w-full text-center" %></div>
+    <div class="w-11/12 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded-lg"><%= link_to '編輯個人資訊', edit_user_path(@user), class: "w-full text-center" %></div>
     </div>
-    <div class="w-11/12 h-11 flex justify-center mt-2 items-center m-auto bg-blue-600 text-white hover:bg-blue-700"><%= link_to '返回', root_path, class: "w-full text-center" %></div>
+    <div class="w-11/12 h-11 flex justify-center mt-2 items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded-lg"><%= link_to '返回', root_path, class: "w-full text-center" %></div>
 </section>
 <div class="h-10"></div>
