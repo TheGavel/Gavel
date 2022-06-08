@@ -1,5 +1,6 @@
 <h1 class="text-4xl mt-36 mb-8 text-center text-gray-800">編輯拍賣房間</h1>
-<%= render 'form', room: @room %>
-<div class="flex justify-center items-center rounded-2xl m-auto md:w-8/12 lg:w-5/12 mt-5">
-  <%= link_to '編輯產品', edit_product_path(@room.id), class:"w-5/6 text-center leading-[2.75rem] h-11 inline-block mx-auto rounded mb-4 border-gray-400 text-gray-900 hover:bg-gray-200 border" %>
+<div class="flex justify-end items-center md:w-8/12 lg:w-5/12 mx-2 md:mx-auto ">
+  <%= link_to '前往編輯產品', edit_product_path(@room.id), class:"p-2 text-center h-11 inline-block font-semibold rounded border-gray-400 text-gray-900 hover:bg-gray-200 border whitespace-nowrap" %>
 </div>
+
+<%= render 'form', room: @room %>
