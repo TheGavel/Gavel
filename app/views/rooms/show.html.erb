@@ -1,4 +1,5 @@
-<div class="relative bg-gray-100 pt-32" data-controller="room" data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>">
+<div class="relative bg-gray-100 pt-32" data-controller="room"   data-room= "<%=params['id']%>"  data-user="<%=current_user.id%>"  data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒">
+<div data-controller="countdown" data-countdown-end-value="<%= @room.end_time %>" data-countdown-start-value="<%= @room.start_time %>" >
     <div class="top md:px-10" >
       <div class="md:flex">
         <div class="pic md:w-4/6" >
@@ -22,7 +23,7 @@
             </section>
           </div>
 
-          <div class="hidden p-10 md:flex flex-col" >
+          <div class="hidden p-10 md:pb-5 md:flex flex-col" >
             <div class="my-5 md:flex items-center" >
               <%= image_tag(@product.user.avatar, width:50, class:"bg-white rounded-full" ) %>
               <span class="ml-2 md:text-lg md:inline-block" ><%= @product.user.username %></span>
@@ -31,17 +32,19 @@
             <div class="flex justify-center md:justify-between" >
               <h1 class="text-4xl text-gray-800 font-bold hidden md:block md:w-5/6"><%= @product.name %></h1>
               <div class="flex justify-center item-center h-10" data-controller="copylink" >
-                <%= link_to raw('<i class="fa-solid fa-share-nodes"> <span>複製連結</span></i>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "px-8 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold whitespace-nowrap"%>
+                <%= link_to raw('<i class="fa-solid fa-share-nodes cursor-pointer"></i> <span>複製連結</span>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "px-6 py-2.5 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold whitespace-nowrap shadow-lg"%>
               </div>
             </div>
           </div>
-          <div class="md:mx-auto md:w-1/2 md:p-5" >
-            <div class="flex items-center justify-center h-20  md:bg-white font-bold rounded-t-lg">
-              <span class="rounded-md text-gavel-blue text-2xl text-center px-4 py-2" data-room-target="currentprice">目前最高價：<span>$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></span></span>
+          <div class="md:mx-auto md:w-full md:p-10 md:pt-5" >
+            <div class="flex flex-col md:items-start items-center justify-center font-bold mt-20 md:mt-0">
+              <div class="text-4xl" data-room-target="currentprice" >$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></div>
+              <div class="rounded-md text-gray-500 text-md py-2" >目前最高價
+              </div>
             </div>
 
-            <div class="text-lg text-center w-full text-black py-5  bg-gray-200 md:rounded-b-lg md:bg-gavel-blue md:text-white" >
-              <span data-controller="countdown" data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-end-value="<%= @room.end_time %>" data-countdown-start-value="<%= @room.start_time %>">...</span>
+            <div class="countdown text-lg text-center w-full text-black py-5  bg-gray-200 md:rounded-2xl md:mt-10 md:bg-gavel-blue md:text-white" >
+              <span data-countdown-target="span"  >...</span>
             </div>
           </div>
 
@@ -52,10 +55,9 @@
           <div class="modal sm:block sm:px-10 " data-controller="bid" data-room-target="modal" >
             <div class="content mx-auto text-gray-700 rounded-lg" data-bid-target="bid" >
 
-              <div class="bid_information hidden md:flex flex-col items-center bg-gray-100 shadow-xl rounded-t-2xl md:rounded-2xl" >
+              <div class="bid_information hidden md:flex flex-col items-center bg-white rounded-t-2xl md:rounded-2xl" >
                 <div class="flex items-center justify-center bg-gavel-blue w-full text-xl rounded-t-2xl" >
                   <span class="text-2xl py-2 text-white" >競標資訊</span>
-                  
                 </div>
 
                 <div class="p-5" >
@@ -68,7 +70,7 @@
                 </div>
               </div>
 
-              <div class="relative bid_rank md:mt-16 md:shadow-xl bg-gray-100 rounded-t-2xl md:rounded-2xl " >
+              <div class="relative bid_rank md:mt-16 bg-white rounded-t-2xl md:rounded-2xl " >
                 <p class="md:mt-5 text-2xl text-center w-full bg-gavel-blue text-white py-2 rounded-t-2xl" >目前排名</p>
                 <button class="md:hidden absolute top-2 right-5 text-gray-700 text-4xl" data-action="click->room#closeModal" >
                     <i class="fas fa-window-close text-white"></i>
@@ -76,10 +78,10 @@
                 <div data-room-target="biduser" class="flex justify-center px-auto h-36 items-center text-gray-500">
                   <% if @bid.any? %>
                     <% @bid.each_with_index do |bid, i|%> 
-                      <div style="margin: -5px 20px 0 20px; display: flex; flex-direction: column; align-items: center;">
-                        <%= image_tag("crown"+(i+1).to_s+".svg", class:"-mb-10") %>
-                        <%= image_tag User.find(bid.user_id).avatar, size:"60x60" ,class:"rounded-full bg-white items-center font-mono"  %>
-                        <div style="margin-top: 5px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$<%= bid.bid %></div>
+                      <div style="padding: 5px 20px 5px 20px; display: flex; flex-direction: column; align-items: center;">
+                        <%= image_tag("crown1.svg") %>
+                        <%= image_tag User.find(bid.user_id).avatar, size:"60x60" ,class:"rounded-full bg-white items-center font-mono -mt-4"  %>
+                        <div style="margin-top: 10px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$<%= bid.bid %></div>
                       </div>
                     <% end %>
                   <% else %>
@@ -131,8 +133,8 @@
                   </div>
 
                   <div class="flex justify-center">
-                    <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-8 shadow-lg hover:bg-blue-800" data-action="<%= @product.room.start_time > Time.now ?  "click->room#beforeStartTime" : @product.room.end_time < Time.now ? "click->room#afterEndTime" : "click->room#bid" %>" >
-                      馬上出價！
+                    <button type="button" class="bg-gavel-blue text-white rounded-full px-5 w-15 h-10 mt-8 shadow-lg hover:bg-blue-800" data-action="click->room#bid" data-countdown-target="bid">
+                      <i class="fa-solid fa-gavel cursor-pointer"></i> <span>馬上出價！</span>
                     </button>
                   </div>
                 </div>
@@ -188,7 +190,7 @@
             <div class="send flex justify-between" >
               <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 w-8/12 " placeholder="賣家隨時為您解答">
               <button class="w-3/12 rounded-full shadow-lg bg-gavel-blue hover:bg-blue-800 text-white font-bold p-2 uppercase" data-action="click->room#chat">
-                <i class="fa-solid fa-paper-plane"></i>
+                <i class="fa-solid fa-paper-plane cursor-pointer"></i>
               </button>
             </div>
           </div>
@@ -201,8 +203,9 @@
 
     <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center bg-white box-border h-20 shadow-2xl whitespace-nowrap">
 
-      <span data-controller="countdown" data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-end-value="<%= @room.end_time %>" data-countdown-start-value="<%= @room.start_time %>">...</span>
+      <span data-countdown-message-value="${span} ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒" data-countdown-target="span">...</span>
       <button class="bg-gavel-blue text-white rounded-2xl p-2 h-10 w-32" data-action="click->room#showModal" >我要出價</button>
     </div>
 
+</div>
 </div>

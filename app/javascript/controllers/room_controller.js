@@ -17,6 +17,10 @@ export default class extends Controller {
     "biduser",
     "modal",
   ];
+  static values = {
+    end: String,
+    start: String,
+  };
   userArray = [];
   userhash = {};
   initialize() {
@@ -30,7 +34,7 @@ export default class extends Controller {
           thisController.currentpriceTargets.map((currentprice, idx) => {
             currentprice.textContent = bid;
             if (idx == 0) {
-              currentprice.textContent = `目前最高價：$${bid}`;
+              currentprice.textContent = `$${bid}`;
             }
           });
 
@@ -54,10 +58,10 @@ export default class extends Controller {
                 thisController.userhash[user_id] =
                   await thisController.getavatar(user_id);
               }
-              let imgHtml = `<div style='margin: -5px 20px 0 20px; display: flex; flex-direction: column; align-items: center;'>
-                          <img src="${crowns[index]}" style="margin-bottom: -10px"  /> 
-                          <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px;"/>
-                          <div style="margin-top: 5px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$${user_bid}</div>
+              let imgHtml = `<div style='padding: 5px 20px 5px 20px; display: flex; flex-direction: column; align-items: center;'>
+                          <img src="${crowns[index]}"/> 
+                          <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px; margin-top: -15px; "/>
+                          <div style="margin-top: 10px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
               thisController.biduserTarget.insertAdjacentHTML(
                 "beforeend",
@@ -98,9 +102,9 @@ export default class extends Controller {
 
         if (endbid == "end") {
           if (thisController.element.dataset.user == bidder) {
-            location.href = "/products/own";
+            location.href = "/orders/buyer_order";
           } else {
-            location.href = "/";
+            location.href = `/rooms/${this.element.dataset.room}`;
           }
         }
       },
@@ -139,14 +143,6 @@ export default class extends Controller {
         price: this.finalpriceTarget.textContent,
       });
     }
-  }
-
-  beforeStartTime() {
-    alert("尚未開始競標！");
-  }
-
-  afterEndTime() {
-    alert("競標已結束！");
   }
 
   chat() {
