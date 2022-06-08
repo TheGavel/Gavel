@@ -1,5 +1,5 @@
 <h1 class="text-4xl mt-36 mb-8 font-bold font-mono text-gray-800 text-center ">編輯商品</h1>
 <div class="flex justify-end items-center w-11/12 md:w-8/12 lg:w-9/12 mx-auto">
-  <%= link_to '前往編輯房間', edit_room_path(@product.id), class:"p-2 text-center h-11 inline-block font-semibold rounded border-gray-400 text-gray-900 hover:bg-gray-200 border whitespace-nowrap" %>
+  <%= link_to '前往編輯房間', edit_room_path(@product.id), class:"p-2 text-center inline-block font-semibold text-gray-800 hover:bg-gray-200 whitespace-nowrap bg-blue-200 rounded-lg transition ease-in duration-200 shadow-2xl" %>
 </div>
 <%= render 'form', product: @product %>

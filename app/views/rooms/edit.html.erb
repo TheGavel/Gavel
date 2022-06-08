@@ -1,6 +1,6 @@
-<h1 class="text-4xl mt-36 mb-8 text-center text-gray-800">編輯拍賣房間</h1>
+<h1 class="text-4xl mt-36 mb-8 font-bold text-center text-gray-800">編輯房間</h1>
 <div class="flex justify-end items-center md:w-8/12 lg:w-5/12 mx-2 md:mx-auto ">
-  <%= link_to '前往編輯產品', edit_product_path(@room.id), class:"p-2 text-center h-11 inline-block font-semibold rounded border-gray-400 text-gray-900 hover:bg-gray-200 border whitespace-nowrap" %>
+  <%= link_to '前往編輯產品', edit_product_path(@room.id), class:"p-2 text-center inline-block font-semibold text-gray-800 hover:bg-gray-200 whitespace-nowrap bg-blue-200 rounded-lg transition ease-in duration-200 shadow-2xl" %>
 </div>
 
 <%= render 'form', room: @room %>
