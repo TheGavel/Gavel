@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
     # @room = Product.find(session[:product_id]).room.new(room_params)
     @room = Room.new(room_params)
     if @room.save
+      Product.find(session[:product_id]).onshelf!
       redirect_to own_products_path, notice: '拍賣房間創建成功'
     else
       render :new

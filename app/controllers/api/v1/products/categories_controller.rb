@@ -12,7 +12,7 @@ class Api::V1::Products::CategoriesController < Api::V1::Products::BaseControlle
 
   def page
     products = Tag.find_by(name: params[:category_id]).products
-    products = products.paginate(page: params[:page], per_page: 10)
+    products = products.where(status: "publish").paginate(page: params[:page], per_page: 10)
     render json: product_architecture(products)
   end
 end

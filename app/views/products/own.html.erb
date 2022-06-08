@@ -11,7 +11,7 @@
         <div class=" w-full mb-10 bg-gray-200 rounded-lg shadow-xl px-5 py-3 md:box-border md:gap-4">
           <div class="flex justify-between">
             <div class="inline-block bg-blue-500 px-3 py-2 ml-4 mt-2 mb-2 shadow-lg rounded-lg " >
-              <span class="text-white"><%= product.status %></span>
+              <span class="text-white"><%= Product.status_to_chinese(product.status) %></span>
             </div>
             <div class="mr-2">
               <% product.tags.each do |tag| %>

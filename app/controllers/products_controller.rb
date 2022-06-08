@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
+
       if @product.save
         params[:selectChildren].each { |item|
           tag_id = Tag.find_by(name: item).id
@@ -26,8 +27,15 @@ class ProductsController < ApplicationController
           ProductsTag.create(product_id: product_id, tag_id: tag_id)
         }
 
-        session[:product_id] = @product.id
-        redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
+        if params[:product][:status] == "draft"
+          redirect_to own_products_path, notice: '記得更改產本狀態為發布，大家才選的到您的產品歐~'
+          return
+        else
+          session[:product_id] = @product.id
+          redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
+          return
+        end
+
       else
         render :new
       end
@@ -39,6 +47,17 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      if @product.status != params[:product][:status]
+        if params[:product][:status] == "draft"
+          flash.now[:alert] = '發布產品中的，不能轉為草稿'
+          render :edit
+          return
+        else
+          session[:product_id] = @product.id
+          redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
+          return
+        end
+      end
       redirect_to own_products_path, notice: '商品資訊更新成功'
     else
       render :edit
@@ -55,19 +74,10 @@ class ProductsController < ApplicationController
   def own
   end
 
-  def sellitem
-    @products = current_user.boughtproducts
-  end
-
-  def buyerlist
-    @buyer_orders = current_user.buyer_orders
-  end
-
   def autocomplete
     @search_results = Product.search(params[:q],
                       misspellings: {edit_distance:5},
                       select: [:name])
-    # @search_results =Product.all.map(&:name)
     render layout: false
   end
 

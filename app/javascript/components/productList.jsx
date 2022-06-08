@@ -10,14 +10,14 @@ const Product = (data) => {
       className="transition relative rounded-lg overflow-hidden mx-auto shadow-xl hover:shadow-lg hover:scale-[107%] hover:z-50 group duration-300"
     >
       <div className="w-[310px] max-w-[430px] transition bg-white relative rounded-lg overflow-hidden mx-auto shadow-xl hover:shadow-2xl hover:z-50 hover:scale-[107%] group">
-        <div className="w-[310px] max-w-[430px] h-[182px] flex justify-center bg-white pt-6">
+        <div className="w-[310px] max-w-[430px] h-[182px] flex justify-center bg-white pt-6 drop-shadow-sm">
           <img
             className="h-full object-cover"
             src={productImg}
             alt="productImg"
           />
         </div>
-        <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-1.85rem] flex items-center justify-center overflow-hidden ">
+        <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-2rem] flex items-center justify-center overflow-hidden ">
           <img
             className="w-10 h-10 p-1 bg-white rounded-full group-hover:animate-waving border-2 shadow-inner"
             src={sellerImg}

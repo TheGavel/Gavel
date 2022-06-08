@@ -70,11 +70,11 @@ end
     user = seller.sample
     product = Product.new( name: prod["name"],
                               description: prod["description"],
-                              status: %w[發布 草稿].sample,
                               start_price: rand(100..500) ,
                               direct_price: rand(1000..10000),
                               user_id: user.id
                               )
+    product.onshelf
     p prod["image"]
     prod["image"].each do |img,idx|
       product.images.attach(product_imgg(img,idx.to_s+prod["name"]))

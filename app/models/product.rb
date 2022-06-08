@@ -3,23 +3,26 @@
 class Product < ApplicationRecord
   include AASM
 
-  # aasm column: "status" do
-  #   state :draft , :publish, :soldout
+  aasm column: "status" do
+    state :draft , :publish, :soldout
 
-  #   event :onshelf do
-  #     transitions from: :draft, to: :publish
-  #   end
+    event :onshelf do
+      transitions from: :draft, to: :publish
+    end
 
-  #   event :offshelf do
-  #     transitions from: :publish, to: :draft
-  #   end
+    event :offshelf do
+      transitions from: :publish, to: :draft
+    end
 
-  #   event :sold do
-  #     transitions from: :publish, to: :soldout
-  #   end
-  # end
+    event :sold do
+      transitions from: :publish, to: :soldout
+    end
+  end
 
-
+  def self.status_to_chinese(s)
+    status = { draft: "草稿" , publish: "發布", soldout:"售出"}
+    status[s.to_sym]
+  end
 
   searchkick  searchable: [:name],
               word_middle: [:name],
