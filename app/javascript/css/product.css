@@ -48,23 +48,24 @@ body {
 }
 .field_with_errors {
   display: inline-block;
+  width: 70%;
+}
+
+.field_with_errors input ,
+.field_with_errors textarea{
+  outline: 1px solid red;
 }
 
 /* 商品狀態 */
-.styled-select select {
+
+.styled-select select{
   height: 40px;
-  width: 258px;
-  font-size: 14x;
-  border-radius: 10px;
-  margin: 0 0 0 6px;
-  color: rgb(110, 110, 110);
-}
-.styled-select select {
-  width: 258px;
+  width: 245.5px;
   font-size: 14px;
   border-radius: 0.25rem;
   border: 1px solid rgb(209 213 219);
-  padding: 2px 2px 2px 10px;
+  color: rgb(110, 110, 110);
+  padding: 2px;
 }
 .styled-select {
   position: relative;
@@ -78,14 +79,31 @@ body {
 .field select {
   width: 127px;
   height: 2.5rem;
-  border: 1px solid rgb(209 213 219);
-  padding: 2px 2px 2px 10px;
+  border: 1px solid rgb(209 213 219);;
+  padding: 2px;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-left: 5px;
   color: rgb(110, 110, 110);
 }
-.start_price {
-  width: 260px;
+.start_price{
+  width: 245.5px;
+}
+
+@media screen and (min-width:768px){
+  .start_price{
+    width: 300px;
+  }
+  .styled-select select{
+    width: 300px;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .start_price{
+    width:402px
+  }
+  .styled-select select{
+    width:402px
+  }
 }

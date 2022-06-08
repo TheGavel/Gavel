@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :start_price, :direct_price, :status, images: [], selectChildren: [])
+    params.require(:product).permit(:name, :description, :start_price, :basicprice, :status, images: [], selectChildren: [])
   end
 
   def find_product

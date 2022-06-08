@@ -3,36 +3,32 @@
 
   <%= form_with(model: room) do |form|%>
 
-    <% if room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
-      <ul>
-        <% room.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field my-5 mx-auto text-center">
-    <%= form.label :start_time ,"開始時間："%>
-    <input type="datetime-local" name="room[start_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded">
+    <%= form.label "開始時間："%>
+    <input type="datetime-local" name="room[start_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" required= true>
+    <% if room.errors[:start_time].any? %>
+      <div class="text-center text-sm text-red-700"><%= room.errors[:start_time][0] %></div>
+    <% end %>
   </div>
 
   <div class="field my-5 mx-auto text-center">
-    <%= form.label :end_time ,"結束時間："%>
-    <input type="datetime-local" name="room[end_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded">
+    <%= form.label "結束時間："%>
+    <input type="datetime-local" name="room[end_time]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"  required= true>
+    <% if room.errors[:end_time].any? %>
+      <div class="text-center text-sm text-red-700"><%= room.errors[:end_time][0] %></div>
+    <% end %>
   </div>
 
   <div class="field my-5 mx-auto text-center">
-    <%= form.label :maxpeople, "房間人數：" %>
-    <%= form.text_field :maxpeople , placeholder:"房間人數上限" , class:"w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded"%>
+    <%= form.label "房間人數：" %>
+    <input type="text" name="room[maxpeople]" class="w-9/12 h-10 border py-1 px-2 focus:border-blue-900 border-gray-400 text-sm font-normal rounded" placeholder="房間人數上限" required= true>
+    <% if room.errors[:end_time].any? %>
+      <div class="text-center text-sm text-red-700"><%= room.errors[:maxpeople][0] %></div>
+    <% end %>
   </div>
-  <div class="actions pt-5 pb-10">
+  <div class="actions pb-10">
     <%= form.submit "建立拍賣房間" ,class:"w-5/6 h-11 flex justify-center items-center m-auto bg-blue-600 text-white hover:bg-blue-700 rounded mb-4 cursor-pointer"%>
     <%= link_to "返回我的商品" , own_products_path,data: { confirm: '確定要返回嗎？' }, class:"w-5/6 h-11 flex justify-center items-center m-auto border-gray-400 text-gray-900 hover:bg-gray-200 border rounded"%>
     <% end %>
   </div>
-
-
 </div>
