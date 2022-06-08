@@ -65,7 +65,7 @@ class navBarSuggestions extends React.Component {
     };
 
     return (
-      <div className="flex items-center">
+      <form className="flex items-center">
         <Autosuggest
           className="inline-block"
           suggestions={suggestions}
@@ -80,12 +80,15 @@ class navBarSuggestions extends React.Component {
           className="search_icon inline-block"
           to={`/products/search/${encodeURI(value)}`}
         >
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            className="text-white m-auto"
-          />
+          <button>
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              className="text-white m-auto"
+              type="submit"
+            />
+          </button>
         </Link>
-      </div>
+      </form>
     );
   }
 }
