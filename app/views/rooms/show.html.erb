@@ -30,7 +30,7 @@
 
             <div class="flex justify-center md:justify-between" >
               <h1 class="text-4xl text-gray-800 font-bold hidden md:block md:w-5/6"><%= @product.name %></h1>
-              <div class="flex justify-center h-10" data-controller="copylink" >
+              <div class="flex justify-center item-center h-10" data-controller="copylink" >
                 <%= link_to raw('<i class="fa-solid fa-share-nodes"> <span>複製連結</span></i>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "px-8 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold whitespace-nowrap"%>
               </div>
             </div>
@@ -75,7 +75,17 @@
                     <i class="fas fa-window-close text-white"></i>
                 </button>
                 <div data-room-target="biduser" class="flex justify-center px-auto h-36 items-center text-gray-500">
-                  目前暫無出價
+                  <% if @bid.any? %>
+                    <% @bid.each_with_index do |bid, i|%> 
+                      <div style="margin: -5px 20px 0 20px; display: flex; flex-direction: column; align-items: center;">
+                        <%= image_tag("crown"+(i+1).to_s+".svg", class:"-mb-10") %>
+                        <%= image_tag User.find(bid.user_id).avatar, size:"60x60" ,class:"rounded-full bg-white items-center font-mono"  %>
+                        <div style="margin-top: 5px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$<%= bid.bid %></div>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    目前暫無出價
+                  <% end %>
                 </div>
               </div>
 
@@ -152,7 +162,7 @@
 
         <div class="information bg-white rounded-2xl w-11/12 md:w-2/3 mx-auto p-5 md:box-border md:mb-28">
           <div class="bid_information md:hidden" >
-            <h3 class="ml-5 text-2xl mb-5" >競標資訊</h3>
+            <h3 class="ml-5 text-2xl text-center mb-5" >競標資訊</h3>
             <p class="ml-5 text-md text-gray-500" >
               商品起標價：
               <span class="ml-32 text-gray-900 font-bold hover:text-gavel-blue" >
@@ -167,7 +177,7 @@
             </p>  
           </div>
           <div class="product_information" >
-            <h3 class="ml-5 mt-5 text-2xl md:border-b-4 md:pb-4 ">商品資訊</h3>
+            <h3 class="ml-5 mt-5 text-2xl text-center md:mt-0 md:border-b-4 md:pb-4 ">商品資訊</h3>
             <p class="md:border-b-0 text-md p-5 break-words"><%= @product.description %></p>
           </div>
         </div>
