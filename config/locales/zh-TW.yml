@@ -15,6 +15,11 @@ zh-TW:
         start_time: 開始時間
         end_time: 結束時間
         maxpeople: 上限人數
+      order:
+        status/pending: 待付款
+        status/paid: 已付款
+        status/failed: 付款失敗
+        status/cancelled: 取消訂單
     errors:
       messages:
         record_invalid: '校驗失敗: %{errors}'
