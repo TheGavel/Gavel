@@ -3,7 +3,7 @@ export default class extends Controller {
   static targets = ["link"];
   copy(e) {
     e.preventDefault();
-    const copyText = `${e.target.closest("a").dataset.url}`;
+    const copyText = `https://${e.target.closest("a").dataset.url}`;
     navigator.clipboard.writeText(copyText).catch((err) => {
       console.log(err);
     });
