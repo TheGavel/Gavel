@@ -27,7 +27,7 @@ const ProductNavbar = ({ props }) => {
           </a>
         </div>
         <NavBarSuggestions />
-        <div className="text text-white xl:mx-6">
+        <div className="main-nav text-white xl:mx-6">
           {current_user ? (
             <>
               {!(current_user?.role == "seller") ? (

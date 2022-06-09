@@ -22,7 +22,7 @@
               <h1 class="Gavel text-white font-mono font-bold pl-2 cursor-pointer text-3xl md:text-5xl">Gavel</h1>
 						<% end %>
           </div>
-          <div class="text text-white xl:mx-6">
+          <div class="main-nav text-white xl:mx-6">
             <% if policy(:application).buyer_without_email_authenticate ||  policy(:application).buyer %>
               <ul>
                 <li><%= link_to "成為賣家", :new_sms_auth_registration, class:"xl:mx-0 hover:text-blue-200 text-xl" %></li>
