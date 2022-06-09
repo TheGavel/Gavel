@@ -79,8 +79,8 @@ Rails.application.routes.draw do
           get :architecture, on: :collection
           get ':page', to: 'categories#page'
         end
-        resources :search, only: [:show], constraints: { id: /[^\/]+/ } do
-          get ':page', to: 'search#page', constraints: { :page => /[^\/]+/ }
+        resources :search, only: [:show], constraints: { id:  /.+/ } do#/.+/
+          get ':page', to: 'search#page', constraints: { search_id: /.+/ }
         end
       end
 
