@@ -6,7 +6,7 @@
 #menu_control {
   display: none;
 }
-#menu_control:checked ~ #nav .text {
+#menu_control:checked ~ #nav .main-nav {
   display: block;
 }
 .menu_btn {
@@ -52,7 +52,7 @@
   transform: rotate(-45deg);
   transition: 0.2s 0.05s, transform 0.2s 0.25s;
 }
-.text {
+.main-nav {
   width: 100%;
   box-sizing: border-box;
   position: absolute;
@@ -60,23 +60,26 @@
   left: 0;
   display: none;
 }
-.text a {
+.main-nav a {
   display: block;
   color: #fff;
   border-bottom: 1px solid rgb(168, 168, 169);
   padding: 15px;
   background-color: rgb(206, 204, 204);
 }
-.text a:hover {
+.main-nav li:hover > a {
   color: #01468b;
 }
-.text ul li .navitem {
+.main-nav a:hover {
+  color: #01468b;
+}
+.main-nav ul li .navitem {
   color: rgb(97, 97, 97);
 }
-.text ul li .navitem:hover {
+.main-nav ul li .navitem:hover {
   background-color: #d1e0f1d8;
 }
-.text .sub-nav a {
+.main-nav .sub-nav a {
   background-color: #fff;
 }
 
@@ -87,7 +90,7 @@
   #nav {
     align-items: center;
   }
-  .text {
+  .main-nav {
     width: auto;
     top: 0;
     left: 0;
@@ -98,33 +101,33 @@
     justify-content: flex-end;
     box-sizing: content-box;
   }
-  .text a {
+  .main-nav a {
     color: #fff;
     border-bottom: none;
     background-color: transparent;
     display: block;
     padding: 26px 20px;
   }
-  .text ul li .navitem {
+  .main-nav ul li .navitem {
     color: rgb(97, 97, 97);
   }
-  .text ul li .navitem:hover {
+  .main-nav ul li .navitem:hover {
     background-color: #d1e0f1d8;
   }
-  .text span {
+  .main-nav span {
     display: inline;
   }
-  .text > ul {
+  .main-nav > ul {
     display: flex;
   }
-  .text li {
+  .main-nav li {
     position: relative;
     color: black;
   }
-  .text li:hover > a {
+  .main-nav li:hover > a {
     background-color: transparent;
   }
-  .text li:hover > .sub-nav {
+  .main-nav li:hover > .sub-nav {
     display: block;
     /* background-color: #217edb; */
     background-color: #fff;
@@ -133,7 +136,7 @@
     transition: 0.5s;
     opacity: 1;
   }
-  .text .sub-nav {
+  .main-nav .sub-nav {
     display: none;
     opacity: 0;
     position: absolute;
@@ -143,7 +146,7 @@
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
-  .text .sub-nav a {
+  .main-nav .sub-nav a {
     background-color: transparent;
   }
 }
