@@ -1,9 +1,7 @@
-<%# TODO 已得標 得標人 如果沒有房間可以創建房間 如果競標中顯示最高出價%>
-
-  <h1 class="text-center text-4xl mt-36 text-gray-800" >我的商品</h1>
-  <div class="flex justify-end mt-5 md:mr-5">
-    <div class="bg-gavel-blue hover:bg-blue-600 rounded-2xl text-xl text-white mr-2 mb-4 " ><%= link_to "＋建立新商品", new_product_path, class:"w-full flex px-4 py-2 md:px-6 md:py-3" %></div>
-  </div>
+<h1 class="text-center text-4xl mt-36 text-gray-800" >我的商品</h1>
+<div class="flex justify-end mt-5 md:mr-5">
+  <div class="bg-gavel-blue hover:bg-blue-600 rounded-2xl text-xl text-white mr-2 mb-4 " ><%=link_to "＋建立新商品", new_product_path, class:"w-full flex px-4 py-2 md:px-6 md:py-3" %></div>
+</div>
 <% if @products %>
   <main class="mx-3 lg:mx-0 lg:grid lg:grid-cols-3">
     <% @products.each do |product|%>
@@ -13,9 +11,9 @@
             <div class="inline-block bg-blue-500 px-3 py-2 ml-4 mt-2 mb-2 shadow-lg rounded-lg " >
               <span class="text-white"><%= Product.status_to_chinese(product.status) %></span>
             </div>
-            <div class="mr-2">
+            <div class="flex items-center mr-2">
               <% product.tags.each do |tag| %>
-              <span class="text-gray-600 mt-2 mr-2 bg-white shadow p-2 rounded-full inline-block" ><%= tag.name %></span>
+              <span class="text-gray-600  mr-2 bg-white shadow p-2 rounded-full inline-block" ><%= tag.name %></span>
               <% end %>
             </div>
           </div>
@@ -51,7 +49,7 @@
                     <% if product.room %>
                     <% else %>
                     <div class="flex flex-shrink  bg-gavel-blue hover:bg-blue-600 rounded-xl text-white shadow-lg ml-4">
-                      <%= link_to "創建房間", new_room_path(product.id), class:"w-full px-6 py-2 box-border"%>
+                      <%= link_to "創建房間", edit_room_path(product.id), class:"w-full px-6 py-2 box-border"%>
                     </div>
                     <% end %>
                   </div>
@@ -70,6 +68,5 @@
         </div>
       </div>
     <% end %>
-  <% end %>
   </main>
-
+<% end %>
