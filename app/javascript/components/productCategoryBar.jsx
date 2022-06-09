@@ -29,7 +29,7 @@ const categoryBar = () => {
               }
               to={`/products/categories/${encodeURI(item)}`}
             >
-              {item}
+              <span>{item}</span>
             </NavLink>
           );
         })}

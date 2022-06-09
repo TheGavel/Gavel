@@ -21,6 +21,10 @@ body {
   border-bottom: 4px solid #0000;
   border-radius: 8px 8px 0 0;
 }
+
+.activeStyle span {
+  color: #1f2937;
+}
 .activeStyle::before,
 .category:hover::before {
   border-bottom: 4px solid #0066cc;
@@ -51,14 +55,14 @@ body {
   width: 70%;
 }
 
-.field_with_errors input ,
-.field_with_errors textarea{
+.field_with_errors input,
+.field_with_errors textarea {
   outline: 1px solid red;
 }
 
 /* 商品狀態 */
 
-.styled-select select{
+.styled-select select {
   height: 40px;
   width: 245.5px;
   font-size: 14px;
@@ -79,31 +83,31 @@ body {
 .field select {
   width: 127px;
   height: 2.5rem;
-  border: 1px solid rgb(209 213 219);;
+  border: 1px solid rgb(209 213 219);
   padding: 2px;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: rgb(110, 110, 110);
 }
-.start_price{
+.start_price {
   width: 245.5px;
 }
 
-@media screen and (min-width:768px){
-  .start_price{
+@media screen and (min-width: 768px) {
+  .start_price {
     width: 300px;
   }
-  .styled-select select{
+  .styled-select select {
     width: 300px;
   }
 }
 
-@media screen and (min-width:1200px){
-  .start_price{
-    width:402px
+@media screen and (min-width: 1200px) {
+  .start_price {
+    width: 402px;
   }
-  .styled-select select{
-    width:402px
+  .styled-select select {
+    width: 402px;
   }
 }
