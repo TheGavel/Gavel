@@ -34,7 +34,7 @@ export default class extends Controller {
           thisController.currentpriceTargets.map((currentprice, idx) => {
             currentprice.textContent = bid;
             if (idx == 0) {
-              currentprice.textContent = `$${bid}`;
+              currentprice.textContent = `目前最高價：$${bid}`;
             }
           });
 
