@@ -7,10 +7,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    # @room = Product.find(session[:product_id]).room.new(room_params)
     @room = Room.new(room_params)
     if @room.save
-      Product.find(session[:product_id]).onshelf!
+      @room.product.onshelf!
       redirect_to own_products_path, notice: '拍賣房間創建成功'
     else
       render :new
@@ -36,7 +35,9 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:start_time,:end_time,:status,:maxpeople).merge(product_id: session[:product_id],id: session[:product_id])
+    pid = params[:room][:product_id]
+    params.require(:room).permit(:start_time,:end_time,:status,:maxpeople).merge(product_id: pid,id: pid)
+
   end
 
   def room_params_update

@@ -31,8 +31,9 @@ class ProductsController < ApplicationController
           redirect_to own_products_path, notice: '更改商品狀態為發布，大家才選的到您的商品歐~'
           return
         else
-          session[:product_id] = @product.id
-          redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
+          # session[:product_id] = @product.id
+          # redirect_to "/rooms/new?id=#{@product.id}", notice: '現在來創建專屬的拍賣房間吧！'
+          redirect_to new_room_path(id: @product.id), notice: '現在來創建專屬的拍賣房間吧！'
           return
         end
 
@@ -53,8 +54,7 @@ class ProductsController < ApplicationController
           render :edit
           return
         else
-          session[:product_id] = @product.id
-          redirect_to new_room_path, notice: '現在來創建專屬的拍賣房間吧！'
+          redirect_to new_room_path(id: @product.id), notice: '現在來創建專屬的拍賣房間吧！'
           return
         end
       end
