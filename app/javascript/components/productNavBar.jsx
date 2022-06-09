@@ -101,7 +101,7 @@ const ProductNavbar = ({ props }) => {
                             className="navitem xl:mx-0 text-xl"
                             href="/orders/seller_order"
                           >
-                            銷售清單
+                            成交清單
                           </a>
                         </li>
                       </ul>
