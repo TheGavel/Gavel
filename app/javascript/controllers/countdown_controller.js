@@ -15,8 +15,8 @@ export default class extends Controller {
   static targets = ["bid", "span"];
 
   connect() {
-    this.endTime = new Date(this.endValue).getTime();
-    this.startTime = new Date(this.startValue).getTime();
+    this.endTime = new Date(this.endValue.replace(/-/g, "/")).getTime();
+    this.startTime = new Date(this.startValue.replace(/-/g, "/")).getTime();
 
     this.update();
     this.timer = setInterval(() => {
@@ -36,22 +36,17 @@ export default class extends Controller {
 
   update() {
     let mode;
+    let nowTime = new Date().getTime();
 
-    if (this.startTime - new Date().getTime() > 0) {
+    if (this.startTime - nowTime > 0) {
       mode = "before";
     }
 
-    if (
-      this.endTime - new Date().getTime() > 0 &&
-      this.startTime - new Date().getTime() < 0
-    ) {
+    if (this.endTime - nowTime > 0 && this.startTime - nowTime < 0) {
       mode = "mid";
     }
 
-    if (
-      this.endTime - new Date().getTime() < 0 &&
-      this.startTime - new Date().getTime() < 0
-    ) {
+    if (this.endTime - nowTime < 0 && this.startTime - nowTime < 0) {
       mode = "end";
     }
 
