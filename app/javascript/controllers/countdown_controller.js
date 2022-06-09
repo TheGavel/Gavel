@@ -64,6 +64,7 @@ export default class extends Controller {
       this.bidTarget.disabled = true;
       this.bidTarget.style.backgroundColor = "#666666";
       this.bidTarget.children[1].innerHTML = "尚未開賣";
+      this.spanTarget.closest("div").style.backgroundColor = "#666666";
     }
     if (mode == "mid") {
       difference = this.timeDifference(this.endTime, new Date().getTime());
@@ -71,11 +72,13 @@ export default class extends Controller {
       this.bidTarget.disabled = false;
       this.bidTarget.style.backgroundColor = "#0066CC";
       this.bidTarget.children[1].innerHTML = "馬上出價";
+      this.spanTarget.closest("div").style.backgroundColor = "#0066CC";
     }
     if (mode == "end") {
       this.bidTarget.disabled = true;
       this.bidTarget.style.backgroundColor = "#666666";
       this.bidTarget.children[1].innerHTML = "拍賣結束";
+      this.spanTarget.closest("div").style.backgroundColor = "#666666";
     }
 
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
