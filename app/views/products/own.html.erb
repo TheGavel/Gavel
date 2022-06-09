@@ -49,7 +49,7 @@
                     <% if product.room %>
                     <% else %>
                     <div class="flex flex-shrink  bg-gavel-blue hover:bg-blue-600 rounded-xl text-white shadow-lg ml-4">
-                      <%= link_to "創建房間", edit_room_path(product.id), class:"w-full px-6 py-2 box-border"%>
+                      <%= link_to "創建房間", new_room_path( id: product.id ),class: "w-full px-6 py-2 box-border" %>
                     </div>
                     <% end %>
                   </div>
