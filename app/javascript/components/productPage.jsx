@@ -17,11 +17,7 @@ const Productpage = ({ props }) => {
               <Route path="/" element={<ProductList />} />
               <Route path="/products" element={<ProductList />} />
               <Route
-                path={encodeURI("/products/:mode/:id")}
-                element={<ProductList />}
-              />
-              <Route
-                path={encodeURI("/products/:mode/:id")}
+                path={encodeURI("/products/:mode/:id*")}
                 element={<ProductList />}
               />
             </Routes>
