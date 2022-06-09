@@ -15,7 +15,7 @@ class OauthsController < ApplicationController
       @user.activate!
 
       if not @user.avatar.attached?
-        @user.update(username: @user.email)
+        @user.update(username: @user.email.split('@')[0])
         @user.avatar.attach({io: open("https://robohash.org/#{@user.id.to_s}") , filename: @user.id.to_s+"_images.jpg"})
       end
 
@@ -25,7 +25,7 @@ class OauthsController < ApplicationController
         @user = create_from(provider)
         @user.activate!
         if not @user.avatar.attached?
-          @user.update(username: @user.email)
+          @user.update(username: @user.email.split('@')[0])
           @user.avatar.attach({io: open("https://robohash.org/#{@user.id.to_s}") , filename: @user.id.to_s+"_images.jpg"})
         end
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
