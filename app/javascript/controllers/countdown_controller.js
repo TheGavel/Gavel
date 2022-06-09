@@ -62,9 +62,9 @@ export default class extends Controller {
       difference = this.timeDifference(this.startTime, new Date().getTime());
       span = "開賣倒數時間：";
       this.bidTarget.disabled = true;
-      this.bidTarget.style.backgroundColor = "#666666";
+      this.bidTarget.style.backgroundColor = "#bfbfbf";
       this.bidTarget.children[1].innerHTML = "尚未開賣";
-      this.spanTarget.closest("div").style.backgroundColor = "#666666";
+      this.spanTarget.closest("div").style.backgroundColor = "#bfbfbf";
     }
     if (mode == "mid") {
       difference = this.timeDifference(this.endTime, new Date().getTime());
@@ -76,9 +76,9 @@ export default class extends Controller {
     }
     if (mode == "end") {
       this.bidTarget.disabled = true;
-      this.bidTarget.style.backgroundColor = "#666666";
+      this.bidTarget.style.backgroundColor = "#bfbfbf";
       this.bidTarget.children[1].innerHTML = "拍賣結束";
-      this.spanTarget.closest("div").style.backgroundColor = "#666666";
+      this.spanTarget.closest("div").style.backgroundColor = "#bfbfbf";
     }
 
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));

@@ -26,24 +26,24 @@
           <div class="hidden p-10 md:pb-5 md:flex flex-col" >
             <div class="my-5 md:flex items-center" >
               <%= image_tag(@product.user.avatar, width:50, class:"bg-white rounded-full" ) %>
-              <span class="ml-2 md:text-lg md:inline-block" ><%= @product.user.username %></span>
+              <span class="ml-2 md:text-xl md:inline-block" ><%= @product.user.username %></span>
             </div>
 
             <div class="flex justify-center md:justify-between" >
-              <h1 class="text-4xl text-gray-800 font-bold hidden md:block md:w-5/6"><%= @product.name %></h1>
+              <h1 class="text-2xl text-gray-800 font-bold hidden md:block md:w-5/6"><%= @product.name %></h1>
               <div class="flex justify-center item-center h-10" data-controller="copylink" >
-                <%= link_to raw('<i class="fa-solid fa-share-nodes cursor-pointer"></i> <span>複製連結</span>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "px-6 py-2.5 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-sm font-bold whitespace-nowrap shadow-lg"%>
+                <%= link_to raw('<i class="fa-solid fa-share-nodes cursor-pointer"></i> <span>複製連結</span>'), '#', data: {action: "click->copylink#copy", url: @url }, class: "px-6 py-2 rounded-full bg-gavel-blue hover:bg-blue-800 text-white text-md font-bold whitespace-nowrap shadow-lg"%>
               </div>
             </div>
           </div>
           <div class="md:mx-auto md:w-full md:p-10 md:pt-5" >
             <div class="flex flex-col md:items-start items-center justify-center font-bold mt-20 md:mt-0">
-              <div class="text-4xl" data-room-target="currentprice" >$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></div>
-              <div class="rounded-md text-gray-500 text-md py-2" >目前最高價
+              <div class="text-2xl text-gray-800" data-room-target="currentprice" >目前最高價：$<%= @room.record.any? ? @room.record.last.bid : @room.product.start_price %></div>
+              <div class="rounded-md text-gray-500 text-md py-2" >
               </div>
             </div>
 
-            <div class="countdown text-lg text-center w-full py-5  bg-gray-200 md:rounded-2xl md:mt-10 md:bg-gavel-blue text-white" >
+            <div class="countdown text-xl text-center w-full py-5  bg-gray-200 md:rounded-2xl md:mt-10 md:bg-gavel-blue text-white" >
               <span data-countdown-target="span"  >...</span>
             </div>
           </div>
@@ -146,8 +146,6 @@
       </div>
     </div>
 
-    
-    
     <div class="bottom md:flex md:flex-col md:px-10 md:mt-5" > 
       <div class="flex-box flex flex-col md:flex-row" >
 
@@ -179,7 +177,7 @@
           </div>
           <div class="product_information" >
             <h3 class="ml-5 mt-5 text-2xl text-center md:mt-0 md:border-b-4 md:pb-4 ">商品資訊</h3>
-            <p class="md:border-b-0 text-md p-5 break-words"><%= @product.description %></p>
+            <p class="md:border-b-0 text-lg  p-5 break-words"><%= @product.description %></p>
           </div>
         </div>
 
@@ -188,7 +186,7 @@
             <span class="flex justify-center text-xl pb-5 border-b-4 ">房間聊天室</span>
             <div data-room-target="messagescontainer" class="overflow-auto mt-5 h-[300px]"></div>
             <div class="send flex justify-between" >
-              <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 w-8/12 " placeholder="賣家隨時為您解答">
+              <input type="text" data-room-target="message" class="rounded-xl px-2 border-4 w-8/12 " placeholder="輸入你想說的話~">
               <button class="w-3/12 rounded-full shadow-lg bg-gavel-blue hover:bg-blue-800 text-white font-bold p-2 uppercase" data-action="click->room#chat">
                 <i class="fa-solid fa-paper-plane cursor-pointer"></i>
               </button>
@@ -198,8 +196,6 @@
 
       </div>
     </div>
-
-
 
     <div class="fixedBar md:hidden fixed bottom-0 right-0 left-0 flex justify-around items-center bg-white box-border h-20 shadow-2xl whitespace-nowrap">
 
