@@ -13,9 +13,7 @@
 
 .orderlist td, .orderlist th {
   box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
 }
 
 .orderlist thead tr th {

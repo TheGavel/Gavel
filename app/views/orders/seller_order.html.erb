@@ -30,7 +30,7 @@
             <td class="py-6 px-6 whitespace-nowrap"><%= order.id %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= order.product.name %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= order.price%></td>
-            <td class="py-6 px-6 whitespace-nowrap"><%= order.product.room.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td class="py-6 px-6"><%= order.product.room.end_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= Order.statusTW(order.status) %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%=order.buyer.username %> </td>
           </tr>
