@@ -14,5 +14,4 @@ class BroadcastEndtimeWorker
       bidder: highest_record.user.id
     end
   end
-
 end

@@ -48,13 +48,13 @@ Tag.create(@tag_array)
 def user_img(slug)
   {io: open("https://robohash.org/#{slug}") , filename: slug+"_images.jpg"}
 end
-seller1 = User.create( email: "aaa@aaa.com",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: Faker::Name.name ,role: "seller" )
+seller1 = User.create( email: "401031337@gapp.fju.edu.tw",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: "趙小婷" ,role: "seller" )
 seller1.avatar.attach(user_img(seller1.id.to_s))
 
-seller2 = User.create( email: "bbb@bbb.com",password: "bbbbbb" ,password_confirmation: "bbbbbb" ,username: Faker::Name.name ,role: "seller" )
+seller2 = User.create( email: "m951620@yahoo.com.tw",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: "秦小瑋" ,role: "seller" )
 seller2.avatar.attach(user_img(seller2.id.to_s))
 
-seller3 = User.create( email: "ccc@ccc.com",password: "cccccc" ,password_confirmation: "cccccc" ,username: Faker::Name.name ,role: "seller" )
+seller3 = User.create( email: "yc117602@hotmail.com",password: "aaaaaa" ,password_confirmation: "aaaaaa" ,username: "趙小儒" ,role: "seller" )
 seller3.avatar.attach(user_img(seller3.id.to_s))
 seller = [seller1,seller2,seller3]
 
@@ -63,7 +63,7 @@ def product_imgg(url,name)
   {io: open(url) , filename: "#{name}_images.jpg"}
 end
 
-1.times do
+5.times do
   products_list.each do |prod|
     ### PRODUCT
 
@@ -92,7 +92,6 @@ end
                 id: product.id,
                 status: %w[未開賣 開賣中 結束競標].sample,
                 maxpeople: rand(10..100))
-    r.skip_callback = true
     r.save
   end
 end
