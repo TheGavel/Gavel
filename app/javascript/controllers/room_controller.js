@@ -31,6 +31,10 @@ export default class extends Controller {
       },
       received({ bid, message, user, endbid, bidder, username }) {
         if (bid != undefined) {
+          if( bid == 0 ){
+            confirm("價格請勿小於每標最低價");
+            return;
+          }
           thisController.currentpriceTargets.map((currentprice, idx) => {
             currentprice.textContent = bid;
             if (idx == 0) {
@@ -59,7 +63,7 @@ export default class extends Controller {
                   await thisController.getavatar(user_id);
               }
               let imgHtml = `<div style='padding: 5px 20px 5px 20px; display: flex; flex-direction: column; align-items: center;'>
-                          <img src="${crowns[index]}"/> 
+                          <img src="${crowns[index]}"/>
                           <img src="${thisController.userhash[user_id]}" class="rounded-full bg-white  items-center font-mono" style="height: 60px; width: 60px; margin-top: -15px; "/>
                           <div style="margin-top: 10px; text-align: center; font-size: 12px; border-radius: 9999px; border: solid; background-color: white; padding: 0 1.25rem;">$${user_bid}</div>
                           </div>`;
