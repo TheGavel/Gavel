@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
           product_id = @product.id
           ProductsTag.create(product_id: product_id, tag_id: tag_id)
         }
-
+        Product.reindex
         if params[:product][:status] == "draft"
           redirect_to own_products_path, notice: '更改商品狀態為發布，大家才選的到您的商品歐~'
           return
