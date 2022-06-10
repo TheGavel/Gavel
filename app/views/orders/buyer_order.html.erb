@@ -31,7 +31,7 @@
         <% @orders.each do |order| %>
           <tr class="text-center text-lg border-t-2 border-b-gray-200 bg-white">
             <td class="py-6 px-6 whitespace-nowrap"><%= order.id %></td>
-            <td class="py-6 px-6 whitespace-nowrap"><%= order.product.name %></td>
+            <td class="truncate py-6 px-6 whitespace-nowrap"><%= order.product.name %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= order.price%></td>
             <td class="py-6 px-6"><%= order.product.room.end_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%= Order.statusTW(order.status) %></td>
