@@ -33,7 +33,8 @@ class RoomChannel < ApplicationCable::Channel
           # flash.now[:alert] = "您的出價小於最低標"
           ActionCable.server.broadcast "Bid:#{data["room"]}",
           bid: 0,
-          user: data["user"]
+          user: data["user"],
+          username: User.find(data["user"]).username
           return
         end
       end

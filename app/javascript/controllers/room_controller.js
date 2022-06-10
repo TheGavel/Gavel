@@ -32,7 +32,9 @@ export default class extends Controller {
       received({ bid, message, user, endbid, bidder, username }) {
         if (bid != undefined) {
           if( bid == 0 ){
-            confirm("價格請勿小於每標最低價");
+            if(user == thisController.element.dataset.user){
+              confirm("價格請勿小於每標最低價");
+            }
             return;
           }
           thisController.currentpriceTargets.map((currentprice, idx) => {
@@ -94,7 +96,9 @@ export default class extends Controller {
               &nbsp&nbsp
               <span class="h-15 px-3 rounded-lg leading-10 text-white font-bold bg-blue-500 opacity-90 text-md"> ${message} </span>
               </div>`;
-            thisController.messageTarget.value = "";
+            if(user == thisController.element.dataset.user){
+              thisController.messageTarget.value = "";
+            }
             thisController.messagescontainerTarget.insertAdjacentHTML(
               "beforeend",
               messageHtml
@@ -108,7 +112,7 @@ export default class extends Controller {
           if (thisController.element.dataset.user == bidder) {
             location.href = "/orders/buyer_order";
           } else {
-            location.href = `/rooms/${this.element.dataset.room}`;
+            location.href = `/rooms/${thisController.element.dataset.room}`;
           }
         }
       },
