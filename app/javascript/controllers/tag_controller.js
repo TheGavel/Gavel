@@ -21,7 +21,7 @@ export default class extends Controller {
           select.setAttribute("id", "selectChildren" + index.toString());
           select.setAttribute("name", "selectChildren[]");
 
-          newoption("val1", "Choose option", select);
+          newoption("val1", "請選擇類別", select);
           if (child === undefined) return;
           Object.keys(child).forEach((key) => {
             if (Number(key) == key) key = child[key];
