@@ -37,7 +37,18 @@
             <td class="py-6 px-6 whitespace-nowrap"><%= Order.statusTW(order.status) %></td>
             <td class="py-6 px-6 whitespace-nowrap"><%=order.seller.username %> </td>
             <td class="py-6 px-6 whitespace-nowrap">
-            <%= link_to "付款" , check_order_path(order.id),class:"inline-block whitespace-nowrap bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
+            <% if order.status == "pending" %> 
+              <%= link_to "付款" , check_order_path(order.id),class:"inline-block whitespace-nowrap bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
+            <% end %>
+            <% if order.status == "paid" %>
+              <div class="inline-block whitespace-nowrap bg-gray-300 px-6 py-3 rounded-full text-white text-base">已付款</div>
+            <% end %>
+            <% if order.status == "failed"  %>
+              <%= link_to "付款" , check_order_path(order.id),class:"inline-block whitespace-nowrap bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
+            <% end %>
+            <% if order.status == "cancelled" %>
+              <%= link_to "付款" , check_order_path(order.id),class:"inline-block whitespace-nowrap bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-white text-base" %>
+            <% end %>
             </td>
           </tr>
         <% end %>
