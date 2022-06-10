@@ -17,7 +17,7 @@ const Product = (data) => {
             alt="productImg"
           />
         </div>
-        <div className="h-[39px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-2rem] flex items-center justify-center overflow-hidden ">
+        <div className="h-[40px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[-2rem] flex items-center justify-center overflow-hidden ">
           <img
             className="w-10 h-10 p-1 bg-white rounded-full group-hover:animate-waving border-2 shadow-inner"
             src={sellerImg}
