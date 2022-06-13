@@ -3,14 +3,10 @@ class UsersController < ApplicationController
   require 'open-uri'
   include Rails.application.routes.url_helpers
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: %i[index new create activate]
-  # GET /users or /users.json
-  def index
-  end
+  skip_before_action :require_login, only: %i[new create activate]
 
   # GET /users/1 or /users/1.json
   def show
-    @user = User.find(current_user.id)
   end
 
   # GET /users/new
@@ -78,7 +74,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   # Only allow a list of trusted parameters through.
