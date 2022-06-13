@@ -9,6 +9,7 @@ Gavel 主要功能為以下三項：
 3. 用戶社群功能：多人聊天、即時競價、分享拍賣房
 
 網站：https://gavel.store/
+影片介紹：https://www.youtube.com/watch?v=qx6nLjrmlqk
 ![](/app/assets/images/website.png)
 
 ## 使用技術
@@ -20,7 +21,7 @@ Gavel 主要功能為以下三項：
 - 部屬環境 : Heroku
 - 第三方登入 : Google
 - 第三方金流 : 藍新金流
-- 其他技術 : AWS S3 (圖片) / ActionCable / Redis / Elasticsearch / AASM
+- 其他技術 : AWS S3 (圖片) / ActionCable / Redis / Elasticsearch
 
 ## 開發團隊
 
