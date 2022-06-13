@@ -4,9 +4,7 @@ import NavBarSuggestions from "./navBarSuggestions";
 
 const ProductNavbar = ({ props }) => {
   const token = document.querySelector('meta[name~="csrf-token"]').content;
-  console.log(token);
   const current_user = props.current_user;
-  console.log("current_user", current_user?.id);
   return (
     <div className="fixed z-100 top-0 right-0 left-0">
       <input type="checkbox" id="menu_control" />

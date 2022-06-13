@@ -23,7 +23,6 @@ export default class extends Controller {
 
     window.addEventListener(Events.IMAGE_DELETED, (Event) => {
       upload.cachedFileArray;
-      console.log("detail", Event);
     });
 
     upload = new FileUploadWithPreview("myFirstImage", {

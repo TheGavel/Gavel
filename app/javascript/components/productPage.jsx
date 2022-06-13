@@ -5,7 +5,6 @@ import NavBar from "./productNavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Productpage = ({ props }) => {
-  console.log("props.policy", props.policy);
   return (
     <div className="bg-blue-50 relative mx-auto z-1 mb-8">
       <Router>
