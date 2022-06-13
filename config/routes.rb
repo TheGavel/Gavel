@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root "products#index"
 
-  resources :users ,except:[:index] do
+  resources :users ,except:[:index, :destroy] do
     member do
       get :activate
     end
