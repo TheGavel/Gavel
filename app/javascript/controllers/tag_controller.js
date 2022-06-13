@@ -57,7 +57,6 @@ export default class extends Controller {
           });
         };
         classification.forEach((item, i) => {
-          console.log(item, i);
           selectChange(item, i + 1);
         });
       },

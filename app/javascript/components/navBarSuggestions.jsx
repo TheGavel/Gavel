@@ -44,9 +44,7 @@ class navBarSuggestions extends React.Component {
       type: "GET",
       data: JSON,
       success: (resp) => {
-        console.log(resp);
         const results = resp.map((h) => h.name);
-        console.log(results);
         this.setState({ suggestions: results });
       },
     });
