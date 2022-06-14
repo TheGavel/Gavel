@@ -29,7 +29,7 @@
                 <li>
                   <%= link_to "買家中心", "#", class:"xl:mx-0 hover:text-blue-200 text-xl" %>
                   <ul class="sub-nav">
-                    <li><%= link_to "個人資訊", user_path(current_user.id), class:"navitem xl:mx-0 text-xl" %></li>
+                    <li><%= link_to "個人資訊", user_path(current_user.slug), class:"navitem xl:mx-0 text-xl" %></li>
                     <li><%= link_to "得標清單", buyer_order_orders_path, class:"navitem xl:mx-0 text-xl" %></li>
                   </ul>
                 </li>

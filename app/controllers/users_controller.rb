@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        @user.avatar.attach(user_img(@user.id.to_s))
+        @user.avatar.attach(user_img(@user.slug.to_s))
         format.html { redirect_to new_user_session_path, notice: '註冊成功' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    if params[:id].to_i != current_user.id
+    if params[:id] != current_user.slug
       redirect_to root_path
     end
     @user = current_user

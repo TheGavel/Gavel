@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  extend FriendlyId
   authenticates_with_sorcery!
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
+  friendly_id :random_slug, use: :slugged
+
 
   validates :email, :username, uniqueness: true, presence: true
   validates :password, confirmation: true,length: { minimum: 6 },
@@ -17,4 +20,11 @@ class User < ApplicationRecord
   has_many :boughtlist
   has_many :boughtproducts, through: :boughtlist, source: :product
   has_one_attached :avatar
+
+
+  private
+
+  def random_slug
+      [*'a'..'z',*'A'..'Z',*'0'..'9'].sample(10).join
+  end
 end

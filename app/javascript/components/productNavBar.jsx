@@ -50,7 +50,7 @@ const ProductNavbar = ({ props }) => {
                         <li>
                           <a
                             className="navitem xl:mx-0 text-xl"
-                            href={`/users/${current_user?.id}`}
+                            href={`/users/${current_user?.slug}`}
                           >
                             個人資訊
                           </a>
@@ -115,7 +115,7 @@ const ProductNavbar = ({ props }) => {
                         <li>
                           <a
                             className="navitem xl:mx-0 text-xl"
-                            href={`/users/${current_user?.id}`}
+                            href={`/users/${current_user?.slug}`}
                           >
                             個人資訊
                           </a>
