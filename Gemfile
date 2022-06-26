@@ -39,7 +39,7 @@ gem 'image_processing', '~> 1.12', '>= 1.12.2'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'twilio-ruby', '~> 5.67'
 gem 'simple_form', '~> 5.1'
-gem 'faker', '~> 2.21'
+
 gem 'validates_timeliness', '~> 6.0.0.beta2'
 gem 'elasticsearch', '~> 6.0'
 gem 'searchkick', '~> 5.0.1', '>= 5.0.3'
@@ -50,6 +50,8 @@ group :development, :test do
   gem 'rubocop', '~> 1.28', require: false
   gem 'rspec', '~> 3.11'
   gem 'rspec-rails'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do
@@ -63,6 +65,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers

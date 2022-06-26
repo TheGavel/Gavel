@@ -28,9 +28,9 @@ class Product < ApplicationRecord
               word_middle: [:name],
               callbacks: :async
 
-  validates :name, :images, presence: true
+  validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10 }
-  validates :start_price,:basicprice, presence:true,numericality: { greater_than: 0,  only_integer: true }
+  validates :start_price,:basicprice, presence:true ,numericality: { greater_than: 0,  only_integer: true }
 
   belongs_to :user
   has_one :room
